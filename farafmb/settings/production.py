@@ -4,7 +4,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = [host for host in os.getenv('ALLOWED_HOSTS', 'localhost').split(',')]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Fachschaftsrat Maschinenbau</title>
+
+        <link rel="stylesheet" href="{% static 'blog/css/uikit.min.css' %}" />
+
+        <script src="{% static 'blog/js/uikit.min.js' %}"></script>
+        <script src="{% static 'blog/js/uikit-icons.min.js' %}"></script>
+
+        <script src="{% static 'blog/js/font-awesome.min.js' %}"></script>
+    </head>
+    <body>
+        <header>
+            {% include 'blog/components/navigation.html' %}
+        </header>
+
+        <section uk-height-viewport="expand: true">
+            {% block content %}{% endblock %}
+        </section>
+
+        <footer>
+            {% include 'blog/components/footer.html' %}
+        </footer>
+    </body>
+</html>

@@ -16,6 +16,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
