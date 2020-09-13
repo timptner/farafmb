@@ -43,7 +43,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def edited(self):  # TODO
+    def edited(self):  # TODO access fields as python datetime objects
         # created = self.created.replace(microseconds=0)
         # updated = self.updated.replace(microseconds=0)
         return False
