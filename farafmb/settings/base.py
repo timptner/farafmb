@@ -120,3 +120,9 @@ STATIC_URL = '/static/'
 #     BASE_DIR / 'farafmb' / 'static',
 # ]
 STATIC_ROOT = BASE_DIR / 'static'
+
+
+# Media files (Images, Files)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

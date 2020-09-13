@@ -1,6 +1,10 @@
 *.env
-.idea/
-venv/
-__pycache__/
 *.pyc
+
+.idea/
+
+__pycache__/
+
+venv/
 static/
+media/

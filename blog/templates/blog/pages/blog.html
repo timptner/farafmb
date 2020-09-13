@@ -4,11 +4,22 @@
     <div class="uk-section">
         <div class="uk-container">
             {% for post in object_list %}
-                <div class="uk-card uk-card-body uk-card-default uk-margin">
-                    <div class="uk-card-title">{{ post.title }}</div>
-                    <div class="uk-text-meta">{{ post.updated }}{% if post.edited %} (Bearbeitet){% endif %}</div>
+                <div class="uk-card uk-card-default uk-margin">
+                    <div class="uk-card-media-top">
+                        <div uk-lightbox>
+                            <a href="{{ post.image.file.url }}" data-caption="{{ post.image.title }}">
+                                <img src="{{ post.image.file.url }}" alt="{{ post.image.title }}">
+                            </a>
+                        </div>
+                    </div>
 
-                    {{ post.html|safe }}
+                    <div class="uk-card-body">
+                        <div class="uk-card-title">{{ post.title }}</div>
+
+                        <div class="uk-text-meta">{{ post.updated }}{% if post.edited %} (Bearbeitet){% endif %}</div>
+
+                        {{ post.html|safe }}
+                    </div>
                 </div>
             {% endfor %}
         </div>
