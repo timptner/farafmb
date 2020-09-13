@@ -1,6 +1,14 @@
 {% load static %}
 
 <nav class="uk-navbar-container" uk-navbar style="background-color: #009EE3">
+    <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+            <li>
+                <a href="{% url 'blog:posts' %}">Blog</a>
+            </li>
+        </ul>
+    </div>
+
     <div class="uk-navbar-center">
         <a class="uk-navbar-item uk-logo" href="{% url 'blog:index' %}">
             <img data-src="{% static 'blog/img/logo.svg' %}" width="50" height="50" alt="Logo" uk-img="">

@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="uk-section">
+        <div class="uk-container">
+            {% for post in object_list %}
+                <div class="uk-card uk-card-body uk-card-default uk-margin">
+                    <div class="uk-card-title">{{ post.title }}</div>
+                    <div class="uk-text-meta">{{ post.updated }}{% if post.edited %} (Bearbeitet){% endif %}</div>
+
+                    {{ post.html|safe }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
