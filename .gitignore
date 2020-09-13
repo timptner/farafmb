@@ -6,5 +6,5 @@
 __pycache__/
 
 venv/
-static/
-media/
+static/*
+media/*
