@@ -9,6 +9,7 @@
         <title>Fachschaftsrat Maschinenbau</title>
 
         <link rel="stylesheet" href="{% static 'blog/css/uikit.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'blog/css/main.css' %}" />
 
         <script src="{% static 'blog/js/uikit.min.js' %}"></script>
         <script src="{% static 'blog/js/uikit-icons.min.js' %}"></script>
@@ -16,16 +17,10 @@
         <script src="{% static 'blog/js/font-awesome.min.js' %}"></script>
     </head>
     <body>
-        <header>
+        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
             {% include 'blog/components/navigation.html' %}
-        </header>
+        </div>
 
-        <section uk-height-viewport="expand: true">
-            {% block content %}{% endblock %}
-        </section>
-
-        <footer>
-            {% include 'blog/components/footer.html' %}
-        </footer>
+        {% block content %}{% endblock %}
     </body>
 </html>
