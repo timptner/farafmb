@@ -21,7 +21,7 @@ def generate_random_name(instance, filename):
 
 
 class Snippet(models.Model):
-    key = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True)
     desc = models.CharField('description', max_length=50)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -32,6 +32,7 @@ class Snippet(models.Model):
 
     def clean(self):
         self.content = bleach.clean(self.content, tags=[], strip=True)
+        # TODO strip img markdown tags
 
     def html(self):
         return markdown(self.content, extensions=['tables'])
@@ -50,6 +51,7 @@ class Post(models.Model):
 
     def clean(self):
         self.content = bleach.clean(self.content, tags=[], strip=True)
+        # TODO strip img markdown tags
 
     def edited(self):  # TODO access fields as python datetime objects
         # created = self.created.replace(microseconds=0)
@@ -61,6 +63,7 @@ class Post(models.Model):
 
 
 class Image(models.Model):
+    slug = models.SlugField(unique=True, blank=True, null=True)
     title = models.CharField(max_length=255)
     file = models.ImageField(upload_to=generate_random_name)
     created = models.DateTimeField(auto_now_add=True)
