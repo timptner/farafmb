@@ -10,9 +10,9 @@ class IndexView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['snippet'] = get_object_or_404(Snippet, slug='index')
+        context['snippet'] = get_object_or_404(Snippet, slug='landing_page')
         try:
-            context['image'] = Image.objects.get(slug='index')
+            context['image'] = Image.objects.get(slug='landing_page')
 
         except ObjectDoesNotExist:
             pass
@@ -25,3 +25,12 @@ class BlogView(generic.ListView):
     paginate_by = 20
     template_name = 'blog/pages/blog.html'
     ordering = ['-created']
+
+
+class OfficeHoursView(generic.TemplateView):
+    template_name = 'blog/pages/office_hours.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['snippet'] = get_object_or_404(Snippet, slug='office_hours')
+        return context
