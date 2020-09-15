@@ -8,6 +8,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
+from .extensions import TableExtension
+
 
 def generate_random_name(instance, filename):
     path = settings.MEDIA_ROOT
@@ -35,7 +37,7 @@ class Snippet(models.Model):
         # TODO strip img markdown tags
 
     def html(self):
-        return markdown(self.content, extensions=['tables'])
+        return markdown(self.content, extensions=['tables', TableExtension()])
 
 
 class Post(models.Model):
@@ -59,7 +61,7 @@ class Post(models.Model):
         return False
 
     def html(self):
-        return markdown(self.content, extensions=['tables'])
+        return markdown(self.content, extensions=['tables', TableExtension()])
 
 
 class Image(models.Model):
