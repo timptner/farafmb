@@ -1,6 +1,10 @@
 # PyCharm
 .idea/
 
+# Nginx
+static/
+media/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
