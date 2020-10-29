@@ -5,6 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'farafmb.settings.production')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'farafmb.settings')
 
 application = get_asgi_application()

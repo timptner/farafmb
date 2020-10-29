@@ -2,21 +2,20 @@ import os
 
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
+
+DEBUG = True
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -57,30 +56,20 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
-        'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USERNAME'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
     }
 }
 
-# E-Mail
-
-EMAIL_USE_TLS = True
-EMAIL_HOST = os.getenv('SMTP_HOST')
-EMAIL_PORT = os.getenv('SMTP_PORT')
-EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
-EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
-
 
 # Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -99,9 +88,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'de-de'
+LANGUAGE_CODE = 'de-DE'
 
 TIME_ZONE = 'Europe/Berlin'
 
@@ -113,16 +101,27 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'farafmb' / 'static',
-# ]
+
 STATIC_ROOT = BASE_DIR / 'static'
 
 
-# Media files (Images, Files)
+# Media files (Images, Documents)
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+# E-Mail
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = os.getenv('SMTP_HOST')
+
+EMAIL_PORT = os.getenv('SMTP_PORT')
+
+EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
+
+EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
