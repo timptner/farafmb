@@ -5,7 +5,7 @@
     <div class="uk-card uk-card-default">
         <div class="uk-card-body">
             {% if snippet %}
-                {{ snippet.html|safe }}
+                {{ snippet.render|safe }}
             {% else %}
                 <em>Bitte das Snippet <b>office_hours</b> erstellen.</em>
             {% endif %}

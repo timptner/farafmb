@@ -12,7 +12,7 @@
 
         <div class="uk-card-body">
             {% if snippet %}
-                {{ snippet.html|safe }}
+                {{ snippet.render|safe }}
             {% else %}
                 <em>Bitte das Snippet <b>homepage</b> erstellen.</em>
             {% endif %}

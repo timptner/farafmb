@@ -16,7 +16,7 @@
                 <div class="uk-card-body">
                     <div class="uk-card-title">{{ post.title }}</div>
                     <div class="uk-text-meta">{{ post.updated|date:"j. F Y H:i" }}{% if post.edited %} (Bearbeitet){% endif %}</div>
-                    {{ post.html|safe }}
+                    {{ post.render|safe }}
                 </div>
             </div>
             {% endfor %}

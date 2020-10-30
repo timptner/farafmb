@@ -1,6 +1,5 @@
 import bleach
 
-from datetime import datetime
 from markdown import markdown
 from secrets import token_hex
 
@@ -8,10 +7,28 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
-from .extensions import TableExtension
+from . import extensions
+
+ALLOWED_TAGS = [
+    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    'p', 'br',
+    'strong', 'em',
+    'blockquote',
+    'ol', 'ul', 'li',
+    'dl', 'dt', 'dd',
+    'code', 'pre',
+    'hr',
+    'a',
+    'table', 'thead', 'tbody', 'tr', 'th', 'td',
+]
+
+ALLOWED_ATTRIBUTES = {
+    '*': ['class'],
+    'a': ['href'],
+}
 
 
-def generate_random_name(instance, filename):
+def generate_random_name(instance, filename: str) -> str:
     path = settings.MEDIA_ROOT
     files = [file.stem for file in path.iterdir()]
     file = token_hex(3)
@@ -34,10 +51,10 @@ class Snippet(models.Model):
 
     def clean(self):
         self.content = bleach.clean(self.content, tags=[], strip=True)
-        # TODO strip img markdown tags
 
-    def html(self):
-        return markdown(self.content, extensions=['tables', TableExtension()])
+    def render(self):
+        html = markdown(self.content, extensions=['tables', extensions.TableExtension()])
+        return bleach.clean(html, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 
 class Post(models.Model):
@@ -53,15 +70,15 @@ class Post(models.Model):
 
     def clean(self):
         self.content = bleach.clean(self.content, tags=[], strip=True)
-        # TODO strip img markdown tags
 
     def edited(self):  # TODO access fields as python datetime objects
         # created = self.created.replace(microseconds=0)
         # updated = self.updated.replace(microseconds=0)
         return False
 
-    def html(self):
-        return markdown(self.content, extensions=['tables', TableExtension()])
+    def render(self):
+        content = markdown(self.content, extensions=['tables', extensions.TableExtension()])
+        return bleach.clean(content, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
 
 
 class Image(models.Model):
