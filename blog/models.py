@@ -1,5 +1,6 @@
 import bleach
 
+from datetime import timedelta
 from markdown import markdown
 from secrets import token_hex
 
@@ -71,10 +72,8 @@ class Post(models.Model):
     def clean(self):
         self.content = bleach.clean(self.content, tags=[], strip=True)
 
-    def edited(self):  # TODO access fields as python datetime objects
-        # created = self.created.replace(microseconds=0)
-        # updated = self.updated.replace(microseconds=0)
-        return False
+    def edited(self):
+        return self.created + timedelta(minutes=5) < self.updated
 
     def render(self):
         content = markdown(self.content, extensions=['tables', extensions.TableExtension()])
