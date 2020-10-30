@@ -1,9 +1,15 @@
-{% extends 'blog/layout.html' %}
+{% extends 'layout.html' %}
 
 {% block content %}
-    <div class="uk-section">
-        <div class="uk-container">
-            {{ snippet.html|safe }}
+<div class="uk-container uk-container-small">
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+            {% if snippet %}
+                {{ snippet.html|safe }}
+            {% else %}
+                <em>Bitte das Snippet <b>office_hours</b> erstellen.</em>
+            {% endif %}
         </div>
     </div>
+</div>
 {% endblock %}
