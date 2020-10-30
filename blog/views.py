@@ -14,10 +14,10 @@ class IndexView(generic.TemplateView):
         return context
 
 
-class BlogView(generic.ListView):
+class PostsView(generic.ListView):
     model = Post
-    paginate_by = 20
-    template_name = 'blog/blog.html'
+    paginate_by = 10
+    template_name = 'blog/posts.html'
     ordering = ['-created']
 
 
