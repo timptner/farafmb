@@ -5,15 +5,18 @@ from django.contrib import admin, messages
 from .models import Snippet, Post, Image
 
 
+def check_img(request, content: str):
+    if re.search(r'!\[.+]\(.+\)', content):
+        messages.warning(request, "Einbetten von Bildern per Hyperlink wird blockiert. "
+                                  "Bitte 'Blog->Images' verwenden.")
+
+
 @admin.register(Snippet)
 class SnippetAdmin(admin.ModelAdmin):
     list_display = ('desc', 'slug', 'created')
 
     def save_model(self, request, obj, form, change):
-        if re.search(r'!\[.+]\(.+\)', obj.content):
-            messages.warning(request, "Einbetten von Bildern per Hyperlink wird blockiert. "
-                                      "Bitte 'Blog->Images' verwenden.")
-
+        check_img(request, obj.content)
         super().save_model(request, obj, form, change)
 
 
@@ -25,10 +28,7 @@ class PostAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         obj.author = request.user
-        if re.search(r'!\[.+]\(.+\)', obj.content):
-            messages.warning(request, "Einbetten von Bildern per Hyperlink wird blockiert. "
-                                      "Bitte 'Blog->Images' verwenden.")
-
+        check_img(request, obj.content)
         super().save_model(request, obj, form, change)
 
 
