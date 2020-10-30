@@ -49,7 +49,6 @@
 <body class="{{ template }}">
     {% if user.is_authenticated %}
     <div class="uk-alert-warning uk-margin-remove" uk-alert>
-        <a class="uk-alert-close" uk-close></a>
         <p class="uk-text-center">
             Vergiss bitte nicht, dich wieder <a class="uk-link-text" href="{% url 'admin:logout' %}">abzumelden</a>.
         </p>
