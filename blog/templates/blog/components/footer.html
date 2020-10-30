@@ -1,79 +1,76 @@
-<div class="uk-navbar-dropdown-grid uk-child-width-1-4" uk-grid>
-    <div>
-        <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="uk-nav-header">Social Media</li>
-
-            <li>
-                <a href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
-                    <i class="fab fa-instagram fa-fw"></i> Instagram
-                </a>
-            </li>
-
-            <li>
-                <a href="https://www.facebook.com/farafmb" target="_blank">
-                    <i class="fab fa-facebook fa-fw"></i> Facebook
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div>
-        <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="uk-nav-header">Struktur</li>
-
-            <li>
-                <a href="https://www.ovgu.de" target="_blank">
-                    <i class="fas fa-university fa-fw"></i> Universität
-                </a>
-            </li>
-
-            <li>
-                <a href="https://www.fmb.ovgu.de" target="_blank">
-                    <i class="fas fa-school fa-fw"></i> Fakultät
-                </a>
-            </li>
-
-            <li>
-                <a href="https://stura-md.de" target="_blank">
-                    <i class="fas fa-home fa-fw"></i> Studierendenrat
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div>
-        <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="uk-nav-header">Nützliches</li>
-
-            <li>
-                <a href="https://wiki.faking.cool">
-                    <i class="fas fa-book fa-fw"></i> Wikipedia
-                </a>
-            </li>
-
-            <li>
-                <a href="https://cloud.faking.cool">
-                    <i class="fas fa-cloud fa-fw"></i> Nextcloud
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div>
-        <ul class="uk-nav uk-navbar-dropdown-nav">
-            <li class="uk-nav-header">Rechtliches</li>
-
-            <li>
-                <a href="https://stura-md.de/impressum/" target="_blank">
-                    <i class="fas fa-stamp fa-fw"></i> Impressum
-                </a>
-            </li>
-
-            <li>
-                <a href="https://stura-md.de/datenschutz/" target="_blank">
-                    <i class="fas fa-user-secret fa-fw"></i> Datenschutz
-                </a>
-            </li>
-        </ul>
+{% load static %}
+<div class="uk-section uk-padding-remove-vertical">
+    <div class="uk-container uk-container-small">
+        <hr>
+        <div class="uk-child-width-1-4 uk-text-right uk-link-text" uk-grid>
+            <div>
+                <img data-src="{% static 'blog/img/logo.png' %}" data-width data-height alt="Logo" uk-img>
+            </div>
+            <div>
+                <ul class="uk-nav">
+                    <li class="uk-nav-header">Struktur</li>
+                    <li><a href="https://www.ovgu.de" target="_blank">Universität</a></li>
+                    <li><a href="https://www.fmb.ovgu.de" target="_blank">Fakultät</a></li>
+                    <li><a href="https://stura-md.de" target="_blank">Studierendenrat</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav">
+                    <li class="uk-nav-header">Nützliches</li>
+                    <li><a href="https://wiki.faking.cool">Wikipedia</a></li>
+                    <li><a href="https://cloud.faking.cool">Nextcloud</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="uk-nav">
+                    <li class="uk-nav-header">Rechtliches</li>
+                    <li><a href="https://stura-md.de/impressum/" target="_blank">Impressum</a></li>
+                    <li><a href="https://stura-md.de/datenschutz/" target="_blank">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/farafmb" target="_blank">
+                            <i class="fab fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://t.me/farafmb" target="_blank">
+                            <i class="fab fa-telegram fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://farafmb.slack.com/" target="_blank">
+                            <i class="fab fa-slack fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-navbar-center">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a href="https://github.com/aiventimptner/" target="_blank">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/aiventimptner" target="_blank">
+                            <i class="fab fa-twitter fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                &#169; 2020 Fachschaftsrat Maschinenbau
+            </div>
+        </nav>
     </div>
 </div>

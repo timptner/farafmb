@@ -1,7 +1,4 @@
-.uk-navbar-nav > li > a {
-    color: #FFFFFF;
-}
-
-.uk-navbar-nav > li:hover > a, .uk-navbar-nav > li > a:focus {
-    color: #E6E6E6;
+body {
+    min-height: 100vh;
+    background-color: #f4f8fb;
 }

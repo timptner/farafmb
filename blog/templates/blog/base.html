@@ -1,12 +1,11 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Fachschaftsrat Maschinenbau</title>
+        <title>FaRaFMB</title>
 
         <link rel="stylesheet" href="{% static 'blog/css/uikit.min.css' %}" />
         <link rel="stylesheet" href="{% static 'blog/css/main.css' %}" />
@@ -15,12 +14,42 @@
         <script src="{% static 'blog/js/uikit-icons.min.js' %}"></script>
 
         <script src="{% static 'blog/js/font-awesome.min.js' %}"></script>
+
+        <!-- FAVICON -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'favicon/apple-touch-icon-57x57.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'favicon/apple-touch-icon-114x114.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'favicon/apple-touch-icon-72x72.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{% static 'favicon/apple-touch-icon-60x60.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'favicon/apple-touch-icon-120x120.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'favicon/apple-touch-icon-76x76.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-196x196.png' %}" sizes="196x196" />
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96" />
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16" />
+        <link rel="icon" type="image/png" href="{% static 'favicon/favicon-128.png' %}" sizes="128x128" />
+        <meta name="application-name" content="FaRaFMB"/>
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
+        <meta name="msapplication-square70x70logo" content="{% static 'favicon/mstile-70x70.png' %}" />
+        <meta name="msapplication-square150x150logo" content="{% static 'favicon/mstile-150x150.png' %}" />
+        <meta name="msapplication-wide310x150logo" content="{% static 'favicon/mstile-310x150.png' %}" />
+        <meta name="msapplication-square310x310logo" content="{% static 'favicon/mstile-310x310.png' %}" />
     </head>
     <body>
-        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky">
-            {% include 'blog/components/navigation.html' %}
+    {% if user.is_authenticated %}
+        <div class="uk-alert-warning uk-margin-remove" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p class="uk-text-center">
+                Vergiss bitte nicht, dich wieder <a class="uk-link-text" href="{% url 'admin:logout' %}">abzumelden</a>.
+            </p>
         </div>
-
+    {% endif %}
+    {% include 'blog/components/navigation.html' %}
+    <div class="uk-section uk-section-small">
         {% block content %}{% endblock %}
+    </div>
+    {% include 'blog/components/footer.html' %}
     </body>
 </html>
