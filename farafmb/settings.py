@@ -4,6 +4,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+PROJECT_DIR = Path(__file__).resolve(strict=True).parent
+
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = True
@@ -39,7 +41,9 @@ ROOT_URLCONF = 'farafmb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            PROJECT_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +107,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    PROJECT_DIR / 'static',
+]
 
 STATIC_ROOT = BASE_DIR / 'static'
 

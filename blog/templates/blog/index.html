@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="uk-container uk-container-small">
+    <div class="uk-card uk-card-default">
+        {% if image %}
+        <div class="uk-card-media-top uk-cover-container">
+            <img src="{{ image.file.url }}" alt="{{ image.title }}" uk-cover>
+            <canvas width="800" height="400"></canvas>
+        </div>
+        {% endif %}
+
+        <div class="uk-card-body">
+            {% if snippet %}
+                {{ snippet.html|safe }}
+            {% else %}
+                <em>Bitte das Snippet <b>homepage</b> erstellen.</em>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
