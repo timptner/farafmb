@@ -10,14 +10,22 @@
             </div>
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav uk-visible@m">
-                    <li><a href="{% url 'blog:posts' %}">Blog</a></li>
-                    <li><a href="{% url 'blog:office_hours' %}">Sprechzeiten</a></li>
+                    {% include 'links.html' %}
                 </ul>
-                <a class="uk-navbar-toggle uk-hidden@m" href="#">
+                <a class="uk-navbar-toggle uk-hidden@m" href="#mobile-navigation" uk-toggle>
                     <span class="uk-margin-small-right">Menu</span>
                     <span uk-navbar-toggle-icon></span>
                 </a>
             </div>
         </nav>
+    </div>
+</div>
+
+<div id="mobile-navigation" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <ul class="uk-nav uk-nav-default">
+            {% include 'links.html' %}
+        </ul>
     </div>
 </div>
