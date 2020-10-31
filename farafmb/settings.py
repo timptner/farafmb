@@ -8,9 +8,9 @@ PROJECT_DIR = Path(__file__).resolve(strict=True).parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = ['farafmb.de', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -133,3 +133,18 @@ EMAIL_PORT = os.getenv('SMTP_PORT')
 EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
 
 EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
+
+
+# Security
+
+SECURE_HSTS_SECONDS = 3600  # TODO set value to 31536000 (1 year)
+
+SECURE_HSTS_PRELOAD = True
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = False
+
+SESSION_COOKIE_SECURE = True
+
+CSRF_COOKIE_SECURE = True
