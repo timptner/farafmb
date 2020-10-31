@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="uk-container uk-container-small">
+    <a class="uk-button uk-button-secondary" href="{% url 'blog:post_archive' %}">
+        <i class="fas fa-arrow-circle-left"></i> Gesamt
+    </a>
+
+    {% for date in date_list %}
+    <a class="uk-button uk-button-default" href="{% url 'blog:post_month_archive' date.year date.month %}">{{ date|date:'F' }}</a>
+    {% endfor %}
+
+    {% for obj in object_list %}
+    {% include 'blog/components/post.html' %}
+    {% endfor %}
+</div>
+{% endblock %}

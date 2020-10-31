@@ -1,0 +1,14 @@
+<div class="uk-card uk-card-default uk-border-rounded uk-margin">
+    {% if obj.image %}
+    <div class="uk-card-media-top uk-cover-container" style="border-top-left-radius: inherit; border-top-right-radius: inherit">
+        <img src="{{ obj.image.file.url }}" alt="{{ obj.image.title }}" uk-cover>
+        <canvas width="600" height="400"></canvas>
+    </div>
+    {% endif %}
+
+    <div class="uk-card-body">
+        <div class="uk-card-title">{{ obj.title }}</div>
+        <div class="uk-text-meta">{{ obj.updated }}{% if obj.edited %} (Bearbeitet){% endif %}</div>
+        {{ obj.render|safe }}
+    </div>
+</div>
