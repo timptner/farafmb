@@ -4,14 +4,13 @@ from django.views import generic
 from .models import Snippet, Post, Image
 
 
-class IndexView(generic.TemplateView):
-    template_name = 'blog/index.html'
+class AboutView(generic.TemplateView):
+    template_name = 'blog/about.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['template'] = 'homepage'
-        context['snippet'] = Snippet.objects.filter(slug='homepage').first()
-        context['image'] = Image.objects.filter(slug='homepage').first()
+        context['snippet'] = Snippet.objects.filter(slug='about').first()
+        context['image'] = Image.objects.filter(slug='about').first()
         return context
 
 

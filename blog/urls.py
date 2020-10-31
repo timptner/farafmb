@@ -6,8 +6,8 @@ from . import views
 
 app_name = 'blog'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('blog/', views.PostsView.as_view(), name='posts'),
+    path('', views.PostsView.as_view(), name='posts'),
+    path('about/', views.AboutView.as_view(), name='about'),
     path('sprechzeiten/', views.OfficeHoursView.as_view(), name='office_hours'),
 
     path('archiv/',
