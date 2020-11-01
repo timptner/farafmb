@@ -6,6 +6,9 @@
         <div class="uk-card-body">
             {% if snippet %}
                 {{ snippet.render|safe }}
+                <div class="uk-overflow-auto">
+                    {{ timetable.render|safe }}
+                </div>
             {% else %}
                 <em>Bitte das Snippet <b>office_hours</b> erstellen.</em>
             {% endif %}

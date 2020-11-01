@@ -36,6 +36,7 @@ class OfficeHoursView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['snippet'] = Snippet.objects.filter(slug='office_hours').first()
+        context['timetable'] = Snippet.objects.filter(slug='office_hours_table').first()
         return context
 
 
