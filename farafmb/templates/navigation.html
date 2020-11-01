@@ -25,7 +25,11 @@
     <div class="uk-offcanvas-bar">
         <button class="uk-offcanvas-close" type="button" uk-close></button>
         <ul class="uk-nav uk-nav-default">
+            <li class="uk-nav-header uk-hidden@m">Navigation</li>
             {% include 'links.html' %}
+        </ul>
+        <ul class="uk-navbar-nav uk-navbar-transparent uk-position-bottom uk-flex-center">
+            {% include 'social_media.html' %}
         </ul>
     </div>
 </div>
