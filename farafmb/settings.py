@@ -8,7 +8,7 @@ PROJECT_DIR = Path(__file__).resolve(strict=True).parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = False
+DEBUG = (os.getenv('TARGET_ENV') == 'development')
 
 ALLOWED_HOSTS = ['dev.farafmb.de', 'farafmb.de', 'localhost', '127.0.0.1']
 
