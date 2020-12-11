@@ -1,12 +1,10 @@
 import bleach
+import secrets
 
-from datetime import timedelta
-from markdown import markdown
-from secrets import token_hex
-
-from django.conf import settings
+from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.db import models
+from markdown import markdown
 
 from . import extensions
 
@@ -30,14 +28,10 @@ ALLOWED_ATTRIBUTES = {
 
 
 def generate_random_name(instance, filename: str) -> str:
-    path = settings.MEDIA_ROOT
-    files = [file.stem for file in path.iterdir()]
-    file = token_hex(3)
-    while file in files:
-        file = token_hex(3)
-
+    time = int(datetime.now().timestamp())
+    name = secrets.token_hex(3)
     suffix = filename.split('.')[-1]
-    return f"blog/{file}.{suffix}"
+    return f"blog/{time}_{name}.{suffix.lower()}"
 
 
 class Snippet(models.Model):
@@ -60,7 +54,8 @@ class Snippet(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ForeignKey('Image', on_delete=models.CASCADE, blank=True, null=True)
+    image = models.ForeignKey('Image', on_delete=models.SET_NULL, blank=True, null=True)
+    video = models.ForeignKey('Video', on_delete=models.SET_NULL, blank=True, null=True)
     title = models.CharField(max_length=255)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -84,6 +79,16 @@ class Image(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     title = models.CharField(max_length=255)
     file = models.ImageField(upload_to=generate_random_name)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Video(models.Model):
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to=generate_random_name)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

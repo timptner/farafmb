@@ -2,7 +2,7 @@ import re
 
 from django.contrib import admin, messages
 
-from .models import Snippet, Post, Image
+from .models import Snippet, Post, Image, Video
 
 
 def check_img(request, content: str):
@@ -23,7 +23,7 @@ class SnippetAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     readonly_fields = ('author',)
-    list_display = ('title', 'image', 'author', 'created')
+    list_display = ('title', 'image', 'video', 'author', 'created')
     list_filter = ('author',)
 
     def save_model(self, request, obj, form, change):
@@ -34,4 +34,9 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'created')
+
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'created')
