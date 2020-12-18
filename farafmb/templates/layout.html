@@ -41,18 +41,17 @@
 
         <script src="{% static 'js/font-awesome.min.js' %}"></script>
         <script src="{% static 'js/navbar-burger.js' %}"></script>
+        <script src="{% static 'js/close-notification.js' %}"></script>
     </head>
 
     <body>
+        {% include 'navigation.html' %}
+
         {% if user.is_authenticated %}
-            <div class="uk-alert-warning uk-margin-remove" uk-alert>
-                <p class="uk-text-center">
-                    Vergiss bitte nicht, dich wieder <a class="uk-link-text" href="{% url 'admin:logout' %}">abzumelden</a>.
-                </p>
+            <div class="notification is-radiusless is-warning is-light mb-0">
+                Vergiss bitte nicht, dich wieder <a href="{% url 'admin:logout' %}">abzumelden</a>.
             </div>
         {% endif %}
-
-        {% include 'navigation.html' %}
 
         <section class="section has-background-light">
             {% block content %}{% endblock %}
