@@ -1,61 +1,84 @@
-{% load static %}
+<footer class="footer has-background-white">{% load static %}
+    <div class="columns has-text-centered-touch">
+        <div class="column">
+            <img src="{% static 'img/logo.png' %}" width="130" height="130" alt="Logo">
+        </div>
 
-<div class="uk-section uk-padding-remove-vertical">
-    <div class="uk-container uk-container-small">
-        <hr>
-        <div class="uk-flex-center uk-child-width-1-4@s uk-text-center uk-text-right@s uk-link-text" uk-grid>
-            <div class="uk-visible@s uk-text-left">
-                <img data-src="{% static 'img/logo.png' %}" width="133" height="133" alt="Logo" uk-img>
-            </div>
-            <div>
-                <ul class="uk-nav">
-                    <li class="uk-nav-header">Struktur</li>
+        <div class="column">
+            <aside class="menu">
+                <p class="menu-label">Struktur</p>
+                <ul class="menu-list">
                     <li><a href="https://www.ovgu.de" target="_blank">Universität</a></li>
                     <li><a href="https://www.fmb.ovgu.de" target="_blank">Fakultät</a></li>
                     <li><a href="https://stura-md.de" target="_blank">Studierendenrat</a></li>
                 </ul>
-            </div>
-            <div>
-                <ul class="uk-nav">
-                    <li class="uk-nav-header">Nützliches</li>
+            </aside>
+        </div>
+
+        <div class="column">
+            <aside class="menu">
+                <p class="menu-label">Nützliches</p>
+                <ul class="menu-list">
                     <li><a href="https://wiki.faking.cool">Wikipedia</a></li>
                     <li><a href="https://cloud.faking.cool">Nextcloud</a></li>
                 </ul>
-            </div>
-            <div>
-                <ul class="uk-nav">
-                    <li class="uk-nav-header">Rechtliches</li>
+            </aside>
+        </div>
+
+        <div class="column">
+            <aside class="menu">
+                <p class="menu-label">Rechtliches</p>
+                <ul class="menu-list">
                     <li><a href="https://stura-md.de/impressum/" target="_blank">Impressum</a></li>
                     <li><a href="https://stura-md.de/datenschutz/" target="_blank">Datenschutz</a></li>
                 </ul>
-            </div>
+            </aside>
         </div>
-        <nav class="uk-navbar-container uk-navbar-transparent uk-visible@m" uk-navbar>
-            <div class="uk-navbar-left">
-                <ul class="uk-navbar-nav">
-                    {% include 'social_media.html' %}
-                </ul>
-            </div>
-            <div class="uk-navbar-center">
-                <ul class="uk-navbar-nav">
-                    <li>
-                        <a href="https://github.com/aiventimptner/" target="_blank">
-                            <i class="fab fa-github fa-2x"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/aiventimptner" target="_blank">
-                            <i class="fab fa-twitter fa-2x"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="uk-navbar-right">
-                &#169; {% now 'Y' %} Fachschaftsrat Maschinenbau
-            </div>
-        </nav>
-        <p class="uk-text-center uk-text-muted uk-text-small uk-padding-small uk-hidden@m">
-            &#169; {% now 'Y' %} Fachschaftsrat Maschinenbau
-        </p>
     </div>
-</div>
+
+    <div class="columns">
+        <div class="column buttons has-text-right has-text-centered-touch">
+            <a  class="button is-white" href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-instagram fa-2x"></i>
+                </span>
+            </a>
+
+            <a class="button is-white" href="https://www.facebook.com/farafmb" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-facebook-square fa-2x"></i>
+                </span>
+            </a>
+
+            <a class="button is-white" href="https://t.me/farafmb" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-telegram fa-2x"></i>
+                </span>
+            </a>
+
+            <a class="button is-white" href="https://farafmb.slack.com/" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-slack fa-2x"></i>
+                </span>
+            </a>
+        </div>
+
+        <div class="column buttons has-text-centered">
+            <a class="button is-white" href="https://github.com/aiventimptner/" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-github fa-2x"></i>
+                </span>
+            </a>
+
+            <a class="button is-white" href="https://twitter.com/aiventimptner" target="_blank">
+                <span class="icon is-medium">
+                    <i class="fab fa-twitter fa-2x"></i>
+                </span>
+            </a>
+        </div>
+
+        <div class="column has-text-grey has-text-weight-semibold has-text-left has-text-centered-touch">
+            &#169; {% now 'Y' %} Fachschaftsrat Maschinenbau
+        </div>
+    </div>
+</footer>
