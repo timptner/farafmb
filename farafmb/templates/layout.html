@@ -1,67 +1,61 @@
-{% load static %}
-
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static %}
 <html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <title>FaRaFMB</title>
+        <title>FaRaFMB</title>
 
-    <meta charset="utf-8" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#009ee3">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'favicon/apple-touch-icon-120x120.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'favicon/apple-touch-icon-114x114.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'favicon/apple-touch-icon-76x76.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'favicon/apple-touch-icon-72x72.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{% static 'favicon/apple-touch-icon-60x60.png' %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'favicon/apple-touch-icon-57x57.png' %}" />
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{% static 'favicon/apple-touch-icon-120x120.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static 'favicon/apple-touch-icon-114x114.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="{% static 'favicon/apple-touch-icon-76x76.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'favicon/apple-touch-icon-72x72.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="{% static 'favicon/apple-touch-icon-60x60.png' %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static 'favicon/apple-touch-icon-57x57.png' %}" />
+        <link rel="icon" type="image/png" sizes="196x196" href="{% static 'favicon/favicon-196x196.png' %}" />
+        <link rel="icon" type="image/png" sizes="128x128" href="{% static 'favicon/favicon-128.png' %}" />
+        <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
 
-    <link rel="icon" type="image/png" sizes="196x196" href="{% static 'favicon/favicon-196x196.png' %}" />
-    <link rel="icon" type="image/png" sizes="128x128" href="{% static 'favicon/favicon-128.png' %}" />
-    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}" />
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}" />
+        <meta name="application-name" content="FaRaFMB"/>
 
-    <meta name="application-name" content="FaRaFMB"/>
+        <meta name="msapplication-TileColor" content="#ffffff" />
+        <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
+        <meta name="msapplication-square70x70logo" content="{% static 'favicon/mstile-70x70.png' %}" />
+        <meta name="msapplication-square150x150logo" content="{% static 'favicon/mstile-150x150.png' %}" />
+        <meta name="msapplication-wide310x150logo" content="{% static 'favicon/mstile-310x150.png' %}" />
+        <meta name="msapplication-square310x310logo" content="{% static 'favicon/mstile-310x310.png' %}" />
 
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
-    <meta name="msapplication-square70x70logo" content="{% static 'favicon/mstile-70x70.png' %}" />
-    <meta name="msapplication-square150x150logo" content="{% static 'favicon/mstile-150x150.png' %}" />
-    <meta name="msapplication-wide310x150logo" content="{% static 'favicon/mstile-310x150.png' %}" />
-    <meta name="msapplication-square310x310logo" content="{% static 'favicon/mstile-310x310.png' %}" />
+        <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/uikit.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+        <script src="{% static 'js/uikit.min.js' %}"></script>
+        <script src="{% static 'js/uikit-icons.min.js' %}"></script>
 
-    <script src="{% static 'js/uikit.min.js' %}"></script>
-    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+        <script src="{% static 'js/font-awesome.min.js' %}"></script>
+    </head>
+    <body class="{{ template }}">
+        {% if user.is_authenticated %}
+        <div class="uk-alert-warning uk-margin-remove" uk-alert>
+            <p class="uk-text-center">
+                Vergiss bitte nicht, dich wieder <a class="uk-link-text" href="{% url 'admin:logout' %}">abzumelden</a>.
+            </p>
+        </div>
+        {% endif %}
 
-    <script src="{% static 'js/font-awesome.min.js' %}"></script>
-</head>
+        {% include 'navigation.html' %}
 
-<body class="{{ template }}">
-    {% if user.is_authenticated %}
-    <div class="uk-alert-warning uk-margin-remove" uk-alert>
-        <p class="uk-text-center">
-            Vergiss bitte nicht, dich wieder <a class="uk-link-text" href="{% url 'admin:logout' %}">abzumelden</a>.
-        </p>
-    </div>
-    {% endif %}
+        <div class="uk-section uk-section-small">
+            {% block content %}{% endblock %}
+        </div>
 
-    {% include 'navigation.html' %}
-
-    <div class="uk-section uk-section-small">
-        {% block content %}{% endblock %}
-    </div>
-
-    {% include 'footer.html' %}
-</body>
-
+        {% include 'footer.html' %}
+    </body>
 </html>
