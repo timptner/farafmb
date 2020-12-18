@@ -1,25 +1,27 @@
 {% load static %}
 
-<div class="uk-section uk-section-default uk-padding-remove-vertical">
-    <div class="uk-container uk-container-small">
-        <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-            <div class="uk-navbar-left">
-                <div class="uk-navbar-item uk-logo">
-                    <img data-src="{% static 'img/logo-ext.png' %}" width="200" height="100" alt="Logo" uk-img>
-                </div>
-            </div>
-            <div class="uk-navbar-right">
-                <ul class="uk-navbar-nav uk-visible@m">
-                    {% include 'links.html' %}
-                </ul>
-                <a class="uk-navbar-toggle uk-hidden@m" href="#mobile-navigation" uk-toggle>
-                    <span class="uk-margin-small-right">Menu</span>
-                    <span uk-navbar-toggle-icon></span>
-                </a>
-            </div>
-        </nav>
+<nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo uk-padding-small" href="{% url 'blog:posts' %}">
+            <img data-src="{% static 'img/logo.png' %}" width="60" height="60" alt="Logo" uk-img>
+        </a>
+        <a class="uk-navbar-item uk-logo uk-padding-small" href="https://www.ovgu.de" target="_blank">
+            <img data-src="{% static 'img/ovgu.png' %}" width="120" height="60" alt="OVGU" uk-img>
+        </a>
+        <a class="uk-navbar-item uk-logo uk-padding-small" href="https://www.fmb.ovgu.de" target="_blank">
+            <img data-src="{% static 'img/fmb.png' %}" width="60" height="60" alt="FMB" uk-img>
+        </a>
     </div>
-</div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav uk-visible@m">
+            {% include 'links.html' %}
+        </ul>
+        <a class="uk-navbar-toggle uk-hidden@m" href="#mobile-navigation" uk-toggle>
+            <span class="uk-margin-small-right">Menu</span>
+            <span uk-navbar-toggle-icon></span>
+        </a>
+    </div>
+</nav>
 
 <div id="mobile-navigation" uk-offcanvas="overlay: true">
     <div class="uk-offcanvas-bar">
