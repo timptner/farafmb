@@ -40,6 +40,7 @@
         <script src="{% static 'js/uikit-icons.min.js' %}"></script>
 
         <script src="{% static 'js/font-awesome.min.js' %}"></script>
+        <script src="{% static 'js/navbar-burger.js' %}"></script>
     </head>
     <body class="{{ template }}">
         {% if user.is_authenticated %}
@@ -52,9 +53,9 @@
 
         {% include 'navigation.html' %}
 
-        <div class="uk-section uk-section-small">
+        <section class="section">
             {% block content %}{% endblock %}
-        </div>
+        </section>
 
         {% include 'footer.html' %}
     </body>
