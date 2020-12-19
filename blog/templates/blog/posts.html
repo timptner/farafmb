@@ -1,33 +1,37 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="uk-container uk-container-small">
-    <div class="uk-grid-medium" uk-grid>
-        <div class="uk-width-expand">
-            {% for obj in object_list %}
-            {% include 'blog/components/post.html' %}
-            {% endfor %}
-        </div>
+    <div class="container">
+        {% for obj in object_list %}
+            <p class="title is-4">{{ obj.title }}</p>
+            <p class="subtitle"><small>{{ obj.updated }}</small></p>
 
-        <div class="uk-width-1-3 uk-visible@m">
-            <div class="uk-card uk-card-default">
-                <div class="uk-card-body">
-                    <div class="uk-card-title"><a class="uk-link-text" href="{% url 'blog:post_archive' %}">Archiv</a></div>
-                    <ul class="uk-nav uk-nav-default">
-                        {% for date, queryset in archive %}
-                        <li class="uk-parent">
-                            <a href="{% url 'blog:post_year_archive' date.year %}">{{ date.year }}</a>
-                            <ul class="uk-nav-sub">
-                                {% for sub_date in queryset %}
-                                <li><a href="{% url 'blog:post_month_archive' date.year sub_date.month %}">{{ sub_date|date:'F' }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="columns is-centered is-vcentered">
+                {% if obj.image %}
+                    <div class="column">
+                        <figure class="image">
+                            <img src="{{ obj.image.file.url }}" alt="{{ obj.image.title }}">
+                        </figure>
+                    </div>
+                {% endif %}
+
+                {% if obj.video %}
+                    <div class="column">
+                        <video controls>
+                            <source src="{{ obj.video.file.url }}" type="video/mp4">
+                            Dein Browser unterstützt leider nicht das Abspielen von Videos.
+                        </video>
+                    </div>
+                {% endif %}
             </div>
-        </div>
+
+            <div class="content">
+                {{ obj.render|safe }}
+            </div>
+
+            {% if not forloop.last %}
+                <hr class="hr has-background-grey-light">
+            {% endif %}
+        {% endfor %}
     </div>
-</div>
 {% endblock %}

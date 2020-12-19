@@ -37,37 +37,6 @@ class OfficeHoursView(generic.TemplateView):
 
 
 class PostsView(generic.ListView):
-    model = Post
-    paginate_by = 10
     template_name = 'blog/posts.html'
+    model = Post
     ordering = ['-created']
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['archive'] = []
-        year_list = Post.objects.dates('created', 'year')
-        for dt in year_list:
-            month_list = Post.objects.filter(created__year=dt.year).dates('created', 'month')
-            context['archive'].append((dt, month_list))
-        return context
-
-
-class PostArchiveIndexView(generic.dates.ArchiveIndexView):
-    model = Post
-    date_field = 'created'
-
-
-class PostYearArchiveView(generic.dates.YearArchiveView):
-    model = Post
-    date_field = 'created'
-    make_object_list = True
-
-
-class PostMonthArchiveView(generic.dates.MonthArchiveView):
-    model = Post
-    date_field = 'created'
-
-
-class PostDayArchiveView(generic.dates.DayArchiveView):
-    model = Post
-    date_field = 'created'

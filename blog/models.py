@@ -6,26 +6,6 @@ from django.contrib.auth.models import User
 from django.db import models
 from markdown import markdown
 
-from . import extensions
-
-ALLOWED_TAGS = [
-    'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'p', 'br',
-    'strong', 'em',
-    'blockquote',
-    'ol', 'ul', 'li',
-    'dl', 'dt', 'dd',
-    'code', 'pre',
-    'hr',
-    'a',
-    'table', 'thead', 'tbody', 'tr', 'th', 'td',
-]
-
-ALLOWED_ATTRIBUTES = {
-    '*': ['class'],
-    'a': ['href'],
-}
-
 
 def generate_random_name(instance, filename: str) -> str:
     time = int(datetime.now().timestamp())
@@ -71,8 +51,8 @@ class Post(models.Model):
         return self.created + timedelta(minutes=5) < self.updated
 
     def render(self):
-        content = markdown(self.content, extensions=['tables', extensions.TableExtension()])
-        return bleach.clean(content, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
+        cleaned = bleach.clean(self.content, strip=True)
+        return markdown(cleaned)
 
 
 class Image(models.Model):
