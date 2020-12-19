@@ -48,8 +48,8 @@ class Snippet(models.Model):
         self.content = bleach.clean(self.content, tags=[], strip=True)
 
     def render(self):
-        html = markdown(self.content, extensions=['tables', extensions.TableExtension()])
-        return bleach.clean(html, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES)
+        cleaned = bleach.clean(self.content, strip=True)
+        return markdown(cleaned, extensions=['tables', extensions.TableExtension()])
 
 
 class Post(models.Model):

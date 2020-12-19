@@ -1,4 +1,5 @@
-from django.template.defaultfilters import date
+from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
 from django.views import generic
 
 from .models import Snippet, Post, Image
@@ -9,8 +10,14 @@ class AboutView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['snippet'] = Snippet.objects.filter(slug='about').first()
-        context['image'] = Image.objects.filter(slug='about').first()
+
+        context['snippet'] = get_object_or_404(Snippet, slug='about')
+
+        try:
+            context['image'] = Image.objects.get(slug='about')
+        except ObjectDoesNotExist:
+            pass
+
         return context
 
 

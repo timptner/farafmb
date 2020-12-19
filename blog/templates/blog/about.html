@@ -1,22 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="uk-container uk-container-small">
-    <div class="uk-card uk-card-default">
-        {% if image %}
-        <div class="uk-card-media-top uk-cover-container">
-            <img src="{{ image.file.url }}" alt="{{ image.title }}" uk-cover>
-            <canvas width="800" height="600"></canvas>
-        </div>
-        {% endif %}
-
-        <div class="uk-card-body">
-            {% if snippet %}
-                {{ snippet.render|safe }}
-            {% else %}
-                <em>Bitte das Snippet <b>about</b> erstellen.</em>
+    <div class="container">
+        <div class="box columns">
+            {% if image %}
+                <div class="column">
+                    <figure class="image">
+                        <img src="{{ image.file.url }}" height="200" alt="{{ image.title }}">
+                    </figure>
+                </div>
             {% endif %}
+
+            <div class="column content">
+                {{ snippet.render|safe }}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
