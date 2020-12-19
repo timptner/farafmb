@@ -9,6 +9,7 @@ urlpatterns = [
     path('', views.PostsView.as_view(), name='posts'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('sprechzeiten/', views.OfficeHoursView.as_view(), name='office_hours'),
+    path('dokumente/', views.DocumentsView.as_view(), name='documents'),
 ]
 
 if settings.DEBUG:

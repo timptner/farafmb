@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <nav class="panel has-background-white">
+            <p class="panel-heading">Dokumente</p>
+            {% for obj in object_list %}
+                <a class="panel-block" href="{{ obj.file.url }}">
+                    <span class="panel-icon">
+                        <i class="{{ obj.icon }}" aria-hidden="true"></i>
+                    </span>
+                    {{ obj.title }}
+                </a>
+            {% endfor %}
+        </nav>
+    </div>
+{% endblock %}

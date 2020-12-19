@@ -2,7 +2,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.views import generic
 
-from .models import Snippet, Post, Image
+from .models import Snippet, Post, Image, Document
 
 
 class AboutView(generic.TemplateView):
@@ -40,3 +40,8 @@ class PostsView(generic.ListView):
     template_name = 'blog/posts.html'
     model = Post
     ordering = ['-created']
+
+
+class DocumentsView(generic.ListView):
+    template_name = 'blog/documents.html'
+    model = Document

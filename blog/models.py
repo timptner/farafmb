@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.db import models
 from markdown import markdown
+from pathlib import Path
 
 
 def generate_random_name(instance, filename: str) -> str:
@@ -73,3 +74,24 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Document(models.Model):
+    title = models.CharField(max_length=255)
+    file = models.FileField(upload_to=generate_random_name)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def extension(self):
+        path = Path(self.file.path)
+        return path.suffix[1:]
+
+    def icon(self):
+        suffix = self.extension()
+
+        if suffix == 'pdf':
+            return "fas fa-file-pdf"
+
+        if suffix == 'zip':
+            return "fas fa-file-archive"
+
+        return "fas fa-file"
