@@ -1,27 +1,29 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">{% load static %}
-    <div class="navbar-brand">
-        <a class="navbar-item" href="{% url 'blog:posts' %}">
-            <img src="{% static 'img/logo.png' %}" width="56" height="56" alt="Logo">
-        </a>
-        <a class="navbar-item is-hidden-touch" href="https://www.ovgu.de" target="_blank">
-            <img src="{% static 'img/ovgu.png' %}" width="112" height="56" alt="OVGU">
-        </a>
-        <a class="navbar-item is-hidden-touch" href="https://www.fmb.ovgu.de" target="_blank">
-            <img src="{% static 'img/fmb.png' %}" width="56" height="56" alt="FMB">
-        </a>
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'blog:posts' %}">
+                <img src="{% static 'img/logo.png' %}" width="56" height="56" alt="Logo">
+            </a>
+            <a class="navbar-item is-hidden-touch" href="https://www.ovgu.de" target="_blank">
+                <img src="{% static 'img/ovgu.png' %}" width="112" height="56" alt="OVGU">
+            </a>
+            <a class="navbar-item is-hidden-touch" href="https://www.fmb.ovgu.de" target="_blank">
+                <img src="{% static 'img/fmb.png' %}" width="56" height="56" alt="FMB">
+            </a>
 
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarNavigation">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarNavigation">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
 
-    <div id="navbarNavigation" class="navbar-menu">
-        <div class="navbar-end">
-            <a class="navbar-item" href="{% url 'blog:posts' %}">Blog</a>
-            <a class="navbar-item" href="{% url 'blog:about' %}">Who we are</a>
-            <a class="navbar-item" href="{% url 'blog:office_hours' %}">Sprechstunden</a>
+        <div id="navbarNavigation" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" href="{% url 'blog:posts' %}">Blog</a>
+                <a class="navbar-item" href="{% url 'blog:about' %}">Who we are</a>
+                <a class="navbar-item" href="{% url 'blog:office_hours' %}">Sprechstunden</a>
+            </div>
         </div>
     </div>
 </nav>
