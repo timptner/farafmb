@@ -21,6 +21,21 @@ class AboutView(generic.TemplateView):
         return context
 
 
+class OfficeHoursView(generic.TemplateView):
+    template_name = 'blog/office_hours.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['snippet'] = get_object_or_404(Snippet, slug='office_hours')
+
+        try:
+            context['table'] = Snippet.objects.get(slug='office_hours_table')
+        except ObjectDoesNotExist:
+            pass
+
+        return context
+
+
 class PostsView(generic.ListView):
     model = Post
     paginate_by = 10
@@ -34,16 +49,6 @@ class PostsView(generic.ListView):
         for dt in year_list:
             month_list = Post.objects.filter(created__year=dt.year).dates('created', 'month')
             context['archive'].append((dt, month_list))
-        return context
-
-
-class OfficeHoursView(generic.TemplateView):
-    template_name = 'blog/office_hours.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['snippet'] = Snippet.objects.filter(slug='office_hours').first()
-        context['timetable'] = Snippet.objects.filter(slug='office_hours_table').first()
         return context
 
 

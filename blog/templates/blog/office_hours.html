@@ -1,18 +1,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="uk-container uk-container-small">
-    <div class="uk-card uk-card-default">
-        <div class="uk-card-body">
-            {% if snippet %}
-                {{ snippet.render|safe }}
-                <div class="uk-overflow-auto">
-                    {{ timetable.render|safe }}
+    <div class="container">
+        <div class="box content">
+            {{ snippet.render|safe }}
+            {% if table %}
+                <div class="table-container">
+                    {{ table.render|safe }}
                 </div>
-            {% else %}
-                <em>Bitte das Snippet <b>office_hours</b> erstellen.</em>
             {% endif %}
         </div>
     </div>
-</div>
 {% endblock %}
