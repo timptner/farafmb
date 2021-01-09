@@ -45,3 +45,7 @@ class PostsView(generic.ListView):
 class DocumentsView(generic.ListView):
     template_name = 'blog/documents.html'
     model = Document
+
+
+class ContactView(generic.TemplateView):
+    template_name = 'blog/contact.html'

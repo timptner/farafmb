@@ -8,8 +8,9 @@ app_name = 'blog'
 urlpatterns = [
     path('', views.PostsView.as_view(), name='posts'),
     path('about/', views.AboutView.as_view(), name='about'),
-    path('sprechzeiten/', views.OfficeHoursView.as_view(), name='office_hours'),
-    path('dokumente/', views.DocumentsView.as_view(), name='documents'),
+    path('contact/', views.ContactView.as_view(), name='contact'),
+    path('documents/', views.DocumentsView.as_view(), name='documents'),
+    path('office-hours/', views.OfficeHoursView.as_view(), name='office-hours'),
 ]
 
 if settings.DEBUG:

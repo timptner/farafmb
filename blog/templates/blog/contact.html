@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="tile is-ancestor">
+        <div class="tile is-4 is-vertical is-parent">
+            <div class="tile is-child box">
+                <div class="content">
+                    <h1 class="title is-4">Erreichbarkeit</h1>
+                    <p>Ihr könnt uns auch über Facebook und Instagram per Nachricht kontaktieren!</p>
+                    <dl>
+                        <dt>E-Mail-Adresse</dt>
+                        <dd><a href="mailto:farafmb@ovgu.de">farafmb@ovgu.de</a></dd>
+                        <dt>Telefon</dt>
+                        <dd><a href="tel:+493916751299">0391/67-51299</a></dd>
+                        <dt>Telegram</dt>
+                        <dd><a href="https://t.me/farafmb_bot" target="_blank">farafmb_bot</a></dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="tile is-child box">
+                <div class="content">
+                    <h1 class="title is-4">Social Media</h1>
+                    <dl>
+                        <dt>Instagram</dt>
+                        <dd><a href="https://www.instagram.com/farafmb_ovgu/" target="_blank">farafmb_ovgu</a></dd>
+                        <dt>Facebook</dt>
+                        <dd><a href="https://www.facebook.com/farafmb" target="_blank">farafmb</a></dd>
+                        <dt>Telegram</dt>
+                        <dd><a href="https://t.me/farafmb" target="_blank">farafmb</a></dd>
+                        <dt>Uninow</dt>
+                        <dd>farafmb_ovgu</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile is-parent">
+            <div class="tile is-child box">
+                <div class="content">
+                    <h1 class="title is-4">Büro</h1>
+                    <p>
+                        Ihr findet unser Büro im G11-105. Schaut euch bitte zuerst unsere
+                        <a href="{% url 'blog:office-hours' %}">Sprechstunden</a> an bevor ihr persönlich vorbei kommt.
+                    </p>
+                    <dl>
+                        <dt>Anschrift</dt>
+                        <dd>
+                            <address>
+                                Universitätsplatz 2,<br>
+                                39106 Magdeburg
+                            </address>
+                        </dd>
+                    </dl>
+                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=11.639387011528017%2C52.138515874787615%2C11.64577066898346%2C52.14080735152704&amp;layer=mapnik&amp;marker=52.13966162789373%2C11.642578840255737"></iframe>
+                    <p class="help">
+                        <a href="https://www.openstreetmap.org/?mlat=52.13966&amp;mlon=11.64258#map=18/52.13966/11.64258">Größere Karte anzeigen</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
