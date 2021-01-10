@@ -1,11 +1,11 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
-from django.views import generic
+from django.views.generic import TemplateView, DetailView, ListView, FormView
 
 from .models import Snippet, Post, Image, Document
 
 
-class AboutView(generic.TemplateView):
+class AboutView(TemplateView):
     template_name = 'blog/about.html'
 
     def get_context_data(self, **kwargs):
@@ -21,7 +21,7 @@ class AboutView(generic.TemplateView):
         return context
 
 
-class OfficeHoursView(generic.TemplateView):
+class OfficeHoursView(TemplateView):
     template_name = 'blog/office_hours.html'
 
     def get_context_data(self, **kwargs):
@@ -36,16 +36,16 @@ class OfficeHoursView(generic.TemplateView):
         return context
 
 
-class PostsView(generic.ListView):
+class PostsView(ListView):
     template_name = 'blog/posts.html'
     model = Post
     ordering = ['-created']
 
 
-class DocumentsView(generic.ListView):
+class DocumentsView(ListView):
     template_name = 'blog/documents.html'
     model = Document
 
 
-class ContactView(generic.TemplateView):
+class ContactView(TemplateView):
     template_name = 'blog/contact.html'
