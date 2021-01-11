@@ -1,5 +1,3 @@
-import magic
-
 from django.core.mail import EmailMessage
 from django.core.validators import FileExtensionValidator
 from django.forms import (Form, ValidationError,
