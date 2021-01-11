@@ -18,7 +18,7 @@ class ProtocolForm(Form):
                          max_length=150,
                          widget=TextInput(attrs={'class': "input"}))
 
-    date = DateField(label="Datum",
+    date = DateField(label="Datum der Prüfung",
                      widget=DateInput(attrs={'type': 'date',
                                              'class': "input"}))
 
@@ -51,10 +51,25 @@ class ProtocolForm(Form):
     def send_email(self):
         file = self.cleaned_data['file']
 
+        date = self.cleaned_data['date']
+        semester = "SS" if date.month in range(4, 10) else "WS"
+        if semester == "SS":
+            semester += f" {date.year}"
+        else:
+            semester += f" {date.year}" if date.month > 9 else f" {date.year - 1}"
+
+        email = self.cleaned_data['email']
+        course = self.cleaned_data['course']
+        lecturer = self.cleaned_data['lecturer']
+
         mail = EmailMessage(
             "Neues Protokoll",
-            f"Es wurde ein neues Protokoll von '{self.cleaned_data['email']}' eingereicht.",
-            self.cleaned_data['email'],
+            f"""Es wurde ein neues Protokoll von '{email}' eingereicht.
+
+Modul: {course}
+Dozent: {lecturer}
+Datum: {date} ({semester})""",
+            email,
             ['farafmb@ovgu.de'],
         )
         mail.attach(file.name, file.read(), file.content_type)
