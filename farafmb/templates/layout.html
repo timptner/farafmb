@@ -20,9 +20,11 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
         <!-- Scripts -->
+        {% block scripts %}
         <script src="{% static 'js/font-awesome.min.js' %}"></script>
         <script src="{% static 'js/navbar-burger.js' %}"></script>
         <script src="{% static 'js/close-notification.js' %}"></script>
+        {% endblock %}
     </head>
 
     <body>

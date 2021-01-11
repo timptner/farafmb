@@ -22,9 +22,19 @@
             <div class="navbar-end">
                 <a class="navbar-item" href="{% url 'blog:posts' %}">Blog</a>
                 <a class="navbar-item" href="{% url 'blog:about' %}">Über uns</a>
-                <a class="navbar-item" href="{% url 'blog:office-hours' %}">Sprechstunden</a>
-                <a class="navbar-item" href="{% url 'blog:documents' %}">Dokumente</a>
                 <a class="navbar-item" href="{% url 'blog:contact' %}">Kontakt</a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Mehr
+                    </a>
+
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="{% url 'blog:office-hours' %}">Sprechstunden</a>
+                        <a class="navbar-item" href="{% url 'blog:documents' %}">Dokumente</a>
+                        <a class="navbar-item" href="{% url 'blog:protocols' %}">Gedächtnisprotokolle</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

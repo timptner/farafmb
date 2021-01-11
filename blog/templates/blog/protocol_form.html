@@ -1,0 +1,102 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/file-input.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="notification is-info">
+        <button class="delete"></button>
+        <strong>Datenschutz-Hinweis</strong><br>
+        Wir speichern deine E-Mail-Adresse für maximal 6 Monate, um dich zu benachrichtigen, falls du bei der Verlosung
+        gezogen wurdest. Deine Daten werden nicht an Dritte weitergegeben und von uns vertraulich behandelt! Nach
+        Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich von unseren Server.
+    </div>
+    <div class="box">
+        <h1 class="title is-4">Einreichung von Gedächtnisprotokollen</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="field">
+                <label class="label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                {{ form.email }}
+                <p class="help">Es sind nur Adressen mit der Domain <code>st.ovgu.de</code> erlaubt.</p>
+                {% for error in form.email.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.course.id_for_label }}">{{ form.course.label }}</label>
+                {{ form.course }}
+                {% for error in form.course.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+
+            <div class="field">
+                <label class="label" for="{{ form.lecturer.id_for_label }}">{{ form.lecturer.label }}</label>
+                {{ form.lecturer }}
+                {% for error in form.lecturer.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
+                {{ form.date }}
+                {% for error in form.date.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.file.id_for_label }}">{{ form.file.label }}</label>
+                <div class="file has-name is-fullwidth">
+                    <label class="file-label">
+                        {{ form.file }}
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Datei auswählen...
+                            </span>
+                        </span>
+                        <span class="file-name">
+                            <em>Keine Datei ausgewählt</em>
+                        </span>
+                    </label>
+                </div>
+                <p class="help">Es können nur PDF-Dateien mit einer Größe von maximal 2 MB eingereicht werden.</p>
+                {% for error in form.file.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.privacy.id_for_label }}">{{ form.privacy.label }}</label>
+                <label class="checkbox">
+                    {{ form.privacy }}
+                    Ich akzeptiere die <a href="https://stura-md.de/datenschutz/">Datenschutz-Erklärung</a> und bin mit der Verarbeitung meiner personenbezogenen Daten einverstanden.
+                </label>
+                {% for error in form.privacy.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <button type="submit" class="button is-primary">Einreichen</button>
+                {% for error in form.non_field_errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,7 +1,9 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, DetailView, ListView, FormView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, ListView, FormView
 
+from .forms import ProtocolForm
 from .models import Snippet, Post, Image, Document
 
 
@@ -49,3 +51,17 @@ class DocumentsView(ListView):
 
 class ContactView(TemplateView):
     template_name = 'blog/contact.html'
+
+
+class ProtocolView(FormView):
+    template_name = 'blog/protocol_form.html'
+    form_class = ProtocolForm
+    success_url = reverse_lazy('blog:protocols-success')
+
+    def form_valid(self, form):
+        form.send_email()
+        return super().form_valid(form)
+
+
+class ProtocolSuccessView(TemplateView):
+    template_name = 'blog/protocol_form_done.html'
