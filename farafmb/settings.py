@@ -134,6 +134,8 @@ EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
 
 EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
 
+DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
+
 
 # Security
 
