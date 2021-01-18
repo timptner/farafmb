@@ -69,8 +69,8 @@ class ProtocolForm(Form):
 Modul: {course}
 Dozent: {lecturer}
 Datum: {date} ({semester})""",
-            email,
-            ['farafmb@ovgu.de'],
+            to=['farafmb@ovgu.de'],
+            reply_to=[email],
         )
         mail.attach(file.name, file.read(), file.content_type)
         mail.send()
