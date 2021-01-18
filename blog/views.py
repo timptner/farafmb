@@ -65,3 +65,8 @@ class ProtocolView(FormView):
 
 class ProtocolSuccessView(TemplateView):
     template_name = 'blog/protocol_form_done.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['snippet'] = get_object_or_404(Snippet, slug='protocol_submitted')
+        return context
