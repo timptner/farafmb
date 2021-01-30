@@ -77,6 +77,7 @@ class Video(models.Model):
 
 
 class Document(models.Model):
+    visible = models.BooleanField()
     title = models.CharField(max_length=255)
     file = models.FileField(upload_to=generate_random_name)
     created = models.DateTimeField(auto_now_add=True)

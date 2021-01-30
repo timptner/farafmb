@@ -47,6 +47,7 @@ class PostsView(ListView):
 class DocumentsView(ListView):
     template_name = 'blog/documents.html'
     model = Document
+    queryset = Document.objects.filter(visible=True)
 
 
 class ContactView(TemplateView):
