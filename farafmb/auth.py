@@ -37,8 +37,9 @@ class KeycloakBackend(OIDCAuthenticationBackend):
         elif user.groups.count() == 0:
             user.groups.add(*groups)
         else:
-            new_groups = set(groups.values_list('id', flat=True).get())
-            old_groups = set(user.groups.values_list('id', flat=True).get())
+            # TODO check queries
+            new_groups = groups.values_list('id', flat=True).distinct().get()
+            old_groups = user.groups.values_list('id', flat=True).get()
             if new_groups != old_groups:
                 user.groups.clear()
                 user.groups.add(*groups)
