@@ -22,10 +22,10 @@
             {% csrf_token %}
 
             <div class="field">
-                <label class="label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-                {{ form.email }}
+                <label class="label" for="{{ form.author.id_for_label }}">{{ form.author.label }}</label>
+                {{ form.author }}
                 <p class="help">Es sind nur Adressen mit der Domain <code>st.ovgu.de</code> erlaubt.</p>
-                {% for error in form.email.errors %}
+                {% for error in form.author.errors %}
                 <p class="help is-danger">{{ error }}</p>
                 {% endfor %}
             </div>

@@ -1,10 +1,12 @@
+import random
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, ListView, FormView
+from django.views.generic import TemplateView, ListView, CreateView
 
 from .forms import ProtocolForm
-from .models import Snippet, Post, Image, Document
+from .models import Snippet, Post, Image, Document, Protocol
 
 
 class AboutView(TemplateView):
@@ -54,13 +56,14 @@ class ContactView(TemplateView):
     template_name = 'blog/contact.html'
 
 
-class ProtocolView(FormView):
+class ProtocolView(CreateView):
+    model = Protocol
     template_name = 'blog/protocol_form.html'
     form_class = ProtocolForm
     success_url = reverse_lazy('blog:protocols-success')
 
     def form_valid(self, form):
-        form.send_email()
+        form.instance.file.name = hex(random.randrange(16**8))[2:] + '.pdf'
         return super().form_valid(form)
 
 
