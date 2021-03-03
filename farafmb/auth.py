@@ -1,5 +1,20 @@
-from mozilla_django_oidc.auth import OIDCAuthenticationBackend
+import logging
+
 from django.contrib.auth.models import Group
+from mozilla_django_oidc.auth import OIDCAuthenticationBackend
+from typing import List
+
+logger = logging.getLogger(__name__)
+
+
+def get_valid_groups(roles: List[str]):
+    """Return all available groups"""
+    groups = Group.objects.filter(name__in=roles)
+    group_names = [group.name for group in groups]
+    roles_unknown = list(set(roles) - set(group_names))
+    for role in roles_unknown:
+        logger.warning(f"Ignoring role '{role}' because no matching group was found.")
+    return groups
 
 
 class KeycloakBackend(OIDCAuthenticationBackend):
@@ -12,37 +27,38 @@ class KeycloakBackend(OIDCAuthenticationBackend):
         user = super().create_user(claims)
 
         roles = claims.get('roles', [])
-        groups = Group.objects.filter(name__in=roles)
+        superuser = 'admin' in roles
+        if superuser:
+            roles.remove('admin')
 
+        # Create new user
         user.username = claims.get('preferred_username', '')
         user.first_name = claims.get('given_name', '')
         user.last_name = claims.get('family_name', '')
         user.email = claims.get('email', '')
-        user.is_staff = True
-        user.is_superuser = 'admin' in roles
-        user.groups.add(*groups)
-        user.save()
 
+        # Add user permissions
+        user.is_superuser = superuser
+        user.is_staff = True
+        user.groups.add(*get_valid_groups(roles))
+
+        user.save()
         return user
 
     def update_user(self, user, claims):
         roles = claims.get('roles', [])
-        groups = Group.objects.filter(name__in=roles)
+        superuser = 'admin' in roles
+        if superuser:
+            roles.remove('admin')
 
+        # Update user information
         user.first_name = claims.get('given_name', '')
         user.last_name = claims.get('family_name', '')
-        user.is_superuser = 'admin' in roles
-        if groups.count() == 0:
-            user.groups.clear()
-        elif user.groups.count() == 0:
-            user.groups.add(*groups)
-        else:
-            # TODO check queries
-            new_groups = groups.values_list('id', flat=True).distinct().get()
-            old_groups = user.groups.values_list('id', flat=True).get()
-            if new_groups != old_groups:
-                user.groups.clear()
-                user.groups.add(*groups)
-        user.save()
 
+        # Update user permissions
+        user.is_superuser = superuser
+        user.groups.clear()
+        user.groups.add(*get_valid_groups(roles))
+
+        user.save()
         return user
