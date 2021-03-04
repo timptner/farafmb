@@ -40,6 +40,11 @@ class KeycloakBackend(OIDCAuthenticationBackend):
         # Add user permissions
         user.is_superuser = superuser
         user.is_staff = True
+        try:
+            group = Group.objects.get(name='default')
+            user.groups.add(group)
+        except Group.DoesNotExist:
+            logger.warning("Adding user to group 'default' failed because group does not exist")
         user.groups.add(*get_valid_groups(roles))
 
         user.save()
