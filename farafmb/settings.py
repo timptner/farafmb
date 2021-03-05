@@ -17,6 +17,7 @@ ALLOWED_HOSTS = ['dev.farafmb.de', 'farafmb.de', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'meetings.apps.MeetingsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'mozilla_django_oidc',

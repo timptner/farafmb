@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="box">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="field">
+                <label class="label" for="{{ form.members.id_for_label }}">{{ form.members.label }}</label>
+                <div class="control">
+                    {{ form.members }}
+                </div>
+                <p class="help">Die E-Mail-Adressen müssen durch Kommata getrennt angeben werden.</p>
+                {% for error in form.members.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.guests.id_for_label }}">{{ form.guests.label }}</label>
+                <div class="control">
+                    {{ form.guests }}
+                </div>
+                <p class="help">Die E-Mail-Adressen müssen durch Kommata getrennt angeben werden.</p>
+                {% for error in form.guests.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label>
+                <div class="control">
+                    {{ form.subject }}
+                </div>
+                {% for error in form.subject.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+                <div class="control">
+                    {{ form.message }}
+                </div>
+                {% for error in form.message.errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary">Absenden</button>
+                </div>
+                {% for error in form.non_field_errors %}
+                <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

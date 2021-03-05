@@ -1,12 +1,13 @@
 import random
 
+from blog.forms import ProtocolForm
+from blog.models import Snippet, Post, Image, Document, Protocol
+from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, CreateView
-
-from .forms import ProtocolForm
-from .models import Snippet, Post, Image, Document, Protocol
+from meetings.models import Meeting
 
 
 class AboutView(TemplateView):
@@ -44,6 +45,11 @@ class PostsView(ListView):
     template_name = 'blog/posts.html'
     model = Post
     ordering = ['-created']
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data()
+        context['meetings'] = Meeting.objects.filter(date__gte=date.today())
+        return context
 
 
 class DocumentsView(ListView):
