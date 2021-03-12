@@ -1,7 +1,7 @@
 import random
 
 from blog.forms import ProtocolForm
-from blog.models import Snippet, Post, Image, Document, Protocol
+from blog.models import Snippet, Post, Image, Document, Protocol, Link
 from datetime import date
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
@@ -80,3 +80,9 @@ class ProtocolSuccessView(TemplateView):
         context = super().get_context_data()
         context['snippet'] = get_object_or_404(Snippet, slug='protocol_submitted')
         return context
+
+
+class LinksView(ListView):
+    template_name = 'blog/links.html'
+    model = Link
+    queryset = Link.objects.filter(visible=True)

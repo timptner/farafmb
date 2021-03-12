@@ -6,7 +6,7 @@ from django.contrib import admin, messages
 from django.utils.translation import ngettext
 from typing import Tuple
 
-from .models import Snippet, Post, Image, Video, Document, Protocol
+from .models import Snippet, Post, Image, Video, Document, Protocol, Link
 
 
 def check_img(request, content: str):
@@ -100,3 +100,9 @@ class ProtocolAdmin(admin.ModelAdmin):
             updated,
         ) % updated, messages.SUCCESS)
     remove_author.short_description = "Ausgewählte Protokolle anonymisieren"
+
+
+@admin.register(Link)
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'position', 'visible')
+    ordering = ('-position', )

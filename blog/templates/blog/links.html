@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        {% if object_list %}
+            <div class="buttons">
+                {% for link in object_list %}
+                    <a class="button is-outlined is-link is-medium is-fullwidth is-rounded" href="{{ link.url }}">
+                        {% if link.icon %}
+                            <span class="icon is-small">
+                                <i class="{{ link.icon }}"></i>
+                            </span>
+                        {% endif %}
+                        <span>
+                            {{ link }}
+                        </span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="notification is-warning">Aktuell sind keine Links verfügbar.</div>
+        {% endif %}
+    </div>
+{% endblock %}

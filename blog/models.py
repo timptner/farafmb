@@ -109,3 +109,14 @@ class Protocol(models.Model):
 
     def __str__(self):
         return self.course
+
+
+class Link(models.Model):
+    position = models.IntegerField(unique=True)
+    visible = models.BooleanField(default=False)
+    icon = models.CharField(max_length=50, blank=True)
+    title = models.CharField(max_length=100)
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title
