@@ -36,10 +36,18 @@
             </div>
         {% endif %}
 
-        <section id="main-section" class="section">
-            {% block content %}{% endblock %}
-        </section>
+        {% block section %}
+            <section class="section" style="background-color: #e2e5ee;">
+                {% block content %}{% endblock %}
+            </section>
+        {% endblock %}
 
-        {% include 'footer.html' %}
+        <section class="section">
+            {% block footer %}
+                <div class="container">
+                    {% include 'footer.html' %}
+                </div>
+            {% endblock %}
+        </section>
     </body>
 </html>
