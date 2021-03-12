@@ -105,4 +105,3 @@ class ProtocolAdmin(admin.ModelAdmin):
 @admin.register(Link)
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'position', 'visible')
-    ordering = ('-position', )
