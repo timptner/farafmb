@@ -5,13 +5,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-PROJECT_DIR = Path(__file__).resolve(strict=True).parent
+SECRET_KEY = os.environ['SECRET_KEY']
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = False
 
-DEBUG = (os.getenv('TARGET_ENV') == 'development')
-
-ALLOWED_HOSTS = ['dev.farafmb.de', 'farafmb.de', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['farafmb.de']
 
 
 # Application definition
@@ -45,7 +43,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            PROJECT_DIR / 'templates',
+            BASE_DIR / 'farafmb' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -66,12 +64,8 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'USER': os.getenv('DB_USERNAME'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -100,6 +94,7 @@ OIDC_OP_USER_ENDPOINT = "https://auth.faking.cool/auth/realms/faking/protocol/op
 LOGIN_REDIRECT_URL = "/admin/"
 
 LOGOUT_REDIRECT_URL = "/"
+
 
 # Password validation
 
@@ -137,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    PROJECT_DIR / 'static',
+    BASE_DIR / 'farafmb' / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'
@@ -173,7 +168,7 @@ SECURE_HSTS_PRELOAD = True
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-SECURE_SSL_REDIRECT = (os.getenv('TARGET_ENV') != 'development')
+SECURE_SSL_REDIRECT = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -228,5 +223,7 @@ LOGGING = {
     },
 }
 
+
 # Activate Django-Heroku.
+
 django_heroku.settings(locals())
