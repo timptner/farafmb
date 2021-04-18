@@ -149,13 +149,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('SMTP_HOST')
+EMAIL_HOST = os.environ['EMAIL_HOST']
 
-EMAIL_PORT = os.getenv('SMTP_PORT')
+EMAIL_PORT = int(os.environ['EMAIL_PORT'])
 
-EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 
-EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
 
