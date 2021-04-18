@@ -149,13 +149,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('SMTP_HOST')
+EMAIL_HOST = os.environ['EMAIL_HOST']
 
-EMAIL_PORT = os.getenv('SMTP_PORT')
+EMAIL_PORT = int(os.environ['EMAIL_PORT'])
 
-EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 
-EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
 
@@ -175,53 +175,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 
 CSRF_COOKIE_SECURE = True
-
-
-# Logging
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{asctime} {levelname} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'formatter': 'simple'
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-    },
-}
 
 
 # Activate Django-Heroku.
