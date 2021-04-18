@@ -1,3 +1,4 @@
+import django_heroku
 import os
 
 from pathlib import Path
@@ -226,3 +227,6 @@ LOGGING = {
         },
     },
 }
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
