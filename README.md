@@ -50,7 +50,8 @@ pip install -r requirements.txt
 
 ### Configuration
 
-Make sure to export all environment variables listed below before continuing with [#Run your server](#run-your-server).
+Make sure to export all environment variables listed below before continuing with 
+[Run your local server](#run-your-local-server).
 
 - DJANGO_SETTINGS_MODULE
   - Use `farafmb.settings_dev`  when in development environment
