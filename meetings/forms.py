@@ -1,10 +1,7 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.core.validators import validate_email
 from meetings.models import Template
-
-User = get_user_model()
 
 
 class MultiEmailField(forms.Field):
@@ -24,7 +21,7 @@ class MultiEmailField(forms.Field):
 
 
 class InviteForm(forms.Form):
-    members = MultiEmailField(label="Mitglieder", initial=', '.join(User.objects.values_list('email', flat=True)),
+    members = MultiEmailField(label="Mitglieder",
                               widget=forms.TextInput(attrs={'class': "input"}))
     guests = MultiEmailField(label="Gäste", widget=forms.TextInput(attrs={'class': "input"}), required=False)
     subject = forms.CharField(label="Betreff", initial="Einladung zur Sitzung",

@@ -1,16 +1,15 @@
+import django_heroku
 import os
 
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-PROJECT_DIR = Path(__file__).resolve(strict=True).parent
+SECRET_KEY = os.environ['SECRET_KEY']
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = False
 
-DEBUG = (os.getenv('TARGET_ENV') == 'development')
-
-ALLOWED_HOSTS = ['dev.farafmb.de', 'farafmb.de', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['farafmb.de']
 
 
 # Application definition
@@ -44,7 +43,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            PROJECT_DIR / 'templates',
+            BASE_DIR / 'farafmb' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -65,12 +64,8 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.getenv('DB_NAME', BASE_DIR / 'db.sqlite3'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-        'USER': os.getenv('DB_USERNAME'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -99,6 +94,7 @@ OIDC_OP_USER_ENDPOINT = "https://auth.faking.cool/auth/realms/faking/protocol/op
 LOGIN_REDIRECT_URL = "/admin/"
 
 LOGOUT_REDIRECT_URL = "/"
+
 
 # Password validation
 
@@ -136,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    PROJECT_DIR / 'static',
+    BASE_DIR / 'farafmb' / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'
@@ -153,13 +149,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('SMTP_HOST')
+EMAIL_HOST = os.environ['EMAIL_HOST']
 
-EMAIL_PORT = os.getenv('SMTP_PORT')
+EMAIL_PORT = int(os.environ['EMAIL_PORT'])
 
-EMAIL_HOST_USER = os.getenv('SMTP_USERNAME')
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 
-EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 
 DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
 
@@ -172,7 +168,7 @@ SECURE_HSTS_PRELOAD = True
 
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-SECURE_SSL_REDIRECT = (os.getenv('TARGET_ENV') != 'development')
+SECURE_SSL_REDIRECT = True
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -181,48 +177,6 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 
-# Logging
+# Activate Django-Heroku.
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{asctime} {levelname} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'INFO',
-            # 'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'formatter': 'simple'
-        }
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-    },
-}
+django_heroku.settings(locals())
