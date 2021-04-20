@@ -64,8 +64,12 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_HOST_USER'),
+        'PASSWORD': os.getenv('DB_HOST_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -149,20 +153,20 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 
-EMAIL_PORT = int(os.environ['EMAIL_PORT'])
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
 
 
 # Security
 
-SECURE_HSTS_SECONDS = 3600  # TODO set value to 31536000 (1 year)
+SECURE_HSTS_SECONDS = 31536000
 
 SECURE_HSTS_PRELOAD = True
 
