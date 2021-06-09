@@ -1,8 +1,8 @@
-from .settings import *
+from .common import *  # noqa
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Database
@@ -15,17 +15,14 @@ DATABASES = {
 }
 
 
+# FileStorage
+
+STATIC_ROOT = BASE_DIR / 'static'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 # Security
-
-SECURE_HSTS_SECONDS = 0
-
-SECURE_HSTS_PRELOAD = False
-
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-
-SECURE_SSL_REDIRECT = False
-
-SECURE_PROXY_SSL_HEADER = None
 
 SESSION_COOKIE_SECURE = False
 

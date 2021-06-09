@@ -1,15 +1,11 @@
-import django_heroku
 import os
 
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
-
-DEBUG = False
-
-ALLOWED_HOSTS = ['farafmb.de']
 
 
 # Application definition
@@ -17,9 +13,12 @@ ALLOWED_HOSTS = ['farafmb.de']
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'meetings.apps.MeetingsConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
+
     'mozilla_django_oidc',
+
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -32,7 +31,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+
     'mozilla_django_oidc.middleware.SessionRefresh',
+
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -42,9 +43,7 @@ ROOT_URLCONF = 'farafmb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'farafmb' / 'templates',
-        ],
+        'DIRS': [BASE_DIR / 'farafmb' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,11 +64,11 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_HOST_USER'),
-        'PASSWORD': os.getenv('DB_HOST_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': 'farafmb',
+        'USER': 'farafmb',
+        'PASSWORD': os.getenv('SQL_PASSWORD', ''),
+        'HOST': os.getenv('SQL_HOST', ''),
+        'PORT': os.getenv('SQL_PORT', ''),
     }
 }
 
@@ -81,9 +80,9 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-OIDC_RP_CLIENT_ID = os.getenv('OIDC_CLIENT_ID')
+OIDC_RP_CLIENT_ID = os.getenv('OIDC_CLIENT_ID', '')
 
-OIDC_RP_CLIENT_SECRET = os.getenv('OIDC_CLIENT_SECRET')
+OIDC_RP_CLIENT_SECRET = os.getenv('OIDC_CLIENT_SECRET', '')
 
 OIDC_RP_SIGN_ALGO = "RS256"
 
@@ -120,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'de-DE'
+LANGUAGE_CODE = 'de-de'
 
 TIME_ZONE = 'Europe/Berlin'
 
@@ -131,7 +130,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# File Storage
 
 STATIC_URL = '/static/'
 
@@ -139,48 +138,21 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
-
-
-# Media files (Images, Documents)
-
 MEDIA_URL = '/media/'
-
-MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # E-Mail
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST = os.getenv('MAIL_HOST', 'localhost')
 
-EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_PORT = os.getenv('MAIL_PORT', '25')
 
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_USER = os.getenv('MAIL_USER', '')
 
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD', '')
 
-DEFAULT_FROM_EMAIL = 'farafmb@ovgu.de'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@faking.cool')
 
-
-# Security
-
-SECURE_HSTS_SECONDS = 31536000
-
-SECURE_HSTS_PRELOAD = True
-
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-SECURE_SSL_REDIRECT = True
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-SESSION_COOKIE_SECURE = True
-
-CSRF_COOKIE_SECURE = True
-
-
-# Activate Django-Heroku.
-
-django_heroku.settings(locals())
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@faking.cool')
