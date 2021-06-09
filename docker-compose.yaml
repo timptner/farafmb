@@ -17,7 +17,7 @@ services:
       - SQL_PORT=${SQL_PORT}
       - SQL_USER=${SQL_USER}
       - MAIL_HOST=${MAIL_HOST}
-      - MAIL_PASSWORD=${MAIL_HOST}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
       - MAIL_PORT=${MAIL_PORT}
       - MAIL_USER=${MAIL_USER}
       - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
