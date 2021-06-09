@@ -8,8 +8,20 @@ services:
       - ./media:/data/media
     ports:
       - 8000:8000
-    env_file:
-      - ./.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=farafmb.settings.production
+      - SECRET_KEY=${SECRET_KEY}
+      - SQL_HOST=postgres
+      - SQL_NAME=${SQL_NAME}
+      - SQL_PASSWORD=${SQL_PASSWORD}
+      - SQL_PORT=${SQL_PORT}
+      - SQL_USER=${SQL_USER}
+      - MAIL_HOST=${MAIL_HOST}
+      - MAIL_PASSWORD=${MAIL_HOST}
+      - MAIL_PORT=${MAIL_PORT}
+      - MAIL_USER=${MAIL_USER}
+      - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
+      - OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}
     depends_on:
       - postgres
   postgres:
