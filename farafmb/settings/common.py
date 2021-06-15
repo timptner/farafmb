@@ -11,8 +11,9 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',
-    'meetings.apps.MeetingsConfig',
+    'blog',
+    'jobs',
+    'meetings',
 
     'django.contrib.admin',
     'django.contrib.auth',
