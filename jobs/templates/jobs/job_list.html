@@ -8,7 +8,7 @@
             ihr ebenfalls diverse Angebote für Abschlussarbeiten, HiWi-Stellen, Praktika oder Jobangebote für
             Absolvent:innen.
         </div>
-        <div class="columns is-multiline">
+        <div class="columns is-multiline is-centered">
             {% for job in object_list %}
                 <div class="column is-half">
                     <div class="card">
@@ -20,12 +20,22 @@
                                     <span class="icon">
                                         <i class="fas fa-file-pdf" aria-hidden="true"></i>
                                     </span>
-                                    <span>
+                                    <span class="is-hidden-touch">
                                         Datei anzeigen
                                     </span>
                                 </a>
                             {% endif %}
                         </header>
+                        {% if job.file %}
+                            <p class="help has-text-right is-hidden-desktop pr-4">
+                            <span class="icon-text">
+                                <span>Dokument anzeigen</span>
+                                <span class="icon">
+                                    <i class="fas fa-arrow-up"></i>
+                                </span>
+                            </span>
+                            </p>
+                        {% endif %}
                         <div class="card-content">
                             <div class="content">
                                 {{ job.content }}
@@ -41,6 +51,12 @@
                                 </p>
                             {% endif %}
                         </footer>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="column is-half">
+                    <div class="notification is-info is-centered">
+                        Leider haben wir aktuell keine Jobangebote für euch.
                     </div>
                 </div>
             {% endfor %}
