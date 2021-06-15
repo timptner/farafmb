@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="notification">
+            Schaut gerne auch auf dem Schwarzen Brett im
+            <a href="https://www.fmb.ovgu.de/myFMB/Schwarzes+Brett.html" target="_blank">MyFMB</a> vorbei. Dort findet
+            ihr ebenfalls diverse Angebote für Abschlussarbeiten, HiWi-Stellen, Praktika oder Jobangebote für
+            Absolvent:innen.
+        </div>
+        <div class="columns is-multiline">
+            {% for job in object_list %}
+                <div class="column is-half">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">{{ job.title }}</p>
+                            {% if job.file %}
+                                <a href="{{ job.file.url }}" target="_blank" class="card-header-icon"
+                                   aria-label="show document">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                                    </span>
+                                    <span>
+                                        Datei anzeigen
+                                    </span>
+                                </a>
+                            {% endif %}
+                        </header>
+                        <div class="card-content">
+                            <div class="content">
+                                {{ job.content }}
+                            </div>
+                        </div>
+                        <footer class="card-footer is-size-7">
+                            <p class="card-footer-item">
+                                <span>Verfügbar seit {{ job.created_on }}</span>
+                            </p>
+                            {% if job.expired_on %}
+                                <p class="card-footer-item has-text-danger">
+                                    <span>Gültig bis {{ job.expired_on }}</span>
+                                </p>
+                            {% endif %}
+                        </footer>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

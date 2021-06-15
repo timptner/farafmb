@@ -33,6 +33,7 @@
                         <a class="navbar-item" href="{% url 'blog:office-hours' %}">Sprechstunden</a>
                         <a class="navbar-item" href="{% url 'blog:documents' %}">Dokumente</a>
                         <a class="navbar-item" href="{% url 'blog:protocols' %}">Gedächtnisprotokolle</a>
+                        <a class="navbar-item" href="{% url 'jobs:job_list' %}">Jobangebote</a>
                         <hr class="navbar-divider">
                         {% if user.is_authenticated %}
                         <a class="navbar-item" href="{% url 'admin:index' %}">Admin</a>
