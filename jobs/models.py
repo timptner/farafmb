@@ -23,7 +23,7 @@ def user_directory_path(instance: File, filename: str) -> str:
 
 class Job(models.Model):
     title = models.CharField(max_length=250)
-    description = models.TextField()
+    content = models.TextField()
     file = models.FileField(upload_to=user_directory_path, validators=[validate_file_extension], blank=True, null=True)
     expired_on = models.DateTimeField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
