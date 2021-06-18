@@ -9,17 +9,17 @@ services:
     ports:
       - 8000:8000
     environment:
-      - DJANGO_SETTINGS_MODULE=farafmb.settings.production
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
       - SECRET_KEY=${SECRET_KEY}
       - SQL_HOST=postgres
+      - SQL_PORT=5432
       - SQL_NAME=${SQL_NAME}
-      - SQL_PASSWORD=${SQL_PASSWORD}
-      - SQL_PORT=${SQL_PORT}
       - SQL_USER=${SQL_USER}
+      - SQL_PASSWORD=${SQL_PASSWORD}
       - MAIL_HOST=${MAIL_HOST}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
       - MAIL_PORT=${MAIL_PORT}
       - MAIL_USER=${MAIL_USER}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
       - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
       - OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}
     depends_on:
