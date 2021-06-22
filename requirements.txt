@@ -11,7 +11,7 @@ josepy==1.5.0
 Markdown==3.3.3
 mozilla-django-oidc==1.2.4
 packaging==20.7
-Pillow==8.0.1
+Pillow==8.2.0
 psycopg2==2.8.6
 pycparser==2.20
 pyOpenSSL==20.0.1
