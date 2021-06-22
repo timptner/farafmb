@@ -65,8 +65,8 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'farafmb',
-        'USER': 'farafmb',
+        'NAME': os.getenv('SQL_NAME', 'farafmb'),
+        'USER': os.getenv('SQL_USER', 'farafmb'),
         'PASSWORD': os.getenv('SQL_PASSWORD', ''),
         'HOST': os.getenv('SQL_HOST', ''),
         'PORT': os.getenv('SQL_PORT', ''),
@@ -154,6 +154,11 @@ EMAIL_HOST_USER = os.getenv('MAIL_USER', '')
 
 EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD', '')
 
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@faking.cool')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL', 'noreply@faking.cool')
 
 SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@faking.cool')
+
+
+# Default primary key field type
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
