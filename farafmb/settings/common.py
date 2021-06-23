@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'blog',
     'jobs',
     'meetings',
+    'office_hours',
 
     'django.contrib.admin',
     'django.contrib.auth',
