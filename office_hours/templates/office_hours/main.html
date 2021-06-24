@@ -2,31 +2,39 @@
 
 {% block content %}
     <div class="container">
-        <table class="table is-fullwidth">
-            <thead>
-            <tr>
-                <th>Zeit</th>
-                {% for day in days %}
-                    <th>{{ day.1 }}</th>
-                {% endfor %}
-            </tr>
-            </thead>
-            <tbody>
-            {% for time, qs_list in data.items %}
+        {% if data %}
+            <table class="table is-fullwidth">
+                <thead>
                 <tr>
-                    <th>{{ time }}</th>
-                    {% for qs in qs_list %}
-                        <td>
-                            <ul>
-                                {% for member in qs %}
-                                    <li>{{ member }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>
+                    <th>Zeit</th>
+                    {% for day in days %}
+                        <th>{{ day.1 }}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for time, qs_list in data.items %}
+                    <tr>
+                        <th>{{ time }}</th>
+                        {% for qs in qs_list %}
+                            <td>
+                                <ul>
+                                    {% for member in qs %}
+                                        <li>{{ member }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="notification is-warning">
+                Leider bieten wir aktuell keine Sprechstunden an. Schreib uns jedoch gerne eine Nachricht. Ggf. können
+                wir dann einen persönlichen Termin vereinbaren. Unsere Kontaktmöglichkeiten findest du unter
+                <a href="{% url 'blog:contact' %}">Kontakt</a>.
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
