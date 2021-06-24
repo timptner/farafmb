@@ -3,32 +3,35 @@
 {% block content %}
     <div class="container">
         {% if data %}
-            <table class="table is-fullwidth">
-                <thead>
-                <tr>
-                    <th>Zeit</th>
-                    {% for day in days %}
-                        <th>{{ day.1 }}</th>
-                    {% endfor %}
-                </tr>
-                </thead>
-                <tbody>
-                {% for time, qs_list in data.items %}
+            <div class="table-container">
+                <table class="table is-fullwidth">
+                    <thead>
                     <tr>
-                        <th>{{ time }}</th>
-                        {% for qs in qs_list %}
-                            <td>
-                                <ul>
-                                    {% for member in qs %}
-                                        <li>{{ member }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </td>
+                        <th>Zeit</th>
+                        {% for day in days %}
+                            <th>{{ day.1 }}</th>
                         {% endfor %}
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for time, qs_list in data.items %}
+                        <tr>
+                            <th>{{ time }}</th>
+                            {% for qs in qs_list %}
+                                <td>
+                                    <ul>
+                                        {% for member in qs %}
+                                            <li>{{ member }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="help is-hidden-desktop" style="margin-top: -24px">Die Tabelle kann seitwärts verschoben werden.</p>
         {% else %}
             <div class="notification is-warning">
                 Leider bieten wir aktuell keine Sprechstunden an. Schreib uns jedoch gerne eine Nachricht. Ggf. können
