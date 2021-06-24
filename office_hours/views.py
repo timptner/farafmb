@@ -16,6 +16,8 @@ class OfficeHoursView(generic.TemplateView):
         if office_hours:
             time_list = [office_hour.time for office_hour in office_hours]
             seconds = calc_max_step_size(time_list)
+            if seconds == 0:
+                seconds = 7200
             points = range(
                 time_to_seconds(min(time_list)),
                 time_to_seconds(max(time_list)) + seconds + seconds,
