@@ -6,6 +6,8 @@ from .models import OfficeHour
 
 @admin.register(OfficeHour)
 class OfficeHourAdmin(admin.ModelAdmin):
+    list_display = ('member', 'day', 'time', 'is_visible')
+    list_filter = ('is_visible', 'day')
 
     actions = ['make_visible', 'make_invisible']
 
