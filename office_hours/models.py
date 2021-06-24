@@ -4,7 +4,7 @@ from django.db import models
 
 
 def validate_time(value: time):
-    if time(hour=7) <= value <= time(hour=19):
+    if not (time(hour=7) <= value <= time(hour=19)):
         raise ValidationError("Es sind nur Zeiten zwischen 7 und 19 Uhr erlaubt.")
 
 

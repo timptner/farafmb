@@ -26,21 +26,6 @@ class AboutView(TemplateView):
         return context
 
 
-class OfficeHoursView(TemplateView):
-    template_name = 'blog/office_hours.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['snippet'] = get_object_or_404(Snippet, slug='office_hours')
-
-        try:
-            context['table'] = Snippet.objects.get(slug='office_hours_table')
-        except ObjectDoesNotExist:
-            pass
-
-        return context
-
-
 class PostsView(ListView):
     template_name = 'blog/posts.html'
     model = Post
