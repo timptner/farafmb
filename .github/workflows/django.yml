@@ -33,6 +33,6 @@ jobs:
       env:
         DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        SQL_HOST: postgres
+        SQL_HOST: localhost
       run: |
         python manage.py test --noinput
