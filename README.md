@@ -1,6 +1,7 @@
 # Fachschaftsrat Maschinenbau
 
-[![Django CI](https://github.com/aiventimptner/farafmb.de/actions/workflows/django.yml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/django.yml)
+[![CI Test](https://github.com/aiventimptner/farafmb.de/actions/workflows/test.yml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yml)
+[![CD Build](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/test.yml)
 [![Website status](https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Ffarafmb.de)](https://farafmb.de)
 [![Mozilla Observatory](https://img.shields.io/mozilla-observatory/grade/farafmb.de?publish)](https://observatory.mozilla.org/analyze/farafmb.de)
 [![Deployment status](https://img.shields.io/github/deployments/aiventimptner/farafmb/farafmb)](https://github.com/aiventimptner/farafmb/deployments/activity_log?environment=farafmb)
