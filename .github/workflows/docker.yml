@@ -1,13 +1,16 @@
-name: Docker CD
+name: Build Image
 
 on:
-  push:
-    branches: [ main ]
+  workflow_run:
+    workflows: ["Run Tests"]
+    branches: [main]
+    types: [completed]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     strategy:
       max-parallel: 4
       matrix:
