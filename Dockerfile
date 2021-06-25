@@ -15,7 +15,7 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip3 install -r ./requirements.txt
 
 # copy docker-entrypoint.sh
-COPY ./docker-entrypoint.sh ./docker-entrypoint.sh
+COPY ./scripts/docker-entrypoint.sh ./docker-entrypoint.sh
 
 # install netcat required in entrypoint
 RUN apt install -y netcat
@@ -24,7 +24,7 @@ RUN apt install -y netcat
 COPY . .
 
 # make entrypoint executable
-RUN chmod +x docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
 
 # run docker-entrypoint.sh
 ENTRYPOINT ["./docker-entrypoint.sh"]
