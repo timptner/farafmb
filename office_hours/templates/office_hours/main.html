@@ -2,6 +2,24 @@
 
 {% block content %}
     <div class="container">
+        <div class="notification is-info">
+            <p>
+                Entsprechend der Stufe 1 des
+                <a href="https://www.ovgu.de/stufenplan.html">Stufenplans der Universität</a> bieten wir wieder
+                Sprechstunden vor Ort an. Schreibt uns dafür bitte eine <a href="mailto:farafmb@ovgu.de">E-Mail</a>,
+                damit wir einen individuellen Termin vereinbaren können.<br>
+                <em>Much love and be safe.</em>
+            </p>
+            <p>---</p>
+            <p>
+                According to the level 1 of the
+                <a href="https://www.ovgu.de/unimagdeburg/en/University/Information+about+the+corona+virus+and+the+behavior+of+the+university/Gradual+plan+of+the+university-p-110106.html">
+                    gradual level of the university</a>, we offer office hours upon consultation. Please send an
+                <a href="mailto:farafmb@ovgu.de">email</a> to schedule an appointment.<br>
+                <em>Much love and be safe.</em>
+            <p></p>
+        </div>
+
         {% if data %}
             <div class="table-container">
                 <table class="table is-fullwidth">
@@ -31,7 +49,8 @@
                     </tbody>
                 </table>
             </div>
-            <p class="help is-hidden-desktop" style="margin-top: -24px">Die Tabelle kann seitwärts verschoben werden.</p>
+            <p class="help is-hidden-desktop" style="margin-top: -24px">Die Tabelle kann seitwärts verschoben
+                werden.</p>
         {% else %}
             <div class="notification is-warning">
                 Leider bieten wir aktuell keine Sprechstunden an. Schreib uns jedoch gerne eine Nachricht. Ggf. können
