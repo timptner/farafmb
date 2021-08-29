@@ -19,7 +19,7 @@ class Profile(models.Model):
         (WLO, 'Wirtschaftsingenieur Logistik'),
         (WMB, 'Wirtschaftsingenieur Maschinenbau'),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField('members')
     biography = models.CharField(max_length=250, blank=True)
     jobs = models.CharField(max_length=100, blank=True)
