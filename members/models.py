@@ -20,7 +20,7 @@ class Profile(models.Model):
         (WMB, 'Wirtschaftsingenieur Maschinenbau'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField('members')
+    picture = models.ImageField(upload_to='members')
     biography = models.CharField(max_length=250, blank=True)
     jobs = models.CharField(max_length=100, blank=True)
     course = models.CharField(max_length=3, choices=COURSES)
