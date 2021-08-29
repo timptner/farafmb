@@ -1,3 +1,4 @@
+from datetime import date
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -29,3 +30,10 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.get_full_name() or self.user.username
+
+    def get_job_list(self):
+        return [job.strip() for job in self.jobs.split(',')]
+
+    def is_cakeday(self):
+        today = date.today()
+        return self.birthday.month == today.month and self.birthday.day == today.day

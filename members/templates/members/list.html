@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        {% for member in object_list %}
+        <div class="column is-one-fifth">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{ member.profile.picture.url }}" alt="Profile picture">
+                    </figure>
+                </div>
+
+                <div class="card-content">
+                    <p class="title icon-text">
+                        <span>{{ member.first_name }}</span>
+                        {% if member.profile.is_cakeday %}
+                        <span class="icon ml-3" style="color: #009ee3;">
+                            <i class="fas fa-birthday-cake"></i>
+                        </span>
+                        {% endif %}
+                    </p>
+                    <p class="subtitle">{{ member.profile.get_course_display }}</p>
+
+                    {% if member.profile.biography %}
+                    <p class="is-italic has-text-centered">{{ member.profile.biography }}</p>
+                    {% endif %}
+
+                    {% if member.profile.jobs %}
+                    <ul class="mt-5">
+                        {% for job in member.profile.get_job_list %}
+                        <li>{{ job }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+
+                <div class="card-footer">
+                    <p class="card-footer-item">
+                        <span class="help">
+                            Mitglied seit {{ member.profile.joined_at|timesince }}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
