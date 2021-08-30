@@ -1,5 +1,7 @@
 from .common import *  # noqa
 
+import dj_database_url
+
 DEBUG = False
 
 ALLOWED_HOSTS = [
@@ -8,6 +10,13 @@ ALLOWED_HOSTS = [
 ] + os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 ADMINS = [('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de')]
+
+
+# Database
+
+DATABASES = {
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
+}
 
 
 # FileStorage
