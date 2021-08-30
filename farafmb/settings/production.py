@@ -8,7 +8,7 @@ DEBUG = False
 ALLOWED_HOSTS = [
     'farafmb.de',
     'www.farafmb.de',
-] + os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+] + os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 ADMINS = [('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de')]
 
@@ -23,9 +23,9 @@ if len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
 
 # FileStorage
 
-STATIC_ROOT = BASE_DIR / 'data' / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_ROOT = BASE_DIR / 'data' / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Security
