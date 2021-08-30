@@ -1,6 +1,7 @@
 from .common import *  # noqa
 
 import dj_database_url
+import sys
 
 DEBUG = False
 
@@ -14,9 +15,10 @@ ADMINS = [('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de')]
 
 # Database
 
-DATABASES = {
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-}
+if len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    DATABASES = {
+        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
+    }
 
 
 # FileStorage
