@@ -1,11 +1,24 @@
+import dj_database_url
 import os
+import sys
 
+from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-SECRET_KEY = os.environ['SECRET_KEY']
+DEBUG = os.getenv('DEBUG', "False") == "True"
+
+ALLOWED_HOSTS = [
+    "farafmb.de",
+    "www.farafmb.de",
+] + os.getenv('ALLOWED_HOSTS', "127.0.0.1,localhost").split(',')
+
+ADMINS = [
+    ('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de'),
+]
 
 
 # Application definition
@@ -61,23 +74,28 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('SQL_NAME', 'farafmb'),
-        'USER': os.getenv('SQL_USER', 'farafmb'),
-        'PASSWORD': os.getenv('SQL_PASSWORD', ''),
-        'HOST': os.getenv('SQL_HOST', ''),
-        'PORT': os.getenv('SQL_PORT', ''),
+DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', "False") == "True"
+
+if DEVELOPMENT_MODE is True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+    if os.getenv('DATABASE_URL') is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ['DATABASE_URL']),
+    }
 
 
 # Authentication
 
-LOGIN_REDIRECT_URL = "/admin/"
+LOGIN_REDIRECT_URL = '/admin/'
 
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = '/'
 
 
 # Password validation
@@ -111,7 +129,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# File Storage
+# Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
 
@@ -119,24 +137,31 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
+STATIC_ROOT = BASE_DIR / 'static'
+
+
+# Media files
+
 MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # E-Mail
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('MAIL_HOST', 'localhost')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
 
-EMAIL_PORT = os.getenv('MAIL_PORT', '25')
+EMAIL_PORT = os.getenv('EMAIL_PORT', '25')
 
-EMAIL_HOST_USER = os.getenv('MAIL_USER', '')
+EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 
-EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD', '')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL', 'noreply@faking.cool')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL', 'farafmb@ovgu.de')
 
-SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'noreply@faking.cool')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'farafmb@ovgu.de')
 
 
 # Default primary key field type
