@@ -143,15 +143,13 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
+STATIC_ROOT = BASE_DIR / 'static'
+
 MEDIA_URL = '/media/'
 
-if DEVELOPMENT_MODE:
+MEDIA_ROOT = BASE_DIR / 'media'
 
-    STATIC_ROOT = BASE_DIR / 'static'
-
-    MEDIA_ROOT = BASE_DIR / 'media'
-
-else:
+if DEVELOPMENT_MODE is False:
 
     DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
 
@@ -163,19 +161,15 @@ else:
 
     AWS_SECRET_ACCESS_KEY = os.getenv('S3_SECRET_ACCESS_KEY')
 
-    AWS_S3_BUCKET_NAME = os.getenv('S3_STORAGE_BUCKET_NAME')
+    AWS_S3_BUCKET_NAME = 'media'
 
-    AWS_S3_ENDPOINT_URL = f'https://{AWS_S3_BUCKET_NAME}.{AWS_REGION_NAME}.digitaloceanspaces.com'
+    AWS_S3_BUCKET_NAME_STATIC = 'static'
 
-    AWS_S3_BUCKET_NAME_STATIC = AWS_S3_BUCKET_NAME
+    AWS_S3_ENDPOINT_URL = f"'https://{os.getenv('S3_STORAGE_BUCKET_NAME')}.{AWS_REGION_NAME}.digitaloceanspaces.com'"
 
     AWS_S3_ENDPOINT_URL_STATIC = AWS_S3_ENDPOINT_URL
 
     AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
-
-    STATIC_ROOT = 'static'
-
-    MEDIA_ROOT = 'media'
 
 
 # E-Mail
