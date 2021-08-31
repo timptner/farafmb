@@ -137,25 +137,27 @@ USE_TZ = True
 
 # File Storage
 
-STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+if DEVELOPMENT_MODE is True:
 
-MEDIA_URL = '/media/'
+    MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
-if DEVELOPMENT_MODE is False:
+    STATIC_URL = '/static/'
+
+    STATIC_ROOT = BASE_DIR / 'static'
+
+else:
 
     DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
 
     STATICFILES_STORAGE = 'django_s3_storage.storage.StaticS3Storage'
 
-    AWS_REGION_NAME = os.getenv('S3_REGION_NAME')
+    AWS_REGION = os.getenv('S3_REGION')
 
     AWS_ACCESS_KEY_ID = os.getenv('S3_ACCESS_KEY_ID')
 
@@ -163,11 +165,11 @@ if DEVELOPMENT_MODE is False:
 
     AWS_S3_BUCKET_NAME = 'media'
 
+    AWS_S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL')
+
     AWS_S3_BUCKET_NAME_STATIC = 'static'
 
-    AWS_S3_ENDPOINT_URL = f"'https://{os.getenv('S3_STORAGE_BUCKET_NAME')}.{AWS_REGION_NAME}.digitaloceanspaces.com'"
-
-    AWS_S3_ENDPOINT_URL_STATIC = AWS_S3_ENDPOINT_URL
+    AWS_S3_ENDPOINT_URL_STATIC = os.getenv('S3_ENDPOINT_URL')
 
     AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
 
