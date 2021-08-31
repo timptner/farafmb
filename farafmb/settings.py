@@ -165,6 +165,8 @@ else:
 
     AWS_S3_BUCKET_NAME = 'media'
 
+    AWS_S3_BUCKET_AUTH = False  # Default True
+
     AWS_S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL')
 
     AWS_S3_PUBLIC_URL = 'https://cdn.farafmb.de/media/'
