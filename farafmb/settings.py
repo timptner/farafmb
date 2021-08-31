@@ -167,11 +167,13 @@ else:
 
     AWS_S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL')
 
+    AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
+
     AWS_S3_BUCKET_NAME_STATIC = 'static'
 
     AWS_S3_ENDPOINT_URL_STATIC = os.getenv('S3_ENDPOINT_URL')
 
-    AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
+    AWS_S3_PUBLIC_URL_STATIC = 'cdn.farafmb.de'
 
 
 # E-Mail
