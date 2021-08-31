@@ -141,13 +141,13 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
-if DEVELOPMENT_MODE is True:
+MEDIA_URL = '/media/'
 
-    MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
+if DEVELOPMENT_MODE is False:
 
     MEDIA_ROOT = BASE_DIR / 'media'
-
-    STATIC_URL = '/static/'
 
     STATIC_ROOT = BASE_DIR / 'static'
 
@@ -167,13 +167,13 @@ else:
 
     AWS_S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL')
 
-    AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
+    AWS_S3_PUBLIC_URL = 'https://cdn.farafmb.de/media/'
 
     AWS_S3_BUCKET_NAME_STATIC = 'static'
 
     AWS_S3_ENDPOINT_URL_STATIC = os.getenv('S3_ENDPOINT_URL')
 
-    AWS_S3_PUBLIC_URL_STATIC = 'cdn.farafmb.de'
+    AWS_S3_PUBLIC_URL_STATIC = 'https://cdn.farafmb.de/static/'
 
 
 # E-Mail
