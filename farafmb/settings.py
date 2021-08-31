@@ -171,7 +171,7 @@ else:
 
     AWS_S3_ENDPOINT_URL_STATIC = AWS_S3_ENDPOINT_URL
 
-    AWS_S3_CUSTOM_DOMAIN = 'cdn.farafmb.de'
+    AWS_S3_PUBLIC_URL = 'cdn.farafmb.de'
 
     STATIC_ROOT = 'static'
 
