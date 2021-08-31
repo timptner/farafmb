@@ -145,7 +145,7 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
-if DEVELOPMENT_MODE is False:
+if DEVELOPMENT_MODE is True:
 
     MEDIA_ROOT = BASE_DIR / 'media'
 
