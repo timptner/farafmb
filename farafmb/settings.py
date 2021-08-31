@@ -11,6 +11,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
 DEBUG = os.getenv('DEBUG', "False") == "True"
 
+DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', "False") == "True"
+
 ALLOWED_HOSTS = [
     "farafmb.de",
     "www.farafmb.de",
@@ -74,18 +76,20 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
-DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', "False") == "True"
-
 if DEVELOPMENT_MODE is True:
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
+
     if os.getenv('DATABASE_URL') is None:
         raise Exception("DATABASE_URL environment variable not defined")
+
     DATABASES = {
         'default': dj_database_url.parse(os.environ['DATABASE_URL']),
     }
@@ -129,7 +133,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# File Storage
 
 STATIC_URL = '/static/'
 
@@ -137,14 +141,35 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
-
-
-# Media files
-
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+if DEVELOPMENT_MODE:
+
+    STATIC_ROOT = BASE_DIR / 'static'
+
+    MEDIA_ROOT = BASE_DIR / 'media'
+
+else:
+
+    DEFAULT_FILE_STORAGE = 'storage.backends.s3boto3.S3Boto3Storage'
+
+    STATICFILES_STORAGE = 'storage.backends.s3boto3.S3StaticStorage'
+
+    AWS_ACCESS_KEY_ID = os.getenv('S3_ACCESS_KEY_ID')
+
+    AWS_SECRET_ACCESS_KEY = os.getenv('S3_SECRET_ACCESS_KEY')
+
+    AWS_STORAGE_BUCKET_NAME = os.getenv('S3_STORAGE_BUCKET_NAME')
+
+    AWS_S3_REGION_NAME = os.getenv('S3_REGION_NAME')
+
+    AWS_S3_ENDPOINT_URL = f'https://${AWS_S3_REGION_NAME}.digitaloceanspaces.com'
+
+    AWS_S3_CUSTOM_DOMAIN = 'cdn.farafmb.de'
+
+    STATIC_ROOT = 'static'
+
+    MEDIA_ROOT = 'media'
 
 
 # E-Mail
