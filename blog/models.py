@@ -84,8 +84,8 @@ class Document(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def extension(self):
-        path = Path(self.file.path)
-        return path.suffix[1:]
+        filename = self.file.name.split('/')[-1]
+        return filename.split('.')[-1].lower()
 
     def icon(self):
         suffix = self.extension()
