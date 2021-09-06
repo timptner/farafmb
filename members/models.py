@@ -48,6 +48,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.get_full_name() or self.user.username
 
+    def get_degree_display_short(self):
+        words = self.get_degree_display().split(' ')
+        return "%s. %s." % (words[0][0], words[-1][:2])
+
     def get_job_list(self):
         return [job.strip() for job in self.jobs.split(',')]
 

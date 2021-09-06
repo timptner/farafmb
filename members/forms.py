@@ -17,6 +17,7 @@ class UserProfileForm(forms.Form):
                            widget=forms.TextInput(attrs={'class': "input"}),
                            help_text="Die Tätigkeiten müssen mittels Kommata getrennt angegeben werden.")
     course = forms.ChoiceField(choices=Profile.COURSES, label="Studiengang")
+    degree = forms.ChoiceField(choices=Profile.DEGREES, label="Angestrebter Abschluss")
     birthday = forms.DateField(label="Geburtsdatum", required=False,
                                widget=forms.DateInput(attrs={'class': "input"}),
                                help_text="Das Datum ist nicht öffentlich einsehbar. An dein Geburtstag wird "
