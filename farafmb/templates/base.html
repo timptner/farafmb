@@ -30,23 +30,31 @@
     <body>
         {% include 'navigation.html' %}
 
+        {% if messages %}
+        {% for message in messages %}
+        <div class="notification is-radiusless is-{{ tags }} is-light mb-0">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
         {% if user.is_authenticated %}
-            <div class="notification is-radiusless is-warning is-light mb-0">
-                Hey {{ user.first_name }}, vergiss bitte nicht dich wieder auszuloggen.
-            </div>
+        <div class="notification is-radiusless is-warning is-light mb-0">
+            Hey {{ user.first_name }}, vergiss bitte nicht dich wieder auszuloggen.
+        </div>
         {% endif %}
 
         {% block section %}
-            <section class="section" style="background-color: #e2e5ee;">
-                {% block content %}{% endblock %}
-            </section>
+        <section class="section" style="background-color: #e2e5ee;">
+            {% block content %}{% endblock %}
+        </section>
         {% endblock %}
 
         <section class="section">
             {% block footer %}
-                <div class="container">
-                    {% include 'footer.html' %}
-                </div>
+            <div class="container">
+                {% include 'footer.html' %}
+            </div>
             {% endblock %}
         </section>
 

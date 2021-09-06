@@ -1,7 +1,8 @@
-from django.views import generic
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.views import generic
 
 from .forms import UserProfileForm
 from .models import Profile
@@ -49,5 +50,7 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         profile.course = form.cleaned_data['course']
         profile.birthday = form.cleaned_data['birthday']
         profile.save()
+
+        messages.success(self.request, "Dein Profil wurde erfolgreich aktualisiert.")
 
         return super().form_valid(form)
