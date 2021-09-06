@@ -57,4 +57,6 @@ class Profile(models.Model):
 
     def is_cakeday(self):
         today = date.today()
+        if not self.birthday:
+            return False
         return self.birthday.month == today.month and self.birthday.day == today.day
