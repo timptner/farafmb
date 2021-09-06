@@ -21,7 +21,7 @@
                         </span>
                         {% endif %}
                     </p>
-                    <p class="subtitle">{{ member.profile.get_course_display }}</p>
+                    <p class="subtitle">{{ member.profile.get_course_display }}, {{ member.profile.get_degree_display_short }}</p>
 
                     {% if member.profile.biography %}
                     <p class="is-italic has-text-centered">{{ member.profile.biography }}</p>
@@ -39,7 +39,7 @@
                 <div class="card-footer">
                     <p class="card-footer-item">
                         <span class="help">
-                            Mitglied seit {{ member.profile.joined_at|timesince }}
+                            Mitglied seit: {{ member.profile.joined_at|timesince }}
                         </span>
                     </p>
                 </div>

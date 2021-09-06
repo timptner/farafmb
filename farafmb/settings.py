@@ -99,6 +99,8 @@ elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
 
 # Authentication
 
+LOGIN_URL = '/admin/login/'
+
 LOGIN_REDIRECT_URL = '/admin/'
 
 LOGOUT_REDIRECT_URL = '/'
