@@ -1,0 +1,29 @@
+<div class="field">
+    <label class="label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    <div class="control">
+        <div id="{{ upload_id }}" class="file has-name is-fullwidth">
+            <label class="file-label">
+                {{ field }}
+                <span class="file-cta">
+                    <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                        Datei auswählen ...
+                    </span>
+                </span>
+                <span class="file-name">
+                    {{ field.initial|default_if_none:"Keine Datei ausgewählt." }}
+                </span>
+            </label>
+        </div>
+    </div>
+    {% if field.help_text %}
+    <p class="help">{{ field.help_text }}</p>
+    {% endif %}
+    {% for error in field.errors %}
+    <p class="help is-danger">
+        {{ error }}
+    </p>
+    {% endfor %}
+</div>
