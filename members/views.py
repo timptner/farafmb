@@ -1,10 +1,13 @@
+import secrets
+
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User, Group
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import UserProfileForm
+from .forms import UserProfileForm, UserForm
 from .models import Profile
 
 
@@ -62,5 +65,29 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         profile.save()
 
         messages.success(self.request, "Dein Profil wurde erfolgreich aktualisiert.")
+
+        return super().form_valid(form)
+
+
+class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.CreateView):
+    permission_required = 'auth.add_user'
+    template_name = 'members/create_user.html'
+    model = User
+    form_class = UserForm
+    success_url = reverse_lazy('members:create_user')
+
+    def form_valid(self, form):
+        default_group, created = Group.objects.get_or_create(name='default')
+        password = secrets.token_urlsafe(16)
+
+        user = form.save(commit=False)
+        user.password = make_password(password)
+        user.is_staff = True
+        user.save()
+        user.groups.add(default_group)
+
+        form.send_email(user, password)
+
+        messages.success(self.request, "Es wurde eine E-Mail mit Zugangsdaten an '%s' geschickt." % user.email)
 
         return super().form_valid(form)

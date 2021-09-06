@@ -1,6 +1,8 @@
 from datetime import date
 from django import forms
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 
 from .models import Profile
 
@@ -41,3 +43,34 @@ class UserProfileForm(forms.Form):
                                       "Datum, welches in der Vergangenheit liegt.")
 
         return data
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': "input"}),
+            'last_name': forms.TextInput(attrs={'class': "input"}),
+            'email': forms.EmailInput(attrs={'class': "input"}),
+            'username': forms.TextInput(attrs={'class': "input"}),
+        }
+
+    def send_email(self, user: User, password: str):
+        send_mail(
+            "Deine Zugangsdaten für farafmb.de",
+            f"""Hallo {user.first_name},
+
+anbei findest du deine Zugangsdaten für https://farafmb.de
+
+Benutzername:   {user.username}
+Passwort:       {password}
+
+Bitte ändere dein Passwort zeitnah unter: https://farafmb.de/admin/password_change/
+
+Viele Grüße
+FaRaFMB
+""",
+            None,
+            [user.email]
+        )
