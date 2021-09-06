@@ -35,6 +35,7 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
                 'biography': user.profile.biography,
                 'jobs': user.profile.jobs,
                 'course': user.profile.course,
+                'degree': user.profile.degree,
                 'birthday': user.profile.birthday,
                 'joined_at': user.profile.joined_at,
             })
@@ -55,6 +56,7 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         profile.biography = form.cleaned_data['biography']
         profile.jobs = form.cleaned_data['jobs']
         profile.course = form.cleaned_data['course']
+        profile.degree = form.cleaned_data['degree']
         profile.birthday = form.cleaned_data['birthday']
         profile.joined_at = form.cleaned_data['joined_at']
         profile.save()
