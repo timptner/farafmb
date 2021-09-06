@@ -1,8 +1,16 @@
+import secrets
+
 from datetime import date
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 
-from farafmb.helpers import get_random_filename_and_upload_to
+
+def get_random_filename(instance, filename: str) -> str:
+    extension = filename.split('.')[-1].lower()
+    token = secrets.token_urlsafe(10)
+    iso_datetime = timezone.now().strftime("%Y%m%d")
+    return f"members/{iso_datetime}_{token}.{extension}"
 
 
 class Profile(models.Model):
@@ -29,7 +37,7 @@ class Profile(models.Model):
         (MSC, 'Master of Science'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to=get_random_filename_and_upload_to('members'))
+    picture = models.ImageField(upload_to=get_random_filename)
     biography = models.CharField(max_length=250, blank=True)
     jobs = models.CharField(max_length=100, blank=True)
     course = models.CharField(max_length=3, choices=COURSES)
