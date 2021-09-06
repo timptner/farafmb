@@ -28,13 +28,16 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         initial.update({
             'first_name': user.first_name,
             'last_name': user.last_name,
-            'picture': user.profile.picture,
-            'biography': user.profile.biography,
-            'jobs': user.profile.jobs,
-            'course': user.profile.course,
-            'birthday': user.profile.birthday,
         })
-            'joined_at': user.profile.joined_at,
+        if hasattr(user, 'profile'):
+            initial.update({
+                'picture': user.profile.picture,
+                'biography': user.profile.biography,
+                'jobs': user.profile.jobs,
+                'course': user.profile.course,
+                'birthday': user.profile.birthday,
+                'joined_at': user.profile.joined_at,
+            })
         return initial
 
     def form_valid(self, form):
@@ -44,7 +47,10 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         user.last_name = form.cleaned_data['last_name']
         user.save()
 
-        profile = user.profile
+        if hasattr(user, 'profile'):
+            profile = user.profile
+        else:
+            profile = Profile(user=user)
         profile.picture = form.cleaned_data['picture']
         profile.biography = form.cleaned_data['biography']
         profile.jobs = form.cleaned_data['jobs']
