@@ -41,6 +41,8 @@ fileInput.onchange = () => {
 
                 {% include 'forms/snippet_input.html' with field=form.birthday %}
 
+                {% include 'forms/snippet_input.html' with field=form.joined_at %}
+
                 <div class="field">
                     <div class="control">
                         <button type="submit" class="button is-primary">

@@ -22,9 +22,19 @@ class UserProfileForm(forms.Form):
                                widget=forms.DateInput(attrs={'class': "input"}),
                                help_text="Das Datum ist nicht öffentlich einsehbar. An dein Geburtstag wird "
                                          "lediglich ein Kuchen in deinem öffentlichen Profil erscheinen.")
+    joined_at = forms.DateField(label="Mitglied seit", widget=forms.DateInput(attrs={'class': "input"}))
 
     def clean_birthday(self):
         data = self.cleaned_data['birthday']
+        if data:
+            if data >= date.today():
+                raise ValidationError("Das Datum liegt in der Zukunft. Bitte wähle ein "
+                                      "Datum, welches in der Vergangenheit liegt.")
+
+        return data
+
+    def clean_joined_at(self):
+        data = self.cleaned_data['joined_at']
         if data:
             if data >= date.today():
                 raise ValidationError("Das Datum liegt in der Zukunft. Bitte wähle ein "

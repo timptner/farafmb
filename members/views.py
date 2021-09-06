@@ -34,6 +34,7 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
             'course': user.profile.course,
             'birthday': user.profile.birthday,
         })
+            'joined_at': user.profile.joined_at,
         return initial
 
     def form_valid(self, form):
@@ -49,6 +50,7 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         profile.jobs = form.cleaned_data['jobs']
         profile.course = form.cleaned_data['course']
         profile.birthday = form.cleaned_data['birthday']
+        profile.joined_at = form.cleaned_data['joined_at']
         profile.save()
 
         messages.success(self.request, "Dein Profil wurde erfolgreich aktualisiert.")
