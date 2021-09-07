@@ -24,6 +24,10 @@ class ProtocolForm(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': "date", 'class': "input"}),
             'file': forms.FileInput(attrs={'class': "file-input"})
         }
+        help_texts = {
+            'author': "Es sind nur E-Mail-Adressen mit der Domain 'st.ovgu.de' erlaubt.",
+            'file': "Es können nur PDF-Dateien mit einer Größe von maximal 2 MB eingereicht werden.",
+        }
 
     def clean_author(self):
         data = self.cleaned_data['author']

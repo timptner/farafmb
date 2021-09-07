@@ -1,7 +1,7 @@
 <div class="field">
     <div class="control">
         <button type="submit" class="button is-primary">
-            Speichern
+            {{ submit|default:"Senden" }}
         </button>
     </div>
     {% for error in form.non_field_errors %}
