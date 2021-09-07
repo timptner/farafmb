@@ -74,5 +74,5 @@ Viele Grüße
 FaRaFMB
 """,
             None,
-            [user.email]
+            [user.email],
         )
