@@ -86,7 +86,7 @@ class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Create
         user.save()
         user.groups.add(default_group)
 
-        form.send_email(user, password)
+        form.send_email(self.request, user, password)
 
         messages.success(self.request, "Es wurde eine E-Mail mit Zugangsdaten an '%s' geschickt." % user.email)
 

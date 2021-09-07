@@ -3,6 +3,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
+from django.http import HttpRequest
+from django.urls import reverse_lazy
 
 from .models import Profile
 
@@ -56,17 +58,17 @@ class UserForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class': "input"}),
         }
 
-    def send_email(self, user: User, password: str):
+    def send_email(self, request: HttpRequest, user: User, password: str):
         send_mail(
             "Deine Zugangsdaten für farafmb.de",
             f"""Hallo {user.first_name},
 
-anbei findest du deine Zugangsdaten für https://farafmb.de
+anbei findest du deine Zugangsdaten für {request.scheme}://{request.get_host()}
 
 Benutzername:   {user.username}
 Passwort:       {password}
 
-Bitte ändere dein Passwort zeitnah unter: https://farafmb.de/admin/password_change/
+Bitte ändere dein Passwort zeitnah unter: {request.scheme}://{request.get_host()}{reverse_lazy('admin:password_change')}
 
 Viele Grüße
 FaRaFMB
