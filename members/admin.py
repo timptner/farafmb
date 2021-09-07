@@ -1,4 +1,5 @@
 import secrets
+import time
 
 from django.contrib import admin, messages
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -51,6 +52,7 @@ class UserAdmin(BaseUserAdmin):
                               "Successfully changed password for '%s' and "
                               "send new password via email to this user." % user,
                               messages.SUCCESS)
+            time.sleep(10)  # TODO Use cleaner way to throttle email sending
 
 
 admin.site.unregister(User)
