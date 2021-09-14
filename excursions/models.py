@@ -25,7 +25,7 @@ def validate_phone(value: str):
                               code='missing country code')
 
 
-class Participants(models.Model):
+class Participant(models.Model):
     excursion = models.ForeignKey(Excursion, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
