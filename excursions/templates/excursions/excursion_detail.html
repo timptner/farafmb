@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <h1 class="title">{{ excursion.title }}</h1>
+        <h2 class="subtitle">{{ excursion.visit_on }}</h2>
+
+        {% if excursion.desc %}
+            <p class="mb-3">{{ excursion.desc }}</p>
+        {% endif %}
+
+        <p>Verfügbare Plätze: {{ excursion.seats }}</p>
+        <p class="mb-3">Bisherige Anmeldungen: {{ registrations }}</p>
+
+        {% if excursion.registration_begins_at %}
+            <p>Anmeldebeginn: {{ excursion.registration_begins_at }}</p>
+        {% endif %}
+        <p class="mb-5">Anmeldeschluss: {{ excursion.registration_ends_at }}</p>
+
+        <a href="#" class="button is-primary">Zur Anmeldung</a>
+    </div>
+{% endblock %}
