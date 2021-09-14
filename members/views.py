@@ -17,7 +17,7 @@ class MemberListView(generic.ListView):
 
     def get_queryset(self):
         user_list = Profile.objects.values_list('user', flat=True).all()
-        return User.objects.filter(pk__in=user_list).all()
+        return User.objects.filter(pk__in=user_list).order_by('profile__joined_at')
 
 
 class UserProfileFormView(LoginRequiredMixin, generic.FormView):
