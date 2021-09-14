@@ -17,6 +17,6 @@
         {% endif %}
         <p class="mb-5">Anmeldeschluss: {{ excursion.registration_ends_at }}</p>
 
-        <a href="#" class="button is-primary">Zur Anmeldung</a>
+        <a href="{% url 'excursions:register' excursion.pk %}" class="button is-primary">Zur Anmeldung</a>
     </div>
 {% endblock %}

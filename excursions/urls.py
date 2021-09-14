@@ -6,4 +6,5 @@ app_name = 'excursions'
 urlpatterns = [
     path('', views.ExcursionListView.as_view(), name='list'),
     path('<int:pk>/', views.ExcursionDetailView.as_view(), name='detail'),
+    path('<int:pk>/register/', views.ParticipantCreateView.as_view(), name='register'),
 ]

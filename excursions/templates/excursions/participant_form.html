@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <h1 class="title">Anmeldung zur Exkursion</h1>
+        <h2 class="subtitle">{{ excursion.title }} ({{ excursion.visit_on }})</h2>
+        <div class="box">
+            <form method="POST">
+                {% csrf_token %}
+
+                {% include 'forms/snippet_input.html' with field=form.first_name %}
+
+                {% include 'forms/snippet_input.html' with field=form.last_name %}
+
+                {% include 'forms/snippet_input.html' with field=form.email %}
+
+                {% include 'forms/snippet_input.html' with field=form.phone %}
+
+                {% if excursion.is_car_required %}
+                    {% include 'forms/snippet_checkbox.html' with field=form.is_car_owner text="Ich besitze ein Auto und wäre bereit eine Fahrgemeinschaft zu bilden" %}
+                {% endif %}
+
+                {% include 'forms/snippet_submit.html' with submit="Anmelden" %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
