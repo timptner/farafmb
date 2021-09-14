@@ -13,8 +13,8 @@ class UserProfileForm(forms.Form):
     first_name = forms.CharField(max_length=150, label="Vorname", widget=forms.TextInput(attrs={'class': "input"}))
     last_name = forms.CharField(max_length=150, label="Nachname", widget=forms.TextInput(attrs={'class': "input"}))
     picture = forms.ImageField(label="Profilbild", widget=forms.FileInput(attrs={'class': "file-input"}),
-                               help_text="Die Datei wird nach dem Speichern automatisch "
-                                         "in einen zufällig generierten Schlüssel umbenannt.")
+                               help_text="Dein Bild sollte bereits quadratisch zugeschnitten "
+                                         "sein, da es sonst gestaucht dargestellt wird.")
     biography = forms.CharField(max_length=250, label="Biography", required=False,
                                 widget=forms.Textarea(attrs={'class': "textarea", 'rows': "3"}))
     jobs = forms.CharField(max_length=100, label="Tätigkeiten", required=False,
