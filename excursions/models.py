@@ -11,6 +11,9 @@ class Excursion(models.Model):
     registration_begins_at = models.DateTimeField(blank=True, null=True)
     registration_ends_at = models.DateTimeField()
 
+    def __str__(self):
+        return self.title
+
 
 def validate_university_email(value: str):
     username, host = value.split('@')
@@ -32,3 +35,9 @@ class Participant(models.Model):
     email = models.EmailField(validators=[validate_university_email])
     phone = models.CharField(max_length=16, validators=[validate_phone])
     is_car_owner = models.BooleanField()
+
+    def __str__(self):
+        return self.get_full_name()
+
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
