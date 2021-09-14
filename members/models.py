@@ -50,7 +50,7 @@ class Profile(models.Model):
 
     def get_degree_display_short(self):
         words = self.get_degree_display().split(' ')
-        return "%s. %s." % (words[0][0], words[-1][:2])
+        return words[0]
 
     def get_job_list(self):
         return [job.strip() for job in self.jobs.split(',')]
