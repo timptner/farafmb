@@ -4,6 +4,24 @@
     <div class="container is-max-desktop">
         <h1 class="title">Anmeldung zur Exkursion</h1>
         <h2 class="subtitle">{{ excursion.title }} ({{ excursion.visit_on }})</h2>
+
+        {% if show_archived_notification %}
+            <div class="notification is-info">
+                Die Exkursion hat bereits stattgefunden.
+            </div>
+        {% elif show_post_notification %}
+            <div class="notification is-danger">
+                Die Anmeldung endete am {{ excursion.registration_ends_at|date:"(D) d.m.y" }}
+                um {{ excursion.registration_ends_at|time:"H:i:s" }} Uhr.
+            </div>
+        {% elif show_pre_notification %}
+            <div class="notification is-warning">
+                Die Anmeldung beginnt am {{ excursion.registration_begins_at|date:"(D) d.m.y" }}
+                um {{ excursion.registration_begins_at|time:"H:i:s" }} Uhr.
+            </div>
+        {% endif %}
+
+
         <div class="box">
             <form method="POST">
                 {% csrf_token %}

@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 from .models import Participant, Excursion
 
@@ -53,3 +54,12 @@ class ParticipantForm(forms.ModelForm):
         data = self.cleaned_data['phone']
         data.replace(' ', '')
         return data
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if timezone.now() >= self.excursion.registration_ends_at:
+            raise ValidationError("Die Anmeldung ist leider nicht mehr möglich.", code='registration closed')
+
+        if timezone.now() < self.excursion.registration_begins_at:
+            raise ValidationError("Die Anmeldung ist noch nicht möglich. Versuche es später noch einmal.",
+                                  code='registration not started')

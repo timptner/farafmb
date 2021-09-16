@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.views import generic
 
 from .forms import ParticipantForm
@@ -26,8 +27,12 @@ class RegistrationFormView(generic.CreateView):
     success_url = 'success/'
 
     def get_context_data(self, **kwargs):
+        excursion = get_object_or_404(Excursion, pk=self.kwargs['pk'])
         data = super().get_context_data(**kwargs)
-        data['excursion'] = get_object_or_404(Excursion, pk=self.kwargs['pk'])
+        data['excursion'] = excursion
+        data['show_pre_notification'] = timezone.now() < excursion.registration_begins_at
+        data['show_post_notification'] = timezone.now() > excursion.registration_ends_at
+        data['show_archived_notification'] = timezone.now().date() > excursion.visit_on.date()  # TODO Fix 2h offset
         return data
 
     def get_form_kwargs(self):
