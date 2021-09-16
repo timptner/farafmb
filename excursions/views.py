@@ -36,3 +36,7 @@ class RegistrationFormView(generic.CreateView):
         data = super().get_context_data(**kwargs)
         data['excursion'] = get_object_or_404(Excursion, pk=self.kwargs['pk'])
         return data
+
+
+class RegistrationFormDoneView(generic.TemplateView):
+    template_name = 'excursions/registration_form_done.html'
