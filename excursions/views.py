@@ -7,6 +7,7 @@ from .models import Excursion, Participant
 
 class ExcursionListView(generic.ListView):
     model = Excursion
+    ordering = '-visit_on'
 
 
 class ExcursionDetailView(generic.DetailView):
