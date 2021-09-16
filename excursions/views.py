@@ -18,7 +18,8 @@ class ExcursionDetailView(generic.DetailView):
         return data
 
 
-class ParticipantCreateView(generic.CreateView):
+class RegistrationFormView(generic.CreateView):
+    template_name = 'excursions/registration_form.html'
     model = Participant
     form_class = ParticipantForm
     success_url = 'success/'
