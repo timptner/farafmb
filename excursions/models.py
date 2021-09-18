@@ -50,3 +50,6 @@ class Participant(models.Model):
 
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+    def is_seat_owner(self):
+        return self in self.excursion.get_seat_owners()

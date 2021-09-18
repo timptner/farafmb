@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.views import generic
@@ -49,6 +50,21 @@ class RegistrationFormView(generic.CreateView):
             participant = form.save(commit=False)
             participant.excursion = excursion
             participant.save()
+            send_mail(
+                f"Bestätigung deiner Anmeldung",
+                "Hallo %s,\n\ndu hast dich erfolgreich für die Exkursion %s am %s angemeldet. Aktuell stehst du als %s "
+                "auf der Liste. %s\n\nViele Grüße\nFachschaftsrat Maschinenbau" % (
+                    participant.first_name,
+                    excursion.title,
+                    excursion.date.strftime('%d.%m.%Y'),
+                    "Teilnehmer:in" if participant.is_seat_owner() else "Nachrücker:in",
+                    "Wir werden dich kurz vor der Exkursion noch einmal kontaktieren um die letzten Details "
+                    "abzusprechen." if participant.is_seat_owner() else
+                    "Sollte ein:e Teilnehmer:in absagen, werden wir dich über den freien Platz informieren.",
+                ),
+                None,
+                [participant.email],
+            )
         return super().form_valid(form)
 
 
