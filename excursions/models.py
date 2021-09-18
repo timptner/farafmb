@@ -5,14 +5,22 @@ from django.db import models
 class Excursion(models.Model):
     title = models.CharField(max_length=200)
     desc = models.TextField('description', blank=True)
-    visit_on = models.DateTimeField()
+    date = models.DateTimeField()
     seats = models.PositiveSmallIntegerField()
     is_car_required = models.BooleanField(default=True)
     registration_begins_at = models.DateTimeField(blank=True, null=True)
     registration_ends_at = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+    def get_seat_owners(self):
+        return self.participant_set.order_by('created_on').all()[:self.seats]
+
+    def get_waiting_list(self):
+        return self.participant_set.order_by('created_on').all()[self.seats:]
 
 
 def validate_university_email(value: str):
@@ -35,6 +43,7 @@ class Participant(models.Model):
     email = models.EmailField(validators=[validate_university_email])
     phone = models.CharField(max_length=16, validators=[validate_phone])
     is_car_owner = models.BooleanField()
+    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.get_full_name()

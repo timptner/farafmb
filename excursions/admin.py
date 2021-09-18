@@ -5,7 +5,7 @@ from .models import Excursion, Participant
 
 @admin.register(Excursion)
 class ExcursionAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'seats', 'visit_on')
+    list_display = ('__str__', 'seats', 'date')
 
 
 @admin.register(Participant)
