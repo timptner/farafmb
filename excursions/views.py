@@ -30,7 +30,10 @@ class RegistrationFormView(generic.CreateView):
         excursion = get_object_or_404(Excursion, pk=self.kwargs['pk'])
         data = super().get_context_data(**kwargs)
         data['excursion'] = excursion
-        data['show_pre_notification'] = timezone.now() < excursion.registration_begins_at
+        if excursion.registration_begins_at:
+            data['show_pre_notification'] = timezone.now() < excursion.registration_begins_at
+        else:
+            data['show_pre_notification'] = False
         data['show_post_notification'] = timezone.now() > excursion.registration_ends_at
         data['show_archived_notification'] = timezone.now().date() > excursion.visit_on.date()  # TODO Fix 2h offset
         return data
