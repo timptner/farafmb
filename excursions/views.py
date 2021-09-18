@@ -8,7 +8,7 @@ from .models import Excursion, Participant
 
 class ExcursionListView(generic.ListView):
     model = Excursion
-    ordering = '-visit_on'
+    ordering = '-date'
 
 
 class ExcursionDetailView(generic.DetailView):
@@ -35,7 +35,7 @@ class RegistrationFormView(generic.CreateView):
         else:
             data['show_pre_notification'] = False
         data['show_post_notification'] = timezone.now() > excursion.registration_ends_at
-        data['show_archived_notification'] = timezone.now().date() > excursion.visit_on.date()  # TODO Fix 2h offset
+        data['show_archived_notification'] = timezone.now().date() > excursion.date  # TODO Fix 2h offset
         return data
 
     def get_form_kwargs(self):
