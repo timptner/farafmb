@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django.core.exceptions import ValidationError
 from django.db import models
 
@@ -51,5 +52,6 @@ class Participant(models.Model):
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
 
-    def is_seat_owner(self):
+    @admin.display(boolean=True)
+    def is_seat_owner(self) -> bool:
         return self in self.excursion.get_seat_owners()

@@ -10,5 +10,6 @@ class ExcursionAdmin(admin.ModelAdmin):
 
 @admin.register(Participant)
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'is_car_owner')
+    list_display = ('__str__', 'is_car_owner', 'is_seat_owner', 'created_on')
     list_filter = ('excursion__title', 'is_car_owner')
+    ordering = ('created_on',)
