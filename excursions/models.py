@@ -9,7 +9,7 @@ class Excursion(models.Model):
     date = models.DateField()
     seats = models.PositiveSmallIntegerField()
     is_car_required = models.BooleanField(default=True)
-    registration_begins_at = models.DateTimeField(blank=True, null=True)
+    registration_begins_at = models.DateTimeField(blank=True, null=True)  # TODO check registration begin is before end
     registration_ends_at = models.DateTimeField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
