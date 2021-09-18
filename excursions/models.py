@@ -5,7 +5,7 @@ from django.db import models
 class Excursion(models.Model):
     title = models.CharField(max_length=200)
     desc = models.TextField('description', blank=True)
-    date = models.DateTimeField()
+    date = models.DateField()
     seats = models.PositiveSmallIntegerField()
     is_car_required = models.BooleanField(default=True)
     registration_begins_at = models.DateTimeField(blank=True, null=True)
