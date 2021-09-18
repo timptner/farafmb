@@ -60,6 +60,7 @@ class ParticipantForm(forms.ModelForm):
         if timezone.now() >= self.excursion.registration_ends_at:
             raise ValidationError("Die Anmeldung ist leider nicht mehr möglich.", code='registration closed')
 
-        if timezone.now() < self.excursion.registration_begins_at:
-            raise ValidationError("Die Anmeldung ist noch nicht möglich. Versuche es später noch einmal.",
-                                  code='registration not started')
+        if self.excursion.registration_begins_at:
+            if timezone.now() < self.excursion.registration_begins_at:
+                raise ValidationError("Die Anmeldung ist noch nicht möglich. Versuche es später noch einmal.",
+                                      code='registration not started')
