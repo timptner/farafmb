@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
+{% load markdown %}
+
 {% block content %}
     <div class="container is-max-desktop">
         <h1 class="title">{{ excursion.title }}</h1>
         <h2 class="subtitle">{{ excursion.date }}</h2>
 
         {% if excursion.desc %}
-            <p class="mb-3">{{ excursion.desc }}</p>
+            <div class="content">
+                {{ excursion.desc|render_html }}
+            </div>
         {% endif %}
 
         <p>Verfügbare Plätze: {{ excursion.seats }}</p>

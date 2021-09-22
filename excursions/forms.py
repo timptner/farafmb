@@ -6,6 +6,14 @@ from .models import Participant, Excursion
 
 
 class ExcursionForm(forms.ModelForm):
+    desc = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': "vLargeTextField",
+            'style': "font-family: 'Source Code Pro', 'Courier New', monospace;",
+        }),
+        help_text="You can format this text with Markdown",
+    )
+
     def clean(self):
         cleaned_data = super().clean()
         if not cleaned_data['registration_begins_at'] < cleaned_data['registration_ends_at']:
