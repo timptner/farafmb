@@ -37,6 +37,15 @@ class RegistrationFormView(generic.CreateView):
             data['show_pre_notification'] = False
         data['show_post_notification'] = timezone.now() > excursion.registration_ends_at
         data['show_archived_notification'] = timezone.now().date() > excursion.date  # TODO Fix 2h offset
+        data['car_checkbox_text'] = "Ich besitze ein Auto und wäre bereit eine Fahrgemeinschaft zu bilden."
+        data['privacy'] = (
+            "Wir benötigen deinen vollständigen Namen sowie deine E-Mail-Adresse zur Bestätigung deiner Teilnahme an "
+            "der Exkursion gegenüber der Fakultät. Deine eben genannten Daten werden an das Prüfungsamt, sowie in "
+            "einigen Fällen an das zu besichtigende Unternehmen, weitergegeben. Deine Mobilnummer verwenden wir, um "
+            "dich kurzfristig am Tag der Exkursion erreichen zu können. Deine Mobilnummer wird von uns nicht an "
+            "Dritte weitergegeben. Alle deine Daten werden von uns vertraulich behandelt und nach Ablauf einer Frist "
+            "von 6 Monaten unwiderruflich gelöscht."
+        )
         return data
 
     def get_form_kwargs(self):

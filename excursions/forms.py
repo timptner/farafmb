@@ -30,6 +30,8 @@ def convert_email(value: str) -> str:
 
 
 class ParticipantForm(forms.ModelForm):
+    privacy = forms.BooleanField(label="Datenschutz", required=True)
+
     class Meta:
         model = Participant
         fields = ('first_name', 'last_name', 'email', 'phone', 'is_car_owner')

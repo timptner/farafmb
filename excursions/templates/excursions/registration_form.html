@@ -21,7 +21,6 @@
             </div>
         {% endif %}
 
-
         <div class="box">
             <form method="POST">
                 {% csrf_token %}
@@ -35,8 +34,10 @@
                 {% include 'forms/snippet_input.html' with field=form.phone %}
 
                 {% if excursion.is_car_required %}
-                    {% include 'forms/snippet_checkbox.html' with field=form.is_car_owner text="Ich besitze ein Auto und wäre bereit eine Fahrgemeinschaft zu bilden" %}
+                    {% include 'forms/snippet_checkbox.html' with field=form.is_car_owner text=car_checkbox_text %}
                 {% endif %}
+
+                {% include 'forms/snippet_privacy.html' with field=form.privacy text=privacy %}
 
                 {% include 'forms/snippet_submit.html' with submit="Anmelden" %}
             </form>
