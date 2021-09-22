@@ -1,10 +1,12 @@
 from django.contrib import admin
 
+from .forms import ExcursionForm
 from .models import Excursion, Participant
 
 
 @admin.register(Excursion)
 class ExcursionAdmin(admin.ModelAdmin):
+    form = ExcursionForm
     list_display = ('__str__', 'seats', 'date')
 
 

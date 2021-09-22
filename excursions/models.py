@@ -9,10 +9,16 @@ class Excursion(models.Model):
     date = models.DateField()
     seats = models.PositiveSmallIntegerField()
     is_car_required = models.BooleanField(default=True)
-    registration_begins_at = models.DateTimeField(blank=True, null=True)  # TODO check registration begin is before end
+    registration_begins_at = models.DateTimeField(blank=True, null=True)
     registration_ends_at = models.DateTimeField()
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(check=models.Q(registration_begins_at__lt=models.F('registration_ends_at')),
+                                   name='registration_end_gt_begin'),
+        ]
 
     def __str__(self):
         return self.title
