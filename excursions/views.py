@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.urls import reverse_lazy
 from django.views import generic
 
 from .forms import ParticipantForm
@@ -25,7 +26,7 @@ class RegistrationFormView(generic.CreateView):
     template_name = 'excursions/registration_form.html'
     model = Participant
     form_class = ParticipantForm
-    success_url = 'success/'
+    success_url = reverse_lazy('excursions:registration_done')
 
     def get_context_data(self, **kwargs):
         excursion = get_object_or_404(Excursion, pk=self.kwargs['pk'])
