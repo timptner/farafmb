@@ -16,8 +16,11 @@ class ExcursionForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        if not cleaned_data['registration_begins_at'] < cleaned_data['registration_ends_at']:
-            raise forms.ValidationError({'registration_begins_at': "Registration can't begin after it has ended."})
+        registration_begins_at = cleaned_data.get('registration_begins_at')
+        registration_ends_at = cleaned_data.get('registration_ends_at')
+        if registration_begins_at and registration_ends_at:
+            if registration_begins_at > registration_ends_at:
+                raise forms.ValidationError({'registration_begins_at': "Registration can't begin after it has ended."})
 
 
 def convert_email(value: str) -> str:
