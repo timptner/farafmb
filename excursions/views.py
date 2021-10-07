@@ -26,7 +26,9 @@ class RegistrationFormView(generic.CreateView):
     template_name = 'excursions/registration_form.html'
     model = Participant
     form_class = ParticipantForm
-    success_url = reverse_lazy('excursions:registration_done')
+
+    def get_success_url(self):
+        return reverse_lazy('excursions:registration_done', kwargs={'pk': self.kwargs['pk']})
 
     def get_context_data(self, **kwargs):
         excursion = get_object_or_404(Excursion, pk=self.kwargs['pk'])
