@@ -1,5 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mass_mail
 from django.utils import timezone
 
 from .models import Participant, Excursion
@@ -84,3 +85,14 @@ class ParticipantForm(forms.ModelForm):
             if timezone.now() < self.excursion.registration_begins_at:
                 raise ValidationError("Die Anmeldung ist noch nicht möglich. Versuche es später noch einmal.",
                                       code='registration not started')
+
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class': "input"}), required=True)
+    message = forms.CharField(widget=forms.Textarea(attrs={'class': "textarea"}), required=True)
+
+    def send_emails(self, recipients):
+        subject = self.cleaned_data['subject']
+        message = self.cleaned_data['message']
+        mails = [(subject, message, None, [recipient]) for recipient in recipients]
+        send_mass_mail(mails)

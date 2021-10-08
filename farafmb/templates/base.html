@@ -17,6 +17,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma-list.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
     <!-- Scripts -->
@@ -32,7 +33,7 @@
 
 {% if messages %}
     {% for message in messages %}
-        <div class="notification is-radiusless is-{{ message.tags }} is-light mb-0">
+        <div class="notification is-radiusless {{ message.tags }} is-light mb-0">
             {{ message }}
         </div>
     {% endfor %}

@@ -1,10 +1,12 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .forms import ParticipantForm
+from .forms import ParticipantForm, ContactForm
 from .models import Excursion, Participant
 
 
@@ -82,3 +84,30 @@ class RegistrationFormView(generic.CreateView):
 
 class RegistrationFormDoneView(generic.TemplateView):
     template_name = 'excursions/registration_form_done.html'
+
+
+class ContactFormView(LoginRequiredMixin, PermissionRequiredMixin, generic.FormView):
+    permission_required = ('excursions.add_excursion', 'excursions.edit_excursion', 'excursions.delete_excursion')
+    template_name = 'excursions/contact_form.html'
+    form_class = ContactForm
+    success_url = '/admin/excursions/participant/'  # TODO use reverse_lazy to get admin page
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        try:
+            pk_list = [int(pk) for pk in self.request.GET.get('ids', '').split(',')]
+            data['participants'] = Participant.objects.filter(pk__in=pk_list).order_by('first_name', 'last_name').all()
+        except ValueError:
+            pass
+        return data
+
+    def form_valid(self, form):
+        if form.is_valid():
+            try:
+                pk_list = [int(pk) for pk in self.request.GET.get('ids', '').split(',')]
+                recipients = Participant.objects.filter(pk__in=pk_list).values_list('email', flat=True)
+                form.send_emails(recipients)
+                messages.success(self.request, "%s emails were sent successfully." % len(recipients))
+            except ValueError:
+                messages.error(self.request, "No emails were sent because the recipient list is empty.")
+        return super().form_valid(form)
