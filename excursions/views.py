@@ -87,7 +87,7 @@ class RegistrationFormDoneView(generic.TemplateView):
 
 
 class ContactFormView(LoginRequiredMixin, PermissionRequiredMixin, generic.FormView):
-    permission_required = ('excursions.add_excursion', 'excursions.edit_excursion', 'excursions.delete_excursion')
+    permission_required = ('excursions.add_excursion', 'excursions.change_excursion')
     template_name = 'excursions/contact_form.html'
     form_class = ContactForm
     success_url = '/admin/excursions/participant/'  # TODO use reverse_lazy to get admin page
