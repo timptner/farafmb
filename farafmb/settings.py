@@ -160,25 +160,27 @@ else:
 
     STATICFILES_STORAGE = 'django_s3_storage.storage.StaticS3Storage'
 
-    AWS_REGION = os.getenv('S3_REGION')
+AWS_REGION = os.getenv('DO_REGION', 'fra1')
 
-    AWS_ACCESS_KEY_ID = os.getenv('S3_ACCESS_KEY_ID')
+AWS_ACCESS_KEY_ID = os.getenv('DO_ACCESS_KEY_ID')
 
-    AWS_SECRET_ACCESS_KEY = os.getenv('S3_SECRET_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('DO_SECRET_ACCESS_KEY')
 
-    AWS_S3_BUCKET_NAME = 'media'
+AWS_S3_BUCKET_NAME = os.getenv('DO_SPACE_NAME', 'farafmb-media')
 
-    AWS_S3_BUCKET_AUTH = False  # Default True
+AWS_S3_ENDPOINT_URL = os.getenv('DO_SPACE_ENDPOINT_URL', 'https://fra1.digitaloceanspaces.com')
 
-    AWS_S3_ENDPOINT_URL = os.getenv('S3_ENDPOINT_URL')
+AWS_S3_BUCKET_AUTH = False  # File permission set to 'public-read' instead of 'private'
 
-    AWS_S3_PUBLIC_URL = 'https://cdn.farafmb.de/media/'
+AWS_S3_MAX_AGE_SECONDS = 60 * 60 * 24 * 365  # 1 year
 
-    AWS_S3_BUCKET_NAME_STATIC = 'static'
+AWS_S3_PUBLIC_URL = os.getenv('DO_SPACE_PUBLIC_URL', 'https://media.farafmb.de')
 
-    AWS_S3_ENDPOINT_URL_STATIC = os.getenv('S3_ENDPOINT_URL')
+AWS_S3_BUCKET_NAME_STATIC = os.getenv('DO_SPACE_NAME_STATIC', 'farafmb-static')
 
-    AWS_S3_PUBLIC_URL_STATIC = 'https://cdn.farafmb.de/static/'
+AWS_S3_ENDPOINT_URL_STATIC = os.getenv('DO_SPACE_ENDPOINT_URL_STATIC', 'https://fra1.digitaloceanspaces.com')
+
+AWS_S3_PUBLIC_URL_STATIC = os.getenv('DO_SPACE_PUBLIC_URL_STATIC', 'https://static.farafmb.de')
 
 
 # E-Mail
