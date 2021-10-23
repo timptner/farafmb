@@ -65,12 +65,11 @@ def create_page(request, page):
 
 @login_required
 def read_page(request, page):
-    content = storage.open(page + '.md').read().decode('utf-8')
         })
     context = {
         'page': page,
-        'content': content,
         'breadcrumbs': get_breadcrumbs(request, page),
+        'content': storage.open(page).read().decode('utf-8'),
     }
     return render(request, 'docs/read_page.html', context=context)
 
@@ -80,11 +79,11 @@ def update_page(request, page):
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
-            file = ContentFile(form.cleaned_data['content'], name=page + '.md')
+            file = ContentFile(form.cleaned_data['content'], name=page)
             storage.save(name=file.name, content=file)
             return HttpResponseRedirect(reverse('docs:read_page', args=(page,)))
     else:
-        content = storage.open(page + '.md').read().decode('utf-8')
+        content = storage.open(page).read().decode('utf-8')
         form = PageForm(initial={'title': page.replace('_', ' '), 'content': content})
     context = {
         'page': page,
@@ -97,7 +96,7 @@ def update_page(request, page):
 @login_required
 def delete_page(request, page):
     if request.method == 'POST':
-        storage.delete(page + '.md')
+        storage.delete(page)
         messages.add_message(request, messages.SUCCESS, f'Die Seite "{page}" wurde erfolgreich gelöscht.')
         return HttpResponseRedirect(reverse('docs:list_pages'))
     else:
