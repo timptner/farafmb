@@ -1,0 +1,15 @@
+<div id="modal-delete" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div class="box">
+            <p class="mb-4">Bitte bestätige, dass du diese Seite wirklich löschen willst.</p>
+            <form method="POST" action="{% url 'docs:delete_page' resource %}">
+                {% csrf_token %}
+                <button type="submit" class="button is-medium is-danger is-outlined is-fullwidth">
+                    Löschen bestätigen
+                </button>
+            </form>
+        </div>
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+</div>

@@ -2,10 +2,22 @@
 
 {% load static %}
 
+{% block scripts %}
+    <script src="{% static 'js/confirm-delete.js' %}"></script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
+        <div class="buttons is-pulled-right">
+            <button id="modal-delete-button" class="button is-danger" data-target="modal-delete" aria-haspopup="true">
+                Seite löschen
+            </button>
+        </div>
+
         <p class="title">{{ title }}</p>
 
         {% include 'docs/snippet_form.html' %}
+
+        {% include 'docs/snippet_delete.html' %}
     </div>
 {% endblock %}

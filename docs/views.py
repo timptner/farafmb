@@ -1,6 +1,7 @@
 import os
 
 from django.conf import settings
+from django.contrib import messages
 from django.core.files.base import ContentFile
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -68,3 +69,11 @@ def update_page(request, resource):
     }
     return render(request, 'docs/update_page.html', context=context)
 
+
+def delete_page(request, resource):
+    if request.method == 'POST':
+        storage.delete(resource + '.md')
+        messages.add_message(request, messages.SUCCESS, f'Die Seite "{resource}" wurde erfolgreich gelöscht.')
+        return HttpResponseRedirect(reverse('docs:list_pages'))
+    else:
+        return HttpResponse(status=204)
