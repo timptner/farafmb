@@ -5,11 +5,7 @@ from django.core.validators import RegexValidator
 class PageForm(forms.Form):
     title = forms.CharField(
         max_length=200,
-        widget=forms.TextInput(
-            attrs={
-                'class': "input"
-            },
-        ),
+        widget=forms.TextInput(attrs={'class': "input"}),
         validators=[
             RegexValidator(
                 r'^[-a-zA-Z0-9_/\s]+$',
@@ -20,9 +16,10 @@ class PageForm(forms.Form):
                 r'^[a-zA-Z0-9].+[a-zA-Z0-9]$',
                 "Der Titel muss muss mit alphanumerischen Zeichen beginnen und enden.",
                 'disallowed-start-or-end',
-            )
-        ]
+            ),
+        ],
     )
+
     content = forms.CharField(
         widget=forms.Textarea(
             attrs={
