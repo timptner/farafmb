@@ -22,6 +22,17 @@ storage = S3Storage(
 
 
 @login_required
+def show_tree(request, page):
+    prefix = '' if page == '/' else page + '/'
+    directories, files = storage.listdir(page)
+    context = {
+        'directories': [(name, prefix + name) for name in directories],
+        'files': [(name, prefix + name) for name in files],
+    }
+    return render(request, 'docs/show_tree.html', context)
+
+
+@login_required
 def list_pages(request):
     response = storage.s3_connection.list_objects_v2(Bucket=storage.settings.AWS_S3_BUCKET_NAME)
     pages = []

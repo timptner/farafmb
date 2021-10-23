@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <nav class="panel">
+            <p class="panel-heading">Verzeichnis</p>
+            {% for item in directories %}
+                <a class="panel-block" href="{% url 'docs:show_tree' item.1 %}">
+                    <span class="panel-icon">
+                        <i class="fas fa-folder" aria-hidden="true"></i>
+                    </span>
+                    {{ item.0 }}
+                </a>
+            {% endfor %}
+            {% for item in files %}
+                <a class="panel-block" href="{% url 'docs:read_page' item.1 %}">
+                    <span class="panel-icon">
+                        <i class="fas fa-file" aria-hidden="true"></i>
+                    </span>
+                    {{ item.0 }}
+                </a>
+            {% endfor %}
+        </nav>
+    </div>
+{% endblock %}
