@@ -93,12 +93,13 @@ def update_page(request, page):
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
-            file = ContentFile(form.cleaned_data['content'], name=page + '.md')
+            file = ContentFile(form.cleaned_data['content'], name=page)
             storage.save(name=file.name, content=file)
             return HttpResponseRedirect(reverse('docs:read_page', args=(page,)))
     else:
         content = storage.open(page).read().decode('utf-8')
         form = PageForm(initial={'title': page.replace('_', ' ').rstrip('.md'), 'content': content})
+        form.fields['title'].help_text = "Die Umbenennung von Seiten wird zurzeit noch nicht unterstützt."
     context = {
         'page': page,
         'title': page.replace('_', ' ').split('/')[-1],
