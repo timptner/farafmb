@@ -21,6 +21,17 @@ storage = S3Storage(
 )
 
 
+def get_breadcrumbs(request, page):
+    breadcrumbs = []
+    if page != '/':
+        names = page.split('/')
+        for name in names:
+            page_ = '/'.join([names[i] for i in range(names.index(name) + 1)])
+            breadcrumbs.append((name, request.build_absolute_uri(reverse('docs:show_tree', args=(page_,)))))
+    breadcrumbs.insert(0, ('Dokumentation', request.build_absolute_uri(reverse('docs:index_show_tree'))))
+    return breadcrumbs
+
+
 @login_required
 def show_tree(request, page):
     prefix = '' if page == '/' else page + '/'
@@ -28,6 +39,7 @@ def show_tree(request, page):
     context = {
         'directories': [(name, prefix + name) for name in directories],
         'files': [(name, prefix + name) for name in files],
+        'breadcrumbs': get_breadcrumbs(request, page),
     }
     return render(request, 'docs/show_tree.html', context)
 
@@ -54,23 +66,11 @@ def create_page(request, page):
 @login_required
 def read_page(request, page):
     content = storage.open(page + '.md').read().decode('utf-8')
-    breadcrumbs = []
-    for name in page.split('/'):
-        breadcrumbs.append({
-            'name': name.replace('_', ' '),
-            'url': '/'.join([breadcrumbs[-1]['url'], name]) if breadcrumbs else name,
-            'is_active': False,
         })
-    breadcrumbs.insert(0, {
-        'name': "Dokumentation",
-        'url': '',
-        'is_active': False
-    })
-    breadcrumbs[-1]['is_active'] = True
     context = {
         'page': page,
-        'breadcrumbs': breadcrumbs,
         'content': content,
+        'breadcrumbs': get_breadcrumbs(request, page),
     }
     return render(request, 'docs/read_page.html', context=context)
 

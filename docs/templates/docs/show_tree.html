@@ -2,6 +2,7 @@
 
 {% block content %}
     <div class="container is-max-desktop">
+        {% include 'docs/snippet_breadcrumbs.html' with items=breadcrumbs %}
         <nav class="panel">
             <p class="panel-heading">Verzeichnis</p>
             {% for item in directories %}
