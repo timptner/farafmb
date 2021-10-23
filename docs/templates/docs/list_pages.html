@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <p class="title">Dokumentation</p>
+
+        <aside class="menu">
+            <p class="menu-label">
+                Inhaltsverzeichnis
+            </p>
+            <ul class="menu-list">
+                {% for file in files %}
+                    <li>
+                        <a href="{% url 'docs:read_page' file.key %}">
+                            {{ file.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </div>
+{% endblock %}

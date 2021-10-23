@@ -14,3 +14,11 @@ storage = S3Storage(
 )
 
 
+def list_pages(request):
+    response = storage.s3_connection.list_objects_v2(Bucket=storage.settings.AWS_S3_BUCKET_NAME)
+    files = []
+    for entry in response.get('Contents', []):
+        key = entry['Key'].rstrip('.md')
+        files.append({'key': key, 'name': key.replace('_', ' ')})
+    return render(request, 'docs/list_pages.html', {'files': files})
+
