@@ -1,0 +1,12 @@
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        {#        <li><a href="{% url 'docs:list_pages' %}">Dokumentation</a></li>#}
+        {% for item in obj_list %}
+            <li {% if item.is_active %}class="is-active"{% endif %}>
+            <a href="{% if item.url == '' %}{% url 'docs:list_pages' %}{% else %}{% url 'docs:read_page' item.url %}{% endif %}"
+               {% if item.is_active %}aria-current="page"{% endif %}>
+                {{ item.name }}
+            </a>
+        {% endfor %}
+    </ul>
+</nav>

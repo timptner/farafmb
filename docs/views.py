@@ -22,3 +22,26 @@ def list_pages(request):
         files.append({'key': key, 'name': key.replace('_', ' ')})
     return render(request, 'docs/list_pages.html', {'files': files})
 
+
+def read_page(request, resource):
+    content = storage.open(resource + '.md').read().decode('utf-8')
+    breadcrumbs = []
+    for name in resource.split('/'):
+        breadcrumbs.append({
+            'name': name.replace('_', ' '),
+            'url': '/'.join([breadcrumbs[-1]['url'], name]) if breadcrumbs else name,
+            'is_active': False,
+        })
+    breadcrumbs.insert(0, {
+        'name': "Dokumentation",
+        'url': '',
+        'is_active': False
+    })
+    breadcrumbs[-1]['is_active'] = True
+    context = {
+        'resource': resource,
+        'breadcrumbs': breadcrumbs,
+        'content': content,
+    }
+    return render(request, 'docs/read_page.html', context=context)
+

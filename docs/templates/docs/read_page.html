@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load markdown %}
+
+{% block content %}
+    <div class="container">
+
+        {% include 'docs/snippet_navigation.html' with obj_list=breadcrumbs %}
+
+        <div class="content">
+            {{ content|render_html }}
+        </div>
+    </div>
+{% endblock %}
