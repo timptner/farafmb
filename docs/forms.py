@@ -2,7 +2,7 @@ from django import forms
 from django.core.validators import RegexValidator
 
 
-class UpdateForm(forms.Form):
+class PageForm(forms.Form):
     title = forms.CharField(
         max_length=200,
         widget=forms.TextInput(

@@ -13,10 +13,10 @@
                 Inhaltsverzeichnis
             </p>
             <ul class="menu-list">
-                {% for file in files %}
+                {% for page in pages %}
                     <li>
-                        <a href="{% url 'docs:read_page' file.key %}">
-                            {{ file.name }}
+                        <a href="{% url 'docs:read_page' page.key %}">
+                            {{ page.name }}
                         </a>
                     </li>
                 {% endfor %}

@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django_s3_storage.storage import S3Storage
 
-from .forms import UpdateForm
+from .forms import PageForm
 
 storage = S3Storage(
     aws_region=settings.AWS_REGION,
@@ -24,37 +24,37 @@ storage = S3Storage(
 @login_required
 def list_pages(request):
     response = storage.s3_connection.list_objects_v2(Bucket=storage.settings.AWS_S3_BUCKET_NAME)
-    files = []
+    pages = []
     for entry in response.get('Contents', []):
         key = entry['Key'].rstrip('.md')
-        files.append({'key': key, 'name': key.replace('_', ' ')})
-    return render(request, 'docs/list_pages.html', {'files': files})
+        pages.append({'key': key, 'name': key.replace('_', ' ')})
+    return render(request, 'docs/list_pages.html', {'pages': pages})
 
 
 @login_required
-def create_page(request, resource):
+def create_page(request, page):
     if request.method == 'POST':
-        form = UpdateForm(request.POST)
+        form = PageForm(request.POST)
         if form.is_valid():
             file = ContentFile(content=form.cleaned_data['content'], name=form.cleaned_data['title'] + '.md')
             storage.save(name=file.name, content=file)
             return HttpResponseRedirect(reverse('docs:read_page', args=(form.cleaned_data['title'],)))
     else:
-        initial_title = "Neue Seite" if resource == '/' else resource.replace('_', ' ') + "/Neue Seite"
-        form = UpdateForm(initial={'title': initial_title})
+        initial_title = "Neue Seite" if page == '/' else page.replace('_', ' ') + "/Neue Seite"
+        form = PageForm(initial={'title': initial_title})
     context = {
-        'resource': resource,
-        'title': resource.replace('_', ' ').split('/')[-1],
+        'page': page,
+        'title': page.replace('_', ' ').split('/')[-1],
         'form': form,
     }
     return render(request, 'docs/create_page.html', context=context)
 
 
 @login_required
-def read_page(request, resource):
-    content = storage.open(resource + '.md').read().decode('utf-8')
+def read_page(request, page):
+    content = storage.open(page + '.md').read().decode('utf-8')
     breadcrumbs = []
-    for name in resource.split('/'):
+    for name in page.split('/'):
         breadcrumbs.append({
             'name': name.replace('_', ' '),
             'url': '/'.join([breadcrumbs[-1]['url'], name]) if breadcrumbs else name,
@@ -67,7 +67,7 @@ def read_page(request, resource):
     })
     breadcrumbs[-1]['is_active'] = True
     context = {
-        'resource': resource,
+        'page': page,
         'breadcrumbs': breadcrumbs,
         'content': content,
     }
@@ -75,29 +75,29 @@ def read_page(request, resource):
 
 
 @login_required
-def update_page(request, resource):
+def update_page(request, page):
     if request.method == 'POST':
-        form = UpdateForm(request.POST)
+        form = PageForm(request.POST)
         if form.is_valid():
-            file = ContentFile(form.cleaned_data['content'], name=resource + '.md')
+            file = ContentFile(form.cleaned_data['content'], name=page + '.md')
             storage.save(name=file.name, content=file)
-            return HttpResponseRedirect(reverse('docs:read_page', args=(resource,)))
+            return HttpResponseRedirect(reverse('docs:read_page', args=(page,)))
     else:
-        content = storage.open(resource + '.md').read().decode('utf-8')
-        form = UpdateForm(initial={'title': resource.replace('_', ' '), 'content': content})
+        content = storage.open(page + '.md').read().decode('utf-8')
+        form = PageForm(initial={'title': page.replace('_', ' '), 'content': content})
     context = {
-        'resource': resource,
-        'title': resource.replace('_', ' ').split('/')[-1],
+        'page': page,
+        'title': page.replace('_', ' ').split('/')[-1],
         'form': form,
     }
     return render(request, 'docs/update_page.html', context=context)
 
 
 @login_required
-def delete_page(request, resource):
+def delete_page(request, page):
     if request.method == 'POST':
-        storage.delete(resource + '.md')
-        messages.add_message(request, messages.SUCCESS, f'Die Seite "{resource}" wurde erfolgreich gelöscht.')
+        storage.delete(page + '.md')
+        messages.add_message(request, messages.SUCCESS, f'Die Seite "{page}" wurde erfolgreich gelöscht.')
         return HttpResponseRedirect(reverse('docs:list_pages'))
     else:
         return HttpResponse(status=204)

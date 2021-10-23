@@ -3,7 +3,7 @@
     <div class="modal-content">
         <div class="box">
             <p class="mb-4">Bitte bestätige, dass du diese Seite wirklich löschen willst.</p>
-            <form method="POST" action="{% url 'docs:delete_page' resource %}">
+            <form method="POST" action="{% url 'docs:delete_page' page %}">
                 {% csrf_token %}
                 <button type="submit" class="button is-medium is-danger is-outlined is-fullwidth">
                     Löschen bestätigen
