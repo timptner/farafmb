@@ -112,6 +112,6 @@ def delete_page(request, page):
     if request.method == 'POST':
         storage.delete(page)
         messages.add_message(request, messages.SUCCESS, f'Die Seite "{page}" wurde erfolgreich gelöscht.')
-        return HttpResponseRedirect(reverse('docs:list_pages'))
+        return HttpResponseRedirect(reverse('docs:index_show_tree'))
     else:
         return HttpResponse(status=204)
