@@ -29,6 +29,24 @@ def list_pages(request):
     return render(request, 'docs/list_pages.html', {'files': files})
 
 
+def create_page(request, resource):
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        if form.is_valid():
+            file = ContentFile(content=form.cleaned_data['content'], name=form.cleaned_data['title'] + '.md')
+            storage.save(name=file.name, content=file)
+            return HttpResponseRedirect(reverse('docs:read_page', args=(form.cleaned_data['title'],)))
+    else:
+        initial_title = "Neue Seite" if resource == '/' else resource.replace('_', ' ') + "/Neue Seite"
+        form = UpdateForm(initial={'title': initial_title})
+    context = {
+        'resource': resource,
+        'title': resource.replace('_', ' ').split('/')[-1],
+        'form': form,
+    }
+    return render(request, 'docs/create_page.html', context=context)
+
+
 def read_page(request, resource):
     content = storage.open(resource + '.md').read().decode('utf-8')
     breadcrumbs = []
