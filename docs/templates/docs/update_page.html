@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <p class="title">{{ title }}</p>
+
+        {% include 'docs/snippet_form.html' %}
+    </div>
+{% endblock %}

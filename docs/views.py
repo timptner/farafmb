@@ -1,8 +1,13 @@
 import os
 
 from django.conf import settings
+from django.core.files.base import ContentFile
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse
 from django_s3_storage.storage import S3Storage
+
+from .forms import UpdateForm
 
 storage = S3Storage(
     aws_region=settings.AWS_REGION,
@@ -44,4 +49,22 @@ def read_page(request, resource):
         'content': content,
     }
     return render(request, 'docs/read_page.html', context=context)
+
+
+def update_page(request, resource):
+    if request.method == 'POST':
+        form = UpdateForm(request.POST)
+        if form.is_valid():
+            file = ContentFile(form.cleaned_data['content'], name=resource + '.md')
+            storage.save(name=file.name, content=file)
+            return HttpResponseRedirect(reverse('docs:read_page', args=(resource,)))
+    else:
+        content = storage.open(resource + '.md').read().decode('utf-8')
+        form = UpdateForm(initial={'title': resource.replace('_', ' '), 'content': content})
+    context = {
+        'resource': resource,
+        'title': resource.replace('_', ' ').split('/')[-1],
+        'form': form,
+    }
+    return render(request, 'docs/update_page.html', context=context)
 
