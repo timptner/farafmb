@@ -12,13 +12,12 @@
             <button id="modal-delete-button" class="button is-danger" data-target="modal-delete" aria-haspopup="true">
                 Seite löschen
             </button>
-            <a class="button is-primary" href="{% url 'docs:create_page' page %}">Neue Seite erstellen</a>
         </div>
 
-        <p class="title">{{ title }}</p>
+        <p class="title">Seite bearbeiten</p>
 
-        {% include 'docs/snippet_form.html' %}
+        {% include 'docs/snippet_form.html' with form=form page=page %}
 
-        {% include 'docs/snippet_delete.html' %}
+        {% include 'docs/snippet_delete.html' with page=page %}
     </div>
 {% endblock %}
