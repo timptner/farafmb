@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
 
-        {% include 'docs/snippet_navigation.html' with obj_list=breadcrumbs %}
+        {% include 'docs/snippet_breadcrumbs.html' with items=breadcrumbs %}
 
         <div class="buttons is-pulled-right">
             <a class="button is-light" href="{% url 'docs:update_page' page %}">Seite bearbeiten</a>
