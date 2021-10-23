@@ -4,6 +4,36 @@
     <div class="container">
         <p class="title">Neue Seite erstellen</p>
 
-        {% include 'docs/snippet_form.html' %}
+        <form method="POST">
+            {% csrf_token %}
+
+            {% include 'forms/snippet_input.html' with field=form.title %}
+
+            {% include 'forms/snippet_textarea.html' with field=form.content %}
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" class="button is-primary">
+                        Speichern
+                    </button>
+                </div>
+                <div class="control">
+                    {% if page == '/' %}
+                        <a class="button is-light" href="{% url 'docs:index_show_tree' %}">
+                            Abbrechen
+                        </a>
+                    {% else %}
+                        <a class="button is-light" href="{% url 'docs:show_tree' page %}">
+                            Abbrechen
+                        </a>
+                    {% endif %}
+                </div>
+                {% for error in form.non_field_errors %}
+                    <p class="help is-danger">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+        </form>
     </div>
 {% endblock %}
