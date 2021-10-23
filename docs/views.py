@@ -37,6 +37,7 @@ def show_tree(request, page):
     prefix = '' if page == '/' else page + '/'
     directories, files = storage.listdir(page)
     context = {
+        'page': page,
         'directories': [(name, prefix + name) for name in directories],
         'files': [(name, prefix + name) for name in files],
         'breadcrumbs': get_breadcrumbs(request, page),
@@ -45,7 +46,8 @@ def show_tree(request, page):
 
 
 @login_required
-def create_page(request, page):
+def create_page(request):
+    page = request.GET.get('page')
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
@@ -57,7 +59,6 @@ def create_page(request, page):
         form = PageForm(initial={'title': initial_title})
     context = {
         'page': page,
-        'title': page.replace('_', ' ').split('/')[-1],
         'form': form,
     }
     return render(request, 'docs/create_page.html', context=context)

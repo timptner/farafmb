@@ -3,6 +3,7 @@
 {% block content %}
     <div class="container is-max-desktop">
         {% include 'docs/snippet_breadcrumbs.html' with items=breadcrumbs %}
+
         <nav class="panel">
             <p class="panel-heading">Verzeichnis</p>
             {% for item in directories %}
@@ -21,6 +22,12 @@
                     {{ item.0 }}
                 </a>
             {% endfor %}
+            <a class="panel-block" href="{% url 'docs:create_page' %}?page={{ page }}">
+                <span class="panel-icon">
+                    <i class="fas fa-plus" aria-hidden="true"></i>
+                </span>
+                Neue Seite erstellen
+            </a>
         </nav>
     </div>
 {% endblock %}
