@@ -2,6 +2,7 @@ import os
 
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.files.base import ContentFile
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -20,6 +21,7 @@ storage = S3Storage(
 )
 
 
+@login_required
 def list_pages(request):
     response = storage.s3_connection.list_objects_v2(Bucket=storage.settings.AWS_S3_BUCKET_NAME)
     files = []
@@ -29,6 +31,7 @@ def list_pages(request):
     return render(request, 'docs/list_pages.html', {'files': files})
 
 
+@login_required
 def create_page(request, resource):
     if request.method == 'POST':
         form = UpdateForm(request.POST)
@@ -47,6 +50,7 @@ def create_page(request, resource):
     return render(request, 'docs/create_page.html', context=context)
 
 
+@login_required
 def read_page(request, resource):
     content = storage.open(resource + '.md').read().decode('utf-8')
     breadcrumbs = []
@@ -70,6 +74,7 @@ def read_page(request, resource):
     return render(request, 'docs/read_page.html', context=context)
 
 
+@login_required
 def update_page(request, resource):
     if request.method == 'POST':
         form = UpdateForm(request.POST)
@@ -88,6 +93,7 @@ def update_page(request, resource):
     return render(request, 'docs/update_page.html', context=context)
 
 
+@login_required
 def delete_page(request, resource):
     if request.method == 'POST':
         storage.delete(resource + '.md')
