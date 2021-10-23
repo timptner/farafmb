@@ -65,9 +65,23 @@ def create_page(request, page):
 
 @login_required
 def read_page(request, page):
+    navigation = []
+    dirs, files = storage.listdir(page)
+    for name in dirs:
+        navigation.append({
+            'name': name,
+            'icon': 'directory',
+            'url': f"{page}/{name}" if page != '/' else name,
+        })
+    for name in files:
+        navigation.append({
+            'name': name,
+            'icon': 'file',
+            'url': f"{page}/{name.rstrip('.md')}" if page != '/' else name.rstrip('.md'),
         })
     context = {
         'page': page,
+        'navigation': navigation,
         'breadcrumbs': get_breadcrumbs(request, page),
         'content': storage.open(page).read().decode('utf-8'),
     }
