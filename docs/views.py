@@ -51,9 +51,10 @@ def create_page(request):
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
-            file = ContentFile(content=form.cleaned_data['content'], name=form.cleaned_data['title'] + '.md')
+            page_ = form.cleaned_data['title'] + '.md'
+            file = ContentFile(content=form.cleaned_data['content'], name=page_)
             storage.save(name=file.name, content=file)
-            return HttpResponseRedirect(reverse('docs:read_page', args=(form.cleaned_data['title'],)))
+            return HttpResponseRedirect(reverse('docs:read_page', args=(page_,)))
     else:
         initial_title = "Neue Seite" if page == '/' else page.replace('_', ' ') + "/Neue Seite"
         form = PageForm(initial={'title': initial_title})
