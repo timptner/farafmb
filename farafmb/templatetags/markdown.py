@@ -14,7 +14,7 @@ def render_html(value, autoescape=True):
     """Converts markdown styled text to valid html"""
     # We need to process markdown before sanitizing html
     # Otherwise some elements (e.g. blockquotes) will break
-    html = markdown.markdown(value, extensions=['toc', 'sane_lists', 'def_list'])
+    html = markdown.markdown(value, extensions=['toc', 'sane_lists', 'def_list', 'fenced_code'])
     if autoescape:
         safe_html = bleach.clean(
             html,
@@ -24,6 +24,7 @@ def render_html(value, autoescape=True):
             ],
             attributes={
                 'a': ['href', 'title'],
+                'code': ['class'],
                 'div': ['class'],
                 'h1': ['id'],
                 'h2': ['id'],
@@ -32,6 +33,7 @@ def render_html(value, autoescape=True):
                 'h5': ['id'],
                 'h6': ['id'],
                 'img': ['alt', 'src', 'title'],
+                'pre': ['id'],
             },
         )
     else:
