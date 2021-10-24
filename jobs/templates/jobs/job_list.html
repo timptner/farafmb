@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load extra_filters %}
+{% load markdown %}
 
 {% block content %}
     <div class="container">
@@ -41,7 +41,7 @@
                         {% endif %}
                         <div class="card-content">
                             <div class="content">
-                                {{ job.content|markdown }}
+                                {{ job.content|render_html }}
                             </div>
                         </div>
                         <footer class="card-footer is-size-7">

@@ -69,7 +69,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
             'libraries': {
-                'custom_tags': 'farafmb.templatetags.custom_tags',
+                'markdown': 'farafmb.templatetags.markdown',
             },
         },
     },

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% load custom_tags %}
+{% load markdown %}
 
 {% block content %}
 <div class="container">
     <p class="title">Who we are</p>
 
     <div class="content">
-        {{ text_about|markdown }}
+        {{ text_about|render_html }}
     </div>
 
     <div class="container is-max-desktop">

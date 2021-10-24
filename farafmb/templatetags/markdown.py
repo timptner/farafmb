@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.filter
-def markdown(value):
+def render_html(value):
     """Converts markdown styled text to valid html"""
     esc = conditional_escape(value)
     result = render_markdown(esc)
