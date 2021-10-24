@@ -14,13 +14,14 @@ def render_html(value, autoescape=True):
     """Converts markdown styled text to valid html"""
     # We need to process markdown before sanitizing html
     # Otherwise some elements (e.g. blockquotes) will break
-    html = markdown.markdown(value, extensions=['toc', 'sane_lists', 'def_list', 'fenced_code', 'footnotes', 'tables'])
+    html = markdown.markdown(value, extensions=['toc', 'sane_lists', 'def_list', 'fenced_code', 'footnotes',
+                                                'tables', 'markdown_del_ins'])
     if autoescape:
         safe_html = bleach.clean(
             html,
             tags=[
-                'a', 'blockquote', 'br', 'code', 'dd', 'div', 'dl', 'dt', 'em', 'hr', 'h1', 'h2', 'h3',
-                'h4', 'h5', 'h6', 'img', 'li', 'ol', 'p', 'pre', 'strong', 'sup', 'table', 'tbody', 'td', 'th',
+                'a', 'blockquote', 'br', 'code', 'dd', 'del', 'div', 'dl', 'dt', 'em', 'hr', 'h1', 'h2', 'h3',
+                'h4', 'h5', 'h6', 'img', 'ins', 'li', 'ol', 'p', 'pre', 'strong', 'sup', 'table', 'tbody', 'td', 'th',
                 'thead', 'tr', 'ul',
             ],
             attributes={
