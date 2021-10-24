@@ -19,3 +19,7 @@
         margin: 0 !important;
     }
 }
+
+.checklist {
+    list-style-type: none !important;
+}

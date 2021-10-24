@@ -8,6 +8,7 @@ django-s3-storage==0.13.4
 gunicorn==20.1.0
 jmespath==0.10.0
 Markdown==3.3.3
+markdown-checklist==0.4.3
 markdown-del-ins==1.0.0
 packaging==20.7
 Pillow==8.3.2
