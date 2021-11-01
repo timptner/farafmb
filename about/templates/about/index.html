@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load markdown %}
+
+{% block content %}
+    <div class="container is-max-desktop">
+        <p class="title">Who we are</p>
+
+        <div class="content">
+            {{ text|render_html }}
+        </div>
+
+        {% if image %}
+            <figure class="image">
+                <img src="{{ image }}" alt="Image with all team members">
+            </figure>
+        {% endif %}
+    </div>
+{% endblock %}
