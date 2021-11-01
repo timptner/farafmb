@@ -26,6 +26,7 @@ ADMINS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'about',
     'blog',
     'docs',
     'excursions',
