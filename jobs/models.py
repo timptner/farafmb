@@ -23,7 +23,8 @@ def user_directory_path(instance: File, filename: str) -> str:
 
 class Job(models.Model):
     title = models.CharField(max_length=250)
-    content = models.TextField()
+    slug = models.SlugField(unique=True, editable=False)
+    desc = models.TextField('description')
     file = models.FileField(upload_to=user_directory_path, validators=[validate_file_extension], blank=True, null=True)
     expired_on = models.DateTimeField(blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -44,3 +45,18 @@ class Job(models.Model):
         if not self.expired_on:
             return False
         return self.expired_on < timezone.now()
+
+
+def job_directory_path(instance, filename):
+    return f'jobs/{instance.job.slug}/{filename}'
+
+
+class Document(models.Model):
+    job = models.ForeignKey('Job', on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    file = models.FileField(upload_to=job_directory_path)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
