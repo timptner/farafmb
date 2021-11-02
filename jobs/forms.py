@@ -1,6 +1,9 @@
-from django import forms
+import secrets
 
-from .models import Job
+from django import forms
+from django.core.exceptions import ValidationError
+
+from .models import Job, Document
 
 
 class JobForm(forms.ModelForm):
@@ -16,3 +19,16 @@ class JobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ('title', 'slug', 'desc', 'file', 'expired_on')
+
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ('job', 'title', 'file')
+
+    def clean_file(self):
+        data = self.cleaned_data['file']
+        if not data.name.endswith('.pdf'):
+            raise ValidationError("Es sind nur Dokumente des Datei-Typs PDF erlaubt.")
+        data.name = secrets.token_urlsafe(5) + '.pdf'
+        return data
