@@ -15,3 +15,5 @@ class JobAdmin(admin.ModelAdmin):
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     form = DocumentForm
+    list_display = ('title', 'created_on')
+    list_filter = ['job']
