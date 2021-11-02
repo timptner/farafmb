@@ -11,12 +11,15 @@
             findet ihr ebenfalls diverse Angebote für Abschlussarbeiten, HiWi-Stellen, Praktika oder Jobangebote für
             Absolvent:innen.
         </div>
+
         <div class="columns is-multiline is-centered">
+
             {% for job in object_list %}
                 <div class="column is-half">
                     <div class="card">
                         <header class="card-header">
-                            <p class="card-header-title">{{ job.title }}</p>
+                            <p class="card-header-title is-size-5">{{ job.title }}</p>
+
                             {% if job.file %}
                                 <a href="{{ job.file.url }}" target="_blank" class="card-header-icon"
                                    aria-label="show document">
@@ -29,6 +32,7 @@
                                 </a>
                             {% endif %}
                         </header>
+
                         {% if job.file %}
                             <p class="help has-text-right is-hidden-desktop pr-4">
                             <span class="icon-text">
@@ -39,11 +43,27 @@
                             </span>
                             </p>
                         {% endif %}
+
                         <div class="card-content">
                             <div class="content">
                                 {{ job.desc|render_html }}
                             </div>
+
+                            {% if job.document_set.exists %}
+                                <article class="panel">
+                                    <p class="panel-heading is-size-6">Dokumente</p>
+                                    {% for document in job.document_set.all %}
+                                        <a class="panel-block" href="{{ document.file.url }}">
+                                            <span class="panel-icon">
+                                                <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                                            </span>
+                                            {{ document.title }}
+                                        </a>
+                                    {% endfor %}
+                                </article>
+                            {% endif %}
                         </div>
+
                         <footer class="card-footer is-size-7">
                             <p class="card-footer-item">
                                 <span>Verfügbar seit {{ job.created_on }}</span>
@@ -63,6 +83,7 @@
                     </div>
                 </div>
             {% endfor %}
+
         </div>
     </div>
 {% endblock %}
