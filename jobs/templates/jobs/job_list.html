@@ -12,6 +12,20 @@
             Absolvent:innen.
         </div>
 
+        <div class="buttons">
+            {% for group in groups %}
+                {% if request.GET.group == group.0 %}
+                    <a class="button is-active" href="?group={{ group.0 }}">{{ group.1 }}</a>
+                {% else %}
+                    <a class="button" href="?group={{ group.0 }}">{{ group.1 }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if request.GET.group %}
+                <a class="button is-text" href="{% url 'jobs:job_list' %}">Filter löschen</a>
+            {% endif %}
+        </div>
+
         <div class="columns is-multiline is-centered">
 
             {% for job in object_list %}
