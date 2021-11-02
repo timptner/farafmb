@@ -8,6 +8,7 @@ from .models import Job, Document
 class JobAdmin(admin.ModelAdmin):
     form = JobForm
     list_display = ('title', 'is_expired', 'created_on')
+    list_filter = ['group']
     date_hierarchy = 'created_on'
     search_fields = ['title', 'content']
 

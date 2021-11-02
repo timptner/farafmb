@@ -22,6 +22,17 @@ def user_directory_path(instance: File, filename: str) -> str:
 
 
 class Job(models.Model):
+    JOB = 'job'
+    THESIS = 'thesis'
+    INTERNSHIP = 'internship'
+    SIDELINE = 'sideline'
+    GROUP_CHOICES = [
+        (JOB, "Job"),
+        (THESIS, "Abschlussarbeit"),
+        (INTERNSHIP, "Praktikum"),
+        (SIDELINE, "Nebentätigkeit"),
+    ]
+    group = models.CharField(max_length=20, choices=GROUP_CHOICES)
     title = models.CharField(max_length=250)
     slug = models.SlugField(unique=True)
     desc = models.TextField('description')
