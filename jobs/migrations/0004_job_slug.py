@@ -1,12 +1,4 @@
 from django.db import migrations, models
-from django.utils.text import slugify
-
-
-def set_unique_slug(apps, schema_editor):
-    Job = apps.get_model('jobs', 'Job')
-    for job in Job.objects.all():
-        job.slug = slugify(job.title)
-        job.save()
 
 
 class Migration(migrations.Migration):
@@ -17,12 +9,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='job',
-            name='slug',
-            field=models.SlugField(null=True),
-        ),
-        migrations.RunPython(set_unique_slug, reverse_code=migrations.RunPython.noop),
-        migrations.AlterField(
             model_name='job',
             name='slug',
             field=models.SlugField(unique=True),
