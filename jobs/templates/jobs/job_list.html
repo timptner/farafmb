@@ -33,30 +33,7 @@
                     <div class="card">
                         <header class="card-header">
                             <p class="card-header-title is-size-5">{{ job.title }}</p>
-
-                            {% if job.file %}
-                                <a href="{{ job.file.url }}" target="_blank" class="card-header-icon"
-                                   aria-label="show document">
-                                    <span class="icon">
-                                        <i class="fas fa-file-pdf" aria-hidden="true"></i>
-                                    </span>
-                                    <span class="is-hidden-touch">
-                                        Datei anzeigen
-                                    </span>
-                                </a>
-                            {% endif %}
                         </header>
-
-                        {% if job.file %}
-                            <p class="help has-text-right is-hidden-desktop pr-4">
-                            <span class="icon-text">
-                                <span>Dokument anzeigen</span>
-                                <span class="icon">
-                                    <i class="fas fa-arrow-up"></i>
-                                </span>
-                            </span>
-                            </p>
-                        {% endif %}
 
                         <div class="card-content">
                             <div class="content">

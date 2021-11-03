@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=250)),
                 ('description', models.TextField()),
-                ('file', models.FileField(blank=True, null=True, upload_to=jobs.models.user_directory_path, validators=[jobs.models.validate_file_extension])),
+                ('file', models.FileField(blank=True, null=True, upload_to='jobs/')),
                 ('expired_on', models.DateTimeField(blank=True, null=True)),
                 ('created_on', models.DateTimeField(auto_now_add=True)),
                 ('updated_on', models.DateTimeField(auto_now=True)),

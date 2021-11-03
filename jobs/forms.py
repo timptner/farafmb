@@ -18,7 +18,7 @@ class JobForm(forms.ModelForm):
 
     class Meta:
         model = Job
-        fields = ('group', 'title', 'slug', 'desc', 'file', 'expired_on')
+        fields = ('group', 'title', 'slug', 'desc', 'expired_on')
 
 
 class DocumentForm(forms.ModelForm):
