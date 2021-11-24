@@ -28,7 +28,6 @@ ADMINS = [
 INSTALLED_APPS = [
     'about',
     'blog',
-    'docs',
     'excursions',
     'jobs',
     'meetings',
