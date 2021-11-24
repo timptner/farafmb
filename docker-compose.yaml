@@ -18,8 +18,8 @@ services:
       - DEFAULT_EMAIL=${DEFAULT_EMAIL}
       - SERVER_EMAIL=${SERVER_EMAIL}
     volumes:
-      - ./docker/farafmb/media:/app/media
-      - ./docker/farafmb/static:/app/static
+      - ./docker/farafmb/media:/app/docker/farafmb/media
+      - ./docker/farafmb/static:/app/docker/farafmb/static
     ports:
       - "8000:8000"
     depends_on:

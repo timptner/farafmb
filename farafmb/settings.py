@@ -137,9 +137,9 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'docker' / 'farafmb' / 'media'
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'docker' / 'farafmb' / 'static'
 
 
 # E-Mail
