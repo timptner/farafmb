@@ -1,5 +1,7 @@
+.idea/
+.git*
 .env
-.github
-db.sqlite3
-media
-venv
+venv/
+Dockerfile
+.dockerignore
+docker*
