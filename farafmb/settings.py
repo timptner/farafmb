@@ -11,8 +11,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
 DEBUG = os.getenv('DEBUG', "False") == "True"
 
-DEVELOPMENT_MODE = os.getenv('DEVELOPMENT_MODE', "False") == "True"
-
 ALLOWED_HOSTS = [
     "farafmb.de",
     "www.farafmb.de",
@@ -78,23 +76,15 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
-if DEVELOPMENT_MODE is True:
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.environ['DB_HOST'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
     }
-
-elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
-
-    if os.getenv('DATABASE_URL') is None:
-        raise Exception("DATABASE_URL environment variable not defined")
-
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ['DATABASE_URL']),
-    }
+}
 
 
 # Authentication
