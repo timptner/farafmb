@@ -21,7 +21,7 @@ services:
       - ./docker/farafmb/media:/app/docker/farafmb/media
       - ./docker/farafmb/static:/app/docker/farafmb/static
     ports:
-      - "8000:8000"
+      - "${DOCKER_PORT:-127.0.0.1:8000}:8000"
     depends_on:
       - farafmb_db
     restart: unless-stopped
