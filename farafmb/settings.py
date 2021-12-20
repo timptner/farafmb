@@ -94,7 +94,6 @@ DATABASES = {
 
 # Authentication
 
-LOGIN_URL = '/admin/login/'
 AUTHENTICATION_BACKENDS = [
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
@@ -114,6 +113,7 @@ OIDC_OP_TOKEN_ENDPOINT = "https://auth.faking.cool/oauth2/token"
 
 OIDC_OP_USER_ENDPOINT = "https://auth.faking.cool/oauth2/userinfo"
 
+# LOGIN_URL = '/admin/login/'
 
 LOGIN_REDIRECT_URL = '/admin/'
 
