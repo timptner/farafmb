@@ -5,3 +5,8 @@ services:
       - DEBUG=True
     volumes:
       - .:/app
+    ports:
+      - "8000:8000"
+  farafmb_db:
+    ports:
+      - "5432:5432"
