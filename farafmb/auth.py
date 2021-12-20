@@ -20,6 +20,7 @@ class CustomOIDCAuthenticationBackend(OIDCAuthenticationBackend):
             email=claims.get('email'),
             first_name=claims.get('given_name'),
             last_name=claims.get('family_name'),
+            is_staff=True,
         )
         return user
 
