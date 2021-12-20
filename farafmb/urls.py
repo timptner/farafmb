@@ -12,6 +12,7 @@ urlpatterns = [
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
     path('office-hours/', include('office_hours.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls')),
 ]
 
 if settings.DEBUG is True:

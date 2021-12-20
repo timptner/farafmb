@@ -53,11 +53,11 @@
                 </div>
 
                 {% if not user.is_authenticated %}
-                    <a class="navbar-item" href="{% url 'admin:login' %}">Login</a>
+                    <a class="navbar-item" href="{% url 'oidc_authentication_init' %}">Login</a>
                 {% else %}
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
-                            {{ user.first_name }}
+                            {{ user.first_name|default:"Benutzer" }}
                         </a>
 
                         <div class="navbar-dropdown is-right">
@@ -66,7 +66,10 @@
 
                             <hr class="navbar-divider">
 
-                            <a class="navbar-item" href="{% url 'admin:logout' %}">Logout</a>
+                            <form action="{% url 'oidc_logout' %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" class="navbar-item" value="Abmelden">
+                            </form>
                         </div>
                     </div>
                 {% endif %}
