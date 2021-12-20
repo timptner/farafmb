@@ -95,7 +95,7 @@ DATABASES = {
 # Authentication
 
 AUTHENTICATION_BACKENDS = [
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'farafmb.auth.CustomOIDCAuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
