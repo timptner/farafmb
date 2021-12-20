@@ -24,7 +24,16 @@ class ProfileInline(admin.StackedInline):
 
 class UserAdmin(BaseUserAdmin):
     inlines = (ProfileInline,)
-    actions = ['send_password_reset_mail']
+    actions = ['remove_password']
+
+    @admin.action(description="Set unusable password for selected users")
+    def remove_password(self, request, queryset):
+        for user in queryset:
+            user.set_unusable_password()
+            user.save()
+        self.message_user(request,
+                          "Successfully set unusable passwords for '%s' users." % len(queryset),
+                          messages.SUCCESS)
 
     @admin.action(description="Send selected users a new strong password")
     def send_password_reset_mail(self, request, queryset):
