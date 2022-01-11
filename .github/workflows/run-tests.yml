@@ -42,11 +42,10 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       env:
-        DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        SQL_HOST: localhost
-        SQL_USER: postgres
-        SQL_PASSWORD: postgres
-        SQL_NAME: postgres
+        DB_HOST: localhost
+        DB_NAME: postgres
+        DB_USER: postgres
+        DB_PASSWORD: secret
       run: |
         python manage.py test --noinput
