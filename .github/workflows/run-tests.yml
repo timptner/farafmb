@@ -46,7 +46,7 @@ jobs:
         DB_HOST: localhost
         DB_NAME: postgres
         DB_USER: postgres
-        DB_PASSWORD: secret
+        DB_PASSWORD: postgres
         OIDC_CLIENT_ID: client
         OIDC_CLIENT_SECRET: secret
       run: |
