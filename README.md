@@ -18,6 +18,21 @@ The website makes use of [Django](https://www.djangoproject.com/) and is styled 
 
 ## Installation
 
+### Development
+
+To develop in a local environment it is best to use [Docker](https://www.docker.com/) since we use a containerized 
+setup in production. Follow the steps below to set up your dev environment.
+
+1. Create a copy of `.env.example` and name it `.env`. Fill out all empty values and uncomment the last line.
+2. Create a copy of `docker-compose.override.yaml.example` and name it `docker-compose.override.yaml`.
+
+Start your local set up via `docker compose up`. If you run the startup command for the first time on a new machine you 
+will need to migrate the database. Therefor you can execute typical django commands (like `python manage.py migrate`) 
+with `docker compose exec farafmb <command>`. If you need an interactive shell from inside the container you can run 
+`docker compose exec farafmb bash`.
+
+### Production
+
 It's strongly recommended to read the [documentation](https://docs.djangoproject.com/en/dev/) for Django! The following 
 instructions are focused on a local installation to set up a development environment. Installation in a production 
 environment should be handled by an advanced or professional sys-admin.
