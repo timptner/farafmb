@@ -6,10 +6,10 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set working directory
-WORKDIR /srv/app
+WORKDIR /usr/srv/app
 
 # Copy source code into container
-COPY . /srv/app
+COPY . /usr/srv/app
 
 # Install dependencies
 RUN python -m pip install --upgrade pip
