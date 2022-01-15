@@ -23,7 +23,7 @@ before_install:
   - docker-compose config
   - docker-compose up -d --build
   - docker ps -a
-  - docker exec farafmb /bin/sh -c "python manage.py test --noinput"
+  - docker exec -it farafmb /bin/sh
 
 script:
   - python manage.py test --noinput
