@@ -1,7 +1,10 @@
 .idea/
-.git*
+.git/
+.github/
+.gitignore
 .env
 venv/
 Dockerfile
 .dockerignore
-docker*
+docker-compose.*
+__pycache__/
