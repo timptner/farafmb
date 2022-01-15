@@ -1,8 +1,8 @@
 # Fachschaftsrat Maschinenbau
 
-[![Travis CI](https://img.shields.io/travis/com/aiventimptner/farafmb.de/main)]()
+[![Github Actions](https://img.shields.io/github/workflow/status/aiventimptner/farafmb.de/build)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml)
 [![License](https://img.shields.io/github/license/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb/blob/main/LICENSE)
-[![Code size](https://img.shields.io/github/languages/code-size/aiventimptner/farafmb)]()
+[![Code size](https://img.shields.io/github/languages/code-size/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb.de)
 
 This repository contains the source code for the homepage of [Fachschaftsrat Maschinenbau](https://farafmb.de) 
 (FaRaFMB). FaRaFMB is the student representative for the faculty of mechanical engineering at the 
@@ -101,4 +101,4 @@ python manage.py runserver
 
 ## License
 
-[MIT](https://github.com/aiventimptner/farafmb/blob/main/LICENSE)
+[MIT](https://github.com/aiventimptner/farafmb.de/blob/main/LICENSE)
