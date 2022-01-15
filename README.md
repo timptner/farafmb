@@ -1,20 +1,14 @@
 # Fachschaftsrat Maschinenbau
 
-[![CI Test](https://github.com/aiventimptner/farafmb.de/actions/workflows/test.yml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yml)
-[![CD Build](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/test.yml)
-[![Website status](https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Ffarafmb.de)](https://farafmb.de)
-[![Mozilla Observatory](https://img.shields.io/mozilla-observatory/grade/farafmb.de?publish)](https://observatory.mozilla.org/analyze/farafmb.de)
-[![Deployment status](https://img.shields.io/github/deployments/aiventimptner/farafmb/farafmb)](https://github.com/aiventimptner/farafmb/deployments/activity_log?environment=farafmb)
+![Travis CI](https://img.shields.io/travis/com/aiventimptner/farafmb.de/main)
 [![License](https://img.shields.io/github/license/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb/blob/main/LICENSE)
-[![Discord](https://img.shields.io/discord/780487319936303114)](https://discord.gg/m9SutXWdnc)
-[![Last commit](https://img.shields.io/github/last-commit/aiventimptner/farafmb/main)](https://github.com/aiventimptner/farafmb/commits/main)
 ![Code size](https://img.shields.io/github/languages/code-size/aiventimptner/farafmb)
 
 This repository contains the source code for the homepage of [Fachschaftsrat Maschinenbau](https://farafmb.de) 
 (FaRaFMB). FaRaFMB is the student representative for the faculty of mechanical engineering at the 
-[Otto-von-Guericke-University Magdeburg](https://www.ovgu.de).
+[Otto von Guericke University Magdeburg](https://www.ovgu.de).
 
-The website makes use of [Django](https://www.djangoproject.com/) and is styled with [Bulma](https://bulma.io/).
+The website is build with [Django](https://www.djangoproject.com/) and uses [Bulma](https://bulma.io/) for styling.
 
 ## Installation
 
