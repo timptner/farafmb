@@ -1,6 +1,6 @@
 # Fachschaftsrat Maschinenbau
 
-[![Github Actions](https://img.shields.io/github/workflow/status/aiventimptner/farafmb.de/build)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml)
+[![Github Actions](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml)
 [![License](https://img.shields.io/github/license/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb/blob/main/LICENSE)
 [![Code size](https://img.shields.io/github/languages/code-size/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb.de)
 
