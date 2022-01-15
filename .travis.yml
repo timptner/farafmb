@@ -5,8 +5,11 @@ python:
 services:
   - docker
 
-install:
-  - pip install -r requirements.txt
+before_install:
+  - docker build -t timptner/farafmb .
+  - docker run -d timptner/farafmb
+  - docker ps -a
+  - docker run timptner/farafmb /bin/sh -c "python manage.py test --noinput"
 
 script:
-  - docker-compose up --rm -c "python manage.py test --noinput"
+  - python manage.py test --noinput
