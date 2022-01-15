@@ -6,16 +6,17 @@ services:
   - docker
 
 env:
-  - SECRET_KEY=secret
-  - DB_NAME=farafmb
-  - DB_USER=farafmb
-  - DB_PASSWORD=secret
-  - EMAIL_HOST=localhost
-  - EMAIL_PORT=25
-  - EMAIL_USER=farafmb
-  - EMAIL_PASSWORD=secret
-  - DEFAULT_EMAIL=noreply@example.com
-  - SERVER_EMAIL=noreply@example.com
+  global:
+    - SECRET_KEY=secret
+    - DB_NAME=farafmb
+    - DB_USER=farafmb
+    - DB_PASSWORD=secret
+    - EMAIL_HOST=localhost
+    - EMAIL_PORT=25
+    - EMAIL_USER=farafmb
+    - EMAIL_PASSWORD=secret
+    - DEFAULT_EMAIL="noreply@example.com"
+    - SERVER_EMAIL="noreply@example.com"
 
 before_install:
   - docker-compose --version
