@@ -1,0 +1,12 @@
+language: python
+python:
+  - "3.9"
+
+services:
+  - docker
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - docker-compose up --rm -c "python manage.py test --noinput"
