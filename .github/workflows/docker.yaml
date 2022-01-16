@@ -23,16 +23,9 @@ jobs:
           EMAIL_PASSWORD: secret
           DEFAULT_EMAIL: noreply@example.org
           SERVER_EMAIL: noreply@example.org
-          MEDIA_DIR: ../docker/volumes/media
-          STATIC_DIR: ../docker/volumes/static
-          DATABASE_DIR: ../docker/volumes/database
         run: |
-          echo $PWD
-          ls -al
-          ls -al ..
           docker-compose --version
           docker-compose up -d
-          docker images -a
-          docker ps -a
+          docker images
+          docker ps
           docker exec farafmb python manage.py test --noinput
-          docker-compose down

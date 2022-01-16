@@ -4,6 +4,7 @@
 .gitignore
 .env
 venv/
+docker/
 Dockerfile
 .dockerignore
 docker-compose.*

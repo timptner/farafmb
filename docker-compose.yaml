@@ -19,8 +19,8 @@ services:
       - DEFAULT_EMAIL=${DEFAULT_EMAIL}
       - SERVER_EMAIL=${SERVER_EMAIL}
     volumes:
-      - ${MEDIA_DIR:-./media}:/home/farafmb/media
-      - ${STATIC_DIR:-./static}:/home/farafmb/static
+      - ${MEDIA_DIR:-./docker/volumes/media}:/home/farafmb/media
+      - ${STATIC_DIR:-./docker/volumes/static}:/home/farafmb/static
     ports:
       - "${DOCKER_PORT:-127.0.0.1:5000}:5000"
     depends_on:
@@ -34,5 +34,5 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ${DATABASE_DIR:-./database}:/var/lib/postgresql/data
+      - ${DATABASE_DIR:-./docker/volumes/database}:/var/lib/postgresql/data
     restart: unless-stopped
