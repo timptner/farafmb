@@ -1,8 +1,8 @@
 # Fachschaftsrat Maschinenbau
 
-[![Github Actions](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml/badge.svg)](https://github.com/aiventimptner/farafmb.de/actions/workflows/build.yaml)
-[![License](https://img.shields.io/github/license/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb/blob/main/LICENSE)
-[![Code size](https://img.shields.io/github/languages/code-size/aiventimptner/farafmb)](https://github.com/aiventimptner/farafmb.de)
+[![Build](https://github.com/timptner/farafmb.de/actions/workflows/build.yaml/badge.svg)](https://github.com/timptner/farafmb.de/actions/workflows/build.yaml)
+[![License](https://img.shields.io/github/license/timptner/farafmb)](https://github.com/timptner/farafmb/blob/main/LICENSE)
+[![Code size](https://img.shields.io/github/languages/code-size/timptner/farafmb)](https://github.com/timptner/farafmb.de)
 
 This repository contains the source code for the homepage of [Fachschaftsrat Maschinenbau](https://farafmb.de) 
 (FaRaFMB). FaRaFMB is the student representative for the faculty of mechanical engineering at the 
