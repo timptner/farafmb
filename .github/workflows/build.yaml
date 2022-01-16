@@ -1,4 +1,4 @@
-name: Publish new image
+name: Build
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: farafmb
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
 
     permissions:
