@@ -1,12 +1,8 @@
 services:
   farafmb:
-    command: python manage.py runserver 0.0.0.0:8000
+    build: .
+    command: "python manage.py runserver 0.0.0.0:5000"
     environment:
       - DEBUG=True
     volumes:
-      - .:/app
-    ports:
-      - "8000:8000"
-  farafmb_db:
-    ports:
-      - "5432:5432"
+      - .:/home/farafmb/code

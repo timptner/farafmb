@@ -1,8 +1,7 @@
 version: "3.9"
 services:
   farafmb:
-    build: .
-    image: timptner/farafmb
+    image: ghcr.io/timptner/farafmb
     container_name: farafmb
     environment:
       - SECRET_KEY=${SECRET_KEY}
