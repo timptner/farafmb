@@ -35,6 +35,7 @@ jobs:
           docker-compose up --build -d
           sleep 10
           docker ps
+          docker images
           docker-compose logs
       - name: Run tests
         run: |
@@ -55,7 +56,7 @@ jobs:
           # Label with version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && (VERSION=$(echo $VERSION) | sed -e 's/^v//')
-          [ "$VERSION" == "master" ] && VERSION=latest
+          [ "$VERSION" == "main" ] && VERSION=latest
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
