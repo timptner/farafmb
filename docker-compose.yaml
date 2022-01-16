@@ -3,7 +3,6 @@ services:
   farafmb:
     build: .
     image: timptner/farafmb
-    command: gunicorn farafmb.wsgi:application --bind 0.0.0.0:8000
     container_name: farafmb
     environment:
       - SECRET_KEY=${SECRET_KEY}
@@ -20,10 +19,10 @@ services:
       - DEFAULT_EMAIL=${DEFAULT_EMAIL}
       - SERVER_EMAIL=${SERVER_EMAIL}
     volumes:
-      - ./docker/farafmb/media:/usr/srv/app/docker/farafmb/media
-      - ./docker/farafmb/static:/ust/srv/app/docker/farafmb/static
+      - ${MEDIA_DIR:-./media}:/home/farafmb/media
+      - ${STATIC_DIR:-./static}:/home/farafmb/static
     ports:
-      - "${DOCKER_PORT:-127.0.0.1:8000}:8000"
+      - "${DOCKER_PORT:-127.0.0.1:5000}:5000"
     depends_on:
       - farafmb_db
     restart: unless-stopped
@@ -35,5 +34,5 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./docker/farafmb_db:/var/lib/postgresql/data
+      - ${DATABASE_DIR:-./database}:/var/lib/postgresql/data
     restart: unless-stopped

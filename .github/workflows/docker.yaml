@@ -1,0 +1,37 @@
+name: Docker
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Init docker-compose
+        env:
+          SECRET_KEY: secret
+          DB_NAME: farafmb
+          DB_USER: farafmb
+          DB_PASSWORD: secret
+          OIDC_CLIENT_ID: client
+          OIDC_CLIENT_SECRET: secret
+          EMAIL_HOST: localhost
+          EMAIL_PORT: 25
+          EMAIL_USER: farafmb
+          EMAIL_PASSWORD: secret
+          DEFAULT_EMAIL: noreply@example.org
+          SERVER_EMAIL: noreply@example.org
+          MEDIA_DIR: /docker/volumes/media
+          STATIC_DIR: /docker/volumes/static
+          DATABASE_DIR: /docker/volumes/database
+        run: |
+          echo $PWD
+          ls -al
+          docker-compose --version
+          docker-compose up -d
+          docker images -a
+          docker ps -a
+          docker exec timptner/farafmb python manage.py test --noinput
+          docker-compose down
