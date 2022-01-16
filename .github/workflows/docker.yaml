@@ -1,6 +1,13 @@
 name: Docker
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: farafmb
 
 jobs:
   build:
@@ -9,7 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Setup docker-compose
+      - name: Set up docker-compose
         env:
           SECRET_KEY: secret
           DB_NAME: farafmb
@@ -24,10 +31,23 @@ jobs:
           DEFAULT_EMAIL: noreply@example.org
           SERVER_EMAIL: noreply@example.org
         run: |
-          docker-compose --version
-          docker-compose up -d
-          docker images
-          docker ps
-      - name: Run tests
+          docker-compose up --build
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}"
+      - name: Push image
         run: |
-          docker exec farafmb python manage.py test --noinput
+          IMAGE_ID=${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          # Make image id lower case
+          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+          # Label with version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION) | sed -e 's/^v//')
+          [ "$VERSION" == "master" ] && VERSION=latest
+          echo IMAGE_ID=$IMAGE_ID
+          echo VERSION=$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:$VERSION
