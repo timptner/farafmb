@@ -33,10 +33,6 @@ jobs:
         run: |
           cp docker-compose.override.yaml.example docker-compose.override.yaml
           docker-compose up --build -d
-          sleep 10
-          docker ps
-          docker images
-          docker-compose logs
       - name: Run tests
         run: |
           docker exec ${{ env.IMAGE_NAME }} python manage.py migrate --no-input
@@ -59,5 +55,4 @@ jobs:
           [ "$VERSION" == "main" ] && VERSION=latest
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
