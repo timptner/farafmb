@@ -28,4 +28,6 @@ jobs:
           docker-compose up -d
           docker images
           docker ps
+          docker image prune -f
+          docker images
           docker exec farafmb python manage.py test --noinput
