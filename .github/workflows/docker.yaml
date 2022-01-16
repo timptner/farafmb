@@ -33,6 +33,8 @@ jobs:
         run: |
           cp docker-compose.override.yaml.example docker-compose.override.yaml
           docker-compose up --build -d
+          sleep 60
+          docker-compose logs
       - name: Run tests
         run: |
           docker exec ${{ env.IMAGE_NAME }} python manage.py migrate --no-input
