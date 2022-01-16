@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Init docker-compose
+      - name: Setup docker-compose
         env:
           SECRET_KEY: secret
           DB_NAME: farafmb
@@ -28,6 +28,6 @@ jobs:
           docker-compose up -d
           docker images
           docker ps
-          docker image prune -f
-          docker images
+      - name: Run tests
+        run: |
           docker exec farafmb python manage.py test --noinput
