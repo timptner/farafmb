@@ -1,3 +1,6 @@
+media/
+static/
+
 # Docker volumes / compose
 docker/
 docker-compose.override.yaml

@@ -1,3 +1,4 @@
+import dj_database_url
 import os
 import sys
 
@@ -44,6 +45,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,16 +85,7 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.environ['DB_HOST'],
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASSWORD'],
-    }
-}
-
+DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
 
 # Authentication
 
@@ -161,9 +156,9 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = BASE_DIR / 'docker' / 'volumes' / 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_ROOT = BASE_DIR / 'docker' / 'volumes' / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
 
 # E-Mail
