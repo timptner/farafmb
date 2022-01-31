@@ -1,21 +1,13 @@
-name: Build
+name: Test & Deploy
 
 on:
   push:
     branches:
       - main
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: farafmb
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
 
     strategy:
       max-parallel: 4
@@ -56,10 +48,14 @@ jobs:
       - name: Run tests
         env:
           SECRET_KEY: secret
-          DATABASE_URL: postgres://${{ env.DB_USER }}:${{ env.DB_PASSWORD }}@localhost:5432/${{ env.DB_NAME }}
-          OIDC_CLIENT_ID: client
-          OIDC_CLIENT_SECRET: secret
+          DB_HOST: localhost:5432
+          DB_NAME: ${{ env.DB_NAME }}
+          DB_USER: ${{ env.DB_USER }}
+          DB_PASSWORD: ${{ env.DB_PASSWORD }}
         run: |
           python manage.py migrate --no-input
           python manage.py collectstatic --no-input
           python manage.py test --no-input
+      - name: Deploy
+        run: |
+          echo "SSH into server && git pull"
