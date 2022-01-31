@@ -1,20 +1,17 @@
-import dj_database_url
 import os
-import sys
 
-from django.core.management.utils import get_random_secret_key
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
+SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = os.getenv('DEBUG', "False") == "True"
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    "farafmb.de",
-    "www.farafmb.de",
-] + os.getenv('ALLOWED_HOSTS', "127.0.0.1,localhost").split(',')
+    'farafmb.de',
+    'www.farafmb.de',
+] + os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
 
 ADMINS = [
     ('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de'),
@@ -45,9 +42,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,7 +79,15 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
-DATABASES = {'default': dj_database_url.config(conn_max_age=600)}
+DATABASES = {
+    'default': {
+        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'HOST': os.getenv('DB_HOST'),
+        'NAME': os.getenv('DB_NAME', 'db.sqlite3'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+    }
+}
 
 # Authentication
 
@@ -94,19 +96,19 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-OIDC_RP_CLIENT_ID = os.environ['OIDC_CLIENT_ID']
+OIDC_RP_CLIENT_ID = os.getenv('OIDC_CLIENT_ID')
 
-OIDC_RP_CLIENT_SECRET = os.environ['OIDC_CLIENT_SECRET']
+OIDC_RP_CLIENT_SECRET = os.getenv('OIDC_CLIENT_SECRET')
 
-OIDC_RP_SIGN_ALGO = "RS256"
+OIDC_RP_SIGN_ALGO = 'RS256'
 
-OIDC_OP_JWKS_ENDPOINT = "https://auth.faking.cool/.well-known/jwks.json"
+OIDC_OP_JWKS_ENDPOINT = 'https://auth.faking.cool/.well-known/jwks.json'
 
-OIDC_OP_AUTHORIZATION_ENDPOINT = "https://auth.faking.cool/oauth2/authorize"
+OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://auth.faking.cool/oauth2/authorize'
 
-OIDC_OP_TOKEN_ENDPOINT = "https://auth.faking.cool/oauth2/token"
+OIDC_OP_TOKEN_ENDPOINT = 'https://auth.faking.cool/oauth2/token'
 
-OIDC_OP_USER_ENDPOINT = "https://auth.faking.cool/oauth2/userinfo"
+OIDC_OP_USER_ENDPOINT = 'https://auth.faking.cool/oauth2/userinfo'
 
 # LOGIN_URL = '/admin/login/'
 
@@ -173,9 +175,9 @@ EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL', 'farafmb@ovgu.de')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL')
 
-SERVER_EMAIL = os.getenv('SERVER_EMAIL', 'farafmb@ovgu.de')
+SERVER_EMAIL = os.getenv('SERVER_EMAIL')
 
 
 # Default primary key field type
