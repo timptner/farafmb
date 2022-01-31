@@ -1,8 +1,0 @@
-services:
-  farafmb:
-    build: .
-    command: "python manage.py runserver 0.0.0.0:5000"
-    environment:
-      - DEBUG=True
-    volumes:
-      - .:/home/farafmb/code
