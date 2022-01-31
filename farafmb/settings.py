@@ -6,12 +6,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'farafmb.de',
     'www.farafmb.de',
-] + os.getenv('ALLOWED_HOSTS', '127.0.0.1,localhost').split(',')
+]
 
 ADMINS = [
     ('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de'),
@@ -81,9 +81,9 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
         'HOST': os.getenv('DB_HOST'),
-        'NAME': os.getenv('DB_NAME', 'db.sqlite3'),
+        'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
     }
@@ -110,7 +110,7 @@ OIDC_OP_TOKEN_ENDPOINT = 'https://auth.faking.cool/oauth2/token'
 
 OIDC_OP_USER_ENDPOINT = 'https://auth.faking.cool/oauth2/userinfo'
 
-# LOGIN_URL = '/admin/login/'
+LOGIN_URL = '/admin/login/'
 
 LOGIN_REDIRECT_URL = '/admin/'
 
@@ -167,9 +167,9 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 EMAIL_USE_TLS = True
 
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'localhost')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 
-EMAIL_PORT = os.getenv('EMAIL_PORT', '25')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 
