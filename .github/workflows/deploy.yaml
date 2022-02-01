@@ -64,8 +64,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /srv/farafmb
-            git pull origin master
+            git pull --rebase origin main
             source env/bin/activate
             python manage.py migrate --no-input
-            python manage.py collecstatic --no-input
+            python manage.py collectstatic --no-input
             deactivate
