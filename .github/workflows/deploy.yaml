@@ -57,5 +57,12 @@ jobs:
           python manage.py collectstatic --no-input
           python manage.py test --no-input
       - name: Deploy
-        run: |
-          echo "SSH into server && git pull"
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            whoami
+            ls -al
