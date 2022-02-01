@@ -54,7 +54,7 @@ jobs:
           STORAGE_ENDPOINT_URL: ${{ secrets.STORAGE_ENDPOINT_URL }}
           STORAGE_ACCESS_KEY: ${{ secrets.STORAGE_ACCESS_KEY }}
           STORAGE_SECRET_KEY: ${{ secrets.STORAGE_SECRET_KEY }}
-          STORAGE_MEDIA_BUCKET: ${{ secret.STORAGE_TEST_BUCKET }}
+          STORAGE_MEDIA_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
           STORAGE_STATIC_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
         run: |
           python manage.py migrate --no-input
