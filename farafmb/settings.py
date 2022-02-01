@@ -150,17 +150,26 @@ USE_TZ = True
 
 # File Storage
 
+# Upload media files to bucket
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Upload static files via collectstatic to bucket
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+AWS_S3_ENDPOINT_URL = os.getenv('STORAGE_ENDPOINT_URL')
+
+AWS_S3_ACCESS_KEY_ID = os.getenv('STORAGE_ACCESS_KEY')
+
+AWS_S3_SECRET_ACCESS_KEY = os.getenv('STORAGE_SECRET_KEY')
+
+AWS_STORAGE_BUCKET_NAME = os.getenv('STORAGE_BUCKET_NAME')
+
+# Default ACL on file. Otherwise, inheriting bucket ACL
+# AWS_DEFAULT_ACL = 'public-read'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
-
-MEDIA_URL = '/media/'
-
-STATIC_URL = '/static/'
-
-MEDIA_ROOT = BASE_DIR / 'media'
-
-STATIC_ROOT = BASE_DIR / 'static'
 
 
 # E-Mail
