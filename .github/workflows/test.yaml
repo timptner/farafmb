@@ -1,4 +1,4 @@
-name: Test & Deploy
+name: Test
 
 on:
   push:
@@ -60,18 +60,3 @@ jobs:
           python manage.py migrate --no-input
           python manage.py collectstatic --no-input
           python manage.py test --no-input
-
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd /srv/farafmb
-            git pull --rebase origin main
-            source env/bin/activate
-            python -m pip install -r requirements.txt
-            python manage.py migrate --no-input
-            python manage.py collectstatic --no-input
-            deactivate
