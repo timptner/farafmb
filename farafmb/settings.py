@@ -1,3 +1,4 @@
+import dj_database_url
 import os
 
 from pathlib import Path
@@ -82,14 +83,9 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 # Database
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': os.getenv('DB_HOST'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-    }
+    'default': dj_database_url.config(),
 }
+
 
 # Authentication
 
