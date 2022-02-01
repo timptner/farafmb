@@ -14,6 +14,7 @@ importlib-metadata==4.10.1
 jmespath==0.10.0
 josepy==1.12.0
 Markdown==3.3.6
+markdown-checklist==0.4.3
 markdown-del-ins==1.0.0
 mozilla-django-oidc==2.0.0
 packaging==21.3
