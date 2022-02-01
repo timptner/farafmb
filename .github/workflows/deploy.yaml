@@ -63,5 +63,9 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            whoami
-            ls -al
+            cd /srv/farafmb
+            git pull origin master
+            source env/bin/activate
+            python manage.py migrate --no-input
+            python manage.py collecstatic --no-input
+            deactivate
