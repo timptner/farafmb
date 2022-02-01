@@ -11,6 +11,10 @@ DATABASES = {
     }
 }
 
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+STATICFILES_STORAGE = 'django.contrib.files.storage.StaticFilesStorage'
+
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'

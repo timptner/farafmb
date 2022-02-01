@@ -151,10 +151,10 @@ USE_TZ = True
 # File Storage
 
 # Upload media files to bucket
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
 
 # Upload static files via collectstatic to bucket
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
 
 AWS_S3_ENDPOINT_URL = os.getenv('STORAGE_ENDPOINT_URL')
 
@@ -162,10 +162,12 @@ AWS_S3_ACCESS_KEY_ID = os.getenv('STORAGE_ACCESS_KEY')
 
 AWS_S3_SECRET_ACCESS_KEY = os.getenv('STORAGE_SECRET_KEY')
 
-AWS_STORAGE_BUCKET_NAME = os.getenv('STORAGE_BUCKET_NAME')
+STORAGE_MEDIA_FILES = os.getenv('STORAGE_MEDIA_BUCKET')
+
+STORAGE_STATIC_FILES = os.getenv('STORAGE_STATIC_BUCKET')
 
 # Default ACL on file. Otherwise, inheriting bucket ACL
-# AWS_DEFAULT_ACL = 'public-read'
+AWS_DEFAULT_ACL = 'public-read'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
