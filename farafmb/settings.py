@@ -15,6 +15,8 @@ ALLOWED_HOSTS = [
     'farafmb.de',
     'www.farafmb.de',
 ]
+if os.getenv('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS.extend(os.getenv('ALLOWED_HOSTS').split(','))
 
 ADMINS = [
     ('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de'),
