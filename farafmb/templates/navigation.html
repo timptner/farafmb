@@ -1,4 +1,4 @@
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">{% load static %}
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation" style="height: 72px;">{% load static %}
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{% url 'blog:posts' %}">
@@ -69,7 +69,7 @@
 
                             <form action="{% url 'oidc_logout' %}" method="POST">
                                 {% csrf_token %}
-                                <input type="submit" class="navbar-item" value="Abmelden">
+                                <input type="submit" class="navbar-item logout-button" value="Abmelden">
                             </form>
                         </div>
                     </div>
