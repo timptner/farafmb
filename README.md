@@ -18,7 +18,7 @@ Setup a local development environment with virtualenv. Activate it and install
 all package dependencies.
 
 ```bash
-python -m venv ./env
+python3 -m venv ./env
 source env/bin/activate
 python -m pip install -r requirements.txt
 ```
