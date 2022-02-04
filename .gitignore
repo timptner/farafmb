@@ -1,9 +1,5 @@
-media/
-static/
-
-# Docker volumes / compose
-docker/
-docker-compose.override.yaml
+/media
+/static
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
