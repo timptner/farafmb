@@ -1,4 +1,4 @@
-name: Publish for deployment to production
+name: Stable
 
 on:
   push:
@@ -75,5 +75,5 @@ jobs:
         with:
           type: now
           from_branch: main
-          target_branch: release
+          target_branch: deployed
           github_token: ${{ github.token }}
