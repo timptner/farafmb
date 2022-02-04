@@ -62,7 +62,7 @@ jobs:
   merge:
     name: Merging
     needs: test
-    if: ${{ success() && github.ref == 'refs/head/dev' }}
+    if: ${{ job.status == 'success' && github.ref == 'refs/heads/dev' }}
     runs-on: ubuntu-latest
     environment: production
 
