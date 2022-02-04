@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<section class="hero is-fullheight has-background-light">
+    <div class="container is-flex is-justify-content-center">
+        <div style="width: 30rem;">
+            <figure class="image is-128x128 mx-auto my-5">
+                <a href="/">
+                    <img src="{% static 'img/logo.png' %}">
+                </a>
+            </figure>
+
+            {% if form.errors %}
+            <div class="notification is-danger">
+                Der Benutzername oder das Passwort sind falsch.
+            </div>
+            {% endif %}
+
+            {% if next %}
+            <div class="notification is-warning">
+                {% if user.is_authenticated %}
+                Du hast nicht die benötigten Rechte um auf diese Seite
+                zugreifen zu können. Melde dich mit einem Benutzer an, welcher
+                die entsprechenden Rechte besitzt.
+                {% else %}
+                Du musst dich anmelden um auf die gewünsche Seite zugreifen zu
+                können.
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <form action="{% url 'login' %}" class="box" method="post">
+                {% csrf_token %}
+
+                <input name="next" type="hidden" value="{{ next }}">
+
+                <div class="field">
+                    {{ form.username.label_tag }}
+                    {# <label class="label">Benutzername</label> #}
+                    <div class="control">
+                        {# <input autofocus class="input" name="username" required type="text"> #}
+                        {{ form.username }}
+                    </div>
+                </div>
+
+                <div class="field">
+                    {{ form.password.label_tag }}
+                    {# <label class="label">Passwort</label> #}
+                    <div class="control">
+                        {{ form.password }}
+                        {# <input class="input" name="password" required type="password"> #}
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button class="button is-primary" type="submit">Anmelden</button>
+                    <a class="button is-ghost" href="{% url 'password_reset' %}">Passwort vergessen?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

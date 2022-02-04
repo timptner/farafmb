@@ -6,13 +6,14 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
-    path('office-hours/', include('office_hours.urls')),
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    path('office-hours/', include('office_hours.urls')),
 ]
 
 if settings.DEBUG is True:
