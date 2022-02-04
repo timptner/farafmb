@@ -1,4 +1,4 @@
-name: Test
+name: Publish for production deployment
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  build:
+  test:
+    name: Testing
     runs-on: ubuntu-latest
     environment: production
 
@@ -32,10 +33,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@master
         with:
           python-version: 3.9
 
@@ -57,3 +58,22 @@ jobs:
           python manage.py migrate --no-input
           python manage.py collectstatic --no-input
           python manage.py test --no-input
+
+  merge:
+    name: Merging
+    needs: test
+    if: ${{ success() && github.ref == 'refs/head/dev' }}
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      -  name: Checkout
+         uses: actions/checkout@master
+
+      - name: Merge dev -> main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: dev
+          target_branch: main
+          github_token: ${{ github.token }}
