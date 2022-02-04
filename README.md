@@ -1,6 +1,6 @@
 # Fachschaftsrat Maschinenbau
 
-[![Tests](https://github.com/timptner/farafmb/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/timptner/farafmb/actions/workflows/publish.yaml)
+[![Build](https://github.com/timptner/farafmb/actions/workflows/publish.yaml/badge.svg?branch=main)](https://github.com/timptner/farafmb/actions/workflows/publish.yaml)
 [![Size](https://img.shields.io/github/repo-size/timptner/farafmb)](https://github.com/timptner/farafmb)
 [![License](https://img.shields.io/github/license/timptner/farafmb)](https://github.com/timptner/farafmb/blob/main/LICENSE)
 
