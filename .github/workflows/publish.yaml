@@ -59,9 +59,6 @@ jobs:
           python manage.py collectstatic --no-input
           python manage.py test --no-input
 
-      - name: Fail job (testing)
-        run: exit 1
-
   merge:
     name: Merging
     needs: test
