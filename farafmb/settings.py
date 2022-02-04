@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +92,14 @@ LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+OAUTH2_PROVIDER = {
+    'OIDC_ENABLED': True,
+    'OIDC_RSA_PRIVATE_KEY': os.getenv('OIDC_RSA_PRIVATE_KEY'),
+    'SCOPES': {
+        'openid': 'OpenID Connect scope',
+    },
+}
 
 
 # Password validation

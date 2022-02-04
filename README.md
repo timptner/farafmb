@@ -40,6 +40,16 @@ To start your development server:
 python manage.py runserver
 ```
 
+When developing on the oauth provider (especially OIDC) you need to generate a 
+new RSA key and use it as an environment variable.
+
+```bash
+# Generate new RSA key
+openssl genrsa --out oidc.key 4096
+# Set env var from file content
+export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
+```
+
 ## License
 
 [MIT](https://github.com/aiventimptner/farafmb.de/blob/main/LICENSE)

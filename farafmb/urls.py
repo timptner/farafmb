@@ -12,6 +12,7 @@ urlpatterns = [
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
     path('office-hours/', include('office_hours.urls')),
+    path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
 
 if settings.DEBUG is True:
