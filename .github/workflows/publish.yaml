@@ -1,9 +1,9 @@
-name: Publish for production deployment
+name: Publish for deployment to production
 
 on:
   push:
     branches-ignore:
-      - main
+      - deployed
 
 jobs:
   test:
@@ -62,7 +62,7 @@ jobs:
   merge:
     name: Merging
     needs: test
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
 
@@ -70,10 +70,10 @@ jobs:
       -  name: Checkout
          uses: actions/checkout@master
 
-      - name: Merge dev -> main
+      - name: Merge main -> deployed
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: dev
-          target_branch: main
+          from_branch: main
+          target_branch: release
           github_token: ${{ github.token }}
