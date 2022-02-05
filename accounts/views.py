@@ -11,6 +11,10 @@ class LogoutView(auth_views.LogoutView):
     pass
 
 
+class PasswordChangeView(auth_views.PasswordChangeView):
+    form_class = forms.PasswordChangeForm
+
+
 class PasswordResetView(auth_views.PasswordResetView):
     form_class = forms.PasswordResetForm
 

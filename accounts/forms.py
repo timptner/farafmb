@@ -18,6 +18,28 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
     )
 
 
+class SetPasswordForm(auth_forms.SetPasswordForm):
+    new_password1 = forms.CharField(
+        label=_("New password"),
+        widget=forms.PasswordInput(attrs={'class': 'input', 'autocomplete': 'new-password'}),
+        strip=False,
+        help_text=password_validation.password_validators_help_text_html(),
+    )
+    new_password2 = forms.CharField(
+        label=_("New password confirmation"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'input', 'autocomplete': 'new-password'}),
+    )
+
+
+class PasswordChangeForm(SetPasswordForm, auth_forms.PasswordChangeForm):
+    old_password = forms.CharField(
+        label=_("Old password"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'class': 'input', 'autocomplete': 'current-password', 'autofocus': True}),
+    )
+
+
 class PasswordResetForm(auth_forms.PasswordResetForm):
     username = auth_forms.UsernameField(
         label='Benutzername',
