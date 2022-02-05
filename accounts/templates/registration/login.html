@@ -25,7 +25,7 @@
                 zugreifen zu können. Melde dich mit einem Benutzer an, welcher
                 die entsprechenden Rechte besitzt.
                 {% else %}
-                Du musst dich anmelden um auf die gewünsche Seite zugreifen zu
+                Du musst dich anmelden um auf die gewünschte Seite zugreifen zu
                 können.
                 {% endif %}
             </div>
@@ -37,20 +37,17 @@
                 <input name="next" type="hidden" value="{{ next }}">
 
                 <div class="field">
-                    {{ form.username.label_tag }}
-                    {# <label class="label">Benutzername</label> #}
+                    <label class="label" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
                     <div class="control">
-                        {# <input autofocus class="input" name="username" required type="text"> #}
                         {{ form.username }}
                     </div>
                 </div>
 
                 <div class="field">
-                    {{ form.password.label_tag }}
-                    {# <label class="label">Passwort</label> #}
+
+                    <label class="label" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
                     <div class="control">
                         {{ form.password }}
-                        {# <input class="input" name="password" required type="password"> #}
                     </div>
                 </div>
 

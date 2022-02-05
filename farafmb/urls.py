@@ -6,7 +6,8 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),  # TODO Remove default auth views
     path('admin/', admin.site.urls),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
