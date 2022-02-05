@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import include, path
 
 urlpatterns = [
@@ -8,6 +9,7 @@ urlpatterns = [
     path('about/', include('about.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # TODO Remove default auth views
+    path('admin/login/', lambda request: redirect('login')),
     path('admin/', admin.site.urls),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
