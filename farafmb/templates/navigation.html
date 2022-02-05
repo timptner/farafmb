@@ -28,7 +28,7 @@
                         Über uns
                     </a>
 
-                    <div class="navbar-dropdown is-right">
+                    <div class="navbar-dropdown is-boxed is-right">
                         <a class="navbar-item" href="{% url 'about:index' %}">Fachschaftsrat</a>
                         <a class="navbar-item" href="{% url 'members:member_list' %}">Mitglieder</a>
                     </div>
@@ -39,7 +39,7 @@
                         Service
                     </a>
 
-                    <div class="navbar-dropdown is-right">
+                    <div class="navbar-dropdown is-boxed is-right">
                         <a class="navbar-item" href="{% url 'excursions:list' %}">Exkursionen</a>
                         <a class="navbar-item" href="{% url 'jobs:job_list' %}">Jobangebote</a>
                         <a class="navbar-item" href="{% url 'blog:protocols' %}">Gedächtnisprotokolle</a>
@@ -60,7 +60,7 @@
                             {{ user.first_name|default:"Benutzer" }}
                         </a>
 
-                        <div class="navbar-dropdown is-right">
+                        <div class="navbar-dropdown is-boxed is-right">
                             <a class="navbar-item" href="{% url 'admin:index' %}">Administration</a>
                             <a class="navbar-item" href="{% url 'members:profile_form' %}">Profil</a>
                             <a class="navbar-item" href="https://docs.farafmb.de">BookStack</a>
