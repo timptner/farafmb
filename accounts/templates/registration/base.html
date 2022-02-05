@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<section class="hero is-fullheight has-background-light">
+    <div class="container is-flex is-justify-content-center">
+        <div style="width: 30rem;">
+            <figure class="image is-128x128 mx-auto my-5">
+                <a href="/">
+                    <img src="{% static 'img/logo.png' %}">
+                </a>
+            </figure>
+
+            {% block notification %}{% endblock %}
+
+            {% block form %}{% endblock %}
+        </div>
+    </div>
+</section>
+{% endblock %}
