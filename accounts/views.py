@@ -15,9 +15,21 @@ class PasswordChangeView(auth_views.PasswordChangeView):
     form_class = forms.PasswordChangeForm
 
 
+class PasswordChangeDoneView(auth_views.PasswordChangeDoneView):
+    pass
+
+
 class PasswordResetView(auth_views.PasswordResetView):
     form_class = forms.PasswordResetForm
 
 
+class PasswordResetDoneView(auth_views.PasswordResetDoneView):
+    pass
+
+
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     form_class = forms.SetPasswordForm
+
+
+class PasswordResetCompleteView(auth_views.PasswordResetConfirmView):
+    pass

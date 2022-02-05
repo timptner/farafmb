@@ -18,7 +18,6 @@ urlpatterns = [
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
     path('accounts/', include('accounts.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),  # TODO Remove default auth views
     path('admin/login/', redirect_admin),
     path('admin/', admin.site.urls),
     path('excursions/', include('excursions.urls')),
