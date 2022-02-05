@@ -18,7 +18,7 @@ Setup a local development environment with virtualenv. Activate it and install
 all package dependencies.
 
 ```bash
-python -m venv ./env
+python3 -m venv ./env
 source env/bin/activate
 python -m pip install -r requirements.txt
 ```
@@ -38,6 +38,16 @@ To start your development server:
 
 ```bash
 python manage.py runserver
+```
+
+When developing on the oauth provider (especially OIDC) you need to generate a 
+new RSA key and use it as an environment variable.
+
+```bash
+# Generate new RSA key
+openssl genrsa --out oidc.key 4096
+# Set env var from file content
+export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
 ```
 
 ## License

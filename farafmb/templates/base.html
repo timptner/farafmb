@@ -2,55 +2,56 @@
 <html lang="de">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <title>FaRaFMB</title>
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}">
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16">
-    <meta name="application-name" content="FaRaFMB">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}">
+    <link href="{% static 'favicon/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon-precomposed" sizes="144x144">
+    <link href="{% static 'favicon/apple-touch-icon-152x152.png' %}" rel="apple-touch-icon-precomposed" sizes="152x152">
+    <link href="{% static 'favicon/favicon-32x32.png' %}" rel="icon" sizes="32x32" type="image/png">
+    <link href="{% static 'favicon/favicon-16x16.png' %}" rel="icon" sizes="16x16" type="image/png">
+    <meta content="FaRaFMB" name="application-name">
+    <meta content="#ffffff" name="msapplication-TileColor">
+    <meta content="{% static 'favicon/mstile-144x144.png' %}" name="msapplication-TileImage">
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma-list.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="{% static 'css/bulma.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bulma-list.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     {% block scripts %}
-        <script src="{% static 'js/font-awesome.min.js' %}"></script>
-        <script src="{% static 'js/navbar-burger.js' %}"></script>
-        <script src="{% static 'js/close-notification.js' %}"></script>
+    <script src="{% static 'js/font-awesome.min.js' %}"></script>
+    <script src="{% static 'js/navbar-burger.js' %}"></script>
+    <script src="{% static 'js/close-notification.js' %}"></script>
     {% endblock %}
 </head>
-
 <body>
+{% block body %}
 {% include 'navigation.html' %}
 
 {% if messages %}
-    {% for message in messages %}
-        <div class="notification is-radiusless {{ message.tags }} is-light mb-0">
-            {{ message }}
-        </div>
-    {% endfor %}
+{% for message in messages %}
+<div class="notification is-radiusless {{ message.tags }} is-light mb-0">
+    {{ message }}
+</div>
+{% endfor %}
 {% endif %}
 
 {% block section %}
-    <section class="section">
-        {% block content %}{% endblock %}
-    </section>
+<section class="section">
+    {% block content %}{% endblock %}
+</section>
 {% endblock %}
 
 <section class="section">
     {% block footer %}
-        <div class="container">
-            {% include 'footer.html' %}
-        </div>
+    <div class="container">
+        {% include 'footer.html' %}
+    </div>
     {% endblock %}
 </section>
+{% endblock %}
 </body>
 </html>
