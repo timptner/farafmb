@@ -88,8 +88,6 @@ DATABASES = {
 
 # Authentication
 
-LOGIN_URL = '/admin/login/'
-
 LOGIN_REDIRECT_URL = '/admin/'
 
 LOGOUT_REDIRECT_URL = '/'

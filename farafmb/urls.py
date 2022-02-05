@@ -2,14 +2,24 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.shortcuts import redirect
-from django.urls import include, path
+from django.urls import include, path, reverse
+
+
+def redirect_admin(request):
+    base_url = reverse('login')
+    if 'next' in request.GET:
+        url = f"{base_url}?next={request.GET.get('next')}"
+    else:
+        url = base_url
+    return redirect(url)
+
 
 urlpatterns = [
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # TODO Remove default auth views
-    path('admin/login/', lambda request: redirect('login')),
+    path('admin/login/', redirect_admin),
     path('admin/', admin.site.urls),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
