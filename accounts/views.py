@@ -13,3 +13,7 @@ class LogoutView(auth_views.LogoutView):
 
 class PasswordResetView(auth_views.PasswordResetView):
     form_class = forms.PasswordResetForm
+
+
+class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    form_class = forms.SetPasswordForm
