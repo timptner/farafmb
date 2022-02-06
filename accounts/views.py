@@ -31,5 +31,5 @@ class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
     form_class = forms.SetPasswordForm
 
 
-class PasswordResetCompleteView(auth_views.PasswordResetConfirmView):
+class PasswordResetCompleteView(auth_views.PasswordResetCompleteView):
     pass
