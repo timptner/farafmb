@@ -81,6 +81,9 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 DATABASES = {
     'default': dj_database_url.config(),
 }
@@ -173,8 +176,3 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL')
 
 SERVER_EMAIL = os.getenv('SERVER_EMAIL')
-
-
-# Default primary key field type
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
