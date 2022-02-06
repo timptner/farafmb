@@ -100,7 +100,10 @@ OAUTH2_PROVIDER = {
     'OIDC_RSA_PRIVATE_KEY': os.getenv('OIDC_RSA_PRIVATE_KEY'),
     'SCOPES': {
         'openid': 'OpenID Connect scope',
+        'profile': 'User profile scope',
+        'email': 'User email scope',
     },
+    'OAUTH2_VALIDATOR_CLASS': 'farafmb.oauth.CustomOAuth2Validator',
 }
 
 
