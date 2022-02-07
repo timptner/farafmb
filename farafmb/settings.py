@@ -1,5 +1,6 @@
 import dj_database_url
 import os
+import re
 
 from pathlib import Path
 
@@ -9,18 +10,13 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    'farafmb.de',
-    'www.farafmb.de',
-]
-if os.getenv('ALLOWED_HOSTS'):
-    ALLOWED_HOSTS.extend(os.getenv('ALLOWED_HOSTS').split(','))
+ALLOWED_HOSTS = []
+for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(','):
+    ALLOWED_HOSTS.extend(host)
 
-ADMINS = [
-    ('Fachschaftsrat Maschinenbau', 'farafmb@ovgu.de'),
-]
+ADMINS = []
+for admin in os.getenv('ADMINS', 'Fachschaftsrat Maschinenbau <farafmb@ovgu.de>').splitlines():
+    ADMINS.extend(re.match(r'^([^<]+)\s<([^>]+)>$', admin).groups())
 
 
 # Application definition
