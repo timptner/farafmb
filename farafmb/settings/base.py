@@ -1,22 +1,10 @@
-import dj_database_url
 import os
-import re
 
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[2]
 
 SECRET_KEY = os.environ['SECRET_KEY']
-
-DEBUG = False
-
-ALLOWED_HOSTS = []
-for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(','):
-    ALLOWED_HOSTS.append(host)
-
-ADMINS = []
-for admin in os.getenv('ADMINS', 'Fachschaftsrat Maschinenbau <farafmb@ovgu.de>').splitlines():
-    ADMINS.append(re.match(r'^([^<]+)\s<([^>]+)>$', admin).groups())
 
 
 # Application definition
@@ -80,10 +68,6 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DATABASES = {
-    'default': dj_database_url.config(),
-}
-
 
 # Authentication
 
@@ -136,31 +120,12 @@ USE_TZ = True
 
 # File Storage
 
-# Upload media files to bucket
-DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
-
-# Upload static files via collectstatic to bucket
-STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
-
-AWS_S3_ENDPOINT_URL = os.getenv('STORAGE_ENDPOINT_URL')
-
-AWS_S3_ACCESS_KEY_ID = os.getenv('STORAGE_ACCESS_KEY')
-
-AWS_S3_SECRET_ACCESS_KEY = os.getenv('STORAGE_SECRET_KEY')
-
-STORAGE_MEDIA_FILES = os.getenv('STORAGE_MEDIA_BUCKET')
-
-STORAGE_STATIC_FILES = os.getenv('STORAGE_STATIC_BUCKET')
-
-# Default ACL on file. Otherwise, inheriting bucket ACL
-AWS_DEFAULT_ACL = 'public-read'
-
 STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
 
-# E-Mail
+# Email
 
 EMAIL_USE_TLS = True
 
@@ -171,22 +136,3 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
-
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL')
-
-SERVER_EMAIL = os.getenv('SERVER_EMAIL')
-
-
-# Security
-
-# SECURE_HSTS_SECONDS = 3600  # TODO Increase to 1 year (365*24*60*60)
-
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
-# SECURE_HSTS_PRELOAD = True
-
-# SECURE_SSL_REDIRECT = True
-
-# SESSION_COOKIE_SECURE = True
-
-# CSRF_COOKIE_SECURE = True
