@@ -12,11 +12,11 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 for host in os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(','):
-    ALLOWED_HOSTS.extend(host)
+    ALLOWED_HOSTS.append(host)
 
 ADMINS = []
 for admin in os.getenv('ADMINS', 'Fachschaftsrat Maschinenbau <farafmb@ovgu.de>').splitlines():
-    ADMINS.extend(re.match(r'^([^<]+)\s<([^>]+)>$', admin).groups())
+    ADMINS.append(re.match(r'^([^<]+)\s<([^>]+)>$', admin).groups())
 
 
 # Application definition
