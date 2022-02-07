@@ -32,21 +32,25 @@ DATABASES = {
 
 # File storage
 
-# Upload media files to bucket
-DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
-
-# Upload static files via collectstatic to bucket
-STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
-
 AWS_S3_ENDPOINT_URL = os.getenv('STORAGE_ENDPOINT_URL')
 
 AWS_S3_ACCESS_KEY_ID = os.getenv('STORAGE_ACCESS_KEY')
 
 AWS_S3_SECRET_ACCESS_KEY = os.getenv('STORAGE_SECRET_KEY')
 
-STORAGE_MEDIA_FILES = os.getenv('STORAGE_MEDIA_BUCKET')
+# Upload static files via collectstatic to bucket
+STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
 
-STORAGE_STATIC_FILES = os.getenv('STORAGE_STATIC_BUCKET')
+STORAGE_STATIC_BUCKET = os.getenv('STORAGE_STATIC_BUCKET')
+
+STATIC_URL = os.getenv('STORAGE_STATIC_DOMAIN')
+
+# Upload media files to bucket
+DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
+
+STORAGE_MEDIA_BUCKET = os.getenv('STORAGE_MEDIA_BUCKET')
+
+MEDIA_URL = os.getenv('STORAGE_MEDIA_DOMAIN')
 
 # Default ACL on file. Otherwise, inheriting bucket ACL
 AWS_DEFAULT_ACL = 'public-read'
