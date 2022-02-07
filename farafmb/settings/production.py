@@ -43,14 +43,18 @@ STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
 
 STORAGE_STATIC_BUCKET = os.getenv('STORAGE_STATIC_BUCKET')
 
-STATIC_URL = os.getenv('STORAGE_STATIC_DOMAIN')
+STORAGE_STATIC_DOMAIN = os.getenv('STORAGE_STATIC_DOMAIN', AWS_S3_ENDPOINT_URL)
+
+STATIC_URL = f'https://{STORAGE_STATIC_DOMAIN}/'
 
 # Upload media files to bucket
 DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
 
 STORAGE_MEDIA_BUCKET = os.getenv('STORAGE_MEDIA_BUCKET')
 
-MEDIA_URL = os.getenv('STORAGE_MEDIA_DOMAIN')
+STORAGE_MEDIA_DOMAIN = os.getenv('STORAGE_MEDIA_DOMAIN', AWS_S3_ENDPOINT_URL)
+
+MEDIA_URL = f'https://{STORAGE_MEDIA_DOMAIN}/'
 
 # Default ACL on file. Otherwise, inheriting bucket ACL
 AWS_DEFAULT_ACL = 'public-read'
