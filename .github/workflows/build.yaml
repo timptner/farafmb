@@ -49,13 +49,10 @@ jobs:
         env:
           SECRET_KEY: secret
           DATABASE_URL: postgresql://${{ env.DB_USER }}:${{ env.DB_PASSWORD }}@localhost:5432/${{ env.DB_NAME }}
-          STORAGE_ENDPOINT_URL: ${{ secrets.STORAGE_ENDPOINT_URL }}
           STORAGE_ACCESS_KEY: ${{ secrets.STORAGE_ACCESS_KEY }}
           STORAGE_SECRET_KEY: ${{ secrets.STORAGE_SECRET_KEY }}
           STORAGE_STATIC_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
-          STORAGE_STATIC_DOMAIN: ${{ secrets.STORAGE_ENDPOINT_URL }}
           STORAGE_MEDIA_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
-          STORAGE_MEDIA_DOMAIN: ${{ secrets.STORAGE_ENDPOINT_URL }}
         run: |
           python manage.py migrate --no-input
           python manage.py collectstatic --no-input
