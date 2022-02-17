@@ -6,7 +6,7 @@ from django.contrib import admin, messages
 from django.utils.translation import ngettext
 from typing import Tuple
 
-from .models import Snippet, Post, Image, Video, Document, Protocol, Link
+from .models import Snippet, Post, Image, Video, Protocol, Link
 
 
 def check_img(request, content: str):
@@ -44,11 +44,6 @@ class ImageAdmin(admin.ModelAdmin):
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'created')
-
-
-@admin.register(Document)
-class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created')
 
 
 def calculate_semester(date_: date) -> Tuple[date, str]:

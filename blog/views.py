@@ -1,7 +1,7 @@
 import random
 
 from blog.forms import ProtocolForm
-from blog.models import Snippet, Post, Document, Protocol, Link
+from blog.models import Snippet, Post, Protocol, Link
 from datetime import date
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -18,12 +18,6 @@ class PostsView(ListView):
         context = super().get_context_data()
         context['meetings'] = Meeting.objects.filter(date__gte=date.today())
         return context
-
-
-class DocumentsView(ListView):
-    template_name = 'blog/documents.html'
-    model = Document
-    queryset = Document.objects.filter(visible=True)
 
 
 class ContactView(TemplateView):
