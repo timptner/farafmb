@@ -2,7 +2,7 @@ asgiref==3.5.0
 bleach==4.1.0
 certifi==2021.10.8
 cffi==1.15.0
-charset-normalizer==2.0.11
+charset-normalizer==2.0.12
 coverage==6.3.1
 cryptography==36.0.1
 Deprecated==1.2.13
@@ -11,14 +11,14 @@ Django==4.0.2
 django-oauth-toolkit==1.7.0
 gunicorn==20.1.0
 idna==3.3
-importlib-metadata==4.10.1
+importlib-metadata==4.11.1
 jwcrypto==1.0
 Markdown==3.3.6
 markdown-checklist==0.4.3
 markdown-del-ins==1.0.0
 oauthlib==3.2.0
 packaging==21.3
-Pillow==9.0.0
+Pillow==9.0.1
 psycopg2==2.9.3
 pycparser==2.21
 pyparsing==3.0.7
