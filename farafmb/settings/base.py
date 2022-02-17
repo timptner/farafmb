@@ -13,11 +13,11 @@ INSTALLED_APPS = [
     'about',
     'accounts',
     'blog',
+    'consultations',
     'excursions',
     'jobs',
     'meetings',
     'members',
-    'office_hours',
 
     'django.contrib.admin',
     'django.contrib.auth',

@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('admin/login/', redirect_admin),
     path('admin/', admin.site.urls),
+    path('consultations/', include('consultations.urls')),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
     path('meetings/', include('meetings.urls')),
@@ -29,7 +30,6 @@ urlpatterns = [
             ConnectDiscoveryInfoView.as_view(),
             name='oidc-connect-discovery-info'),  # Serve discovery view on both routes
     path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('office-hours/', include('office_hours.urls')),
 ]
 
 if settings.DEBUG is True:

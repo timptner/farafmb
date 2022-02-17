@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views import generic
 
 from .models import OfficeHour
@@ -6,7 +5,7 @@ from .utils import calc_max_step_size, time_to_seconds, seconds_to_time
 
 
 class OfficeHoursView(generic.TemplateView):
-    template_name = 'office_hours/main.html'
+    template_name = 'consultations/main.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
