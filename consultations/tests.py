@@ -25,6 +25,6 @@ class ViewTestCase(TestCase):
 
     def test_views(self):
         """Check for dead links"""
-        request = self.factory.get('/office-hours/')
+        request = self.factory.get('/consultations/')
         response = ConsultationsView.as_view()(request)
         self.assertEqual(response.status_code, 200)
