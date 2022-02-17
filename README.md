@@ -12,19 +12,20 @@ student representative for the faculty of mechanical engineering at the
 The website is build with [Django](https://www.djangoproject.com/) and uses 
 [Bulma](https://bulma.io/) for styling.
 
-## Installation
+## Installation 🛠️
+
+### Development 🔧
 
 Setup a local development environment with virtualenv. Activate it and install 
 all package dependencies.
 
 ```bash
-python3 -m venv ./env
-source env/bin/activate
+python3 -m venv ./venv
+source venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Create a copy of `.env.example` and call it `.env`. Uncomment the second line 
-which holds the value for `DJANGO_SETTINGS_MODULE`. Generate a new random 
+Create a copy of `.env.example` and call it `.env`. Generate a new random 
 secret key and fill out all empty values for the specified keys. You can use a 
 django utility function to generate the secret key.
 
@@ -50,6 +51,29 @@ openssl genrsa --out oidc.key 4096
 export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
 ```
 
-## License
+### Production 🌍
 
-[MIT](https://github.com/aiventimptner/farafmb.de/blob/main/LICENSE)
+⚠️ **Follow all steps mentioned in 
+[Development](https://github.com/timptner/farafmb#Development)!** ⚠️️
+
+Set `DJANGO_SETTINGS_MODULE` to `farafmb.settings.production` and change the 
+other variables as needed. Create a new RSA-Key and add it to your `.env`.
+
+Configure [Gunicorn](https://docs.gunicorn.org/en/latest/deploy.html) as your 
+application server and [Nginx](https://nginx.org/en/docs/http/load_balancing.html)
+as web server / proxy.
+
+## Testing 🧪
+
+Run tests with:
+
+```bash
+coverage run manage.py test
+coverage html  # Update report
+```
+
+Afterwards open your browser and go to `file://<absolute_path_to_project_root>/htmlcov/index.html`
+
+## License 📚
+
+[MIT](https://github.com/timptner/farafmb/blob/main/LICENSE)
