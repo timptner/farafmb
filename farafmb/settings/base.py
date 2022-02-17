@@ -124,6 +124,14 @@ STATICFILES_DIRS = [
     BASE_DIR / 'farafmb' / 'static',
 ]
 
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'files' / 'static')
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'files' / 'media')
+
 
 # Email
 

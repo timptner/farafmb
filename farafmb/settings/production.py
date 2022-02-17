@@ -30,38 +30,6 @@ DATABASES = {
 }
 
 
-# File storage
-
-AWS_S3_REGION_NAME = 'fra1'
-
-AWS_S3_ENDPOINT_URL = f"https://{AWS_S3_REGION_NAME}.digitaloceanspaces.com"
-
-AWS_S3_ACCESS_KEY_ID = os.getenv('STORAGE_ACCESS_KEY')
-
-AWS_S3_SECRET_ACCESS_KEY = os.getenv('STORAGE_SECRET_KEY')
-
-# Upload static files via collectstatic to bucket
-STATICFILES_STORAGE = 'farafmb.storage.StaticStorage'
-
-STORAGE_STATIC_BUCKET = os.getenv('STORAGE_STATIC_BUCKET')
-
-STORAGE_STATIC_DOMAIN = 'static.farafmb.de'
-
-STATIC_URL = f'https://{STORAGE_STATIC_DOMAIN}/'
-
-# Upload media files to bucket
-DEFAULT_FILE_STORAGE = 'farafmb.storage.MediaStorage'
-
-STORAGE_MEDIA_BUCKET = os.getenv('STORAGE_MEDIA_BUCKET')
-
-STORAGE_MEDIA_DOMAIN = 'media.farafmb.de'
-
-MEDIA_URL = f'https://{STORAGE_MEDIA_DOMAIN}/'
-
-# Default ACL on file. Otherwise, inheriting bucket ACL
-AWS_DEFAULT_ACL = 'public-read'
-
-
 # Email
 
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_EMAIL', 'no-reply@farafmb.de')
