@@ -8,7 +8,7 @@ def validate_time(value: time):
         raise ValidationError("Es sind nur Zeiten zwischen 7 und 19 Uhr erlaubt.")
 
 
-class OfficeHour(models.Model):
+class Consultation(models.Model):
     is_visible = models.BooleanField(default=True)
     member = models.CharField(max_length=50)
     MONDAY = 1

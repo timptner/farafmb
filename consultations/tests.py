@@ -2,7 +2,7 @@ from datetime import time
 from django.test import TestCase, RequestFactory
 
 from .utils import time_to_seconds, seconds_to_time, calc_max_step_size
-from .views import OfficeHoursView
+from .views import ConsultationsView
 
 
 class UtilityTestCase(TestCase):
@@ -26,5 +26,5 @@ class ViewTestCase(TestCase):
     def test_views(self):
         """Check for dead links"""
         request = self.factory.get('/office-hours/')
-        response = OfficeHoursView.as_view()(request)
+        response = ConsultationsView.as_view()(request)
         self.assertEqual(response.status_code, 200)
