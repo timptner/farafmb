@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 11:05+0100\n"
+"POT-Creation-Date: 2022-02-18 12:52+0100\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,10 +14,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:8
+#: forms.py:10
 msgid ""
 "The file name will be changed to a URL-compliant version of the title after "
 "saving."
 msgstr ""
 "Der Dateiname wird nach dem Speichern in eine URL-konforme Version des "
 "Titels geändert."
+
+#: templates/documents/document_list.html:8
+msgid "Documents"
+msgstr "Dokumente"
+
+#: templates/documents/document_list.html:22
+msgid "No documents are available."
+msgstr "Es sind keine Dokumente verfügbar."
