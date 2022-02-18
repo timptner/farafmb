@@ -1,0 +1,23 @@
+# German translation of https://farafmb.de/documents/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto-von-Guericke-Universität Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-18 11:05+0100\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:8
+msgid ""
+"The file name will be changed to a URL-compliant version of the title after "
+"saving."
+msgstr ""
+"Der Dateiname wird nach dem Speichern in eine URL-konforme Version des "
+"Titels geändert."
