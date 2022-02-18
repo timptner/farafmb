@@ -15,8 +15,10 @@ class DocumentAdminForm(forms.ModelForm):
         fields = ('title', 'file', 'visible')
 
     def save(self, commit=True):
-        obj = super().save(commit=False)
-        obj.file.name = slugify(obj.title) + Path(obj.file.name).suffix
+        form = super()
+        obj = form.save(commit=False)
+        if 'file' in form.changed_data:
+            obj.file.name = slugify(obj.title) + Path(obj.file.name).suffix
         if commit:
             obj.save()
         return obj
