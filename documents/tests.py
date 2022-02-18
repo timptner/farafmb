@@ -4,6 +4,7 @@ import tempfile
 from django.core.files import File
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from django.urls import reverse
 from django.utils.text import slugify
 from pathlib import Path
 
@@ -63,3 +64,22 @@ class AddDocumentAdminFormTestCase(TestCase):
         obj = form.save()
         self.assertEqual(obj.title, title)
         self.assertEqual(obj.file.name, Document.file.field.upload_to + slugify(title) + Path(file.name).suffix)
+
+
+class DocumentListViewTest(TestCase):
+    def test_view_url_exists(self):
+        """URL found"""
+        response = self.client.get('/documents/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_url_accessible_by_name(self):
+        """View accessed by name"""
+        url = reverse('documents:list')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_view_uses_correct_template(self):
+        """Correct template used"""
+        url = reverse('documents:list')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'documents/document_list.html')

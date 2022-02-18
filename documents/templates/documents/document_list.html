@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="container is-max-desktop">
+    <nav class="panel has-background-white">
+        <p class="panel-heading">{% translate "Documents" %}</p>
+
+        {% for obj in object_list %}
+        <a class="panel-block" href="{{ obj.file.url }}">
+            <span class="panel-icon">
+                <i class="{{ obj.icon }}" aria-hidden="true"></i>
+            </span>
+            {{ obj.title }}
+        </a>
+        {% empty %}
+        <p class="panel-block">
+            <span class="panel-icon">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+            </span>
+            {% translate "No documents are available." %}
+        </p>
+        {% endfor %}
+    </nav>
+</div>
+{% endblock %}
