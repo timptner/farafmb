@@ -4,7 +4,10 @@ import tempfile
 from django.core.files import File
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, override_settings
+from django.utils.text import slugify
+from pathlib import Path
 
+from .forms import DocumentAdminForm
 from .models import Document
 
 MEDIA_ROOT = tempfile.mkdtemp()
@@ -40,3 +43,23 @@ class DocumentTestCase(TestCase):
         self.assertEqual(pdf_document.icon(), 'fas fa-file-pdf')
         self.assertEqual(zip_document.icon(), 'fas fa-file-archive')
         self.assertEqual(txt_document.icon(), 'fas fa-file')
+
+    def test_object_name(self):
+        """Check if object is represented by its title"""
+        pdf_document = Document.objects.get(file='documents/file.pdf')
+        self.assertEqual(str(pdf_document), pdf_document.title)
+
+
+@override_settings(MEDIA_ROOT=MEDIA_ROOT)
+class AddDocumentAdminFormTestCase(TestCase):
+    def tearDown(self):
+        shutil.rmtree(MEDIA_ROOT, ignore_errors=True)
+
+    def test_admin_form_saved(self):
+        """Form gets properly saved with file name set from title"""
+        title = 'My special document'
+        file = File(SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'), name='file.pdf')
+        form = DocumentAdminForm(data={'title': title}, files={'file': file})
+        obj = form.save()
+        self.assertEqual(obj.title, title)
+        self.assertEqual(obj.file.name, Document.file.field.upload_to + slugify(title) + Path(file.name).suffix)
