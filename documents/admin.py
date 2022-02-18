@@ -6,5 +6,7 @@ from .models import Document
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'file', 'created')
+    list_display = ('title', 'file', 'visible')
+    list_filter = ('visible',)
+    date_hierarchy = 'created'
     form = DocumentAdminForm
