@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'accounts',
     'blog',
     'consultations',
+    'documents',
     'excursions',
     'jobs',
     'meetings',
