@@ -55,7 +55,9 @@
     </div>
 
     <div class="m-5">
-        <a class="button is-primary is-fullwidth is-large" href="#">{% translate "Submit memory minutes now!" %}</a>
+        <a class="button is-primary is-fullwidth is-large" href="{% url 'exams:submit' %}">
+            {% translate "Submit memory minutes now!" %}
+        </a>
     </div>
 </div>
 {% endblock %}
