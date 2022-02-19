@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 12:50+0100\n"
+"POT-Creation-Date: 2022-02-19 13:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -25,3 +25,35 @@ msgstr[1] "%d Autoren wurden erfolgreich entfernt."
 #: admin.py:24
 msgid "Make selected exams anonymous"
 msgstr "Ausgewählte Prüfungen anonymisieren"
+
+#: apps.py:8 models.py:18
+msgid "Exams"
+msgstr "Prüfungen"
+
+#: models.py:7
+msgid "Course"
+msgstr "Lehrveranstaltung"
+
+#: models.py:8
+msgid "Lecturer"
+msgstr "Dozent"
+
+#: models.py:9
+msgid "Date"
+msgstr "Datum"
+
+#: models.py:10
+msgid "Author of the minute"
+msgstr "Verfasser des Protokolls"
+
+#: models.py:11
+msgid "Minute file"
+msgstr "Protokolldatei"
+
+#: models.py:14
+msgid "Submitted on"
+msgstr "Eingereicht am"
+
+#: models.py:17
+msgid "Exam"
+msgstr "Prüfung"
