@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'blog',
     'consultations',
     'documents',
+    'exams',
     'excursions',
     'jobs',
     'meetings',
