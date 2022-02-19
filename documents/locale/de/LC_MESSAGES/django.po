@@ -1,5 +1,5 @@
 # German translation of https://farafmb.de/documents/
-# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto-von-Guericke-Universität Magdeburg
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
 # This file is distributed under the same license as the farafmb package.
 # Aiven Timptner, 2022.
 #
