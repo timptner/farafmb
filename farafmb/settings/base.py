@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'blog',
     'consultations',
     'documents',
-    'exams',
+    'exams.apps.ExamsConfig',
     'excursions',
     'jobs',
     'meetings',
