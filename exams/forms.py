@@ -4,12 +4,12 @@ from django import forms
 from django.forms.renderers import TemplatesSetting
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from farafmb.utils import generate_random_file_name
+from farafmb.utils import generate_random_file_name, human_bytes
 from pathlib import Path
 
 from .models import Exam
 
-MAX_FILE_SIZE = 2 * 10 ** 6  # MB
+MAX_FILE_SIZE = 2_000_000  # Byte
 
 
 class SubmitForm(forms.ModelForm):
@@ -33,14 +33,14 @@ class SubmitForm(forms.ModelForm):
         help_texts = {
             'minute_author': _("Only email addresses with the domain 'st.ovgu.de' are allowed."),
             'minute_file': _("Only PDF files with a maximum size "
-                             "of %d MB can be submitted.") % round(MAX_FILE_SIZE / 10 ** 6, 1),
+                             "of %s can be submitted.") % human_bytes(MAX_FILE_SIZE),
         }
 
     def clean_date(self):
         data = self.cleaned_data['date']
         if data > timezone.localdate():
             raise forms.ValidationError(_("The date can't be in the future. (Are you a time traveler? 🧙)"),
-                                        code='invalid_date')
+                                        code='future_date')
         return data
 
     def clean_minute_author(self):
@@ -48,16 +48,16 @@ class SubmitForm(forms.ModelForm):
         if not re.match(r'^([^@]*)@((st\.)?ovgu\.de)$', data):
             raise forms.ValidationError(_("Please use your university email address. "
                                           "(Did you even read the help text above? 🧐)"),
-                                        code='invalid')
+                                        code='forbidden_email')
         return data
 
     def clean_minute_file(self):
         data = self.cleaned_data['minute_file']
         if data.size > MAX_FILE_SIZE:
-            raise forms.ValidationError(_("Your file size (%(size)d MB) is above the allowed maximum of "
-                                          "%(max_size)d MB.") % {'size': round(data.size / 10 ** 6, 1),
-                                                                 'max_size': round(MAX_FILE_SIZE / 10 ** 6, 1)},
-                                        code='file_too_large')
+            raise forms.ValidationError(_("Your file size (%(size)s) is above the allowed maximum of "
+                                          "%(max_size)s.") % {'size': human_bytes(data.size),
+                                                              'max_size': human_bytes(MAX_FILE_SIZE)},
+                                        code='file_size_too_large')
         return data
 
     def save(self, commit=True):

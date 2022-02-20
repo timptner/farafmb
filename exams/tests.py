@@ -1,126 +1,129 @@
-import shutil
-import tempfile
-
-from datetime import date
-from django.core.files import File
+from datetime import timedelta
+from django.contrib.admin.sites import AdminSite
+from django.contrib.auth.models import AnonymousUser, User
+from django.contrib.messages.storage.fallback import FallbackStorage
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.test import TestCase, override_settings
+from django.test import TestCase, SimpleTestCase, override_settings, RequestFactory
 from django.urls import reverse
-from http import HTTPStatus
-from farafmb.utils import generate_random_file_name
+from django.utils import timezone
+from farafmb.utils import human_bytes
+from unittest.mock import patch
 
-from .forms import ExamSubmitForm
+from .admin import ExamAdmin
+from .forms import SubmitForm, MAX_FILE_SIZE
 from .models import Exam
 
-MEDIA_ROOT = tempfile.mkdtemp()
+
+class ExamTests(TestCase):
+    def test_course_represents_instance(self):
+        exam = Exam.objects.create(course='Test course', date=timezone.localdate())
+        self.assertEqual(str(exam), exam.course)
 
 
-@override_settings(MEDIA_ROOT=MEDIA_ROOT)
-class ExamTest(TestCase):
+class ExamAdminTests(TestCase):
     def setUp(self) -> None:
-        pdf_file = File(SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'),
-                        name=generate_random_file_name(suffix='.pdf'))
-        self.exam = Exam.objects.create(course='Astrophysics', lecturer='Tyson', date=date(2022, 1, 1),
-                                        minute_author='John', minute_file=pdf_file)
+        self.site = AdminSite()
+        self.factory = RequestFactory()
+        self.user = User.objects.create(username='john', email='john@admin.org', password='secret')
 
-    def tearDown(self):
-        shutil.rmtree(MEDIA_ROOT, ignore_errors=True)
+    def test_remove_minute_author(self):
+        admin = ExamAdmin(Exam, self.site)
+        request = self.factory.get(reverse('admin:exams_exam_changelist'))
+        request.user = self.user
 
-    def test_object_name(self):
-        """Object is represented by its course."""
-        self.assertEqual(str(self.exam), self.exam.course)
+        # required when using messages
+        setattr(request, 'session', 'session')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
+
+        exam = Exam.objects.create(course='Some course', minute_author='test@example.org', date=timezone.localdate())
+        admin.remove_minute_author(request, Exam.objects.all())
+        exam.refresh_from_db()
+
+        self.assertIsNone(exam.minute_author)
 
 
-@override_settings(MEDIA_ROOT=MEDIA_ROOT)
-class ExamSubmitFormTest(TestCase):
-    def tearDown(self) -> None:
-        shutil.rmtree(MEDIA_ROOT, ignore_errors=True)
-
-    def test_form_data_is_valid(self):
-        """
-        Valid form data is passed.
-        """
-        data = {
-            'privacy': "yes",
-            'course': "Some course",
-            'lecturer': "Some lecturer",
-            'date': "2000-01-01",
-            'minute_author': "student@st.ovgu.de",
+@override_settings(LANGUAGE_CODE='en-us')
+class SubmitFormTests(TestCase):
+    def setUp(self) -> None:
+        self.valid_data = {
+            'privacy': True,
+            'course': 'Some cool new stuff',
+            'lecturer': 'A lame dude',
+            'date': timezone.localdate(),
+            'minute_author': 'student@st.ovgu.de',
         }
-        files = {
-            'minute_file': SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'),
-        }
-        form = ExamSubmitForm(data=data, files=files)
+        self.file_data = {'minute_file': SimpleUploadedFile('file.pdf', b'Some content')}
+
+    @patch('django.core.files.storage.FileSystemStorage._save')
+    def test_valid_form(self, mock_save):
+        mock_save.return_value = 'file.pdf'
+        data = self.valid_data
+        form = SubmitForm(data, self.file_data)
         self.assertTrue(form.is_valid())
-        obj = form.save()
-        self.assertEqual(obj, Exam.objects.get(course="Some course"))
+        instance = form.save()
+        self.assertFalse('privacy' in dir(instance))
+        self.assertEqual(instance.course, data['course'])
+        self.assertEqual(instance.lecturer, data['lecturer'])
+        self.assertEqual(instance.date, data['date'])
+        self.assertEqual(instance.minute_author, data['minute_author'])
+        self.assertEqual(instance.minute_file, self.file_data['minute_file'])
 
-    def test_form_data_is_invalid(self):
-        """
-        Invalid form data raised a ValidationError.
-        """
-        data = {
-            'privacy': "yes",
-            'course': "Some course",
-            'lecturer': "Some lecturer",
-            'date': "9999-12-31",
-            'minute_author': "student@example.org",
-        }
-        file = SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf')
-        setattr(file, 'size', 10 * 10 ** 10)
-        files = {
-            'minute_file': file,
-        }
-        form = ExamSubmitForm(data, files=files)
+    @patch('django.core.files.storage.FileSystemStorage._save')
+    def test_date_is_future(self, mock_save):
+        mock_save.return_value = 'file.pdf'
+        data = self.valid_data
+        data['date'] = timezone.localdate() + timedelta(days=1)
+        form = SubmitForm(data, self.file_data)
         self.assertFalse(form.is_valid())
-        self.assertTrue('date' in form.errors)
-        self.assertTrue('minute_author' in form.errors)
-        self.assertTrue('minute_file' in form.errors)
+        self.assertIn('date', form.errors)
+        self.assertEqual(form.errors['date'], ["The date can't be in the future. (Are you a time traveler? 🧙)"])
+
+    @patch('django.core.files.storage.FileSystemStorage._save')
+    def test_email_is_not_allowed(self, mock_save):
+        mock_save.return_value = 'file.pdf'
+        data = self.valid_data
+        data['minute_author'] = 'student@example.org'
+        form = SubmitForm(data, self.file_data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('minute_author', form.errors)
+        self.assertEqual(form.errors['minute_author'], ["Please use your university email address. "
+                                                        "(Did you even read the help text above? 🧐)"])
+
+    @patch('django.core.files.storage.FileSystemStorage._save')
+    @patch('django.core.files.uploadedfile.SimpleUploadedFile', spec=SimpleUploadedFile)
+    def test_file_size_is_above_limit(self, mock_save, mock_file):
+        mock_save.return_value = 'file.pdf'
+        mock_file().size = 10_000_000  # Byte
+        data = self.file_data
+        data['minute_file'] = mock_file()
+        form = SubmitForm(self.valid_data, data)
+        self.assertFalse(form.is_valid())
+        self.assertIn('minute_file', form.errors)
+        self.assertEqual(form.errors['minute_file'], ["Your file size (%(size)s) is above the allowed maximum of "
+                                                      "%(max_size)s." % {'size': human_bytes(data['minute_file'].size),
+                                                                         'max_size': human_bytes(MAX_FILE_SIZE)}])
 
 
-class SubmitExamViewTest(TestCase):
-    def test_get(self):
-        """
-        Views respond a GET request with http status OK.
-        """
-        routes = {
-            'exams:info': '/exams/',
-            'exams:submit': '/exams/submit/',
-            'exams:submit_done': '/exams/submit/done/',
-        }
-        for key, value in routes.items():
-            url = reverse(key)
-            self.assertEqual(url, value)
-            response = self.client.get(url)
-            self.assertEqual(response.status_code, HTTPStatus.OK)
+@override_settings(LANGUAGE_CODE='en-us')
+class ViewTests(SimpleTestCase):
+    def test_info(self):
+        url = reverse('exams:info')
+        self.assertEqual(url, '/exams/')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Memory minutes')
 
-    def test_post_success(self):
-        """
-        Views respond a valid POST request with http status FOUND.
-        """
-        data = {
-            'privacy': "yes",
-            'course': "Some course",
-            'lecturer': "Some lecturer",
-            'date': "2000-01-01",
-            'minute_author': "student@st.ovgu.de",
-            'minute_file': SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'),
-        }
-        response = self.client.post('/exams/submit/', data=data)
-        self.assertEqual(response.status_code, HTTPStatus.FOUND)
-        self.assertEqual(response['Location'], '/exams/submit/done/')
+    def test_submit(self):
+        url = reverse('exams:submit')
+        self.assertEqual(url, '/exams/submit/')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Submit your memory minutes')
 
-    def test_post_error(self):
-        """
-        Views respond an invalid POST request with http status OK.
-        """
-        data = {
-            'privacy': "yes",
-            'course': "Some course",
-            'lecturer': "Some lecturer",
-            'date': "9999-12-31",
-            'minute_author': "student@example.org",
-            'minute_file': SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'),
-        }
-        response = self.client.post('/exams/submit/', data=data)
-        self.assertEqual(response.status_code, HTTPStatus.OK)
+    def test_submit_done(self):
+        url = reverse('exams:submit_done')
+        self.assertEqual(url, '/exams/submit/done/')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Success')
