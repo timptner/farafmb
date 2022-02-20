@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-20 01:00+0100\n"
+"POT-Creation-Date: 2022-02-20 23:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -22,15 +22,26 @@ msgid_plural "%d authors were removed successfully."
 msgstr[0] "%d Autor wurde erfolgreich entfernt."
 msgstr[1] "%d Autoren wurden erfolgreich entfernt."
 
-#: admin.py:24
+#: admin.py:22
 msgid "Make selected exams anonymous"
 msgstr "Ausgewählte Prüfungen anonymisieren"
 
-#: apps.py:8 models.py:18
+#: admin.py:27
+#, python-format
+msgid "%d exam was marked as archived."
+msgid_plural "%d exams were marked as archived."
+msgstr[0] "%d Prüfung wurde als archiviert markiert."
+msgstr[1] "%d Prüfungen wurden als archiviert markiert."
+
+#: admin.py:31
+msgid "Archive selected exams"
+msgstr "Ausgewählte Prüfungen archivieren"
+
+#: apps.py:8 models.py:19
 msgid "Exams"
 msgstr "Prüfungen"
 
-#: forms.py:17 templates/exams/exam_submit_form.html:13
+#: forms.py:17 templates/exams/submit_form.html:13
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -62,25 +73,25 @@ msgstr "Verfasser des Protokolls"
 msgid "Minute file"
 msgstr "Protokolldatei"
 
-#: forms.py:41
+#: forms.py:34
 msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
 msgstr ""
 "Es sind ausschließlich E-Mail-Adresse mit der Domain 'st.ovgu.de' erlaubt."
 
-#: forms.py:42
+#: forms.py:35
 #, python-format
-msgid "Only PDF files with a maximum size of %d MB can be submitted."
+msgid "Only PDF files with a maximum size of %s can be submitted."
 msgstr ""
-"Es können nur PDF-Dateien mit einer maximalen Dateigröße von %d MB "
-"eingereicht werden."
+"Es können nur PDF-Dateien mit einer maximalen Dateigröße von %s eingereicht "
+"werden."
 
-#: forms.py:49
+#: forms.py:42
 msgid "The date can't be in the future. (Are you a time traveler? 🧙)"
 msgstr ""
 "Das Datum kann nicht in der Zukunft liegen. (Bist du etwa ein Zeitreisender? "
 "🧙)"
 
-#: forms.py:56
+#: forms.py:49
 msgid ""
 "Please use your university email address. (Did you even read the help text "
 "above? 🧐)"
@@ -88,57 +99,23 @@ msgstr ""
 "Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
 "nicht gelesen? 🧐)"
 
-#: forms.py:64
+#: forms.py:57
 #, python-format
-msgid ""
-"Your file size (%(size)d MB) is above the allowed maximum of %(max_size)d MB."
+msgid "Your file size (%(size)s) is above the allowed maximum of %(max_size)s."
 msgstr ""
-"Deine Dateigröße (%(size)d MB) ist über dem erlaubten Maximum von "
-"%(max_size)d MB."
+"Deine Dateigröße (%(size)s) ist über dem erlaubten Maximum von %(max_size)s."
 
 #: models.py:14
 msgid "Submitted on"
 msgstr "Eingereicht am"
 
-#: models.py:17
+#: models.py:15
+msgid "Archived"
+msgstr "Archiviert"
+
+#: models.py:18
 msgid "Exam"
 msgstr "Prüfung"
-
-#: templates/exams/exam_submit_done.html:8
-msgid "Success"
-msgstr "Erfolg"
-
-#: templates/exams/exam_submit_done.html:9
-msgid "You have submitted your memory minutes."
-msgstr "Du hast dein Gedächtnisprotokoll eingereicht."
-
-#: templates/exams/exam_submit_form.html:15
-msgid ""
-"\n"
-"                    We will store your email address for a maximum of 6 "
-"months to notify you if you are drawn in the\n"
-"                    raffle.\n"
-"                    Your data will not be passed on to third parties and "
-"will be treated confidentially! After this\n"
-"                    period we\n"
-"                    will delete your personal data irrevocably from our "
-"servers.\n"
-"                "
-msgstr ""
-"\n"
-"Wir speichern deine E-Mail-Adresse für maximal 6 Monate, um dich zu "
-"benachrichtigen, falls du bei der Verlosung gezogen wurdest. Deine Daten "
-"werden nicht an Dritte weitergegeben und von uns vertraulich behandelt! Nach "
-"Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich "
-"von unseren Servern."
-
-#: templates/exams/exam_submit_form.html:25
-msgid "Submit your memory minutes"
-msgstr "Ein Gedächtnisprotokoll einreichen"
-
-#: templates/exams/exam_submit_form.html:29
-msgid "Submit"
-msgstr "Einreichen"
 
 #: templates/exams/info.html:8
 msgid "Memory minutes"
@@ -266,3 +243,39 @@ msgstr ""
 #: templates/exams/info.html:59
 msgid "Submit memory minutes now!"
 msgstr "Jetzt ein Gedächtnisprotokoll einreichen!"
+
+#: templates/exams/submit_done.html:8
+msgid "Success"
+msgstr "Erfolg"
+
+#: templates/exams/submit_done.html:9
+msgid "You have submitted your memory minutes."
+msgstr "Du hast dein Gedächtnisprotokoll eingereicht."
+
+#: templates/exams/submit_form.html:15
+msgid ""
+"\n"
+"                    We will store your email address for a maximum of 6 "
+"months to notify you if you are drawn in the\n"
+"                    raffle.\n"
+"                    Your data will not be passed on to third parties and "
+"will be treated confidentially! After this\n"
+"                    period we\n"
+"                    will delete your personal data irrevocably from our "
+"servers.\n"
+"                "
+msgstr ""
+"\n"
+"Wir speichern deine E-Mail-Adresse für maximal 6 Monate, um dich zu "
+"benachrichtigen, falls du bei der Verlosung gezogen wurdest. Deine Daten "
+"werden nicht an Dritte weitergegeben und von uns vertraulich behandelt! Nach "
+"Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich "
+"von unseren Servern."
+
+#: templates/exams/submit_form.html:25
+msgid "Submit your memory minutes"
+msgstr "Ein Gedächtnisprotokoll einreichen"
+
+#: templates/exams/submit_form.html:29
+msgid "Submit"
+msgstr "Einreichen"

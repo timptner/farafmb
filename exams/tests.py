@@ -42,6 +42,22 @@ class ExamAdminTests(TestCase):
 
         self.assertIsNone(exam.minute_author)
 
+    def test_mark_as_archived(self):
+        admin = ExamAdmin(Exam, self.site)
+        request = self.factory.get(reverse('admin:exams_exam_changelist'))
+        request.user = self.user
+
+        # required when using messages
+        setattr(request, 'session', 'session')
+        messages = FallbackStorage(request)
+        setattr(request, '_messages', messages)
+
+        exam = Exam.objects.create(course='Some course', date=timezone.localdate(), is_archived=False)
+        admin.mark_as_archived(request, Exam.objects.all())
+        exam.refresh_from_db()
+
+        self.assertTrue(exam.is_archived)
+
 
 @override_settings(LANGUAGE_CODE='en-us')
 class SubmitFormTests(TestCase):

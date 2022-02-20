@@ -23,6 +23,7 @@ def convert_data(data: list) -> list:
         fields['minute_author'] = fields.pop('author')
         fields['minute_file'] = fields.pop('file')
         fields['submitted_on'] = fields.pop('submitted')
+        fields['is_archived'] = False
     print('Done!')
     return data
 

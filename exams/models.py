@@ -12,6 +12,7 @@ class Exam(models.Model):
         FileExtensionValidator(allowed_extensions=['pdf']),
     ])
     submitted_on = models.DateTimeField(_("Submitted on"), auto_now_add=True)
+    is_archived = models.BooleanField(_("Archived"), default=False)
 
     class Meta:
         verbose_name = _("Exam")
