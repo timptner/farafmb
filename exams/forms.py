@@ -30,13 +30,6 @@ class ExamSubmitForm(forms.ModelForm):
             'minute_author': _("Author of the minute"),
             'minute_file': _("Minute file"),
         }
-        widgets = {
-            # 'course': forms.TextInput(attrs={'class': "input"}),
-            # 'lecturer': forms.TextInput(attrs={'class': "input"}),
-            # 'date': forms.DateInput(),
-            # 'minute_author': forms.EmailInput(attrs={'class': "input"}),
-            # 'minute_file': forms.FileInput(),
-        }
         help_texts = {
             'minute_author': _("Only email addresses with the domain 'st.ovgu.de' are allowed."),
             'minute_file': _("Only PDF files with a maximum size "
