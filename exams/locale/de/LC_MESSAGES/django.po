@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-19 15:05+0100\n"
+"POT-Creation-Date: 2022-02-20 01:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -30,29 +30,71 @@ msgstr "Ausgewählte Prüfungen anonymisieren"
 msgid "Exams"
 msgstr "Prüfungen"
 
-#: forms.py:9
+#: forms.py:17 templates/exams/exam_submit_form.html:13
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: models.py:7
+#: forms.py:19
+msgid ""
+"I accept the privacy statement and agree to the processing of my personal "
+"data."
+msgstr ""
+"Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
+"personenbezogenen Daten einverstanden."
+
+#: forms.py:27 models.py:7
 msgid "Course"
 msgstr "Lehrveranstaltung"
 
-#: models.py:8
+#: forms.py:28 models.py:8
 msgid "Lecturer"
 msgstr "Dozent"
 
-#: models.py:9
-msgid "Date"
-msgstr "Datum"
+#: forms.py:29 models.py:9
+msgid "Date of the exam"
+msgstr "Datum der Prüfung"
 
-#: models.py:10
+#: forms.py:30 models.py:10
 msgid "Author of the minute"
 msgstr "Verfasser des Protokolls"
 
-#: models.py:11
+#: forms.py:31 models.py:11
 msgid "Minute file"
 msgstr "Protokolldatei"
+
+#: forms.py:41
+msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
+msgstr ""
+"Es sind ausschließlich E-Mail-Adresse mit der Domain 'st.ovgu.de' erlaubt."
+
+#: forms.py:42
+#, python-format
+msgid "Only PDF files with a maximum size of %d MB can be submitted."
+msgstr ""
+"Es können nur PDF-Dateien mit einer maximalen Dateigröße von %d MB "
+"eingereicht werden."
+
+#: forms.py:49
+msgid "The date can't be in the future. (Are you a time traveler? 🧙)"
+msgstr ""
+"Das Datum kann nicht in der Zukunft liegen. (Bist du etwa ein Zeitreisender? "
+"🧙)"
+
+#: forms.py:56
+msgid ""
+"Please use your university email address. (Did you even read the help text "
+"above? 🧐)"
+msgstr ""
+"Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
+"nicht gelesen? 🧐)"
+
+#: forms.py:64
+#, python-format
+msgid ""
+"Your file size (%(size)d MB) is above the allowed maximum of %(max_size)d MB."
+msgstr ""
+"Deine Dateigröße (%(size)d MB) ist über dem erlaubten Maximum von "
+"%(max_size)d MB."
 
 #: models.py:14
 msgid "Submitted on"
@@ -61,6 +103,42 @@ msgstr "Eingereicht am"
 #: models.py:17
 msgid "Exam"
 msgstr "Prüfung"
+
+#: templates/exams/exam_submit_done.html:8
+msgid "Success"
+msgstr "Erfolg"
+
+#: templates/exams/exam_submit_done.html:9
+msgid "You have submitted your memory minutes."
+msgstr "Du hast dein Gedächtnisprotokoll eingereicht."
+
+#: templates/exams/exam_submit_form.html:15
+msgid ""
+"\n"
+"                    We will store your email address for a maximum of 6 "
+"months to notify you if you are drawn in the\n"
+"                    raffle.\n"
+"                    Your data will not be passed on to third parties and "
+"will be treated confidentially! After this\n"
+"                    period we\n"
+"                    will delete your personal data irrevocably from our "
+"servers.\n"
+"                "
+msgstr ""
+"\n"
+"Wir speichern deine E-Mail-Adresse für maximal 6 Monate, um dich zu "
+"benachrichtigen, falls du bei der Verlosung gezogen wurdest. Deine Daten "
+"werden nicht an Dritte weitergegeben und von uns vertraulich behandelt! Nach "
+"Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich "
+"von unseren Servern."
+
+#: templates/exams/exam_submit_form.html:25
+msgid "Submit your memory minutes"
+msgstr "Ein Gedächtnisprotokoll einreichen"
+
+#: templates/exams/exam_submit_form.html:29
+msgid "Submit"
+msgstr "Einreichen"
 
 #: templates/exams/info.html:8
 msgid "Memory minutes"
@@ -135,14 +213,13 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"Wir verwaltet eine Sammlung unter "
-"<a href=\"https://cloud.faking.cool\">https://cloud.faking.cool</a>. Diese "
-"Sammlung enthält Gedächtnisprotokolle zu den meisten Modulen an der "
-"<em>Fakultät Maschinenbau</em>, der <em>Fakultät Elektro- und "
-"Informationstechnik</em> sowie der <em>Fakultät Verfahrens- und "
-"Systemtechnik</em>. Da die Klausuren sich jedoch stetig ändern sind wir "
-"fortwährend auf neue Gedächtnisprotokolle angewiesen, welche wir dann in "
-"unserer Sammlung einpflegen."
+"Wir verwaltet eine Sammlung unter <a href=\"https://cloud.faking.cool"
+"\">https://cloud.faking.cool</a>. Diese Sammlung enthält "
+"Gedächtnisprotokolle zu den meisten Modulen an der <em>Fakultät "
+"Maschinenbau</em>, der <em>Fakultät Elektro- und Informationstechnik</em> "
+"sowie der <em>Fakultät Verfahrens- und Systemtechnik</em>. Da die Klausuren "
+"sich jedoch stetig ändern sind wir fortwährend auf neue Gedächtnisprotokolle "
+"angewiesen, welche wir dann in unserer Sammlung einpflegen."
 
 #: templates/exams/info.html:41
 msgid "Convinced?! What do I have to keep in mind? 🚨"
@@ -176,17 +253,16 @@ msgstr ""
 "Die Gedächtnisprotokolle, welcher aus der Erinnerung heraus geschrieben "
 "werden, sind jedoch nur grob zum Inhalt der Prüfung gleich und können daher "
 "nicht als geistliches Eigentum vom Prüfer eingeklagt werden.<br/>Solltest du "
-"ein Experte der "
-"<a href=\"https://de.wikipedia.org/wiki/Mnemotechnik\">Mnemotechnik 🌐</a> "
-"sein bitten wir dich beim Anfertigen des Gedächtnisprotokolls nicht die "
-"exakte Klausur niederzuschreiben sondern stattdessen dein Protokoll so "
-"umzuschreiben, dass keine zu starke Ähnlichkeit zum Wortlaut der echten "
-"Klausur besteht.<br/> Noch ein letzter Hinweis:<strong>Bitte reiche "
-"ausschließlich Gedächtnisprotokolle zu Prüfungen bzw. Klausur oder Testaten "
-"ein.</strong> Mitschriften zu Übungsaufgaben, Anfertigungen von Belegarbeiten "
-"oder sonstige gleichwertige Aufzeichnungen werden nicht in unsere Sammlung "
-"aufgenommen."
+"ein Experte der <a href=\"https://de.wikipedia.org/wiki/Mnemotechnik"
+"\">Mnemotechnik 🌐</a> sein bitten wir dich beim Anfertigen des "
+"Gedächtnisprotokolls nicht die exakte Klausur niederzuschreiben sondern "
+"stattdessen dein Protokoll so umzuschreiben, dass keine zu starke "
+"Ähnlichkeit zum Wortlaut der echten Klausur besteht.<br/> Noch ein letzter "
+"Hinweis:<strong>Bitte reiche ausschließlich Gedächtnisprotokolle zu "
+"Prüfungen bzw. Klausur oder Testaten ein.</strong> Mitschriften zu "
+"Übungsaufgaben, Anfertigungen von Belegarbeiten oder sonstige gleichwertige "
+"Aufzeichnungen werden nicht in unsere Sammlung aufgenommen."
 
-#: templates/exams/info.html:58
+#: templates/exams/info.html:59
 msgid "Submit memory minutes now!"
 msgstr "Jetzt ein Gedächtnisprotokoll einreichen!"
