@@ -16,6 +16,7 @@ jwcrypto==1.0
 Markdown==3.3.6
 markdown-checklist==0.4.3
 markdown-del-ins==1.0.0
+model-bakery==1.4.0
 oauthlib==3.2.0
 packaging==21.3
 Pillow==9.0.1
