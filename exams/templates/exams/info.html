@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="container is-max-desktop">
+    <div class="content">
+        <h1>{% translate "Memory minutes" %}</h1>
+
+        <h3>{% translate "What are memory minutes? 📝" %}</h3>
+        <p>
+            {% blocktranslate %}
+            Memory minutes are records of an exam that has already been completed. These records are not made secretly
+            during the exam, but are written from memory. Hence the name <strong>memory</strong> minutes. The memory
+            minutes of an exam helps future students to better prepare for their exam in the corresponding course,
+            because they can better estimate what to expect.
+            {% endblocktranslate %}
+        </p>
+
+        <h3>{% translate "And what do I get out of it? 🤔" %}</h3>
+        <p>
+            {% blocktranslate %}
+            Unfortunately, the memory minutes are of no use for yourself. (Unless you plan to write the exam again. 😉)
+            However, you yourself have probably already prepared for an exam based on the notes of fellow students in
+            higher semesters or successfully completed an exercise.<br/>
+            <strong>So don't do it for yourself but for the future students! 👩‍🎓📈</strong>
+            {% endblocktranslate %}
+        </p>
+
+        <h3>{% translate "Where can I find existing memory minutes? 🗄️" %}</h3>
+        <p>
+            {% blocktranslate %}
+            We maintain a collection at <a href="https://cloud.faking.cool">https://cloud.faking.cool</a>. This
+            collection contains memory minutes for most modules at the <em>Faculty of Mechanical Engineering</em>, the
+            <em>Faculty of Electrical Engineering and Information Technology</em>, and the <em>Faculty of Process and
+            Systems Engineering</em>. However, since the exams are constantly changing, we are constantly in need of
+            new memory minutes, which we then add to our collection.
+            {% endblocktranslate %}
+        </p>
+
+        <h3>{% translate "Convinced?! What do I have to keep in mind? 🚨" %}</h3>
+        <p>
+            {% blocktranslate %}
+            Legally, the exact wording of each exam is the spiritual property of the examiner. Therefore, we cannot
+            include original exams or identical wording of assignments in our collection. However, the memory
+            minutes, which are written from memory, are only roughly equal to the content of the exam and therefore
+            cannot be claimed as spiritual property by the examiner.<br/>
+            If you are an expert in the <a href="https://en.wikipedia.org/wiki/Art_of_memory">Art of memory 🌐</a>
+            please do not write down the exact exam but rewrite it in such a way that there is not too much similarity
+            to the wording of the real exam.<br/>
+            One last note: <strong>Please submit only memory protocols for exams or tests.</strong> Transcripts of
+            exercises, preparation of papers or other equivalent records will not be included in our collection.
+            {% endblocktranslate %}
+        </p>
+    </div>
+
+    <div class="m-5">
+        <a class="button is-primary is-fullwidth is-large" href="{% url 'exams:submit' %}">
+            {% translate "Submit memory minutes now!" %}
+        </a>
+    </div>
+</div>
+{% endblock %}

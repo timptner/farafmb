@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'consultations.apps.ConsultationsConfig',
     'documents.apps.DocumentsConfig',
+    'exams.apps.ExamsConfig',
     'excursions.apps.ExcursionsConfig',
     'jobs.apps.JobsConfig',
     'meetings.apps.MeetingsConfig',
@@ -26,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
 
     'oauth2_provider',
 ]

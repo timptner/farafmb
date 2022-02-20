@@ -1,0 +1,11 @@
+<label class="checkbox">
+    <input type="{{ widget.type }}"
+           name="{{ widget.name }}"
+           {% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}
+           {% include "django/forms/widgets/attrs.html" %}>
+    {% for name, value in widget.attrs.items %}
+        {% if name == 'data-label' %}
+            {{ value }}
+        {% endif %}
+    {% endfor%}
+</label>

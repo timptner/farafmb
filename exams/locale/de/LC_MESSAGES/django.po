@@ -1,0 +1,281 @@
+# German translation of https://farafmb.de/exams/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-20 23:39+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin.py:18
+#, python-format
+msgid "%d author was removed successfully."
+msgid_plural "%d authors were removed successfully."
+msgstr[0] "%d Autor wurde erfolgreich entfernt."
+msgstr[1] "%d Autoren wurden erfolgreich entfernt."
+
+#: admin.py:22
+msgid "Make selected exams anonymous"
+msgstr "Ausgewählte Prüfungen anonymisieren"
+
+#: admin.py:27
+#, python-format
+msgid "%d exam was marked as archived."
+msgid_plural "%d exams were marked as archived."
+msgstr[0] "%d Prüfung wurde als archiviert markiert."
+msgstr[1] "%d Prüfungen wurden als archiviert markiert."
+
+#: admin.py:31
+msgid "Archive selected exams"
+msgstr "Ausgewählte Prüfungen archivieren"
+
+#: apps.py:8 models.py:19
+msgid "Exams"
+msgstr "Prüfungen"
+
+#: forms.py:17 templates/exams/submit_form.html:13
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: forms.py:19
+msgid ""
+"I accept the privacy statement and agree to the processing of my personal "
+"data."
+msgstr ""
+"Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
+"personenbezogenen Daten einverstanden."
+
+#: forms.py:27 models.py:7
+msgid "Course"
+msgstr "Lehrveranstaltung"
+
+#: forms.py:28 models.py:8
+msgid "Lecturer"
+msgstr "Dozent"
+
+#: forms.py:29 models.py:9
+msgid "Date of the exam"
+msgstr "Datum der Prüfung"
+
+#: forms.py:30 models.py:10
+msgid "Author of the minute"
+msgstr "Verfasser des Protokolls"
+
+#: forms.py:31 models.py:11
+msgid "Minute file"
+msgstr "Protokolldatei"
+
+#: forms.py:34
+msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
+msgstr ""
+"Es sind ausschließlich E-Mail-Adresse mit der Domain 'st.ovgu.de' erlaubt."
+
+#: forms.py:35
+#, python-format
+msgid "Only PDF files with a maximum size of %s can be submitted."
+msgstr ""
+"Es können nur PDF-Dateien mit einer maximalen Dateigröße von %s eingereicht "
+"werden."
+
+#: forms.py:42
+msgid "The date can't be in the future. (Are you a time traveler? 🧙)"
+msgstr ""
+"Das Datum kann nicht in der Zukunft liegen. (Bist du etwa ein Zeitreisender? "
+"🧙)"
+
+#: forms.py:49
+msgid ""
+"Please use your university email address. (Did you even read the help text "
+"above? 🧐)"
+msgstr ""
+"Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
+"nicht gelesen? 🧐)"
+
+#: forms.py:57
+#, python-format
+msgid "Your file size (%(size)s) is above the allowed maximum of %(max_size)s."
+msgstr ""
+"Deine Dateigröße (%(size)s) ist über dem erlaubten Maximum von %(max_size)s."
+
+#: models.py:14
+msgid "Submitted on"
+msgstr "Eingereicht am"
+
+#: models.py:15
+msgid "Archived"
+msgstr "Archiviert"
+
+#: models.py:18
+msgid "Exam"
+msgstr "Prüfung"
+
+#: templates/exams/info.html:8
+msgid "Memory minutes"
+msgstr "Gedächtnisprotokoll"
+
+#: templates/exams/info.html:10
+msgid "What are memory minutes? 📝"
+msgstr "Was ist ein Gedächtnisprotokoll? 📝"
+
+#: templates/exams/info.html:12
+msgid ""
+"\n"
+"            Memory minutes are records of an exam that has already been "
+"completed. These records are not made secretly\n"
+"            during the exam, but are written from memory. Hence the name "
+"<strong>memory</strong> minutes. The memory\n"
+"            minutes of an exam helps future students to better prepare for "
+"their exam in the corresponding course,\n"
+"            because they can better estimate what to expect.\n"
+"            "
+msgstr ""
+"\n"
+"Gedächtnisprotokolle sind Aufzeichnungen einer bereits beendeten Prüfung. "
+"Hierbei sind diese Aufzeichnungen nicht während der Prüfung heimlich "
+"angefertigt worden sondern werden aus der Erinnerung heraus geschrieben. "
+"Daher auch der Name <strong>Gedächtnis</strong>protokoll. Die aus der "
+"Erinnerung geschriebenen Aufzeichnungen einer Klausur oder Prüfung hilft "
+"zukünftigen Studenten sich besser auf ihre Prüfung in dem entsprechendem "
+"Kurs vorzubereiten, da sie so besser abschätzen können, was sie erwarten "
+"wird."
+
+#: templates/exams/info.html:20
+msgid "And what do I get out of it? 🤔"
+msgstr "Und was habe ich davon? 🤔"
+
+#: templates/exams/info.html:22
+msgid ""
+"\n"
+"            Unfortunately, the memory minutes are of no use for yourself. "
+"(Unless you plan to write the exam again. 😉)\n"
+"            However, you yourself have probably already prepared for an exam "
+"based on the notes of fellow students in\n"
+"            higher semesters or successfully completed an exercise.<br/>\n"
+"            <strong>So don't do it for yourself but for the future students! "
+"👩‍🎓📈</strong>\n"
+"            "
+msgstr ""
+"\n"
+"Dir selbst nützen die Gedächtnisprotokolle leider nichts. (Außer du hast vor "
+"die Prüfung noch einmal zu schreiben. 😉) Jedoch hast du selbst dich bestimmt "
+"auch schon auf die eine oder andere Prüfung anhand der Notizen von "
+"Kommilitonen in höheren Semestern vorbereitet oder die eine oder andere "
+"Übungsaufgabe dadurch erfolgreich bearbeitet.<br/><strong>Tu es also nicht "
+"für dich sondern für die zukünftigen Studenten! 👩‍🎓📈</strong>"
+
+#: templates/exams/info.html:30
+msgid "Where can I find existing memory minutes? 🗄️"
+msgstr "Wo finde ich bereits existierende Gedächtnisprotokolle? 🗄️"
+
+#: templates/exams/info.html:32
+msgid ""
+"\n"
+"            We maintain a collection at <a href=\"https://cloud.faking.cool"
+"\">https://cloud.faking.cool</a>. This\n"
+"            collection contains memory minutes for most modules at the "
+"<em>Faculty of Mechanical Engineering</em>, the\n"
+"            <em>Faculty of Electrical Engineering and Information "
+"Technology</em>, and the <em>Faculty of Process and\n"
+"            Systems Engineering</em>. However, since the exams are "
+"constantly changing, we are constantly in need of\n"
+"            new memory minutes, which we then add to our collection.\n"
+"            "
+msgstr ""
+"\n"
+"Wir verwaltet eine Sammlung unter <a href=\"https://cloud.faking.cool"
+"\">https://cloud.faking.cool</a>. Diese Sammlung enthält "
+"Gedächtnisprotokolle zu den meisten Modulen an der <em>Fakultät "
+"Maschinenbau</em>, der <em>Fakultät Elektro- und Informationstechnik</em> "
+"sowie der <em>Fakultät Verfahrens- und Systemtechnik</em>. Da die Klausuren "
+"sich jedoch stetig ändern sind wir fortwährend auf neue Gedächtnisprotokolle "
+"angewiesen, welche wir dann in unserer Sammlung einpflegen."
+
+#: templates/exams/info.html:41
+msgid "Convinced?! What do I have to keep in mind? 🚨"
+msgstr "Überzeugt?! Was muss ich dabei beachten? 🚨"
+
+#: templates/exams/info.html:43
+msgid ""
+"\n"
+"            Legally, the exact wording of each exam is the spiritual "
+"property of the examiner. Therefore, we cannot\n"
+"            include original exams or identical wording of assignments in "
+"our collection. However, the memory\n"
+"            minutes, which are written from memory, are only roughly equal "
+"to the content of the exam and therefore\n"
+"            cannot be claimed as spiritual property by the examiner.<br/>\n"
+"            If you are an expert in the <a href=\"https://en.wikipedia.org/"
+"wiki/Art_of_memory\">Art of memory 🌐</a>\n"
+"            please do not write down the exact exam but rewrite it in such a "
+"way that there is not too much similarity\n"
+"            to the wording of the real exam.<br/>\n"
+"            One last note: <strong>Please submit only memory protocols for "
+"exams or tests.</strong> Transcripts of\n"
+"            exercises, preparation of papers or other equivalent records "
+"will not be included in our collection.\n"
+"            "
+msgstr ""
+"\n"
+"Rechtlich gesehen ist der exakte Wortlaut jeder Klausur das geistliche "
+"Eigentum des Prüfers. Daher können wir keine originalen Prüfungen oder "
+"identische Wortlaute der Aufgabenstellungen in unserer Sammlung aufnehmen. "
+"Die Gedächtnisprotokolle, welcher aus der Erinnerung heraus geschrieben "
+"werden, sind jedoch nur grob zum Inhalt der Prüfung gleich und können daher "
+"nicht als geistliches Eigentum vom Prüfer eingeklagt werden.<br/>Solltest du "
+"ein Experte der <a href=\"https://de.wikipedia.org/wiki/Mnemotechnik"
+"\">Mnemotechnik 🌐</a> sein bitten wir dich beim Anfertigen des "
+"Gedächtnisprotokolls nicht die exakte Klausur niederzuschreiben sondern "
+"stattdessen dein Protokoll so umzuschreiben, dass keine zu starke "
+"Ähnlichkeit zum Wortlaut der echten Klausur besteht.<br/> Noch ein letzter "
+"Hinweis:<strong>Bitte reiche ausschließlich Gedächtnisprotokolle zu "
+"Prüfungen bzw. Klausur oder Testaten ein.</strong> Mitschriften zu "
+"Übungsaufgaben, Anfertigungen von Belegarbeiten oder sonstige gleichwertige "
+"Aufzeichnungen werden nicht in unsere Sammlung aufgenommen."
+
+#: templates/exams/info.html:59
+msgid "Submit memory minutes now!"
+msgstr "Jetzt ein Gedächtnisprotokoll einreichen!"
+
+#: templates/exams/submit_done.html:8
+msgid "Success"
+msgstr "Erfolg"
+
+#: templates/exams/submit_done.html:9
+msgid "You have submitted your memory minutes."
+msgstr "Du hast dein Gedächtnisprotokoll eingereicht."
+
+#: templates/exams/submit_form.html:15
+msgid ""
+"\n"
+"                    We will store your email address for a maximum of 6 "
+"months to notify you if you are drawn in the\n"
+"                    raffle.\n"
+"                    Your data will not be passed on to third parties and "
+"will be treated confidentially! After this\n"
+"                    period we\n"
+"                    will delete your personal data irrevocably from our "
+"servers.\n"
+"                "
+msgstr ""
+"\n"
+"Wir speichern deine E-Mail-Adresse für maximal 6 Monate, um dich zu "
+"benachrichtigen, falls du bei der Verlosung gezogen wurdest. Deine Daten "
+"werden nicht an Dritte weitergegeben und von uns vertraulich behandelt! Nach "
+"Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich "
+"von unseren Servern."
+
+#: templates/exams/submit_form.html:25
+msgid "Submit your memory minutes"
+msgstr "Ein Gedächtnisprotokoll einreichen"
+
+#: templates/exams/submit_form.html:29
+msgid "Submit"
+msgstr "Einreichen"

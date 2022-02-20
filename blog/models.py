@@ -3,7 +3,6 @@ import secrets
 
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
-from django.core.validators import FileExtensionValidator
 from django.db import models
 from markdown import markdown
 
@@ -74,18 +73,6 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Protocol(models.Model):
-    author = models.EmailField(null=True)
-    course = models.CharField(max_length=150)
-    lecturer = models.CharField(max_length=100)
-    date = models.DateField()
-    file = models.FileField(upload_to='protocols', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
-    submitted = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.course
 
 
 class Link(models.Model):

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/file-input.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <article class="message is-info">
+            <div class="message-header">{% translate "Privacy" %}</div>
+            <div class="message-body">
+                {% blocktranslate %}
+                    We will store your email address for a maximum of 6 months to notify you if you are drawn in the
+                    raffle.
+                    Your data will not be passed on to third parties and will be treated confidentially! After this
+                    period we
+                    will delete your personal data irrevocably from our servers.
+                {% endblocktranslate %}
+            </div>
+        </article>
+        <div class="box">
+            <h1 class="title is-4">{% translate "Submit your memory minutes" %}</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <button class="button is-primary" type="submit">{% translate "Submit" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
