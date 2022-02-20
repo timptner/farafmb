@@ -12,7 +12,7 @@ from .models import Exam
 MAX_FILE_SIZE = 2 * 10 ** 6  # MB
 
 
-class ExamSubmitForm(forms.ModelForm):
+class SubmitForm(forms.ModelForm):
     default_renderer = TemplatesSetting
     privacy = forms.BooleanField(label=_('Privacy'),
                                  widget=forms.CheckboxInput(attrs={
