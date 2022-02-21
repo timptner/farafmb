@@ -2,7 +2,7 @@ from datetime import date
 from django.views.generic import TemplateView, ListView
 from meetings.models import Meeting
 
-from .models import Post, Link
+from .models import Post
 
 
 class PostsView(ListView):
@@ -18,9 +18,3 @@ class PostsView(ListView):
 
 class ContactView(TemplateView):
     template_name = 'blog/contact.html'
-
-
-class LinksView(ListView):
-    template_name = 'blog/links.html'
-    model = Link
-    queryset = Link.objects.filter(visible=True)

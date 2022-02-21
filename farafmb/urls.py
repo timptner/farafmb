@@ -26,6 +26,7 @@ urlpatterns = [
     path('exams/', include('exams.urls')),
     path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
+    path('links/', include('links.urls')),
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
     re_path(r'^oauth/\.well-known/openid-configuration/?$',

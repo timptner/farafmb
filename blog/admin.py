@@ -2,7 +2,7 @@ import re
 
 from django.contrib import admin, messages
 
-from .models import Snippet, Post, Image, Video, Link
+from .models import Snippet, Post, Image, Video
 
 
 def check_img(request, content: str):
@@ -40,8 +40,3 @@ class ImageAdmin(admin.ModelAdmin):
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'created')
-
-
-@admin.register(Link)
-class LinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'position', 'visible')
