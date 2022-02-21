@@ -22,36 +22,32 @@
 
     <!-- Scripts -->
     {% block scripts %}
-    <script src="{% static 'js/font-awesome.min.js' %}"></script>
-    <script src="{% static 'js/navbar-burger.js' %}"></script>
-    <script src="{% static 'js/close-notification.js' %}"></script>
+        <script src="{% static 'js/font-awesome.min.js' %}"></script>
+        <script src="{% static 'js/navbar-burger.js' %}"></script>
+        <script src="{% static 'js/close-notification.js' %}"></script>
     {% endblock %}
 </head>
 <body>
 {% block body %}
-{% include 'navigation.html' %}
+    {% include 'navigation.html' %}
 
-{% if messages %}
-{% for message in messages %}
-<div class="notification is-radiusless {{ message.tags }} is-light mb-0">
-    {{ message }}
-</div>
-{% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="notification is-radiusless {{ message.tags }} is-light mb-0">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-{% block section %}
-<section class="section">
-    {% block content %}{% endblock %}
-</section>
-{% endblock %}
-
-<section class="section">
-    {% block footer %}
-    <div class="container">
-        {% include 'footer.html' %}
-    </div>
+    {% block section %}
+        <section class="section">
+            {% block content %}{% endblock %}
+        </section>
     {% endblock %}
-</section>
+
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock %}
 {% endblock %}
 </body>
 </html>

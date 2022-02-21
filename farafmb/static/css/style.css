@@ -1,12 +1,3 @@
-.navbar-item img {
-    max-height: 3.5rem;
-}
-
-.navbar-burger {
-    height: 4.5rem;
-    width: 4.5rem;
-}
-
 @media only screen and (max-device-width : 1024px) {
     .button.is-multiline {
         min-height: 2.25em;
