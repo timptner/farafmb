@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load i18n static %}
+
+{% block body %}
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <figure class="image px-6">
+                        <a href="/">
+                            <img src="{% static 'img/logo.png' %}" width="468" height="84" alt="Logo">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+
+            {% if object_list %}
+                <div class="buttons">
+                    {% for link in object_list %}
+                        <a class="button is-multiline is-link is-light is-medium is-fullwidth" href="{{ link.url }}">
+                            {% if link.icon %}
+                                <span class="icon is-small">
+                                <i class="{{ link.icon }}"></i>
+                            </span>
+                            {% endif %}
+                            <span>
+                            {{ link }}
+                        </span>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="notification">{% translate "Currently no links are available." %}</div>
+            {% endif %}
+        </div>
+    </section>
+    {% include 'footer.html' %}
+{% endblock %}
