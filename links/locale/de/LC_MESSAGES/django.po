@@ -1,0 +1,90 @@
+# German translation of https://farafmb.de/links/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-21 15:11+0100\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin.py:23
+#, python-format
+msgid "%d link was marked as active."
+msgid_plural "%d links were marked as active."
+msgstr[0] "%d Link wurde als aktiv markiert."
+msgstr[1] "%d Links wurden als aktiv markiert."
+
+#: admin.py:27
+msgid "Set selected links active"
+msgstr "Ausgewählte Links aktivieren"
+
+#: admin.py:32
+#, python-format
+msgid "%d link was marked as inactive."
+msgid_plural "%d links were marked as inactive."
+msgstr[0] "%d Link wurde als inaktiv markiert."
+msgstr[1] "%d Links wurden als inaktiv markiert."
+
+#: admin.py:36
+msgid "Set selected links inactive"
+msgstr "Ausgewählte links deaktivieren"
+
+#: forms.py:12
+msgid ""
+"You can use any free or sponsored icon from FontAwesome v5. Please consider "
+"reading the documentation of FontAwesome on how to use icons."
+msgstr ""
+"Du kannst die kostenfreien oder gesponserten Icons von FontAwesome v5 "
+"nutzen. Beachte dabei bitte die Dokumentation von FontAwesome um die Icons "
+"richtig zu verwenden."
+
+#: forms.py:15
+msgid ""
+"The higher the value, the further below it will be listed. Every position "
+"must be unique across all existing links."
+msgstr ""
+"Umso höher der Wert ist, desto weiter unten erscheint der Link in der Liste. "
+"Jede Position muss einmalig unter allen existierenden Links sein."
+
+#: forms.py:18
+msgid "Specify if this link is visible or not."
+msgstr "Zum Festlegen, ob der Link sichtbar ist oder nicht."
+
+#: models.py:6
+msgid "URL"
+msgstr "Adresse (URL)"
+
+#: models.py:7
+msgid "Text"
+msgstr "Text"
+
+#: models.py:8
+msgid "Icon"
+msgstr "Icon"
+
+#: models.py:9
+msgid "Position"
+msgstr "Position"
+
+#: models.py:10
+msgid "Active"
+msgstr "Aktiv"
+
+#: models.py:13
+msgid "Link"
+msgstr "Link"
+
+#: models.py:14
+msgid "Links"
+msgstr "Links"
+
+#: templates/links/index.html:34
+msgid "Currently no links are available."
+msgstr "Aktuell sind keine Links verfügbar."
