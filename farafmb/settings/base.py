@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'exams.apps.ExamsConfig',
     'excursions.apps.ExcursionsConfig',
     'jobs.apps.JobsConfig',
+    'links.apps.LinksConfig',
     'meetings.apps.MeetingsConfig',
     'members.apps.MembersConfig',
 
