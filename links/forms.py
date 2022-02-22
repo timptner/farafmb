@@ -13,9 +13,9 @@ class LinkAdminForm(forms.ModelForm):
             'icon': _("You can use any free or sponsored icon from FontAwesome "
                       "v5. Please consider reading the documentation of "
                       "FontAwesome on how to use icons."),
-            'position': _("The higher the value, the further below it will "
-                          "be listed. Every position must be unique across all "
-                          "existing links."),
+            'position': _('You can change the order of all links using the '
+                          '"Change order" button, which you can find in the '
+                          'top right corner of the list view.'),
             'is_active': _("Specify if this link is visible or not."),
         }
 

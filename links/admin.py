@@ -9,6 +9,7 @@ from .models import Link
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('text', 'position', 'is_active')
     list_filter = ('is_active',)
+    readonly_fields = ('position',)
     form = LinkAdminForm
     actions = ['mark_as_active', 'mark_as_inactive']
 
