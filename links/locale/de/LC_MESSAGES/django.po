@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-21 15:11+0100\n"
+"POT-Creation-Date: 2022-02-22 21:43+0100\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr[1] "%d Links wurden als inaktiv markiert."
 msgid "Set selected links inactive"
 msgstr "Ausgewählte links deaktivieren"
 
-#: forms.py:12
+#: forms.py:13
 msgid ""
 "You can use any free or sponsored icon from FontAwesome v5. Please consider "
 "reading the documentation of FontAwesome on how to use icons."
@@ -45,7 +45,7 @@ msgstr ""
 "nutzen. Beachte dabei bitte die Dokumentation von FontAwesome um die Icons "
 "richtig zu verwenden."
 
-#: forms.py:15
+#: forms.py:16
 msgid ""
 "The higher the value, the further below it will be listed. Every position "
 "must be unique across all existing links."
@@ -53,9 +53,13 @@ msgstr ""
 "Umso höher der Wert ist, desto weiter unten erscheint der Link in der Liste. "
 "Jede Position muss einmalig unter allen existierenden Links sein."
 
-#: forms.py:18
+#: forms.py:19
 msgid "Specify if this link is visible or not."
 msgstr "Zum Festlegen, ob der Link sichtbar ist oder nicht."
+
+#: forms.py:30
+msgid "Not all positions are integers."
+msgstr "Es sind nicht alle Positionen ganzzahlig angegeben."
 
 #: models.py:6
 msgid "URL"
@@ -84,6 +88,46 @@ msgstr "Link"
 #: models.py:14
 msgid "Links"
 msgstr "Links"
+
+#: templates/admin/links/change_list.html:7
+msgid "Change order"
+msgstr "Die Reihenfolge ändern"
+
+#: templates/links/change_order.html:12
+msgid "Save"
+msgstr "Speichern"
+
+#: templates/links/change_order.html:19
+msgid "Order of all links"
+msgstr "Reihenfolge aller Links"
+
+#: templates/links/change_order.html:22
+msgid ""
+"\n"
+"                    Reorder the links by dragging-and-dropping them into the "
+"desired position. The eye-icon\n"
+"                    (<i class=\"fas fa-eye\"></i>) shows you if this link is "
+"currently visible. Don't forget to change\n"
+"                    your new order by clicking on the save button "
+"afterwards.\n"
+"                "
+msgstr ""
+"\n"
+"Ordne die Links durch Ziehen in der gewünschten Reihenfolge an. Das "
+"Augensymbol (<i class=\"fas fa-eye\"></i>) zeigt an ob der Link aktuell "
+"sichtbar ist. Vergiss am Ende nicht auf den Speichern-Knopf zu drücken."
+
+#: templates/links/change_order_done.html:8
+msgid "Success"
+msgstr "Erfolg"
+
+#: templates/links/change_order_done.html:11
+msgid "The link order was changed."
+msgstr "Die Reihenfolge der Links wurde geändert."
+
+#: templates/links/change_order_done.html:14
+msgid "Return to admin"
+msgstr "Zurück zur Administration"
 
 #: templates/links/index.html:34
 msgid "Currently no links are available."
