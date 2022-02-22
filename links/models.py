@@ -6,7 +6,7 @@ class Link(models.Model):
     url = models.URLField(_("URL"))
     text = models.CharField(_("Text"), max_length=100)
     icon = models.CharField(_("Icon"), max_length=50, blank=True)
-    position = models.PositiveSmallIntegerField(_("Position"), unique=True)
+    position = models.PositiveSmallIntegerField(_("Position"), unique=True, null=True)
     is_active = models.BooleanField(_("Active"), default=False)
 
     class Meta:

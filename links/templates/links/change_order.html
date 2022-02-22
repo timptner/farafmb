@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <button class="button is-primary is-pulled-right" onclick="saveLinkOrder()">{% translate "Save" %}</button>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+        </form>
+
+        <h3 class="title">{% translate "Order of all links" %}</h3>
+        <article class="message is-info">
+            <div class="message-body">
+                {% blocktranslate %}
+                    Reorder the links by dragging-and-dropping them into the desired position. The eye-icon
+                    (<i class="fas fa-eye"></i>) shows you if this link is currently visible. Don't forget to change
+                    your new order by clicking on the save button afterwards.
+                {% endblocktranslate %}
+            </div>
+        </article>
+
+        <div id="orderedLinks">
+            {% for link in links %}
+                <div class="box has-background-light" data-id="{{ link.pk }}">
+                    <span class="is-pulled-right">
+                        <span class="icon">
+                            {% if link.is_active %}
+                                <i class="fas fa-eye"></i>
+                            {% else %}
+                                <i class="fas fa-eye-slash"></i>
+                            {% endif %}
+                        </span>
+                        <span class="icon">
+                            <i class="fas fa-sort"></i>
+                        </span>
+                    </span>
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="{{ link.icon }} fa-fw"></i>
+                        </span>
+                        <span>
+                            {{ link }}
+                        </span>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        let input = document.getElementById('id_order');
+        let el = document.getElementById('orderedLinks');
+        let sortable = Sortable.create(el, {
+            animation: 150,
+            ghostClass: 'has-background-grey-lighter',
+            direction: 'vertical'
+        });
+
+        function saveLinkOrder() {
+            let order = sortable.toArray();
+            input.value = order.toString();
+            input.parentElement.submit();
+        }
+    </script>
+{% endblock %}
