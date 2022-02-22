@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from .models import Link
@@ -17,3 +18,25 @@ class LinkAdminForm(forms.ModelForm):
                           "existing links."),
             'is_active': _("Specify if this link is visible or not."),
         }
+
+
+class ChangeOrderForm(forms.Form):
+    order = forms.CharField(widget=forms.HiddenInput(), required=True)
+
+    def clean_order(self):
+        data = self.cleaned_data['order']
+        positions = data.split(',')
+        if any([not position.isdigit() for position in positions]):
+            raise ValidationError(_("Not all positions are integers."))
+        data = [int(position) for position in positions]
+        return data
+
+    def save(self):
+        order = self.cleaned_data.get('order')
+        links = []
+        for position in order:
+            link = Link.objects.get(pk=position)
+            link.position = order.index(position)
+            links.append(link)
+        Link.objects.update(position=None)
+        Link.objects.bulk_update(links, ['position'])

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="message is-success">
+            <div class="message-header">{% translate "Success" %}</div>
+            <div class="message-body">
+                <div class="content">
+                    <p>{% translate "The link order was changed." %}</p>
+                    <p>
+                        <a class="button is-link" href="{% url 'admin:links_link_changelist' %}">
+                            {% translate "Return to admin" %}
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
