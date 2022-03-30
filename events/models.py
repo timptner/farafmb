@@ -31,6 +31,9 @@ class Participant(models.Model):
     class Meta:
         verbose_name = _("Participant")
         verbose_name_plural = _("Participants")
+        constraints = [
+            models.UniqueConstraint(fields=('event', 'email'), name='unique_event_email_combination'),
+        ]
 
     def full_name(self) -> str:
         return f"{self.first_name} {self.last_name}"
