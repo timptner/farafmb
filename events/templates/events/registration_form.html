@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <article class="message is-info">
+            <div class="message-header">{% translate "Privacy" %}</div>
+            <div class="message-body">
+                {% blocktranslate %}
+                    We need your first and last name to identify you at our venue.
+                    We need your email address to contact you before to the event.
+                    We will store your full name and email address for a maximum of 3 months after the event has ended.
+                    Your data will not be passed on to third parties and will be treated confidentially! After this
+                    period we will delete your personal data irrevocably from our servers.
+                {% endblocktranslate %}
+            </div>
+        </article>
+        <div class="box">
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="button is-primary">{% translate "Register" %}</button>
+                {% for error in form.non_field_errors %}
+                    <p class="help is-danger">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
