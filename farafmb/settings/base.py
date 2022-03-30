@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'consultations.apps.ConsultationsConfig',
     'documents.apps.DocumentsConfig',
+    'events.apps.EventsConfig',
     'exams.apps.ExamsConfig',
     'excursions.apps.ExcursionsConfig',
     'jobs.apps.JobsConfig',
