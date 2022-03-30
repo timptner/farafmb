@@ -24,7 +24,7 @@ class Participant(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE,)
     first_name = models.CharField(_("First name"), max_length=200)
     last_name = models.CharField(_("Last name"), max_length=200)
-    email = models.CharField(_("E-Mail"), max_length=200)
+    email = models.CharField(_("Email"), max_length=200)
     comment = models.TextField(_("Comment"), blank=True)
     registered_at = models.DateTimeField(_("Moment of registration"), auto_now_add=True)
 
