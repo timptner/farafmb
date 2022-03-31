@@ -4,6 +4,20 @@
 
 {% block content %}
     <div class="container">
+        {% if event.registration_is_closed %}
+            <div class="notification is-danger">
+                {% if event.registration_status == 'pending' %}
+                    {% blocktranslate with moment=event.registration_started_at %}
+                        Registration is pending. It starts at {{ moment }}.
+                    {% endblocktranslate %}
+                {% elif event.registration_status == 'closed' %}
+                    {% blocktranslate with moment=event.registration_stopped_at %}
+                        Registration is closed. It stopped at {{ moment }}.
+                    {% endblocktranslate %}
+                {% endif %}
+            </div>
+        {% endif %}
+
         <article class="message is-info">
             <div class="message-header">{% translate "Privacy" %}</div>
             <div class="message-body">
@@ -16,16 +30,30 @@
                 {% endblocktranslate %}
             </div>
         </article>
+
         <div class="box">
+            <h1 class="title">
+                {% translate "Registration for event:" %} <em>{{ event.title }}</em>
+            </h1>
             <form method="post">
+                {% if event.registration_is_closed %}
+                    <fieldset disabled>
+                {% endif %}
+
                 {% csrf_token %}
+
                 {{ form }}
+
                 <button type="submit" class="button is-primary">{% translate "Register" %}</button>
                 {% for error in form.non_field_errors %}
                     <p class="help is-danger">
                         {{ error }}
                     </p>
                 {% endfor %}
+
+                {% if event.registration_is_closed %}
+                    </fieldset>
+                {% endif %}
             </form>
         </div>
     </div>

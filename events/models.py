@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
@@ -18,6 +20,23 @@ class Event(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('events:info', kwargs={'pk': self.pk})
+
+    def registration_status(self) -> str:
+        if self.registration_stopped_at:
+            if timezone.now() > self.registration_stopped_at:
+                return 'closed'
+        if self.registration_started_at:
+            if timezone.now() < self.registration_started_at:
+                return 'pending'
+        return 'open'
+
+    def registration_is_closed(self) -> bool:
+        if self.registration_status() == 'open':
+            return False
+        return True
 
 
 class Participant(models.Model):
