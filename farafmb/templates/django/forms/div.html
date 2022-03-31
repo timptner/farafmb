@@ -1,7 +1,11 @@
-{{ errors }}
+{% for error in errors %}
+    <p class="block has-text-danger">
+        {{ error }}
+    </p>
+{% endfor %}
 
 {% if errors and not fields %}
-    <p>
+    <p class="block has-text-danger">
         {% for field in hidden_fields %}
             {{ field }}
         {% endfor %}
@@ -10,6 +14,12 @@
 
 {% for field, errors in fields %}
     {{ classes }}
+
+    {% if forloop.first %}
+        {% for field in hidden_fields %}
+            {{ field }}
+        {% endfor %}
+    {% endif %}
 
     <div class="field">
         {% if field.label %}
@@ -26,15 +36,9 @@
             </div>
         {% endif %}
 
-        <div class="help is-danger">
+        <p class="help is-danger">
             {{ errors }}
-        </div>
-
-        {% if forloop.last %}
-            {% for field in hidden_fields %}
-                {{ field }}
-            {% endfor %}
-        {% endif %}
+        </p>
     </div>
 {% endfor %}
 

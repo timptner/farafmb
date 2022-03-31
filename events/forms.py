@@ -1,6 +1,7 @@
 import re
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms.renderers import TemplatesSetting
 from django.utils.translation import gettext_lazy as _
 
@@ -32,6 +33,15 @@ class ParticipantForm(forms.ModelForm):
                                           "(Did you even read the help text above? 🧐)"),
                                         code='forbidden_email')
         return data
+
+    # def clean(self):
+    #     cleaned_data = super().clean()
+    #     event: Event = cleaned_data.get('event')
+    #     email = cleaned_data.get('email')
+    #
+    #     if event and email:
+    #         if email in event.participant_set.values_list('email', flat=True):
+    #             raise ValidationError(_("You are already registered for this event."))
 
     def save(self, commit=True):
         form = super()

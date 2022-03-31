@@ -45,11 +45,6 @@
                 {{ form }}
 
                 <button type="submit" class="button is-primary">{% translate "Register" %}</button>
-                {% for error in form.non_field_errors %}
-                    <p class="help is-danger">
-                        {{ error }}
-                    </p>
-                {% endfor %}
 
                 {% if event.registration_is_closed %}
                     </fieldset>
