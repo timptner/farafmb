@@ -1,0 +1,165 @@
+# German translation of https://farafmb.de/events/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-31 19:24+0200\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:12 templates/events/registration_form.html:22
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: forms.py:14
+msgid ""
+"I accept the privacy statement and agree to the processing of my personal "
+"data."
+msgstr ""
+"Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
+"personenbezogenen Daten einverstanden."
+
+#: forms.py:22
+msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
+msgstr ""
+"Es sind ausschließlich E-Mail-Adressen mit der Domain 'st.ovgu.de' erlaubt."
+
+#: forms.py:31
+msgid ""
+"Please use your university email address. (Did you even read the help text "
+"above? 🧐)"
+msgstr ""
+"Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
+"nicht gelesen? 🧐)"
+
+#: models.py:8
+msgid "Title"
+msgstr "Titel"
+
+#: models.py:9
+msgid "Description"
+msgstr "Beschreibung"
+
+#: models.py:10
+msgid "Start of registration"
+msgstr "Beginn der Anmeldung"
+
+#: models.py:11
+msgid "Registration deadline"
+msgstr "Anmeldeschluss"
+
+#: models.py:14
+msgid "Event"
+msgstr "Veranstaltung"
+
+#: models.py:15
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: models.py:44
+msgid "First name"
+msgstr "Vorname"
+
+#: models.py:45
+msgid "Last name"
+msgstr "Nachname"
+
+#: models.py:46
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+#: models.py:47
+msgid "Comment"
+msgstr "Bemerkung"
+
+#: models.py:48
+msgid "Moment of registration"
+msgstr "Zeitpunkt der Anmeldung"
+
+#: models.py:51
+msgid "Participant"
+msgstr "Teilnehmer"
+
+#: models.py:52
+msgid "Participants"
+msgstr "Teilnehmer"
+
+#: templates/events/info.html:10 templates/events/registration_form.html:47
+msgid "Register"
+msgstr "Anmelden"
+
+#: templates/events/registration_done.html:8
+msgid "Success"
+msgstr "Erfolg"
+
+#: templates/events/registration_done.html:9
+msgid "You have been registered for our event."
+msgstr "Du wurdest für unsere Veranstaltung angemeldet."
+
+#: templates/events/registration_done.html:11
+#, python-format
+msgid ""
+"\n"
+"                    We will contact you in the next few days if you have "
+"been selected as a participant for the event\n"
+"                    <em>%(event)s</em>.\n"
+"                "
+msgstr ""
+"\n"
+"Wir werden dich in den nächsten Tagen kontaktieren, wenn du als Teilnehmer "
+"für die Veranstaltung <em>%(event)s</em> ausgewählt wurdest."
+
+#: templates/events/registration_form.html:10
+#, python-format
+msgid ""
+"\n"
+"                        Registration is pending. It starts at %(moment)s.\n"
+"                    "
+msgstr ""
+"\n"
+"Die Anmeldung beginnt am %(moment)s."
+
+#: templates/events/registration_form.html:14
+#, python-format
+msgid ""
+"\n"
+"                        Registration is closed. It stopped at %(moment)s.\n"
+"                    "
+msgstr ""
+"\n"
+"Die Anmeldung ist geschlossen seit %(moment)s."
+
+#: templates/events/registration_form.html:24
+msgid ""
+"\n"
+"                    We need your first and last name to identify you at our "
+"venue.\n"
+"                    We need your email address to contact you before to the "
+"event.\n"
+"                    We will store your full name and email address for a "
+"maximum of 3 months after the event has ended.\n"
+"                    Your data will not be passed on to third parties and "
+"will be treated confidentially! After this\n"
+"                    period we will delete your personal data irrevocably "
+"from our servers.\n"
+"                "
+msgstr ""
+"\n"
+"Wir benötigen deinen Vor- und Nachnamen um dich am Veranstaltungsort zu "
+"identifizieren. Wir benötigen deine E-Mail-Adresse um dich vor der "
+"Veranstaltung zu kontaktieren. Wir speichern deinen vollständigen Namen "
+"sowie deine E-Mail-Adresse für maximal 3 Monate nach dem Ende der "
+"Veranstaltung. Deine Daten werden nicht an Dritte weitergegeben und von uns "
+"vertraulich behandelt! Nach Ablauf der Frist löschen wir deine "
+"personenbezogenen Daten unwiderruflich von unseren Servern."
+
+#: templates/events/registration_form.html:36
+msgid "Registration for event:"
+msgstr "Anmeldung für Veranstaltung:"
