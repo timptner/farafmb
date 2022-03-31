@@ -6,5 +6,5 @@ app_name = 'events'
 urlpatterns = [
     path('<int:pk>/', views.InfoView.as_view(), name='info'),
     path('<int:pk>/register/', views.RegistrationView.as_view(), name='registration'),
-    path('<int:pk>/register/done/', views.RegistrationDoneView.as_view(), name='registration-done'),
+    path('<int:pk>/register/done/', views.RegistrationDoneView.as_view(), name='registration_done'),
 ]
