@@ -1,5 +1,5 @@
 from django.http import HttpResponseForbidden
-from django.utils import timezone
+from django.shortcuts import get_object_or_404
 from django.views import generic
 
 from .forms import ParticipantForm
@@ -18,7 +18,7 @@ class RegistrationView(generic.CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['event'] = Event.objects.get(pk=self.request.resolver_match.kwargs['pk'])
+        context['event'] = get_object_or_404(Event, pk=self.request.resolver_match.kwargs['pk'])
         return context
 
     def get_form_kwargs(self):
