@@ -30,6 +30,8 @@ urlpatterns = [
     path('links/', include('links.urls')),
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
+
+    path('i18n/', include('django.conf.urls.i18n')),
     re_path(r'^oauth/\.well-known/openid-configuration/?$',
             ConnectDiscoveryInfoView.as_view(),
             name='oidc-connect-discovery-info'),  # Serve discovery view on both routes

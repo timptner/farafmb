@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="container">
@@ -13,7 +13,8 @@
                 <img src="{% static 'img/faculty.png' %}" width="37" height="28" alt="Faculty">
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarNavigation">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarNavigation">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -22,56 +23,67 @@
 
         <div id="navbarNavigation" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item" href="{% url 'blog:posts' %}">Neuigkeiten</a>
+                <a class="navbar-item" href="{% url 'blog:posts' %}">{% translate "News" %}</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        Über uns
+                        {% translate "About us" %}
                     </a>
 
                     <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="{% url 'about:index' %}">Fachschaftsrat</a>
-                        <a class="navbar-item" href="{% url 'members:member_list' %}">Mitglieder</a>
+                        <a class="navbar-item" href="{% url 'about:index' %}">{% translate "Student council" %}</a>
+                        <a class="navbar-item" href="{% url 'members:member_list' %}">{% translate "Members" %}</a>
                     </div>
                 </div>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        Service
+                        {% translate "Service" %}
                     </a>
 
                     <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="{% url 'excursions:list' %}">Exkursionen</a>
-                        <a class="navbar-item" href="{% url 'jobs:job_list' %}">Jobangebote</a>
-                        <a class="navbar-item" href="{% url 'exams:info' %}">Gedächtnisprotokolle</a>
+                        <a class="navbar-item" href="{% url 'excursions:list' %}">{% translate "Excursions" %}</a>
+                        <a class="navbar-item" href="{% url 'jobs:job_list' %}">{% translate "Jobs" %}</a>
+                        <a class="navbar-item" href="{% url 'exams:info' %}">{% translate "Memory minutes" %}</a>
 
                         <hr class="navbar-divider">
 
-                        <a class="navbar-item" href="{% url 'documents:list' %}">Dokumente</a>
-                        <a class="navbar-item" href="{% url 'consultations:main' %}">Sprechstunden</a>
-                        <a class="navbar-item" href="{% url 'blog:contact' %}">Kontakt</a>
+                        <a class="navbar-item" href="{% url 'documents:list' %}">{% translate "Documents" %}</a>
+                        <a class="navbar-item" href="{% url 'consultations:main' %}">{% translate "Office Hours" %}</a>
+                        <a class="navbar-item" href="{% url 'blog:contact' %}">{% translate "Contact" %}</a>
                     </div>
                 </div>
 
                 {% if not user.is_authenticated %}
-                <a class="navbar-item" href="{% url 'login' %}">Anmelden</a>
+                    <a class="navbar-item" href="{% url 'login' %}">{% translate "Login" %}</a>
                 {% else %}
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            {% translate "User" as default_user %}
+                            {{ user.first_name|default:default_user }}
+                        </a>
+
+                        <div class="navbar-dropdown is-boxed is-right">
+                            <a class="navbar-item" href="{% url 'admin:index' %}">{% translate "Administration" %}</a>
+                            <a class="navbar-item" href="{% url 'members:profile_form' %}">{% translate "Profile" %}</a>
+                            <a class="navbar-item" href="https://docs.farafmb.de">BookStack</a>
+
+                            <hr class="navbar-divider">
+
+                            <a class="navbar-item" href="{% url 'logout' %}">{% translate "Logout" %}</a>
+                        </div>
+                    </div>
+                {% endif %}
+
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                        {{ user.first_name|default:"Benutzer" }}
+                        <i class="fas fa-language fa-lg"></i>
                     </a>
 
                     <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="{% url 'admin:index' %}">Administration</a>
-                        <a class="navbar-item" href="{% url 'members:profile_form' %}">Profil</a>
-                        <a class="navbar-item" href="https://docs.farafmb.de">BookStack</a>
-
-                        <hr class="navbar-divider">
-
-                        <a class="navbar-item" href="{% url 'logout' %}">Abmelden</a>
+                        {% include 'language.html' %}
                     </div>
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
