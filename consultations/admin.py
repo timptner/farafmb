@@ -1,5 +1,5 @@
 from django.contrib import admin, messages
-from django.utils.translation import ngettext
+from django.utils.translation import ngettext, gettext_lazy as _
 
 from .models import Consultation
 
@@ -11,20 +11,20 @@ class ConsultationAdmin(admin.ModelAdmin):
 
     actions = ['make_visible', 'make_invisible']
 
-    @admin.action(description='Mark selected consultation as visible')
+    @admin.action(description=_("Mark selected consultations as visible"))
     def make_visible(self, request, queryset):
         updated = queryset.update(is_visible=True)
         self.message_user(request, ngettext(
-            '%d consultation was successfully marked as visible.',
-            '%d consultations were successfully marked as visible.',
+            "%d consultation was successfully marked as visible.",
+            "%d consultations were successfully marked as visible.",
             updated,
         ) % updated, messages.SUCCESS)
 
-    @admin.action(description='Mark selected consultations as invisible')
+    @admin.action(description=_("Mark selected consultations as invisible"))
     def make_invisible(self, request, queryset):
         updated = queryset.update(is_visible=False)
         self.message_user(request, ngettext(
-            '%d consultation was successfully marked as invisible.',
-            '%d consultations were successfully marked as invisible.',
+            "%d consultation was successfully marked as invisible.",
+            "%d consultations were successfully marked as invisible.",
             updated,
         ) % updated, messages.SUCCESS)
