@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 23:23+0200\n"
+"POT-Creation-Date: 2022-04-09 10:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,90 +15,106 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: settings/base.py:120
+#: accounts/forms.py:15
+msgid "Password"
+msgstr "Passwort"
+
+#: accounts/forms.py:23 accounts/forms.py:90
+msgid "New password"
+msgstr "Neues Passwort"
+
+#: accounts/forms.py:29 accounts/forms.py:96
+msgid "New password confirmation"
+msgstr "Neues Passwort bestätigen"
+
+#: accounts/forms.py:37
+msgid "Old password"
+msgstr "Altes Passwort"
+
+#: farafmb/settings/base.py:122
 msgid "German"
 msgstr "Deutsch"
 
-#: settings/base.py:121
+#: farafmb/settings/base.py:123
 msgid "English"
 msgstr "Englisch"
 
-#: templates/django/forms/widgets/clearable_file_input.html:14
+#: farafmb/templates/django/forms/widgets/clearable_file_input.html:14
 msgid "Choose a file"
 msgstr "Wähle eine Datei aus"
 
-#: templates/django/forms/widgets/clearable_file_input.html:19
+#: farafmb/templates/django/forms/widgets/clearable_file_input.html:19
 msgid "No file selected"
 msgstr "Keine Datei ausgewählt"
 
-#: templates/language.html:4
+#: farafmb/templates/language.html:4
 msgid "Change language"
 msgstr "Sprache ändern"
 
-#: templates/language.html:27
+#: farafmb/templates/language.html:27
 msgid "Switch language"
 msgstr "Sprache umstellen"
 
-#: templates/navigation.html:26
+#: farafmb/templates/navigation.html:26
 msgid "News"
 msgstr "Neuigkeiten"
 
-#: templates/navigation.html:30
+#: farafmb/templates/navigation.html:30
 msgid "About us"
 msgstr "Über uns"
 
-#: templates/navigation.html:34
+#: farafmb/templates/navigation.html:34
 msgid "Student council"
 msgstr "Fachschaftsrat"
 
-#: templates/navigation.html:35
+#: farafmb/templates/navigation.html:35
 msgid "Members"
 msgstr "Mitglieder"
 
-#: templates/navigation.html:41
+#: farafmb/templates/navigation.html:41
 msgid "Service"
 msgstr "Leistungen"
 
-#: templates/navigation.html:45
+#: farafmb/templates/navigation.html:45
 msgid "Excursions"
 msgstr "Exkursionen"
 
-#: templates/navigation.html:46
+#: farafmb/templates/navigation.html:46
 msgid "Jobs"
 msgstr "Jobs"
 
-#: templates/navigation.html:47
+#: farafmb/templates/navigation.html:47
 msgid "Memory minutes"
 msgstr "Gedächtnisprotokolle"
 
-#: templates/navigation.html:51
+#: farafmb/templates/navigation.html:51
 msgid "Documents"
 msgstr "Dokumente"
 
-#: templates/navigation.html:52
+#: farafmb/templates/navigation.html:52
 msgid "Office Hours"
 msgstr "Sprechzeiten"
 
-#: templates/navigation.html:53
+#: farafmb/templates/navigation.html:53
 msgid "Contact"
 msgstr "Kontakt"
 
-#: templates/navigation.html:58
+#: farafmb/templates/navigation.html:58
 msgid "Login"
 msgstr "Anmelden"
 
-#: templates/navigation.html:62
+#: farafmb/templates/navigation.html:62
 msgid "User"
 msgstr "Benutzer"
 
-#: templates/navigation.html:67
+#: farafmb/templates/navigation.html:67
 msgid "Administration"
 msgstr "Administration"
 
-#: templates/navigation.html:68
+#: farafmb/templates/navigation.html:68
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/navigation.html:73
+#: farafmb/templates/navigation.html:73
 msgid "Logout"
 msgstr "Abmelden"
