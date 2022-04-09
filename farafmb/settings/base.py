@@ -3,7 +3,9 @@ import os
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[2]
+PROJECT_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = PROJECT_DIR.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -24,6 +26,8 @@ INSTALLED_APPS = [
     'meetings.apps.MeetingsConfig',
     'members.apps.MembersConfig',
 
+    'oauth2_provider',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,8 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.forms',
-
-    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +53,7 @@ ROOT_URLCONF = 'farafmb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'farafmb' / 'templates'],
+        'DIRS': [str(PROJECT_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,6 +123,10 @@ LANGUAGES = [
     ('en', _('English')),
 ]
 
+LOCALE_PATHS = [
+    str(BASE_DIR / 'locale'),
+]
+
 TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
@@ -131,16 +137,16 @@ USE_TZ = True
 # File Storage
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'farafmb' / 'static',
+    str(PROJECT_DIR / 'static'),
 ]
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'files' / 'static')
+STATIC_ROOT = os.getenv('STATIC_ROOT', str(BASE_DIR / 'files' / 'static'))
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'files' / 'media')
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', str(BASE_DIR / 'files' / 'media'))
 
 
 # Email
