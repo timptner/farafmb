@@ -7,11 +7,11 @@
         {% if event.registration_is_closed %}
             <div class="notification is-danger">
                 {% if event.registration_status == 'pending' %}
-                    {% blocktranslate with moment=event.registration_started_at %}
+                    {% blocktranslate with moment=event.registration_started_at trimmed %}
                         Registration is pending. It starts at {{ moment }}.
                     {% endblocktranslate %}
                 {% elif event.registration_status == 'closed' %}
-                    {% blocktranslate with moment=event.registration_stopped_at %}
+                    {% blocktranslate with moment=event.registration_stopped_at trimmed %}
                         Registration is closed. It stopped at {{ moment }}.
                     {% endblocktranslate %}
                 {% endif %}
@@ -21,7 +21,7 @@
         <article class="message is-info">
             <div class="message-header">{% translate "Privacy" %}</div>
             <div class="message-body">
-                {% blocktranslate %}
+                {% blocktranslate trimmed %}
                     We need your first and last name to identify you at our venue.
                     We need your email address to contact you before to the event.
                     We will store your full name and email address for a maximum of 3 months after the event has ended.
