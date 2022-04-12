@@ -1,11 +1,12 @@
 from django.contrib import admin
 
+from .forms import EventForm
 from .models import Event, Participant
 
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    pass
+    form = EventForm
 
 
 @admin.register(Participant)

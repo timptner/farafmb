@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 11:06+0200\n"
+"POT-Creation-Date: 2022-04-12 19:03+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,16 @@ msgstr ""
 msgid "Events"
 msgstr "Veranstaltungen"
 
-#: forms.py:13 templates/events/registration_form.html:22
+#: forms.py:16
+msgid "You can use Markdown (www.markdownguide.org) to format your text."
+msgstr "Du kannst Markdown (www.markdownguide.org) verwenden, um den Text zu "
+"formatieren."
+
+#: forms.py:22 templates/events/registration_form.html:22
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: forms.py:15
+#: forms.py:24
 msgid ""
 "I accept the privacy statement and agree to the processing of my personal "
 "data."
@@ -30,12 +35,12 @@ msgstr ""
 "Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: forms.py:23
+#: forms.py:32
 msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
 msgstr ""
 "Es sind ausschließlich E-Mail-Adressen mit der Domain 'st.ovgu.de' erlaubt."
 
-#: forms.py:32
+#: forms.py:41
 msgid ""
 "Please use your university email address. (Did you even read the help text "
 "above? 🧐)"

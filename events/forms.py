@@ -8,6 +8,15 @@ from django.utils.translation import gettext_lazy as _
 from .models import Participant, Event
 
 
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = ('title', 'desc', 'registration_started_at', 'registration_stopped_at')
+        help_texts = {
+            'desc': _("You can use Markdown (www.markdownguide.org) to format your text."),
+        }
+
+
 class ParticipantForm(forms.ModelForm):
     default_renderer = TemplatesSetting
     privacy = forms.BooleanField(label=_("Privacy"),
