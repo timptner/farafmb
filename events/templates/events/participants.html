@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load i18n markdown %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            {{ event.title }}
+                        </p>
+                    </header>
+                    <div class="card-content">
+                        <ul>
+                            <li>Anzahl Anmeldungen: {{ event.participant_set.count }} Teilnehmer</li>
+                            <li>Erste Anmeldung: {{ event.participant_set.first.registered_at }}</li>
+                            <li>Letzte Anmeldung: {{ event.participant_set.last.registered_at }}</li>
+                        </ul>
+                    </div>
+                    {#<footer class="card-footer">#}
+                    {#<a href="#" class="card-footer-item">{% translate "Next" %}</a>#}
+                    {#</footer>#}
+                </div>
+            </div>
+            <div class="column">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th title="{% translate "Position" %}">#</th>
+                            <th>{% translate "Name" %}</th>
+                            <th>{% translate "Moment" %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for participant in object_list %}
+                            <tr>
+                                <th class="has-text-centered">{{ forloop.counter }}</th>
+                                <td>
+                                    {{ participant.full_name }}
+                                </td>
+                                <td>
+                                    {{ participant.registered_at|date:'c' }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 from django.views import generic
 
 from .forms import ParticipantForm
-from .models import Event
+from .models import Event, Participant
 
 
 class InfoView(generic.DetailView):
@@ -42,3 +43,18 @@ class RegistrationDoneView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context['event'] = Event.objects.get(pk=self.request.resolver_match.kwargs['pk'])
         return context
+
+
+class ParticipantView(LoginRequiredMixin, generic.ListView):
+    template_name = 'events/participants.html'
+    model = Participant
+
+    def get_queryset(self):
+        event = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return Participant.objects.filter(event=event)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])
+        return context
+

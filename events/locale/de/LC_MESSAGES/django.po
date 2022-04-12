@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 19:03+0200\n"
+"POT-Creation-Date: 2022-04-12 20:21+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,8 @@ msgstr "Veranstaltungen"
 
 #: forms.py:16
 msgid "You can use Markdown (www.markdownguide.org) to format your text."
-msgstr "Du kannst Markdown (www.markdownguide.org) verwenden, um den Text zu "
+msgstr ""
+"Du kannst Markdown (www.markdownguide.org) verwenden, um den Text zu "
 "formatieren."
 
 #: forms.py:22 templates/events/registration_form.html:22
@@ -99,6 +100,18 @@ msgstr "Teilnehmer"
 #: templates/events/info.html:10 templates/events/registration_form.html:47
 msgid "Register"
 msgstr "Anmelden"
+
+#: templates/events/participants.html:32
+msgid "Position"
+msgstr "Position"
+
+#: templates/events/participants.html:33
+msgid "Name"
+msgstr "Name"
+
+#: templates/events/participants.html:34
+msgid "Moment"
+msgstr "Zeitpunkt"
 
 #: templates/events/registration_done.html:8
 msgid "Success"
