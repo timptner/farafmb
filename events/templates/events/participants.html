@@ -31,7 +31,28 @@
                     </div>
                     <footer class="card-footer">
                         <a href="{% url 'events:participants_contact' event.pk %}"
-                           class="card-footer-item">{% translate "Contact participants" %}</a>
+                           class="card-footer-item">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <i class="fas fa-paper-plane"></i>
+                                </span>
+                                <span>
+                                    {% translate "Contact participants" %}
+                                </span>
+                            </span>
+
+                        </a>
+                        <a href="{% url 'events:participants_export' event.pk %}"
+                           class="card-footer-item">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <i class="fas fa-download"></i>
+                                </span>
+                                <span>
+                                    {% translate "Export participants" %}
+                                </span>
+                            </span>
+                        </a>
                     </footer>
                 </div>
             </div>

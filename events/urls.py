@@ -9,6 +9,7 @@ urlpatterns = [
     path('<int:pk>/register/', views.RegistrationView.as_view(), name='registration'),
     path('<int:pk>/register/done/', views.RegistrationDoneView.as_view(), name='registration_done'),
     path('<int:pk>/participants/', views.ParticipantView.as_view(), name='participants'),
+    path('<int:pk>/participants/export/', views.export_participants, name='participants_export'),
     path('<int:pk>/participants/contact/', views.ParticipantsContactView.as_view(), name='participants_contact'),
     path('<int:pk>/participants/contact/done/', views.ParticipantsContactDoneView.as_view(),
          name='participants_contact_done'),
