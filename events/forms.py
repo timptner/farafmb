@@ -63,11 +63,11 @@ class ParticipantForm(forms.ModelForm):
 
 class ParticipantsContactForm(forms.Form):
     ALL = 'all'
-    ALLOWED = 'allowed'
+    APPROVED = 'approved'
     REJECTED = 'rejected'
     GROUP_CHOICES = [
         (ALL, _("All participants")),
-        (ALLOWED, _("Allowed participants")),
+        (APPROVED, _("Approved participants")),
         (REJECTED, _("Rejected participants")),
     ]
     group = forms.ChoiceField(label=_("Recipients"), choices=GROUP_CHOICES)
@@ -82,7 +82,7 @@ class ParticipantsContactForm(forms.Form):
         message = self.cleaned_data['message']
 
         participants = Participant.objects.filter(event__pk=event_pk)
-        if group == self.ALLOWED:
+        if group == self.APPROVED:
             participants = participants.filter(is_approved=True)
         elif group == self.REJECTED:
             participants = participants.filter(is_approved=False)
