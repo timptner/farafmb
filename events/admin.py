@@ -12,8 +12,9 @@ class EventAdmin(admin.ModelAdmin):
 
 @admin.register(Participant)
 class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'is_approved')
+    list_display = ('full_name', 'comment', 'is_approved', 'registered_at')
     list_filter = ('event__title',)
+    ordering = ['registered_at']
     actions = [
         'make_approved',
         'make_rejected',
