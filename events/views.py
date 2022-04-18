@@ -58,3 +58,8 @@ class ParticipantView(LoginRequiredMixin, generic.ListView):
         context['event'] = get_object_or_404(Event, pk=self.kwargs['pk'])
         return context
 
+
+class EventsView(LoginRequiredMixin, generic.ListView):
+    template_name = 'events/events.html'
+    model = Event
+

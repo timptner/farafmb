@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load i18n markdown %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns is-multiline">
+            {% for event in object_list %}
+                <div class="column is-half">
+                    <div class="card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                {{ event.title }}
+                            </p>
+                        </header>
+                        <div class="card-content">
+                            {{ event.desc|render_html }}
+                            <hr>
+                            <ul>
+                                <li>
+                                    {% translate "Registration is" %}
+                                    <strong>{{ event.registration_status }}</strong>
+                                </li>
+                                {% if event.registration_started_at %}
+                                    <li>
+                                        {% translate "Registration started at" %}
+                                        <strong>{{ event.registration_started_at }}</strong>
+                                    </li>
+                                {% endif %}
+                                {% if event.registration_stopped_at %}
+                                    <li>
+                                        {% translate "Registration stopped at" %}
+                                        <strong>{{ event.registration_stopped_at }}</strong>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{% url 'events:participants' event.pk %}"
+                               class="card-footer-item">{% translate "Participants" %}</a>
+                            <a href="{% url 'events:registration' event.pk %}"
+                               class="card-footer-item">{% translate "Form" %}</a>
+                        </footer>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -6,6 +6,16 @@
     <div class="container">
         <div class="columns">
             <div class="column is-one-third">
+                <div class="buttons">
+                    <a href="{% url 'events:events' %}" class="button is-info">
+                        <span class="icon is-small">
+                            <i class="fas fa-arrow-circle-left"></i>
+                        </span>
+                        <span>
+                            {% translate "Back to events list" %}
+                        </span>
+                    </a>
+                </div>
                 <div class="card">
                     <header class="card-header">
                         <p class="card-header-title">

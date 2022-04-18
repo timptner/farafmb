@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'events'
 urlpatterns = [
+    path('', views.EventsView.as_view(), name='events'),
     path('<int:pk>/', views.InfoView.as_view(), name='info'),
     path('<int:pk>/register/', views.RegistrationView.as_view(), name='registration'),
     path('<int:pk>/register/done/', views.RegistrationDoneView.as_view(), name='registration_done'),
