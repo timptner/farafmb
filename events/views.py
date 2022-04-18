@@ -51,7 +51,7 @@ class ParticipantView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         event = get_object_or_404(Event, pk=self.kwargs['pk'])
-        return Participant.objects.filter(event=event)
+        return Participant.objects.filter(event=event).order_by('registered_at')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
