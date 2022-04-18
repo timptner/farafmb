@@ -36,10 +36,10 @@
                             </ul>
                         </div>
                         <footer class="card-footer">
-                            <a href="{% url 'events:participants' event.pk %}"
-                               class="card-footer-item">{% translate "Participants" %}</a>
                             <a href="{% url 'events:registration' event.pk %}"
                                class="card-footer-item">{% translate "Form" %}</a>
+                            <a href="{% url 'events:participants' event.pk %}"
+                               class="card-footer-item">{% translate "Participants" %}</a>
                         </footer>
                     </div>
                 </div>
