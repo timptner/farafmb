@@ -46,6 +46,7 @@ class Participant(models.Model):
     email = models.CharField(_("Email"), max_length=200)
     comment = models.TextField(_("Comment"), blank=True)
     registered_at = models.DateTimeField(_("Moment of registration"), auto_now_add=True)
+    is_approved = models.BooleanField(_("Approval of registration"), default=False)
 
     class Meta:
         verbose_name = _("Participant")
