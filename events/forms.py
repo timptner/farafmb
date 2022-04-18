@@ -14,7 +14,7 @@ class EventForm(forms.ModelForm):
         model = Event
         fields = ('title', 'desc', 'registration_started_at', 'registration_stopped_at')
         help_texts = {
-            'desc': _("You can use Markdown (www.markdownguide.org) to format your text."),
+            'desc': _('You can use <a href="https://www.markdownguide.org">Markdown</a> to format your text.'),
         }
 
 
