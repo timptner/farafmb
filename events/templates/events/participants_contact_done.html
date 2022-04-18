@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="notification is-success is-light">
+            <h1 class="title is-4">{% translate "Success" %}</h1>
+            <p>
+                {% blocktranslate trimmed %}
+                    An email was sent to all selected participants.
+                {% endblocktranslate %}
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -29,9 +29,10 @@
                             <li>Letzte Anmeldung: {{ event.participant_set.last.registered_at }}</li>
                         </ul>
                     </div>
-                    {#<footer class="card-footer">#}
-                    {#<a href="#" class="card-footer-item">{% translate "Next" %}</a>#}
-                    {#</footer>#}
+                    <footer class="card-footer">
+                        <a href="{% url 'events:participants_contact' event.pk %}"
+                           class="card-footer-item">{% translate "Contact participants" %}</a>
+                    </footer>
                 </div>
             </div>
             <div class="column">

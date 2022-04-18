@@ -58,5 +58,8 @@ class Participant(models.Model):
     def full_name(self) -> str:
         return f"{self.first_name} {self.last_name}"
 
+    def display_approval(self):
+        return _("Allowed participant") if self.is_approved else _("Rejected participant")
+
     def __str__(self) -> str:
         return self.full_name()

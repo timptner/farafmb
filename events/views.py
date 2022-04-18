@@ -3,7 +3,7 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404
 from django.views import generic
 
-from .forms import ParticipantForm
+from .forms import ParticipantForm, ParticipantsContactForm
 from .models import Event, Participant
 
 
@@ -63,3 +63,21 @@ class EventsView(LoginRequiredMixin, generic.ListView):
     template_name = 'events/events.html'
     model = Event
 
+
+class ParticipantsContactView(LoginRequiredMixin, generic.FormView):
+    template_name = 'events/participants_contact.html'
+    form_class = ParticipantsContactForm
+    success_url = 'done/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['participants'] = Participant.objects.filter(event__pk=self.kwargs['pk']).all()
+        return context
+
+    def form_valid(self, form):
+        form.send_email(event_pk=self.kwargs['pk'])
+        return super().form_valid(form)
+
+
+class ParticipantsContactDoneView(LoginRequiredMixin, generic.TemplateView):
+    template_name = 'events/participants_contact_done.html'
