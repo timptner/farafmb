@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'links.apps.LinksConfig',
     'meetings.apps.MeetingsConfig',
     'members.apps.MembersConfig',
+    'mentoring.apps.MentoringConfig',
 
     'oauth2_provider',
 
