@@ -6,13 +6,35 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-09 18:40+0200\n"
+"POT-Creation-Date: 2022-07-09 22:50+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:9
+msgid "Privacy"
+msgstr ""
+
+#: forms.py:21
+msgid ""
+"Only email addresses from Otto von Guericke University Magdeburg are allowed."
+msgstr ""
+
+#: forms.py:22
+msgid "Write your mobile number, starting with the country code."
+msgstr ""
+
+#: forms.py:41
+msgid ""
+"Your email address does not belong to Otto von Guericke University Magdeburg."
+msgstr ""
+
+#: forms.py:55
+msgid "Your mobile number does not start with a country code."
+msgstr ""
 
 #: models.py:7
 msgid "Mechanical Engineering"
@@ -30,7 +52,7 @@ msgstr "Elektro- und Informationstechnik"
 msgid "Mathematics"
 msgstr "Mathematik"
 
-#: models.py:15
+#: models.py:15 models.py:28
 msgid "Study program"
 msgstr "Studiengang"
 
@@ -61,3 +83,39 @@ msgstr "Mentor"
 #: models.py:33
 msgid "Mentors"
 msgstr "Mentoren"
+
+#: templates/mentoring/mentor_form.html:8
+msgid "Registration as mentor"
+msgstr "Registrierung als Mentor"
+
+#: templates/mentoring/mentor_form.html:98
+msgid ""
+"\n"
+"                                I have read the <a href=\"https://stura-md."
+"de/datenschutz/\">privacy policy</a> and agree\n"
+"                                to the processing of my personal data.\n"
+"                            "
+msgstr ""
+"\n"
+"Ich habe die <a href=\"https://stura-md.de/datenschutz/"
+"\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
+"personenbezogenen Daten einverstanden."
+
+#: templates/mentoring/mentor_form.html:108
+msgid "Register"
+msgstr "Registrieren"
+
+#: templates/mentoring/mentor_form_done.html:9
+msgid "You have been successfully registered as a mentor"
+msgstr "Du wurdest erfolgreich als Mentor registriert."
+
+#: templates/mentoring/mentor_form_done.html:12
+msgid ""
+"\n"
+"                    We will contact you via email in the next weeks with "
+"further information.\n"
+"                "
+msgstr ""
+"\n"
+"Wir werden dich in den nächsten Wochen per E-Mail mit weiteren Informationen "
+"kontaktieren."
