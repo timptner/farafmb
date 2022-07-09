@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-09 22:50+0200\n"
+"POT-Creation-Date: 2022-07-09 23:33+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,11 @@ msgstr ""
 
 #: forms.py:55
 msgid "Your mobile number does not start with a country code."
-msgstr ""
+msgstr "Deine Mobilnummer besitzt keine Länderspezifikation."
+
+#: forms.py:58
+msgid "Your mobile number contains non-numeric values."
+msgstr "Deine Mobilnummer enthält nicht-numerische Zeichen."
 
 #: models.py:7
 msgid "Mechanical Engineering"

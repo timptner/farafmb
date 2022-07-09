@@ -54,4 +54,7 @@ class MentorForm(forms.ModelForm):
         if not data.startswith('+'):
             raise ValidationError(_("Your mobile number does not start with a country code."), code='faulty')
 
+        if not all([item.isdigit() for item in data[1:]]):
+            raise ValidationError(_("Your mobile number contains non-numeric values."), code='invalid')
+
         return data

@@ -35,7 +35,7 @@ class MentorFormTestCase(TestCase):
         form = MentorForm(data={'email': 'john.doe@st.ovgu.de'})  # valid
         self.assertNotIn('email', form.errors)
 
-        form = MentorForm(data={'email': 'john.doe@example.org'})  # invalid
+        form = MentorForm(data={'email': 'john.doe@example.org'})  # invalid host
         self.assertIn('email', form.errors)
 
     def test_phone_validation(self):
@@ -46,5 +46,8 @@ class MentorFormTestCase(TestCase):
         form = MentorForm(data={'phone': '0049 123 4567890'})  # valid
         self.assertNotIn('phone', form.errors)
 
-        form = MentorForm(data={'phone': '0123 4567890'})  # invalid
+        form = MentorForm(data={'phone': '0123 4567890'})  # invalid country code
+        self.assertIn('phone', form.errors)
+
+        form = MentorForm(data={'phone': '+49 123 abc'})  # invalid values
         self.assertIn('phone', form.errors)
