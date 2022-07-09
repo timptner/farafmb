@@ -1,5 +1,6 @@
-from django.test import TestCase
+from django.test import TestCase, SimpleTestCase
 
+from .forms import MentorForm
 from .models import Program, Mentor
 
 
@@ -26,3 +27,24 @@ class MentorTestCase(TestCase):
         """Display name of object corresponds to name field"""
         mentor = Mentor.objects.get()
         self.assertEqual(mentor.__str__(), mentor.full_name)
+
+
+class MentorFormTestCase(TestCase):
+    def test_email_validation(self):
+        """Mobile number is validated correctly"""
+        form = MentorForm(data={'email': 'john.doe@st.ovgu.de'})  # valid
+        self.assertNotIn('email', form.errors)
+
+        form = MentorForm(data={'email': 'john.doe@example.org'})  # invalid
+        self.assertIn('email', form.errors)
+
+    def test_phone_validation(self):
+        """Mobile number is validated correctly"""
+        form = MentorForm(data={'phone': '+49 123 4567890'})  # valid
+        self.assertNotIn('phone', form.errors)
+
+        form = MentorForm(data={'phone': '0049 123 4567890'})  # valid
+        self.assertNotIn('phone', form.errors)
+
+        form = MentorForm(data={'phone': '0123 4567890'})  # invalid
+        self.assertIn('phone', form.errors)
