@@ -25,7 +25,7 @@ class Mentor(models.Model):
     last_name = models.CharField(_("Last name"), max_length=100)
     email = models.EmailField(_("Email address"), unique=True)
     phone = models.CharField(_("Mobile number"), max_length=25)
-    program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True)
+    program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True, verbose_name=_("Study program"))
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
