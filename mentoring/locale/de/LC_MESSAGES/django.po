@@ -1,0 +1,63 @@
+# German translation of https://farafmb.de/mentoring/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-09 18:40+0200\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:7
+msgid "Mechanical Engineering"
+msgstr "Maschinenbau"
+
+#: models.py:8
+msgid "Process and Systems Engineering"
+msgstr "Verfahrens- und Systemtechnik"
+
+#: models.py:9
+msgid "Electrical Engineering and Information Technology"
+msgstr "Elektro- und Informationstechnik"
+
+#: models.py:10
+msgid "Mathematics"
+msgstr "Mathematik"
+
+#: models.py:15
+msgid "Study program"
+msgstr "Studiengang"
+
+#: models.py:16
+msgid "Study programs"
+msgstr "Studiengänge"
+
+#: models.py:24
+msgid "First name"
+msgstr "Vorname"
+
+#: models.py:25
+msgid "Last name"
+msgstr "Nachname"
+
+#: models.py:26
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: models.py:27
+msgid "Mobile number"
+msgstr "Mobilnummer"
+
+#: models.py:32
+msgid "Mentor"
+msgstr "Mentor"
+
+#: models.py:33
+msgid "Mentors"
+msgstr "Mentoren"
