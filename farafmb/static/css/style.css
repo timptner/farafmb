@@ -14,3 +14,41 @@
 .checklist {
     list-style-type: none !important;
 }
+
+.footer {
+    color: white;
+    background-color: #192c5b;
+}
+
+.footer strong {
+    color: white;
+}
+
+.footer h4 {
+    color: #ababab;
+    margin-bottom: 0.7rem;
+}
+
+.footer p {
+    margin-bottom: 0.7rem;
+}
+
+.footer a {
+    color: white;
+}
+
+.footer a:hover {
+    color: #009ee3;
+}
+
+.footer .legal {
+    text-align: end;
+}
+
+.footer .legal a {
+    margin-right: 2rem;
+}
+
+.footer .legal > small > span {
+    color: #ababab;
+}

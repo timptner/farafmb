@@ -1,78 +1,108 @@
-<footer class="footer has-text-centered-mobile">{% load static %}
-    <div class="container">
+<footer class="footer">{% load static i18n %}
+    <div class="container has-text-centered-mobile">
+
         <div class="columns">
-            <div class="column is-4">
-                <div class="content">
-                    <h4 class="title is-4">Hochschule</h4>
 
-                    <p class="has-text-link"><a href="https://www.ovgu.de" target="_blank">Universität</a></p>
-                    <p class="has-text-link"><a href="https://stura-md.de" target="_blank">Studierendenrat</a></p>
-                    <p class="has-text-link"><a href="https://www.fmb.ovgu.de" target="_blank">Fakultät Maschinenbau</a></p>
-                </div>
+            <div class="column is-half pr-6">
+
+                <figure class="image is-32x32 mb-5">
+                    <img src="{% static 'img/logo-64.png' %}">
+                </figure>
+
+                <p><strong>{% trans "Student Council of the Faculty of Mechanical Engineering" %}</strong></p>
+
+                <p>{% blocktrans %}
+                    We are the student representation of all students at the Faculty of Mechanical Engineering.
+                {% endblocktrans %}</p>
+
+                <p>{% blocktrans %}
+                    <span class="icon-text">
+                        <span>Made with</span>
+                        <span class="icon"><i class="fas fa-heart"></i></span>
+                        <span>
+                            by <strong>Aiven</strong> using
+                            <a href="https://www.djangoproject.com/" target="_blank">Django</a> and
+                            <a href="https://bulma.io/" target="_blank">Bulma</a>.
+                        </span>
+                    </span>
+                {% endblocktrans %}</p>
+
+                <p>
+                    <a href="https://github.com/timptner/farafmb" target="_blank">
+                        <span class="icon-text">
+                            <span class="icon"><i class="fab fa-github"></i></span>
+                            <span>GitHub</span>
+                        </span>
+                    </a>
+                </p>
+
             </div>
 
-            <div class="column is-4">
-                <div class="content">
-                    <h4 class="title is-4">Social Media</h4>
+            <div class="column">
 
-                    <p class="has-text-link">
-                        <a class="icon-text" href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
-                            <span class="icon">
-                                <i class="fab fa-instagram fa-lg fa-fw"></i>
-                            </span>
-                            <span>Instagram</span>
-                        </a>
-                    </p>
+                <h4>Social Media</h4>
 
-                    <p  class="has-text-link">
-                        <a class="icon-text" href="https://www.facebook.com/farafmb" target="_blank">
-                            <span class="icon">
-                                <i class="fab fa-facebook fa-lg fa-fw"></i>
-                            </span>
-                            <span>Facebook</span>
-                        </a>
-                    </p>
+                <p><a href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fab fa-instagram"></i>
+                        </span>
+                        <span>Instagram</span>
+                    </span>
+                </a></p>
 
-                    <p  class="has-text-link">
-                        <a class="icon-text" href="https://discord.gg/m9SutXWdnc" target="_blank">
-                            <span class="icon">
-                                <i class="fab fa-discord fa-lg fa-fw"></i>
-                            </span>
-                            <span>Discord</span>
-                        </a>
-                    </p>
+                <p><a href="https://www.facebook.com/farafmb" target="_blank">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fab fa-facebook"></i>
+                        </span>
+                        <span>Facebook</span>
+                    </span>
+                </a></p>
 
-                    <p  class="has-text-link">
-                        <a class="icon-text" href="https://farafmb.slack.com/" target="_blank">
-                            <span class="icon">
-                                <i class="fab fa-slack fa-lg fa-fw"></i>
-                            </span>
-                            <span>Slack</span>
-                        </a>
-                    </p>
+                <p><a href="https://discord.gg/m9SutXWdnc" target="_blank">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fab fa-discord"></i>
+                        </span>
+                        <span>Discord</span>
+                    </span>
+                </a></p>
 
-                    <!--
-                    <p  class="has-text-link">
-                        <a class="icon-text" href="https://t.me/farafmb" target="_blank">
-                            <span class="icon">
-                                <i class="fab fa-telegram fa-lg fa-fw"></i>
-                            </span>
-                            <span>Telegram</span>
-                        </a>
-                    </p>
-                    -->
-                </div>
+                <p><a href="https://farafmb.slack.com/" target="_blank">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fab fa-slack"></i>
+                        </span>
+                        <span>Slack</span>
+                    </span>
+                </a></p>
+
             </div>
 
-            <div class="column is-4">
-                <div class="content">
-                    <h4 class="title is-4">Rechtliches</h4>
+            <div class="column">
 
-                    <p class="has-text-link"><a href="https://stura-md.de/impressum/" target="_blank">Impressum</a></p>
-                    <p class="has-text-link"><a href="https://stura-md.de/datenschutz/" target="_blank">Datenschutz</a></p>
-                    <p class="is-size-7">&#169; 2018 - {% now 'Y' %} Fachschaftsrat Maschinenbau</p>
-                </div>
+                <h4>Hochschule</h4>
+
+                <p><a href="https://www.ovgu.de" target="_blank">
+                    {% trans "Otto von Guericke University" %}
+                </a></p>
+                <p><a href="https://stura-md.de" target="_blank">
+                    {% trans "Student Council of the University" %}
+                </a></p>
+                <p><a href="https://www.fmb.ovgu.de" target="_blank">
+                    {% trans "Faculty of Mechanical Engineering" %}
+                </a></p>
+
             </div>
+
         </div>
+
+        <p class="legal"><small>
+            <a href="https://stura-md.de/impressum/" target="_blank">{% trans "Impress" %}</a>
+            <a href="https://stura-md.de/datenschutz/" target="_blank">{% trans "Privacy" %}</a>
+            <span>&#169; 2018 - {% now 'Y' %} {% trans "FaRaFMB" %}</span>
+        </small></p>
+
     </div>
 </footer>
