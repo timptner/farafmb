@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <article class="message is-danger mx-auto" style="max-width: 50%;">
+        <div class="message-header">
+            <p>500 {% trans "Internal Server Error" %}</p>
+        </div>
+        <div class="message-body">
+            {% blocktrans %}
+                Unfortunately, there was a server error, so your request cannot be processed. Please try again later.
+            {% endblocktrans %}
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <article class="message is-warning mx-auto" style="max-width: 50%;">
+        <div class="message-header">
+            <p>400 {% trans "Bad Request" %}</p>
+        </div>
+        <div class="message-body">
+            {% blocktrans %}
+                Your request could not be processed because it is invalid.
+            {% endblocktrans %}
+        </div>
+    </article>
+{% endblock %}

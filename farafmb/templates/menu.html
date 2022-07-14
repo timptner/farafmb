@@ -46,6 +46,22 @@
 
     </ul>
 
+    <p class="menu-label">{% trans "Members" %}</p>
+    <ul class="menu-list">
+
+        <li><a href="{% url 'members:create_user' %}">
+            <span class="icon-text">
+                <span>{% trans "Create new" %}</span>
+                {% if not perms.auth.add_user %}
+                    <span class="icon">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                {% endif %}
+            </span>
+        </a></li>
+
+    </ul>
+
     <p class="menu-label">{% trans "Events" %}</p>
     <ul class="menu-list">
 
