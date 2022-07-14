@@ -1,9 +1,9 @@
-{% load i18n %}
+<div class="m-3">{% load i18n %}
 
-<div class="m-3">
     <p class="title is-6">{% translate "Change language" %}</p>
 
     <form action="{% url 'set_language' %}" method="post">
+
         {% csrf_token %}
 
         <input name="next" type="hidden" value="{{ redirect_to }}">
@@ -25,5 +25,7 @@
         </div>
 
         <button type="submit" class="button is-primary">{% translate "Switch language" %}</button>
+
     </form>
+
 </div>
