@@ -8,10 +8,14 @@ from .forms import ProgramForm, MentorForm
 from .models import Program, Mentor
 
 
+class ProgramListView(LoginRequiredMixin, ListView):
+    model = Program
+
+
 class ProgramCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Program
     form_class = ProgramForm
-    success_url = reverse_lazy('mentoring:program-create')
+    success_url = reverse_lazy('mentoring:program-list')
     success_message = _("%(name)s was created successfully")
 
 
