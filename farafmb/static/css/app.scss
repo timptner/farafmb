@@ -22,6 +22,21 @@ $footer-background-color: $ocean-darker;
 @import "../bulma/bulma.sass";
 
 // Custom components
+.button.is-multiline {
+  min-height: 2.25em;
+  white-space: unset;
+  height: auto;
+  flex-direction: column;
+}
+
+.button.is-multiline span {
+  margin: 0 !important;
+}
+
+.checklist {
+  list-style-type: none !important;
+}
+
 .error-message {
   width: 50%;
   margin-left: auto;
@@ -29,6 +44,36 @@ $footer-background-color: $ocean-darker;
 
   @include touch {
     width: 100%;
+  }
+}
+
+.navigation {
+  @include touch {
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 0.5px solid $grey-light;
+  }
+
+  a.menu-burger {
+    display: none;
+
+    @include touch {
+      display: block;
+      text-align: center;
+      padding: 5px;
+    }
+  }
+
+  #adminNavigation {
+    display: block;
+
+    @include touch {
+      display: none;
+    }
+  }
+
+  #adminNavigation.is-active {
+    display: block;
   }
 }
 

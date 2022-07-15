@@ -10283,6 +10283,21 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+.button.is-multiline {
+  min-height: 2.25em;
+  white-space: unset;
+  height: auto;
+  flex-direction: column;
+}
+
+.button.is-multiline span {
+  margin: 0 !important;
+}
+
+.checklist {
+  list-style-type: none !important;
+}
+
 .error-message {
   width: 50%;
   margin-left: auto;
@@ -10292,6 +10307,35 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   .error-message {
     width: 100%;
   }
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation {
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 0.5px solid hsl(0deg, 0%, 71%);
+  }
+}
+.navigation a.menu-burger {
+  display: none;
+}
+@media screen and (max-width: 1023px) {
+  .navigation a.menu-burger {
+    display: block;
+    text-align: center;
+    padding: 5px;
+  }
+}
+.navigation #adminNavigation {
+  display: block;
+}
+@media screen and (max-width: 1023px) {
+  .navigation #adminNavigation {
+    display: none;
+  }
+}
+.navigation #adminNavigation.is-active {
+  display: block;
 }
 
 .footer a {
