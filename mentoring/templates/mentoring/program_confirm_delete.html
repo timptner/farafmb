@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <p class="title">{{ object.name }}</p>
+    <p class="subtitle">{{ object.faculty }}</p>
+
+    <p class="block">
+        {% blocktrans %}
+            Are you sure you want to delete <strong>{{ object }}</strong>?
+        {% endblocktrans %}
+    </p>
+
+    <div class="block">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="buttons">
+                <button type="submit" class="button is-danger">{% trans "Confirm" %}</button>
+                <a href="{% url 'mentoring:program-list' %}" class="button">{% trans "Cancel" %}</a>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}

@@ -9,25 +9,38 @@
         <a href="{% url 'mentoring:program-create' %}" class="button is-rounded">{% trans "Add a program" %}</a>
     </div>
 
-    <div class="content">
-        {% regroup object_list by faculty as faculty_list %}
-        {% for faculty, programs in faculty_list %}
-            <h5>{{ faculty }}</h5>
-            <ul>
-                {% for program in programs %}
-                    <li>{{ program.name }}</li>
-                {% endfor %}
-            </ul>
-        {% empty %}
-            <div class="container is-max-desktop">
-                <div class="notification is-info">
-                    {% url 'mentoring:program-create' as create_url %}
-                    {% blocktrans %}
-                        No study programs have been created yet. Please add a new one using the
-                        <a href="{{ create_url }}">form</a>.
-                    {% endblocktrans %}
-                </div>
+    <article class="message is-info">
+        <div class="message-body">
+            {% blocktrans %}
+                You can delete a study program by selecting it.
+            {% endblocktrans %}
+        </div>
+    </article>
+
+    {% regroup object_list by faculty as faculty_list %}
+    {% for faculty, programs in faculty_list %}
+
+        <nav class="panel">
+            <p class="panel-heading">
+                {{ faculty }}
+            </p>
+            {% for program in programs %}
+                <a href="{% url 'mentoring:program-delete' program.pk %}" class="panel-block">{{ program.name }}</a>
+            {% endfor %}
+        </nav>
+
+
+    {% empty %}
+
+        <div class="container is-max-desktop">
+            <div class="notification is-info">
+                {% url 'mentoring:program-create' as create_url %}
+                {% blocktrans %}
+                    No study programs have been created yet. Please add a new one using the
+                    <a href="{{ create_url }}">form</a>.
+                {% endblocktrans %}
             </div>
-        {% endfor %}
-    </div>
+        </div>
+
+    {% endfor %}
 {% endblock %}

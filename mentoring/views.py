@@ -1,5 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -17,6 +17,12 @@ class ProgramCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = ProgramForm
     success_url = reverse_lazy('mentoring:program-list')
     success_message = _("%(name)s was created successfully")
+
+
+class ProgramDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Program
+    success_url = reverse_lazy('mentoring:program-list')
+    success_message = _("Program was deleted successfully")
 
 
 class MentorCreateView(LoginRequiredMixin, CreateView):
