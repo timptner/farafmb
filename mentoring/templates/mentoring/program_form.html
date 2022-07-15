@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <p class="title">{% trans "Create new program" %}</p>
+
+    <div class="container is-max-desktop">
+
+        <div class="box">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="field">
+                    <label class="label"
+                           for="{{ form.faculty.id_for_label }}">{{ form.faculty.label }}</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            {{ form.faculty }}
+                        </div>
+                    </div>
+                    {% for error in form.faculty.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="field">
+                    <label class="label"
+                           for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                    <div class="control">
+                        {{ form.name }}
+                    </div>
+                    {% for error in form.name.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-primary" type="submit">{% trans "Add" %}</button>
+                    </div>
+                </div>
+
+                {% for error in form.non_field_errors %}
+                    <p class="help">{{ error }}</p>
+                {% endfor %}
+
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}

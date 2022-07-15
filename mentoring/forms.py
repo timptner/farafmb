@@ -2,7 +2,16 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from .models import Mentor
+from .models import Program, Mentor
+
+
+class ProgramForm(forms.ModelForm):
+    class Meta:
+        model = Program
+        fields = ['faculty', 'name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'input'}),
+        }
 
 
 class MentorForm(forms.ModelForm):
