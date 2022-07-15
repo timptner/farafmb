@@ -3,10 +3,10 @@
 
         <div class="columns">
 
-            <div class="column is-half pr-6">
+            <div class="column is-half info">
 
-                <figure class="image is-32x32 mb-5">
-                    <img src="{% static 'img/logo-64.png' %}">
+                <figure class="image is-32x32">
+                    <img src="{% static 'img/logo-64.png' %}" alt="Logo">
                 </figure>
 
                 <p><strong>{% trans "Student Council of the Faculty of Mechanical Engineering" %}</strong></p>
@@ -38,9 +38,9 @@
 
             </div>
 
-            <div class="column">
+            <div class="column links">
 
-                <h4>Social Media</h4>
+                <h4><strong>Social Media</strong></h4>
 
                 <p><a href="https://www.instagram.com/farafmb_ovgu/" target="_blank">
                     <span class="icon-text">
@@ -80,17 +80,17 @@
 
             </div>
 
-            <div class="column">
+            <div class="column links">
 
-                <h4>Hochschule</h4>
+                <h4><strong>Hochschule</strong></h4>
 
-                <p><a href="https://www.ovgu.de" target="_blank">
+                <p><a href="https://www.ovgu.de/" target="_blank">
                     {% trans "Otto von Guericke University" %}
                 </a></p>
-                <p><a href="https://stura-md.de" target="_blank">
+                <p><a href="https://stura-md.de/" target="_blank">
                     {% trans "Student Council of the University" %}
                 </a></p>
-                <p><a href="https://www.fmb.ovgu.de" target="_blank">
+                <p><a href="https://www.fmb.ovgu.de/" target="_blank">
                     {% trans "Faculty of Mechanical Engineering" %}
                 </a></p>
 
@@ -98,11 +98,13 @@
 
         </div>
 
-        <p class="legal"><small>
-            <a href="https://stura-md.de/impressum/" target="_blank">{% trans "Impress" %}</a>
-            <a href="https://stura-md.de/datenschutz/" target="_blank">{% trans "Privacy" %}</a>
-            <span>&#169; 2018 - {% now 'Y' %} {% trans "FaRaFMB" %}</span>
-        </small></p>
+        <div class="legal">
+            <div>
+                <p><a href="https://stura-md.de/impressum/" target="_blank">{% trans "Impress" %}</a></p>
+                <p><a href="https://stura-md.de/datenschutz/" target="_blank">{% trans "Privacy" %}</a></p>
+            </div>
+            <p>&#169; 2018 - {% now 'Y' %} {% trans "FaRaFMB" %}</p>
+        </div>
 
     </div>
 </footer>
