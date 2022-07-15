@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
@@ -14,3 +14,8 @@ class MentorCreateView(LoginRequiredMixin, CreateView):
 
 class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
     template_name = 'mentoring/mentor_form_done.html'
+
+
+class MentorListView(LoginRequiredMixin, ListView):
+    template_name = 'mentoring/mentor_list.html'
+    model = Mentor

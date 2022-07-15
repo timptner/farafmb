@@ -7,13 +7,12 @@
 $cyan: #009ee3;
 $cyan-light: #7fcef1;
 $cyan-lighter: #ebf7fd;
-$orange: #ffbc6b;
 $ocean-darker: #0e4377;
 
 // General
 $family-sans-serif: "Nunito", sans-serif;
 $primary: $cyan;
-$info: $orange;
+$info: $cyan-light;
 $link: $primary;
 
 // Footer
@@ -39,6 +38,16 @@ $footer-background-color: $ocean-darker;
 
 .error-message {
   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include touch {
+    width: 100%;
+  }
+}
+
+.notification {
+  width: 75%;
   margin-left: auto;
   margin-right: auto;
 
