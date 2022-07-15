@@ -1,59 +1,34 @@
 <div class="navigation">{% load i18n %}
 
     <a role="button" class="menu-burger" aria-label="menu" aria-expanded="false" data-target="adminNavigation">
+
         <span class="icon-text">
             <span class="icon">
                 <i class="fas fa-hamburger"></i>
             </span>
             <span>{% trans "Show menu" %}</span>
         </span>
+
         <span class="icon-text is-hidden">
             <span class="icon">
                 <i class="fas fa-times"></i>
             </span>
             <span>{% trans "Hide menu" %}</span>
         </span>
+
     </a>
 
     <aside class="menu pb-3" id="adminNavigation">
 
         <ul class="menu-list">
 
-            <li><a href="https://docs.farafmb.de" target="_blank">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fas fa-book"></i>
-                    </span>
-                    <span>BookStack</span>
-                </span>
-            </a></li>
+            {% include 'components/menu-item.html' with url='https://docs.farafmb.de' icon='fas fa-book' name='BookStack' %}
+            {% include 'components/menu-item.html' with url='https://farafmb.slack.com' icon='fab fa-slack' name='Slack' %}
+            {% include 'components/menu-item.html' with url='https://discord.gg/m9SutXWdnc' icon='fab fa-discord' name='Discord' %}
 
-            <li><a href="https://farafmb.slack.com/" target="_blank">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fab fa-slack"></i>
-                    </span>
-                    <span>Slack</span>
-                </span>
-            </a></li>
-
-            <li><a href="https://discord.gg/m9SutXWdnc" target="_blank">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fab fa-discord"></i>
-                    </span>
-                    <span>Discord</span>
-                </span>
-            </a></li>
-
-            <li><a href="{% url 'admin:index' %}">
-                <span class="icon-text">
-                    <span class="icon">
-                        <i class="fas fa-tools"></i>
-                    </span>
-                    <span>{% trans "Adminstration" %}</span>
-                </span>
-            </a></li>
+            {% url 'admin:index' as admin_url %}
+            {% trans "Adminstration" as name %}
+            {% include 'components/menu-item.html' with url=admin_url icon='fas fa-tools' name=name %}
 
         </ul>
 
