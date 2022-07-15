@@ -22,6 +22,16 @@ $footer-background-color: $ocean-darker;
 @import "../bulma/bulma.sass";
 
 // Custom components
+.error-message {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include touch {
+    width: 100%;
+  }
+}
+
 .footer {
   a {
     color: $white;

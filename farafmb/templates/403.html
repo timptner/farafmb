@@ -3,15 +3,10 @@
 {% load i18n %}
 
 {% block content %}
-    <article class="message is-danger mx-auto" style="max-width: 50%;">
-        <div class="message-header">
-            <p>403 {% trans "Forbidden" %}</p>
-        </div>
-        <div class="message-body">
-            {% blocktrans %}
-                You do not have the appropriate permissions to access the requested page. Please contact an
-                administrator if you have the necessary rights.
-            {% endblocktrans %}
-        </div>
-    </article>
+    {% trans "Forbidden" as title %}
+    {% blocktrans asvar message %}
+        You do not have the appropriate permissions to access the requested page. Please contact an administrator if you
+        have the necessary rights.
+    {% endblocktrans %}
+    {% include 'components/error-message.html' with color='is-danger' code=403 title=title message=message %}
 {% endblock %}

@@ -10283,6 +10283,17 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+.error-message {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width: 1023px) {
+  .error-message {
+    width: 100%;
+  }
+}
+
 .footer a {
   color: hsl(0deg, 0%, 100%);
 }

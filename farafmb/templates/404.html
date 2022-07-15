@@ -3,15 +3,10 @@
 {% load i18n %}
 
 {% block content %}
-    <article class="message is-warning mx-auto" style="max-width: 50%;">
-        <div class="message-header">
-            <p>404 {% trans "Not Found" %}</p>
-        </div>
-        <div class="message-body">
-            {% blocktrans %}
-                There is no content on this page. If you followed a link, it appears to be outdated and no longer valid.
-                If you have entered the address directly, please check your input for typos.
-            {% endblocktrans %}
-        </div>
-    </article>
+    {% trans "Not Found" as title %}
+    {% blocktrans asvar message %}
+        There is no content on this page. If you followed a link, it appears to be outdated and no longer valid. If you
+        have entered the address directly, please check your input for typos.
+    {% endblocktrans %}
+    {% include 'components/error-message.html' with color='is-warning' code=404 title=title message=message %}
 {% endblock %}

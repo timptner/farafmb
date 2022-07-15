@@ -3,14 +3,9 @@
 {% load i18n %}
 
 {% block content %}
-    <article class="message is-danger mx-auto" style="max-width: 50%;">
-        <div class="message-header">
-            <p>500 {% trans "Internal Server Error" %}</p>
-        </div>
-        <div class="message-body">
-            {% blocktrans %}
-                Unfortunately, there was a server error, so your request cannot be processed. Please try again later.
-            {% endblocktrans %}
-        </div>
-    </article>
+    {% trans "Internal Server Error" as title %}
+    {% blocktrans asvar message %}
+        Unfortunately, there was a server error, so your request cannot be processed. Please try again later.
+    {% endblocktrans %}
+    {% include 'components/error-message.html' with color='is-danger' code=500 title=title message=message %}
 {% endblock %}
