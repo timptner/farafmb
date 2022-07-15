@@ -29,6 +29,27 @@
     #adminNavigation.is-active {
         display: block;
     }
+
+    .footer .columns > .column:first-child {
+        padding-right: 0.75rem !important;
+    }
+
+    .footer figure {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .footer .legal > small {
+        text-align: center;
+    }
+    .footer .legal a {
+        display: block;
+        margin-right: 0 !important;
+    }
+
+    .footer .legal span {
+        display: block;
+    }
 }
 
 a.menu-burger {
