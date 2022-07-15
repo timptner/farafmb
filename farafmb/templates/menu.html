@@ -1,73 +1,92 @@
-<aside class="menu" id="admin-nav">{% load i18n %}
+<div class="navigation">{% load i18n %}
 
-    <ul class="menu-list">
-
-        <li><a href="https://docs.farafmb.de" target="_blank">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fas fa-book"></i>
-                </span>
-                <span>BookStack</span>
+    <a role="button" class="menu-burger" aria-label="menu" aria-expanded="false" data-target="adminNavigation">
+        <span class="icon-text">
+            <span class="icon">
+                <i class="fas fa-hamburger"></i>
             </span>
-        </a></li>
-
-        <li><a href="https://farafmb.slack.com/" target="_blank">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fab fa-slack"></i>
-                </span>
-                <span>Slack</span>
+            <span>{% trans "Show menu" %}</span>
+        </span>
+        <span class="icon-text is-hidden">
+            <span class="icon">
+                <i class="fas fa-times"></i>
             </span>
-        </a></li>
+            <span>{% trans "Hide menu" %}</span>
+        </span>
+    </a>
 
-        <li><a href="https://discord.gg/m9SutXWdnc" target="_blank">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fab fa-discord"></i>
-                </span>
-                <span>Discord</span>
-            </span>
-        </a></li>
+    <aside class="menu pb-3" id="adminNavigation">
 
-        <li><a href="{% url 'admin:index' %}">
-            <span class="icon-text">
-                <span class="icon">
-                    <i class="fas fa-tools"></i>
-                </span>
-                <span>{% trans "Adminstration" %}</span>
-            </span>
-        </a></li>
+        <ul class="menu-list">
 
-    </ul>
-
-    <p class="menu-label">{% trans "Account" %}</p>
-    <ul class="menu-list">
-
-        <li><a href="{% url 'members:profile_form' %}">{% trans "Profile" %}</a></li>
-
-    </ul>
-
-    <p class="menu-label">{% trans "Members" %}</p>
-    <ul class="menu-list">
-
-        <li><a href="{% url 'members:create_user' %}">
-            <span class="icon-text">
-                <span>{% trans "Create new" %}</span>
-                {% if not perms.auth.add_user %}
+            <li><a href="https://docs.farafmb.de" target="_blank">
+                <span class="icon-text">
                     <span class="icon">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-book"></i>
                     </span>
-                {% endif %}
-            </span>
-        </a></li>
+                    <span>BookStack</span>
+                </span>
+            </a></li>
 
-    </ul>
+            <li><a href="https://farafmb.slack.com/" target="_blank">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fab fa-slack"></i>
+                    </span>
+                    <span>Slack</span>
+                </span>
+            </a></li>
 
-    <p class="menu-label">{% trans "Events" %}</p>
-    <ul class="menu-list">
+            <li><a href="https://discord.gg/m9SutXWdnc" target="_blank">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fab fa-discord"></i>
+                    </span>
+                    <span>Discord</span>
+                </span>
+            </a></li>
 
-        <li><a href="{% url 'events:events' %}">{% trans "Overview" %}</a></li>
+            <li><a href="{% url 'admin:index' %}">
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fas fa-tools"></i>
+                    </span>
+                    <span>{% trans "Adminstration" %}</span>
+                </span>
+            </a></li>
 
-    </ul>
+        </ul>
 
-</aside>
+        <p class="menu-label">{% trans "Account" %}</p>
+        <ul class="menu-list">
+
+            <li><a href="{% url 'members:profile_form' %}">{% trans "Profile" %}</a></li>
+
+        </ul>
+
+        <p class="menu-label">{% trans "Members" %}</p>
+        <ul class="menu-list">
+
+            <li><a href="{% url 'members:create_user' %}">
+                <span class="icon-text">
+                    <span>{% trans "Create new" %}</span>
+                    {% if not perms.auth.add_user %}
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    {% endif %}
+                </span>
+            </a></li>
+
+        </ul>
+
+        <p class="menu-label">{% trans "Events" %}</p>
+        <ul class="menu-list">
+
+            <li><a href="{% url 'events:events' %}">{% trans "Overview" %}</a></li>
+
+        </ul>
+
+    </aside>
+
+</div>
