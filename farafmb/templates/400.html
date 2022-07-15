@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    {% trans "Bad Request" as title %}
+    {% blocktrans asvar message %}
+        Your request could not be processed because it is invalid.
+    {% endblocktrans %}
+    {% include 'components/error-message.html' with color='is-warning' code=400 title=title message=message %}
+{% endblock %}

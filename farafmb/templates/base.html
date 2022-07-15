@@ -16,15 +16,16 @@
     <meta content="{% static 'favicon/mstile-144x144.png' %}" name="msapplication-TileImage">
 
     <!-- CSS -->
-    <link href="{% static 'css/bulma.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/bulma-list.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     {% block scripts %}
-        <script src="{% static 'js/font-awesome.min.js' %}"></script>
-        <script src="{% static 'js/navbar-burger.js' %}"></script>
-        <script src="{% static 'js/close-notification.js' %}"></script>
+        <script src="{% static 'js/font-awesome.min.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/navbar-burger.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/close-notification.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/menu-burger.js' %}" type="text/javascript"></script>
+        <script src="{% static 'js/active-menu.js' %}" type="text/javascript"></script>
     {% endblock %}
 </head>
 <body>
@@ -41,7 +42,19 @@
 
     {% block section %}
         <section class="section">
-            {% block content %}{% endblock %}
+            <div class="container">
+                <div class="columns">
+                    {% if user.is_authenticated %}
+                        <div class="column is-narrow">
+                            {% include 'menu.html' %}
+                        </div>
+                    {% endif %}
+
+                    <div class="column">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
         </section>
     {% endblock %}
 
