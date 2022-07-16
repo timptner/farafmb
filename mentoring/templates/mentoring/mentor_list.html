@@ -3,7 +3,10 @@
 {% load i18n %}
 
 {% block content %}
-    <h1 class="title">{% trans "List of mentors" %}</h1>
+    <h1 class="title">
+        {% trans "List of all mentors" %}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </h1>
 
     <div class="buttons">
         <a href="{% url 'mentoring:create-mentor' %}" class="button is-rounded">{% trans "Show form" %}</a>

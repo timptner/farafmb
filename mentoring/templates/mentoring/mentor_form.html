@@ -3,117 +3,121 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="container">
+    <h1 class="title">
+        {% trans "Registration as mentor" %}
+        <span class="tag is-warning">{% trans "Preview" %}</span>
+    </h1>
 
-        <h1 class="title">{% trans "Registration as mentor" %}</h1>
+    <div class="notification is-warning">
+        This form is not yet publicly visible.
+    </div>
 
-        <div class="box">
-            <form method="post">
+    <div class="box">
+        <form method="post">
 
-                {% csrf_token %}
+            {% csrf_token %}
 
-                <div class="columns is-multiline">
+            <div class="columns is-multiline">
 
-                    <div class="column is-half">
-                        <div class="field">
-                            <label class="label"
-                                   for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
 
-                            <div class="control">
-                                {{ form.first_name }}
-                            </div>
-
-                            {% for error in form.first_name.errors %}
-                                <p class="help is-danger">{{ error }}</p>
-                            {% endfor %}
+                        <div class="control">
+                            {{ form.first_name }}
                         </div>
-                    </div>
 
-                    <div class="column is-half">
-                        <div class="field">
-                            <label class="label"
-                                   for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
-
-                            <div class="control">
-                                {{ form.last_name }}
-                            </div>
-
-                            {% for error in form.last_name.errors %}
-                                <p class="help is-danger">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <div class="column is-half">
-                        <div class="field">
-                            <label class="label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-
-                            <div class="control">
-                                {{ form.email }}
-                            </div>
-
-                            {% for error in form.email.errors %}
-                                <p class="help is-danger">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <div class="column is-half">
-                        <div class="field">
-                            <label class="label" for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
-
-                            <div class="control">
-                                {{ form.phone }}
-                            </div>
-
-                            {% for error in form.phone.errors %}
-                                <p class="help is-danger">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                    <div class="column is-full">
-                        <div class="field">
-                            <label class="label" for="{{ form.program.id_for_label }}">{{ form.program.label }}</label>
-
-                            <div class="control">
-                                <div class="select is-fullwidth">
-                                    {{ form.program }}
-                                </div>
-                            </div>
-
-                            {% for error in form.program.errors %}
-                                <p class="help is-danger">{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="field">
-                    <label class="label" for="{{ form.privacy.id_for_label }}">{{ form.privacy.label }}</label>
-                    <div class="control">
-                        <label class="checkbox">
-                            {{ form.privacy }}
-                            {% blocktrans %}
-                                I have read the <a href="https://stura-md.de/datenschutz/">privacy policy</a> and agree
-                                to the processing of my personal data.
-                            {% endblocktrans %}
-                        </label>
+                        {% for error in form.first_name.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
                     </div>
                 </div>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-primary" type="submit">{% trans "Register" %}</button>
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+
+                        <div class="control">
+                            {{ form.last_name }}
+                        </div>
+
+                        {% for error in form.last_name.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
                     </div>
                 </div>
 
-                {% for error in form.non_field_errors %}
-                    <p class="help">{{ error }}</p>
-                {% endfor %}
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
 
-            </form>
-        </div>
+                        <div class="control">
+                            {{ form.email }}
+                        </div>
+
+                        {% for error in form.email.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label" for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+
+                        <div class="control">
+                            {{ form.phone }}
+                        </div>
+
+                        {% for error in form.phone.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="column is-full">
+                    <div class="field">
+                        <label class="label" for="{{ form.program.id_for_label }}">{{ form.program.label }}</label>
+
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                {{ form.program }}
+                            </div>
+                        </div>
+
+                        {% for error in form.program.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.privacy.id_for_label }}">{{ form.privacy.label }}</label>
+                <div class="control">
+                    <label class="checkbox">
+                        {{ form.privacy }}
+                        {% blocktrans %}
+                            I have read the <a href="https://stura-md.de/datenschutz/">privacy policy</a> and agree
+                            to the processing of my personal data.
+                        {% endblocktrans %}
+                    </label>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" type="submit">{% trans "Register" %}</button>
+                </div>
+            </div>
+
+            {% for error in form.non_field_errors %}
+                <p class="help">{{ error }}</p>
+            {% endfor %}
+
+        </form>
     </div>
 {% endblock %}
