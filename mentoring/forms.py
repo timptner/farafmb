@@ -20,6 +20,17 @@ class RegistrationForm(forms.ModelForm):
             ),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            if 'class' in visible.field.widget.attrs:
+                cls_list = visible.field.widget.attrs['class'].split()
+            else:
+                cls_list = []
+            if visible._has_changed():
+                cls_list.append('is-danger') if visible.errors else cls_list.append('is-success')
+            visible.field.widget.attrs['class'] = ' '.join(cls_list)
+
     def clean(self):
         cleaned_data = super().clean()
         started_at = cleaned_data.get('started_at')

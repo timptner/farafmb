@@ -11,6 +11,15 @@
     <div class="columns">
 
         <div class="column">
+
+            {% if form.non_field_errors %}
+                <div class="notification is-danger is-light">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="box">
                 <form method="post">
 
@@ -81,16 +90,14 @@
                         </div>
                     </div>
 
-                    {% for error in form.non_field_errors %}
-                        <p class="help is-danger">{{ error }}</p>
-                    {% endfor %}
-
                 </form>
             </div>
+
         </div>
 
         {% if registration_list %}
             <div class="column is-narrow">
+
                 {% for registration in registration_list %}
                     <p class="is-size-5"><strong>{{ registration.name }}</strong></p>
                     <p>
@@ -106,6 +113,7 @@
                         </span>
                     </p>
                 {% endfor %}
+
             </div>
         {% endif %}
 
