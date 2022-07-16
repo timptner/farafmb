@@ -4,35 +4,35 @@
 
 {% block content %}
     <p class="title">
-        {{ mentor.full_name }}
+        {{ helper.full_name }}
         <span class="tag is-danger">{% trans "Private" %}</span>
     </p>
 
     <div class="field">
         <label class="label">{% trans "Email address" %}</label>
         <div class="control">
-            <input class="input" type="email" value="{{ mentor.email }}" disabled>
+            <input class="input" type="email" value="{{ helper.email }}" disabled>
         </div>
     </div>
 
     <div class="field">
         <label class="label">{% trans "Mobile number" %}</label>
         <div class="control">
-            <input class="input" type="text" value="{{ mentor.phone }}" disabled>
+            <input class="input" type="text" value="{{ helper.phone }}" disabled>
         </div>
     </div>
 
     <div class="field">
-        <label class="label">{% trans "Study program" %}</label>
+        <label class="label">{% trans "Comment" %}</label>
         <div class="control">
-            <input class="input" type="text" value="{{ mentor.program }}" disabled>
+            <textarea class="textarea" rows="5" disabled>{{ helper.comment }}</textarea>
         </div>
     </div>
 
-    <p class="block">{% trans "Registered at" %} {{ mentor.created_at }}</p>
+    <p class="block">{% trans "Registered at" %} {{ helper.created_at }}</p>
 
     <div class="buttons">
-        <a href="{% url 'mentoring:mentor-list' %}" class="button">
+        <a href="{% url 'mentoring:helper-list' %}" class="button">
             <span class="icon">
                 <i class="fas fa-arrow-left"></i>
             </span>

@@ -56,3 +56,7 @@ class HelperCreateView(LoginRequiredMixin, CreateView):
 
 class HelperCreateDoneView(LoginRequiredMixin, TemplateView):
     template_name = 'mentoring/helper_form_done.html'
+
+
+class HelperDetailView(LoginRequiredMixin, DetailView):
+    model = Helper

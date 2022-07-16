@@ -17,7 +17,7 @@
             {% trans "Helpers" %}
         </p>
         {% for helper in object_list %}
-            <p class="panel-block">{{ helper }}</p>
+            <a href="{% url 'mentoring:helper-detail' helper.pk %}" class="panel-block">{{ helper }}</a>
         {% empty %}
             <p class="panel-block">{% trans "No helpers have registered yet." %}</p>
         {% endfor %}

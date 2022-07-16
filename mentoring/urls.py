@@ -14,4 +14,5 @@ urlpatterns = [
     path('helper/', views.HelperListView.as_view(), name='helper-list'),
     path('helper/add/', views.HelperCreateView.as_view(), name='helper-create'),
     path('helper/add/done/', views.HelperCreateDoneView.as_view(), name='helper-create-done'),
+    path('helper/<int:pk>/', views.HelperDetailView.as_view(), name='helper-detail'),
 ]
