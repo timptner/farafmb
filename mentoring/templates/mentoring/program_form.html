@@ -3,7 +3,10 @@
 {% load i18n %}
 
 {% block content %}
-    <p class="title">{% trans "Create new program" %}</p>
+    <p class="title">
+        {% trans "Create new program" %}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </p>
 
     <div class="container is-max-desktop">
 

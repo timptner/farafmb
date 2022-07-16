@@ -3,7 +3,10 @@
 {% load i18n %}
 
 {% block content %}
-    <p class="title">{{ object.name }}</p>
+    <p class="title">
+        {{ object.name }}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </p>
     <p class="subtitle">{{ object.faculty }}</p>
 
     <p class="block">
