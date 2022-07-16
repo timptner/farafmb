@@ -12,16 +12,14 @@
         <a href="{% url 'mentoring:mentor-create' %}" class="button is-rounded">{% trans "Show form" %}</a>
     </div>
 
-    {% for mentor in object_list %}
-        <nav class="panel">
-            <p class="panel-heading">
-                {% trans "Mentors" %}
-            </p>
+    <nav class="panel">
+        <p class="panel-heading">
+            {% trans "Mentors" %}
+        </p>
+        {% for mentor in object_list %}
             <a href="{% url 'mentoring:mentor-detail' mentor.pk %}" class="panel-block">{{ mentor }}</a>
-        </nav>
-    {% empty %}
-        <div class="notification is-info">
-            {% trans "No mentors have registered yet." %}
-        </div>
-    {% endfor %}
+        {% empty %}
+            <p class="panel-block">{% trans "No mentors have registered yet." %}</p>
+        {% endfor %}
+    </nav>
 {% endblock %}

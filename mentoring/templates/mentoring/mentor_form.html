@@ -57,6 +57,8 @@
                             {{ form.email }}
                         </div>
 
+                        <p class="help">{{ form.email.help_text }}</p>
+
                         {% for error in form.email.errors %}
                             <p class="help is-danger">{{ error }}</p>
                         {% endfor %}
@@ -70,6 +72,8 @@
                         <div class="control">
                             {{ form.phone }}
                         </div>
+
+                        <p class="help">{{ form.phone.help_text }}</p>
 
                         {% for error in form.phone.errors %}
                             <p class="help is-danger">{{ error }}</p>
