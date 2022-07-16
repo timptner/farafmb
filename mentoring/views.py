@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from .forms import ProgramForm, MentorForm
-from .models import Program, Mentor
+from .models import Program, Mentor, Helper
 
 
 class ProgramListView(LoginRequiredMixin, ListView):
@@ -42,3 +42,7 @@ class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
 
 class MentorDetailView(LoginRequiredMixin, DetailView):
     model = Mentor
+
+
+class HelperListView(LoginRequiredMixin, ListView):
+    model = Helper

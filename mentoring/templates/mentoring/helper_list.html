@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1 class="title">
+        {% trans "List of all helpers" %}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </h1>
+
+{#    <div class="buttons">#}
+{#        <a href="{% url 'mentoring:helper-create' %}" class="button is-rounded">{% trans "Show form" %}</a>#}
+{#    </div>#}
+
+    <nav class="panel">
+        <p class="panel-heading">
+            {% trans "Helpers" %}
+        </p>
+        {% for helper in object_list %}
+{#            <a href="{% url 'mentoring:helper-detail' helper.pk %}" class="panel-block">{{ helper }}</a>#}
+        {% empty %}
+            <p class="panel-block">{% trans "No helpers have registered yet." %}</p>
+        {% endfor %}
+    </nav>
+{% endblock %}
