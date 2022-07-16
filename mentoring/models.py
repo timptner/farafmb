@@ -2,6 +2,21 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+class Registration(models.Model):
+    label = models.CharField(_("Label"), max_length=100)
+    started_at = models.DateTimeField(_("Started at"))
+    stopped_at = models.DateTimeField(_("Stopped at"))
+    is_helper_form_active = models.BooleanField(_("Is helper form active?"), default=False)
+    helper_form_desc = models.TextField(_("Description text for helper form"), blank=True)
+
+    class Meta:
+        verbose_name = _("Registration")
+        verbose_name_plural = _("Registrations")
+
+    def __str__(self):
+        return self.label
+
+
 class Program(models.Model):
     name = models.CharField(max_length=100, unique=True)
 

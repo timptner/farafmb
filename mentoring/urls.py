@@ -4,6 +4,7 @@ from . import views
 
 app_name = 'mentoring'
 urlpatterns = [
+    path('registration/', views.RegistrationListView.as_view(), name='registration-list'),
     path('program/', views.ProgramListView.as_view(), name='program-list'),
     path('program/add/', views.ProgramCreateView.as_view(), name='program-create'),
     path('program/<int:pk>/delete/', views.ProgramDeleteView.as_view(), name='program-delete'),

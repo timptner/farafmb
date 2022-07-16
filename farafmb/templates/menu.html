@@ -58,12 +58,12 @@
         <p class="menu-label">{% trans "Mentoring" %} <span class="tag is-dark">{% trans "New" %}</span></p>
         <ul class="menu-list">
 
+            <li><a href="{% url 'mentoring:registration-list' %}">{% trans "Registrations" %}</a></li>
             <li><a href="{% url 'mentoring:program-list' %}">{% trans "Study programs" %}</a></li>
             <li><a href="{% url 'mentoring:mentor-list' %}">{% trans "Mentors" %}</a></li>
             <li><a href="{% url 'mentoring:helper-list' %}">{% trans "Helpers" %}</a></li>
 
         </ul>
-
 
         <p class="menu-label">{% trans "Events" %}</p>
         <ul class="menu-list">

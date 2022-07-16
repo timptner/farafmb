@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from .forms import ProgramForm, MentorForm, HelperForm
-from .models import Program, Mentor, Helper
+from .models import Registration, Program, Mentor, Helper
 
 
 def export_as_csv(model):
@@ -28,6 +28,10 @@ def export_as_csv(model):
         writer.writerow([getattr(obj, field) for field in fields])
 
     return response
+
+
+class RegistrationListView(LoginRequiredMixin, ListView):
+    model = Registration
 
 
 class ProgramListView(LoginRequiredMixin, ListView):
