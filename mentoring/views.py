@@ -25,16 +25,16 @@ class ProgramDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_message = _("Program was deleted successfully")
 
 
+class MentorListView(LoginRequiredMixin, ListView):
+    template_name = 'mentoring/mentor_list.html'
+    model = Mentor
+
+
 class MentorCreateView(LoginRequiredMixin, CreateView):
     model = Mentor
     form_class = MentorForm
-    success_url = reverse_lazy('create-mentor-done')
+    success_url = reverse_lazy('mentoring:mentor-create')
 
 
 class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
     template_name = 'mentoring/mentor_form_done.html'
-
-
-class MentorListView(LoginRequiredMixin, ListView):
-    template_name = 'mentoring/mentor_list.html'
-    model = Mentor
