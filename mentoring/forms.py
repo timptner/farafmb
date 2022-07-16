@@ -2,7 +2,54 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-from .models import Program, Mentor, Helper
+from .models import Registration, Program, Mentor, Helper
+
+
+class RegistrationForm(forms.ModelForm):
+    class Meta:
+        model = Registration
+        fields = ['name', 'started_at', 'stopped_at', 'is_helper_form_active', 'helper_form_desc']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'input', 'placeholder': 'E-Woche WS 2050'}),
+            'started_at': forms.DateTimeInput(attrs={'class': 'input', 'type': 'datetime-local'}),
+            'stopped_at': forms.DateTimeInput(attrs={'class': 'input', 'type': 'datetime-local'}),
+            'helper_form_desc': forms.Textarea(
+                attrs={'class': 'textarea', 'rows': 5,
+                       'placeholder': 'z. Bsp.: "Gebt eure gewünschte Station im Anmerkungsfeld ein.", "Nennt euren '
+                                      'Partner für die Station im Anmerkungsfeld."'},
+            ),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        started_at = cleaned_data.get('started_at')
+        stopped_at = cleaned_data.get('stopped_at')
+
+        if started_at and stopped_at:
+            # Stop before start
+            if started_at >= stopped_at:
+                raise ValidationError(_("Start date must be earlier than stop date"), code='invalid')
+
+            registration_list = Registration.objects.all()
+
+            for registration in registration_list:
+                # Start inside another registration
+                if registration.started_at <= started_at <= registration.stopped_at:
+                    error_msg = ValidationError(_("The datetime is in the period of another registration."),
+                                                code='invalid')
+                    self.add_error('started_at', error_msg)
+
+                # Stop inside another registration
+                if registration.started_at <= stopped_at <= registration.stopped_at:
+                    error_msg = ValidationError(_("The datetime is in the period of another registration."),
+                                                code='invalid')
+                    self.add_error('stopped_at', error_msg)
+
+            # Another registration between start and stop
+            is_between = Registration.objects.filter(started_at__gte=started_at, stopped_at__lte=stopped_at).exists()
+            if is_between:
+                raise ValidationError(_("Another registration is between the start and end of this registration."),
+                                      code='invalid')
 
 
 class ProgramForm(forms.ModelForm):

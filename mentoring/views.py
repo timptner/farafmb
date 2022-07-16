@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-from .forms import ProgramForm, MentorForm, HelperForm
+from .forms import RegistrationForm, ProgramForm, MentorForm, HelperForm
 from .models import Registration, Program, Mentor, Helper
 
 
@@ -32,6 +32,18 @@ def export_as_csv(model):
 
 class RegistrationListView(LoginRequiredMixin, ListView):
     model = Registration
+
+
+class RegistrationCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Registration
+    form_class = RegistrationForm
+    success_url = reverse_lazy('mentoring:registration-list')
+    success_message = _("%(name)s was created successfully")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['registration_list'] = Registration.objects.all()
+        return context
 
 
 class ProgramListView(LoginRequiredMixin, ListView):

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content-fullwidth %}
+    <p class="title">
+        {% trans "Add a registration" %}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </p>
+
+    <div class="columns">
+
+        <div class="column">
+            <div class="box">
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        <div class="control">
+                            {{ form.name }}
+                        </div>
+                        {% for error in form.name.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.started_at.id_for_label }}">{{ form.started_at.label }}</label>
+                        <div class="control">
+                            {{ form.started_at }}
+                        </div>
+                        {% for error in form.started_at.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.stopped_at.id_for_label }}">{{ form.stopped_at.label }}</label>
+                        <div class="control">
+                            {{ form.stopped_at }}
+                        </div>
+                        {% for error in form.stopped_at.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.is_helper_form_active.id_for_label }}">
+                            {{ form.is_helper_form_active.label }}
+                        </label>
+                        <div class="control">
+                            <label class="checkbox">
+                                {{ form.is_helper_form_active }}
+                                {% trans "Activate the helper form" %}
+                            </label>
+                        </div>
+                        {% for error in form.is_helper_form_active.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field">
+                        <label class="label"
+                               for="{{ form.helper_form_desc.id_for_label }}">{{ form.helper_form_desc.label }}</label>
+                        <div class="control">
+                            {{ form.helper_form_desc }}
+                        </div>
+                        {% for error in form.helper_form_desc.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-primary" type="submit">{% trans "Create" %}</button>
+                        </div>
+                    </div>
+
+                    {% for error in form.non_field_errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+
+        {% if registration_list %}
+            <div class="column is-narrow">
+                {% for registration in registration_list %}
+                    <p class="is-size-5"><strong>{{ registration.name }}</strong></p>
+                    <p>
+                        <span class="icon-text">
+                            <span class="icon"><i class="fas fa-lock-open"></i></span>
+                            <span>{{ registration.started_at }}</span>
+                        </span>
+                    </p>
+                    <p>
+                        <span class="icon-text">
+                            <span class="icon"><i class="fas fa-lock"></i></span>
+                            <span>{{ registration.stopped_at }}</span>
+                        </span>
+                    </p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
