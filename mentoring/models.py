@@ -3,13 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Program(models.Model):
-    class Faculties(models.TextChoices):
-        FMB = 'MB', _("Mechanical Engineering")
-        FVST = 'VST', _("Process and Systems Engineering")
-        FEIT = 'EIT', _("Electrical Engineering and Information Technology")
-        FMA = 'MA', _("Mathematics")
-    faculty = models.CharField(max_length=3, choices=Faculties.choices, default=Faculties.FMB)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
     class Meta:
         verbose_name = _("Study program")

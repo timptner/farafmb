@@ -8,7 +8,7 @@ from .models import Program, Mentor
 class ProgramForm(forms.ModelForm):
     class Meta:
         model = Program
-        fields = ['faculty', 'name']
+        fields = ['name']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'input'}),
         }

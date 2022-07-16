@@ -1,4 +1,4 @@
-from django.test import TestCase, SimpleTestCase
+from django.test import TestCase
 
 from .forms import MentorForm
 from .models import Program, Mentor
@@ -6,7 +6,7 @@ from .models import Program, Mentor
 
 class ProgramTestCase(TestCase):
     def setUp(self) -> None:
-        Program.objects.create(faculty=Program.Faculties.FMB, name='Engineering')
+        Program.objects.create(name='Engineering')
 
     def test_program_has_display_name(self):
         """Display name of object corresponds to name field"""
