@@ -44,51 +44,35 @@ msgstr "Deine Mobilnummer besitzt keine Ländervorwahl."
 msgid "Your mobile number contains non-numeric values."
 msgstr "Deine Mobilnummer enthält nicht-numerische Zeichen."
 
-#: .\models.py:7
-msgid "Mechanical Engineering"
-msgstr "Maschinenbau"
-
-#: .\models.py:8
-msgid "Process and Systems Engineering"
-msgstr "Verfahrens- und Systemtechnik"
-
-#: .\models.py:9
-msgid "Electrical Engineering and Information Technology"
-msgstr "Elektro- und Informationstechnik"
-
-#: .\models.py:10
-msgid "Mathematics"
-msgstr "Mathematik"
-
-#: .\models.py:15 .\models.py:28 .\templates\mentoring\mentor_detail.html:26
+#: .\models.py:9 .\models.py:21 .\templates\mentoring\mentor_detail.html:26
 msgid "Study program"
 msgstr "Studiengang"
 
-#: .\models.py:16
+#: .\models.py:10 .\templates\mentoring\program_list.html:25
 msgid "Study programs"
 msgstr "Studiengänge"
 
-#: .\models.py:24
+#: .\models.py:17 .\models.py:37
 msgid "First name"
 msgstr "Vorname"
 
-#: .\models.py:25
+#: .\models.py:18 .\models.py:38
 msgid "Last name"
 msgstr "Nachname"
 
-#: .\models.py:26 .\templates\mentoring\mentor_detail.html:12
+#: .\models.py:19 .\models.py:39 .\templates\mentoring\mentor_detail.html:12
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\models.py:27
+#: .\models.py:20 .\models.py:40 .\templates\mentoring\mentor_detail.html:19
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
-#: .\models.py:32
+#: .\models.py:25
 msgid "Mentor"
 msgstr "Mentor"
 
-#: .\models.py:33 .\templates\mentoring\mentor_list.html:18
+#: .\models.py:26 .\templates\mentoring\mentor_list.html:17
 msgid "Mentors"
 msgstr "Mentoren"
 
@@ -99,10 +83,6 @@ msgstr "Mentoren"
 #: .\templates\mentoring\program_list.html:8
 msgid "Private"
 msgstr "Privat"
-
-#: .\templates\mentoring\mentor_detail.html:19
-msgid "Phone"
-msgstr "Telefon"
 
 #: .\templates\mentoring\mentor_detail.html:32
 msgid "Registered at"
@@ -124,7 +104,7 @@ msgstr "Vorschau"
 msgid "This form is not yet publicly visible."
 msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
 
-#: .\templates\mentoring\mentor_form.html:103
+#: .\templates\mentoring\mentor_form.html:107
 msgid ""
 "\n"
 "                            I have read the <a href=\"https://stura-md.de/"
@@ -137,7 +117,7 @@ msgstr ""
 "\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: .\templates\mentoring\mentor_form.html:113
+#: .\templates\mentoring\mentor_form.html:117
 msgid "Register"
 msgstr "Registrieren"
 
@@ -164,7 +144,7 @@ msgstr "Liste aller Mentor"
 msgid "Show form"
 msgstr "Formular anzeigen"
 
-#: .\templates\mentoring\mentor_list.html:24
+#: .\templates\mentoring\mentor_list.html:22
 msgid "No mentors have registered yet."
 msgstr "Es hat sich bisher noch kein Mentor registriert."
 
@@ -187,20 +167,17 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: .\templates\mentoring\program_form.html:7
-msgid "Create new program"
-msgstr "Neuen Studiengang erstellen"
+#: .\templates\mentoring\program_list.html:12
+msgid "Add a study program"
+msgstr "Einen Studiengang ergänzen"
 
-#: .\templates\mentoring\program_form.html:45
-msgid "Add"
-msgstr "Ergänzen"
+#: .\templates\mentoring\program_form.html:29
+msgid "Create"
+msgstr "Erstellen"
 
 #: .\templates\mentoring\program_list.html:7
-msgid "List of all programs"
+msgid "List of all study programs"
 msgstr "Liste aller Studiengänge"
-
-#: .\templates\mentoring\program_list.html:12
-msgid "Add a program"
-msgstr "Ein Studiengang ergänzen"
 
 #: .\templates\mentoring\program_list.html:17
 msgid ""
@@ -211,18 +188,9 @@ msgstr ""
 "\n"
 "Du kannst einen Studiengang löschen, in dem du ihn auswählst."
 
-#: .\templates\mentoring\program_list.html:41
-#, python-format
-msgid ""
-"\n"
-"                    No study programs have been created yet. Please add a "
-"new one using the\n"
-"                    <a href=\"%(create_url)s\">form</a>.\n"
-"                "
-msgstr ""
-"\n"
-"Es wurden noch keine Studiengänge erstellt. Du kannst mittels <a href="
-"\"%(create_url)s\">Formular</a> einen neuen Studiengang ergänzen."
+#: .\templates\mentoring\program_list.html:30
+msgid "No study programs have been created yet."
+msgstr "Es wurde bisher noch kein Studiengang erstellt."
 
 #: .\views.py:19
 #, python-format
@@ -232,3 +200,39 @@ msgstr "%(name)s wurde erfolgreich erstellt"
 #: .\views.py:25
 msgid "Program was deleted successfully"
 msgstr "Studiengang wurde erfolgreich gelöscht"
+
+#~ msgid "Add a program"
+#~ msgstr "Ein Studiengang ergänzen"
+
+#~ msgid "Phone"
+#~ msgstr "Telefon"
+
+#~ msgid "Mechanical Engineering"
+#~ msgstr "Maschinenbau"
+
+#~ msgid "Process and Systems Engineering"
+#~ msgstr "Verfahrens- und Systemtechnik"
+
+#~ msgid "Electrical Engineering and Information Technology"
+#~ msgstr "Elektro- und Informationstechnik"
+
+#~ msgid "Mathematics"
+#~ msgstr "Mathematik"
+
+#~ msgid "Create new program"
+#~ msgstr "Neuen Studiengang erstellen"
+
+#~ msgid "Add"
+#~ msgstr "Ergänzen"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "                    No study programs have been created yet. Please add a "
+#~ "new one using the\n"
+#~ "                    <a href=\"%(create_url)s\">form</a>.\n"
+#~ "                "
+#~ msgstr ""
+#~ "\n"
+#~ "Es wurden noch keine Studiengänge erstellt. Du kannst mittels <a href="
+#~ "\"%(create_url)s\">Formular</a> einen neuen Studiengang ergänzen."
