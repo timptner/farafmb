@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-16 02:59+0200\n"
+"POT-Creation-Date: 2022-07-16 16:13+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,33 +14,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:18
+#: .\forms.py:18 .\forms.py:73
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: .\forms.py:30
+#: .\forms.py:30 .\forms.py:86
 msgid ""
 "Only email addresses from Otto von Guericke University Magdeburg are allowed."
 msgstr ""
 "Es sind nur E-Mail-Adressen der Otto-von-Guericke-Universität Magdeburg "
 "erlaubt."
 
-#: .\forms.py:31
+#: .\forms.py:31 .\forms.py:87
 msgid "Write your mobile number, starting with the country code."
 msgstr "Schreibe deine Mobilnummer, beginnend mit der Ländervorwahl."
 
-#: .\forms.py:50
+#: .\forms.py:50 .\forms.py:96
 msgid ""
 "Your email address does not belong to Otto von Guericke University Magdeburg."
 msgstr ""
 "Deine E-Mail-Adresse gehört nicht zur Otto-von-Guericke-Universität "
 "Magdeburg."
 
-#: .\forms.py:64
+#: .\forms.py:64 .\forms.py:110
 msgid "Your mobile number does not start with a country code."
 msgstr "Deine Mobilnummer besitzt keine Ländervorwahl."
 
-#: .\forms.py:67
+#: .\forms.py:67 .\forms.py:113
 msgid "Your mobile number contains non-numeric values."
 msgstr "Deine Mobilnummer enthält nicht-numerische Zeichen."
 
@@ -60,11 +60,13 @@ msgstr "Vorname"
 msgid "Last name"
 msgstr "Nachname"
 
-#: .\models.py:19 .\models.py:39 .\templates\mentoring\mentor_detail.html:12
+#: .\models.py:19 .\models.py:39 .\templates\mentoring\helper_detail.html:12
+#: .\templates\mentoring\mentor_detail.html:12
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\models.py:20 .\models.py:40 .\templates\mentoring\mentor_detail.html:19
+#: .\models.py:20 .\models.py:40 .\templates\mentoring\helper_detail.html:19
+#: .\templates\mentoring\mentor_detail.html:19
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
@@ -76,6 +78,20 @@ msgstr "Mentor"
 msgid "Mentors"
 msgstr "Mentoren"
 
+#: .\models.py:41 .\templates\mentoring\helper_detail.html:26
+msgid "Comment"
+msgstr "Kommentar"
+
+#: .\models.py:45
+msgid "Helper"
+msgstr "Helfer"
+
+#: .\models.py:46 .\templates\mentoring\helper_list.html:17
+msgid "Helpers"
+msgstr "Helfer"
+
+#: .\templates\mentoring\helper_detail.html:8
+#: .\templates\mentoring\helper_list.html:8
 #: .\templates\mentoring\mentor_detail.html:8
 #: .\templates\mentoring\mentor_list.html:8
 #: .\templates\mentoring\program_confirm_delete.html:8
@@ -84,26 +100,31 @@ msgstr "Mentoren"
 msgid "Private"
 msgstr "Privat"
 
+#: .\templates\mentoring\helper_detail.html:32
 #: .\templates\mentoring\mentor_detail.html:32
 msgid "Registered at"
 msgstr "Registriert am"
 
+#: .\templates\mentoring\helper_detail.html:39
 #: .\templates\mentoring\mentor_detail.html:39
 msgid "Back"
 msgstr "Zurück"
 
-#: .\templates\mentoring\mentor_form.html:7
-msgid "Registration as mentor"
-msgstr "Registrierung als Mentor"
+#: .\templates\mentoring\helper_form.html:7
+msgid "Registration as helper"
+msgstr "Registrierung als Helfer"
 
+#: .\templates\mentoring\helper_form.html:8
 #: .\templates\mentoring\mentor_form.html:8
 msgid "Preview"
 msgstr "Vorschau"
 
+#: .\templates\mentoring\helper_form.html:12
 #: .\templates\mentoring\mentor_form.html:12
 msgid "This form is not yet publicly visible."
 msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
 
+#: .\templates\mentoring\helper_form.html:105
 #: .\templates\mentoring\mentor_form.html:107
 msgid ""
 "\n"
@@ -117,14 +138,16 @@ msgstr ""
 "\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
+#: .\templates\mentoring\helper_form.html:115
 #: .\templates\mentoring\mentor_form.html:117
 msgid "Register"
 msgstr "Registrieren"
 
-#: .\templates\mentoring\mentor_form_done.html:9
-msgid "You have been successfully registered as a mentor"
-msgstr "Du wurdest erfolgreich als Mentor registriert."
+#: .\templates\mentoring\helper_form_done.html:9
+msgid "You have been successfully registered as a helper"
+msgstr "Du wurdest erfolgreich als Helfer registriert."
 
+#: .\templates\mentoring\helper_form_done.html:12
 #: .\templates\mentoring\mentor_form_done.html:12
 msgid ""
 "\n"
@@ -136,13 +159,30 @@ msgstr ""
 "Wir werden dich in den nächsten Wochen per E-Mail mit weiteren Informationen "
 "kontaktieren."
 
-#: .\templates\mentoring\mentor_list.html:7
-msgid "List of all mentors"
-msgstr "Liste aller Mentor"
+#: .\templates\mentoring\helper_list.html:7
+msgid "List of all helpers"
+msgstr "Liste aller Helfer"
 
+#: .\templates\mentoring\helper_list.html:12
 #: .\templates\mentoring\mentor_list.html:12
 msgid "Show form"
 msgstr "Formular anzeigen"
+
+#: .\templates\mentoring\helper_list.html:22
+msgid "No helpers have registered yet."
+msgstr "Es hat sich bisher noch kein Helfer registriert."
+
+#: .\templates\mentoring\mentor_form.html:7
+msgid "Registration as mentor"
+msgstr "Registrierung als Mentor"
+
+#: .\templates\mentoring\mentor_form_done.html:9
+msgid "You have been successfully registered as a mentor"
+msgstr "Du wurdest erfolgreich als Mentor registriert."
+
+#: .\templates\mentoring\mentor_list.html:7
+msgid "List of all mentors"
+msgstr "Liste aller Mentor"
 
 #: .\templates\mentoring\mentor_list.html:22
 msgid "No mentors have registered yet."
