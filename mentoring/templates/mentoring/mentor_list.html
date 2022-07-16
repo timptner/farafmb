@@ -13,7 +13,12 @@
     </div>
 
     {% for mentor in object_list %}
-        {{ mentor }}
+        <nav class="panel">
+            <p class="panel-heading">
+                {% trans "Mentors" %}
+            </p>
+            <a href="{% url 'mentoring:mentor-detail' mentor.pk %}" class="panel-block">{{ mentor }}</a>
+        </nav>
     {% empty %}
         <div class="notification is-info">
             {% trans "No mentors have registered yet." %}

@@ -1,5 +1,5 @@
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import TemplateView, ListView, CreateView, DeleteView
+from django.views.generic import TemplateView, ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -38,3 +38,7 @@ class MentorCreateView(LoginRequiredMixin, CreateView):
 
 class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
     template_name = 'mentoring/mentor_form_done.html'
+
+
+class MentorDetailView(LoginRequiredMixin, DetailView):
+    model = Mentor
