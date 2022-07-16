@@ -8,7 +8,6 @@ class Program(models.Model):
     class Meta:
         verbose_name = _("Study program")
         verbose_name_plural = _("Study programs")
-        ordering = ['name']
 
     def __str__(self):
         return self.name
