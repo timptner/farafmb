@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-from .forms import ProgramForm, MentorForm
+from .forms import ProgramForm, MentorForm, HelperForm
 from .models import Program, Mentor, Helper
 
 
@@ -33,7 +33,7 @@ class MentorListView(LoginRequiredMixin, ListView):
 class MentorCreateView(LoginRequiredMixin, CreateView):
     model = Mentor
     form_class = MentorForm
-    success_url = reverse_lazy('mentoring:mentor-create')
+    success_url = reverse_lazy('mentoring:mentor-create-done')
 
 
 class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
@@ -46,3 +46,13 @@ class MentorDetailView(LoginRequiredMixin, DetailView):
 
 class HelperListView(LoginRequiredMixin, ListView):
     model = Helper
+
+
+class HelperCreateView(LoginRequiredMixin, CreateView):
+    model = Helper
+    form_class = HelperForm
+    success_url = reverse_lazy('mentoring:helper-create-done')
+
+
+class HelperCreateDoneView(LoginRequiredMixin, TemplateView):
+    template_name = 'mentoring/helper_form_done.html'
