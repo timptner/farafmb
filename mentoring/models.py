@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Registration(models.Model):
-    label = models.CharField(_("Label"), max_length=100)
+    name = models.CharField(_("Name"), max_length=100, unique=True)
     started_at = models.DateTimeField(_("Started at"))
     stopped_at = models.DateTimeField(_("Stopped at"))
     is_helper_form_active = models.BooleanField(_("Is helper form active?"), default=False)
@@ -14,7 +14,7 @@ class Registration(models.Model):
         verbose_name_plural = _("Registrations")
 
     def __str__(self):
-        return self.label
+        return self.name
 
 
 class Program(models.Model):
