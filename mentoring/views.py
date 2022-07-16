@@ -1,11 +1,33 @@
+import csv
+
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 from .forms import ProgramForm, MentorForm, HelperForm
 from .models import Program, Mentor, Helper
+
+
+def export_as_csv(model):
+    meta = model._meta
+
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': f'attachment; filename="{meta.verbose_name_plural}.csv"'},
+    )
+
+    fields, names = zip(*[(field.name, field.verbose_name) for field in meta.get_fields()[1:]])
+
+    writer = csv.writer(response)
+    writer.writerow(names)
+
+    for obj in model.objects.all():
+        writer.writerow([getattr(obj, field) for field in fields])
+
+    return response
 
 
 class ProgramListView(LoginRequiredMixin, ListView):
@@ -30,6 +52,10 @@ class MentorListView(LoginRequiredMixin, ListView):
     model = Mentor
 
 
+def export_mentors_as_csv(request):
+    return export_as_csv(Mentor)
+
+
 class MentorCreateView(LoginRequiredMixin, CreateView):
     model = Mentor
     form_class = MentorForm
@@ -46,6 +72,10 @@ class MentorDetailView(LoginRequiredMixin, DetailView):
 
 class HelperListView(LoginRequiredMixin, ListView):
     model = Helper
+
+
+def export_helpers_as_csv(request):
+    return export_as_csv(Helper)
 
 
 class HelperCreateView(LoginRequiredMixin, CreateView):

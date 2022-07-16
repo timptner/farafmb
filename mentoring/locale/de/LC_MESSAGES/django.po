@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-16 16:28+0200\n"
+"POT-Creation-Date: 2022-07-16 18:07+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -71,11 +71,15 @@ msgstr "E-Mail-Adresse"
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
+#: .\models.py:22 .\models.py:42
+msgid "Created at"
+msgstr "Erstellt am"
+
 #: .\models.py:25
 msgid "Mentor"
 msgstr "Mentor"
 
-#: .\models.py:26 .\templates\mentoring\mentor_list.html:17
+#: .\models.py:26 .\templates\mentoring\mentor_list.html:18
 msgid "Mentors"
 msgstr "Mentoren"
 
@@ -87,7 +91,7 @@ msgstr "Kommentar"
 msgid "Helper"
 msgstr "Helfer"
 
-#: .\models.py:46 .\templates\mentoring\helper_list.html:17
+#: .\models.py:46 .\templates\mentoring\helper_list.html:18
 msgid "Helpers"
 msgstr "Helfer"
 
@@ -185,7 +189,11 @@ msgstr "Liste aller Helfer"
 msgid "Show form"
 msgstr "Formular anzeigen"
 
-#: .\templates\mentoring\helper_list.html:22
+#: .\templates\mentoring\helper_list.html:13
+msgid "Export helpers"
+msgstr "Helfer exportieren"
+
+#: .\templates\mentoring\helper_list.html:23
 msgid "No helpers have registered yet."
 msgstr "Es hat sich bisher noch kein Helfer registriert."
 
@@ -209,9 +217,9 @@ msgstr ""
 "Deinen vollständigen Namen benutzen wir zur Identifikation. Wir verwenden "
 "deine E-Mail-Adresse um dich zu kontaktieren und dir Informationen zu "
 "schicken. Deine Mobilnummer brauchen wir um dich kurzfristig erreichen zu "
-"können und dich mit den anderen Mentoren in einer Gruppe zu vernetzen. "
-"Dein Studiengang dient zur Einordnung, sodass wir dir passende "
-"Erstsemester zuordnen können."
+"können und dich mit den anderen Mentoren in einer Gruppe zu vernetzen. Dein "
+"Studiengang dient zur Einordnung, sodass wir dir passende Erstsemester "
+"zuordnen können."
 
 #: .\templates\mentoring\mentor_form_done.html:9
 msgid "You have been successfully registered as a mentor"
@@ -221,7 +229,11 @@ msgstr "Du wurdest erfolgreich als Mentor registriert."
 msgid "List of all mentors"
 msgstr "Liste aller Mentor"
 
-#: .\templates\mentoring\mentor_list.html:22
+#: .\templates\mentoring\mentor_list.html:13
+msgid "Export mentors"
+msgstr "Mentoren exportieren"
+
+#: .\templates\mentoring\mentor_list.html:23
 msgid "No mentors have registered yet."
 msgstr "Es hat sich bisher noch kein Mentor registriert."
 
@@ -269,12 +281,12 @@ msgstr ""
 msgid "No study programs have been created yet."
 msgstr "Es wurde bisher noch kein Studiengang erstellt."
 
-#: .\views.py:19
+#: .\views.py:41
 #, python-format
 msgid "%(name)s was created successfully"
 msgstr "%(name)s wurde erfolgreich erstellt"
 
-#: .\views.py:25
+#: .\views.py:47
 msgid "Program was deleted successfully"
 msgstr "Studiengang wurde erfolgreich gelöscht"
 

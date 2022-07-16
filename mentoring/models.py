@@ -19,7 +19,7 @@ class Mentor(models.Model):
     email = models.EmailField(_("Email address"), unique=True)
     phone = models.CharField(_("Mobile number"), max_length=25)
     program = models.ForeignKey(Program, on_delete=models.SET_NULL, null=True, verbose_name=_("Study program"))
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
 
     class Meta:
         verbose_name = _("Mentor")
@@ -39,7 +39,7 @@ class Helper(models.Model):
     email = models.EmailField(_("Email address"), unique=True)
     phone = models.CharField(_("Mobile number"), max_length=25)
     comment = models.TextField(_("Comment"), blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(_("Created at"), auto_now_add=True)
 
     class Meta:
         verbose_name = _("Helper")
