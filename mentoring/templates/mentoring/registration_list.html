@@ -12,21 +12,20 @@
         <a href="{% url 'mentoring:registration-create' %}" class="button is-rounded">{% trans "Add a registration" %}</a>
     </div>
 
-{#    <article class="message is-info">#}
-{#        <div class="message-body">#}
-{#            {% blocktrans %}#}
-{#                You can delete a registration by selecting it.#}
-{#            {% endblocktrans %}#}
-{#        </div>#}
-{#    </article>#}
+    <article class="message is-info">
+        <div class="message-body">
+            {% blocktrans %}
+                You can delete a registration by selecting it.
+            {% endblocktrans %}
+        </div>
+    </article>
 
     <nav class="panel">
         <p class="panel-heading">
             {% trans "Registrations" %}
         </p>
         {% for registration in object_list %}
-            <p class="panel-block">{{ registration }}</p>
-{#            <a href="{% url 'mentoring:registration-delete' registration.pk %}" class="panel-block">{{ registration }}</a>#}
+            <a href="{% url 'mentoring:registration-delete' registration.pk %}" class="panel-block">{{ registration }}</a>
         {% empty %}
             <p class="panel-block">{% trans "No registrations have been created yet." %}</p>
         {% endfor %}

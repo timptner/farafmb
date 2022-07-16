@@ -46,6 +46,12 @@ class RegistrationCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView
         return context
 
 
+class RegistrationDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Registration
+    success_url = reverse_lazy('mentoring:registration-list')
+    success_message = _("Registration was deleted successfully")
+
+
 class ProgramListView(LoginRequiredMixin, ListView):
     model = Program
 

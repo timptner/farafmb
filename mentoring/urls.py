@@ -6,6 +6,7 @@ app_name = 'mentoring'
 urlpatterns = [
     path('registration/', views.RegistrationListView.as_view(), name='registration-list'),
     path('registration/add/', views.RegistrationCreateView.as_view(), name='registration-create'),
+    path('registration/<int:pk>/delete/', views.RegistrationDeleteView.as_view(), name='registration-delete'),
     path('program/', views.ProgramListView.as_view(), name='program-list'),
     path('program/add/', views.ProgramCreateView.as_view(), name='program-create'),
     path('program/<int:pk>/delete/', views.ProgramDeleteView.as_view(), name='program-delete'),

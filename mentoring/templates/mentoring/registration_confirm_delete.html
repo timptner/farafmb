@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <p class="title">
+        {% trans "Delete a registration" %}
+        <span class="tag is-danger">{% trans "Private" %}</span>
+    </p>
+
+    <article class="message is-danger">
+        <div class="message-body">
+            {% blocktrans %}
+                Please note that deleting the registration will also irrevocably delete all registered mentors
+                (and helpers) who have a connection to it.
+            {% endblocktrans %}
+        </div>
+    </article>
+
+    <p class="block">
+        {% blocktrans %}
+            Are you sure you want to delete <strong>{{ object }}</strong>?
+        {% endblocktrans %}
+    </p>
+
+    <div class="block">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="buttons">
+                <button type="submit" class="button is-danger">{% trans "Confirm" %}</button>
+                <a href="{% url 'mentoring:registration-list' %}" class="button">{% trans "Cancel" %}</a>
+            </div>
+
+        </form>
+    </div>
+{% endblock %}
