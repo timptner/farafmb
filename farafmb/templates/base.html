@@ -51,7 +51,11 @@
                     {% endif %}
 
                     <div class="column">
-                        {% block content %}{% endblock %}
+                        {% block content-fullwidth %}
+                            <div class="container is-max-desktop">
+                                {% block content %}{% endblock %}
+                            </div>
+                        {% endblock %}
                     </div>
                 </div>
             </div>
