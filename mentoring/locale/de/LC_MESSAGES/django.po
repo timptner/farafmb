@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-16 16:13+0200\n"
+"POT-Creation-Date: 2022-07-16 16:28+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:18 .\forms.py:73
+#: .\forms.py:18 .\forms.py:73 .\templates\mentoring\helper_form.html:17
+#: .\templates\mentoring\mentor_form.html:17
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -124,8 +125,24 @@ msgstr "Vorschau"
 msgid "This form is not yet publicly visible."
 msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
 
-#: .\templates\mentoring\helper_form.html:105
-#: .\templates\mentoring\mentor_form.html:107
+#: .\templates\mentoring\helper_form.html:20
+msgid ""
+"\n"
+"                We use your full name for identification purposes. We use "
+"your email address to contact you and send you\n"
+"                information. We need your mobile number to reach you at "
+"short notice and to connect you with the other\n"
+"                helpers in a group.\n"
+"            "
+msgstr ""
+"\n"
+"Deinen vollständigen Namen benutzen wir zur Identifikation. Wir verwenden "
+"deine E-Mail-Adresse um dich zu kontaktieren und dir Informationen zu "
+"schicken. Deine Mobilnummer brauchen wir um dich kurzfristig erreichen zu "
+"können und dich mit den anderen Helfern in einer Gruppe zu vernetzen."
+
+#: .\templates\mentoring\helper_form.html:118
+#: .\templates\mentoring\mentor_form.html:121
 msgid ""
 "\n"
 "                            I have read the <a href=\"https://stura-md.de/"
@@ -138,8 +155,8 @@ msgstr ""
 "\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: .\templates\mentoring\helper_form.html:115
-#: .\templates\mentoring\mentor_form.html:117
+#: .\templates\mentoring\helper_form.html:128
+#: .\templates\mentoring\mentor_form.html:131
 msgid "Register"
 msgstr "Registrieren"
 
@@ -175,6 +192,26 @@ msgstr "Es hat sich bisher noch kein Helfer registriert."
 #: .\templates\mentoring\mentor_form.html:7
 msgid "Registration as mentor"
 msgstr "Registrierung als Mentor"
+
+#: .\templates\mentoring\mentor_form.html:20
+msgid ""
+"\n"
+"                We use your full name for identification purposes. We use "
+"your email address to contact you and send you\n"
+"                information. We need your mobile number to reach you at "
+"short notice and to connect you with the other\n"
+"                mentors in a group. Your study program is used for "
+"classification, so that we can match you with\n"
+"                suitable freshmen.\n"
+"            "
+msgstr ""
+"\n"
+"Deinen vollständigen Namen benutzen wir zur Identifikation. Wir verwenden "
+"deine E-Mail-Adresse um dich zu kontaktieren und dir Informationen zu "
+"schicken. Deine Mobilnummer brauchen wir um dich kurzfristig erreichen zu "
+"können und dich mit den anderen Mentoren in einer Gruppe zu vernetzen. "
+"Dein Studiengang dient zur Einordnung, sodass wir dir passende "
+"Erstsemester zuordnen können."
 
 #: .\templates\mentoring\mentor_form_done.html:9
 msgid "You have been successfully registered as a mentor"

@@ -12,6 +12,19 @@
         {% trans "This form is not yet publicly visible." %}
     </div>
 
+    <article class="message is-info">
+        <div class="message-header">
+            <p>{% trans "Privacy" %}</p>
+        </div>
+        <div class="message-body">
+            {% blocktrans %}
+                We use your full name for identification purposes. We use your email address to contact you and send you
+                information. We need your mobile number to reach you at short notice and to connect you with the other
+                helpers in a group.
+            {% endblocktrans %}
+        </div>
+    </article>
+
     <div class="box">
         <form method="post">
 
