@@ -29,6 +29,7 @@ class Program(models.Model):
 
 
 class Mentor(models.Model):
+    registration = models.ForeignKey(Registration, on_delete=models.CASCADE, verbose_name=_("Registration"))
     first_name = models.CharField(_("First name"), max_length=100)
     last_name = models.CharField(_("Last name"), max_length=100)
     email = models.EmailField(_("Email address"), unique=True)
@@ -49,6 +50,7 @@ class Mentor(models.Model):
 
 
 class Helper(models.Model):
+    registration = models.ForeignKey(Registration, on_delete=models.CASCADE, verbose_name=_("Registration"))
     first_name = models.CharField(_("First name"), max_length=100)
     last_name = models.CharField(_("Last name"), max_length=100)
     email = models.EmailField(_("Email address"), unique=True)
