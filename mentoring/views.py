@@ -54,6 +54,10 @@ class ProgramDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     success_message = _("Program was deleted successfully")
 
 
+class LandingView(TemplateView):
+    template_name = 'mentoring/landing_page.html'
+
+
 class MentorListView(LoginRequiredMixin, ListView):
     template_name = 'mentoring/mentor_list.html'
     model = Mentor

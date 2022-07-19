@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    {% trans "Mentoring" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='public' %}
+
+    <div class="content">
+        {% blocktrans %}
+            <p>
+                You enjoyed your orientation week and would like to give the new students at the Faculty of Mechanical
+                Engineering an equally great start to their studies?
+            </p>
+
+            <p>Then sign up as a mentor!</p>
+
+            <p>
+                The orientation week always takes place in the first week of October and your task is to accompany the
+                new students during this week. (In the summer semester there is always only an orientation day, which is
+                in the week before lectures start.) We are responsible for the organization of the program. As a
+                preparation you will also receive a crash course with the most important information as well as the
+                procedure of the orientation week. At the end we will certify your activities as a mentor, so that you
+                can write your honorary commitment on your resume.
+            </p>
+
+            <p>Do you have any questions? Then write us an email.</p>
+
+            <p>We are looking forward to your registration and a nice orientation week.</p>
+        {% endblocktrans %}
+    </div>
+
+    <a href="{% url 'mentoring:mentor-create' %}" class="button is-primary is-large is-fullwidth">
+        {% trans "Register now" %}
+    </a>
+{% endblock %}
