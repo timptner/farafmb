@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-16 18:07+0200\n"
+"POT-Creation-Date: 2022-07-20 00:38+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,194 +14,150 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:18 .\forms.py:73 .\templates\mentoring\helper_form.html:17
-#: .\templates\mentoring\mentor_form.html:17
+#: .\forms.py:37
+msgid "Start date must be earlier than stop date"
+msgstr "Das Eröffnungsdatum muss vor dem Schließdatum liegen."
+
+#: .\forms.py:44 .\forms.py:50
+msgid "The datetime is in the period of another registration."
+msgstr "Der Zeitpunkt liegt in der Zeitspanne einer anderen Registrierung."
+
+#: .\forms.py:57
+msgid "Another registration is between the start and end of this registration."
+msgstr ""
+"Eine andere Registrierung befindet sich innerhalb der Zeitspanne dieser "
+"Registrierung."
+
+#: .\forms.py:71 .\templates\mentoring\mentor_form.html:26
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: .\forms.py:30 .\forms.py:86
+#: .\forms.py:83
 msgid ""
 "Only email addresses from Otto von Guericke University Magdeburg are allowed."
 msgstr ""
 "Es sind nur E-Mail-Adressen der Otto-von-Guericke-Universität Magdeburg "
 "erlaubt."
 
-#: .\forms.py:31 .\forms.py:87
+#: .\forms.py:84
 msgid "Write your mobile number, starting with the country code."
 msgstr "Schreibe deine Mobilnummer, beginnend mit der Ländervorwahl."
 
-#: .\forms.py:50 .\forms.py:96
+#: .\forms.py:103
 msgid ""
 "Your email address does not belong to Otto von Guericke University Magdeburg."
 msgstr ""
 "Deine E-Mail-Adresse gehört nicht zur Otto-von-Guericke-Universität "
 "Magdeburg."
 
-#: .\forms.py:64 .\forms.py:110
+#: .\forms.py:117
 msgid "Your mobile number does not start with a country code."
 msgstr "Deine Mobilnummer besitzt keine Ländervorwahl."
 
-#: .\forms.py:67 .\forms.py:113
+#: .\forms.py:120
 msgid "Your mobile number contains non-numeric values."
 msgstr "Deine Mobilnummer enthält nicht-numerische Zeichen."
 
-#: .\models.py:9 .\models.py:21 .\templates\mentoring\mentor_detail.html:26
+#: .\models.py:6
+msgid "Name"
+msgstr "Name"
+
+#: .\models.py:7
+msgid "Started at"
+msgstr "Gestartet am"
+
+#: .\models.py:8
+msgid "Stopped at"
+msgstr "Gestoppt am"
+
+#: .\models.py:11 .\models.py:30
+msgid "Registration"
+msgstr "Registrierung"
+
+#: .\models.py:12 .\templates\mentoring\registration_list.html:25
+msgid "Registrations"
+msgstr "Registrierungen"
+
+#: .\models.py:22 .\models.py:35 .\templates\mentoring\mentor_detail.html:26
 msgid "Study program"
 msgstr "Studiengang"
 
-#: .\models.py:10 .\templates\mentoring\program_list.html:25
+#: .\models.py:23 .\templates\mentoring\program_list.html:25
 msgid "Study programs"
 msgstr "Studiengänge"
 
-#: .\models.py:17 .\models.py:37
+#: .\models.py:31
 msgid "First name"
 msgstr "Vorname"
 
-#: .\models.py:18 .\models.py:38
+#: .\models.py:32
 msgid "Last name"
 msgstr "Nachname"
 
-#: .\models.py:19 .\models.py:39 .\templates\mentoring\helper_detail.html:12
-#: .\templates\mentoring\mentor_detail.html:12
+#: .\models.py:33 .\templates\mentoring\mentor_detail.html:12
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\models.py:20 .\models.py:40 .\templates\mentoring\helper_detail.html:19
-#: .\templates\mentoring\mentor_detail.html:19
+#: .\models.py:34 .\templates\mentoring\mentor_detail.html:19
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
-#: .\models.py:22 .\models.py:42
+#: .\models.py:36
 msgid "Created at"
 msgstr "Erstellt am"
 
-#: .\models.py:25
+#: .\models.py:39
 msgid "Mentor"
 msgstr "Mentor"
 
-#: .\models.py:26 .\templates\mentoring\mentor_list.html:18
+#: .\models.py:40
 msgid "Mentors"
 msgstr "Mentoren"
 
-#: .\models.py:41 .\templates\mentoring\helper_detail.html:26
-msgid "Comment"
-msgstr "Kommentar"
-
-#: .\models.py:45
-msgid "Helper"
-msgstr "Helfer"
-
-#: .\models.py:46 .\templates\mentoring\helper_list.html:18
-msgid "Helpers"
-msgstr "Helfer"
-
-#: .\templates\mentoring\helper_detail.html:8
-#: .\templates\mentoring\helper_list.html:8
 #: .\templates\mentoring\mentor_detail.html:8
 #: .\templates\mentoring\mentor_list.html:8
 #: .\templates\mentoring\program_confirm_delete.html:8
 #: .\templates\mentoring\program_form.html:8
 #: .\templates\mentoring\program_list.html:8
+#: .\templates\mentoring\registration_confirm_delete.html:8
+#: .\templates\mentoring\registration_form.html:8
+#: .\templates\mentoring\registration_list.html:8
 msgid "Private"
 msgstr "Privat"
 
-#: .\templates\mentoring\helper_detail.html:32
 #: .\templates\mentoring\mentor_detail.html:32
 msgid "Registered at"
 msgstr "Registriert am"
 
-#: .\templates\mentoring\helper_detail.html:39
 #: .\templates\mentoring\mentor_detail.html:39
 msgid "Back"
 msgstr "Zurück"
-
-#: .\templates\mentoring\helper_form.html:7
-msgid "Registration as helper"
-msgstr "Registrierung als Helfer"
-
-#: .\templates\mentoring\helper_form.html:8
-#: .\templates\mentoring\mentor_form.html:8
-msgid "Preview"
-msgstr "Vorschau"
-
-#: .\templates\mentoring\helper_form.html:12
-#: .\templates\mentoring\mentor_form.html:12
-msgid "This form is not yet publicly visible."
-msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
-
-#: .\templates\mentoring\helper_form.html:20
-msgid ""
-"\n"
-"                We use your full name for identification purposes. We use "
-"your email address to contact you and send you\n"
-"                information. We need your mobile number to reach you at "
-"short notice and to connect you with the other\n"
-"                helpers in a group.\n"
-"            "
-msgstr ""
-"\n"
-"Deinen vollständigen Namen benutzen wir zur Identifikation. Wir verwenden "
-"deine E-Mail-Adresse um dich zu kontaktieren und dir Informationen zu "
-"schicken. Deine Mobilnummer brauchen wir um dich kurzfristig erreichen zu "
-"können und dich mit den anderen Helfern in einer Gruppe zu vernetzen."
-
-#: .\templates\mentoring\helper_form.html:118
-#: .\templates\mentoring\mentor_form.html:121
-msgid ""
-"\n"
-"                            I have read the <a href=\"https://stura-md.de/"
-"datenschutz/\">privacy policy</a> and agree\n"
-"                            to the processing of my personal data.\n"
-"                        "
-msgstr ""
-"\n"
-"Ich habe die <a href=\"https://stura-md.de/datenschutz/"
-"\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
-"personenbezogenen Daten einverstanden."
-
-#: .\templates\mentoring\helper_form.html:128
-#: .\templates\mentoring\mentor_form.html:131
-msgid "Register"
-msgstr "Registrieren"
-
-#: .\templates\mentoring\helper_form_done.html:9
-msgid "You have been successfully registered as a helper"
-msgstr "Du wurdest erfolgreich als Helfer registriert."
-
-#: .\templates\mentoring\helper_form_done.html:12
-#: .\templates\mentoring\mentor_form_done.html:12
-msgid ""
-"\n"
-"                    We will contact you via email in the next weeks with "
-"further information.\n"
-"                "
-msgstr ""
-"\n"
-"Wir werden dich in den nächsten Wochen per E-Mail mit weiteren Informationen "
-"kontaktieren."
-
-#: .\templates\mentoring\helper_list.html:7
-msgid "List of all helpers"
-msgstr "Liste aller Helfer"
-
-#: .\templates\mentoring\helper_list.html:12
-#: .\templates\mentoring\mentor_list.html:12
-msgid "Show form"
-msgstr "Formular anzeigen"
-
-#: .\templates\mentoring\helper_list.html:13
-msgid "Export helpers"
-msgstr "Helfer exportieren"
-
-#: .\templates\mentoring\helper_list.html:23
-msgid "No helpers have registered yet."
-msgstr "Es hat sich bisher noch kein Helfer registriert."
 
 #: .\templates\mentoring\mentor_form.html:7
 msgid "Registration as mentor"
 msgstr "Registrierung als Mentor"
 
-#: .\templates\mentoring\mentor_form.html:20
+#: .\templates\mentoring\mentor_form.html:8
+msgid "Preview"
+msgstr "Vorschau"
+
+#: .\templates\mentoring\mentor_form.html:13
+msgid ""
+"\n"
+"                At the moment we are not looking for new mentors. As soon as "
+"the registration will be opened again we\n"
+"                will spread it through our channels.\n"
+"            "
+msgstr ""
+"\n"
+"Aktuell benötigen wir keine neuen Mentoren. Sobald eine Registrierung wieder "
+"möglich ist werden wir es über unsere Kanäle verbreiten."
+
+#: .\templates\mentoring\mentor_form.html:21
+msgid "This form is not yet publicly visible."
+msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
+
+#: .\templates\mentoring\mentor_form.html:29
 msgid ""
 "\n"
 "                We use your full name for identification purposes. We use "
@@ -221,23 +177,72 @@ msgstr ""
 "Studiengang dient zur Einordnung, sodass wir dir passende Erstsemester "
 "zuordnen können."
 
+#: .\templates\mentoring\mentor_form.html:134
+msgid ""
+"\n"
+"                            I have read the <a href=\"https://stura-md.de/"
+"datenschutz/\">privacy policy</a> and agree\n"
+"                            to the processing of my personal data.\n"
+"                        "
+msgstr ""
+"\n"
+"Ich habe die <a href=\"https://stura-md.de/datenschutz/"
+"\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
+"personenbezogenen Daten einverstanden."
+
+#: .\templates\mentoring\mentor_form.html:144
+msgid "Register"
+msgstr "Registrieren"
+
 #: .\templates\mentoring\mentor_form_done.html:9
 msgid "You have been successfully registered as a mentor"
 msgstr "Du wurdest erfolgreich als Mentor registriert."
 
+#: .\templates\mentoring\mentor_form_done.html:12
+msgid ""
+"\n"
+"                    We will contact you via email in the next weeks with "
+"further information.\n"
+"                "
+msgstr ""
+"\n"
+"Wir werden dich in den nächsten Wochen per E-Mail mit weiteren Informationen "
+"kontaktieren."
+
 #: .\templates\mentoring\mentor_list.html:7
 msgid "List of all mentors"
-msgstr "Liste aller Mentor"
+msgstr "Liste aller Mentoren"
+
+#: .\templates\mentoring\mentor_list.html:12
+msgid "Show form"
+msgstr "Formular anzeigen"
 
 #: .\templates\mentoring\mentor_list.html:13
 msgid "Export mentors"
 msgstr "Mentoren exportieren"
 
-#: .\templates\mentoring\mentor_list.html:23
+#: .\templates\mentoring\mentor_list.html:27
 msgid "No mentors have registered yet."
 msgstr "Es hat sich bisher noch kein Mentor registriert."
 
+#: .\templates\mentoring\program_confirm_delete.html:7
+msgid "Delete a study program"
+msgstr "Einen Studiengang löschen"
+
 #: .\templates\mentoring\program_confirm_delete.html:13
+msgid ""
+"\n"
+"                Please note that deleting the program will also irrevocably "
+"remove the relationship with the registered\n"
+"                mentors.\n"
+"            "
+msgstr ""
+"\n"
+"Bitte beachte, dass das Löschen eines Studienganges ebenfalls die Beziehung "
+"zu den damit verknüpften Mentoren unwiderruflich entfernt."
+
+#: .\templates\mentoring\program_confirm_delete.html:21
+#: .\templates\mentoring\registration_confirm_delete.html:21
 #, python-format
 msgid ""
 "\n"
@@ -247,11 +252,13 @@ msgstr ""
 "\n"
 "Bist du dir sicher, dass <strong>%(object)s</strong> gelöscht werden soll?"
 
-#: .\templates\mentoring\program_confirm_delete.html:24
+#: .\templates\mentoring\program_confirm_delete.html:32
+#: .\templates\mentoring\registration_confirm_delete.html:32
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: .\templates\mentoring\program_confirm_delete.html:25
+#: .\templates\mentoring\program_confirm_delete.html:33
+#: .\templates\mentoring\registration_confirm_delete.html:33
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -261,6 +268,7 @@ msgid "Add a study program"
 msgstr "Einen Studiengang ergänzen"
 
 #: .\templates\mentoring\program_form.html:29
+#: .\templates\mentoring\registration_form.html:63
 msgid "Create"
 msgstr "Erstellen"
 
@@ -281,17 +289,96 @@ msgstr ""
 msgid "No study programs have been created yet."
 msgstr "Es wurde bisher noch kein Studiengang erstellt."
 
-#: .\views.py:41
+#: .\templates\mentoring\registration_confirm_delete.html:7
+msgid "Delete a registration"
+msgstr "Eine Registrierung löschen"
+
+#: .\templates\mentoring\registration_confirm_delete.html:13
+msgid ""
+"\n"
+"                Please note that deleting the registration will also "
+"irrevocably delete all registered mentors who have\n"
+"                a connection to it.\n"
+"            "
+msgstr ""
+"\n"
+"Bitte beachte, dass das Löschen einer Registrierung ebenfalls alle damit "
+"verknüpften Mentoren unwiderruflich entfernt."
+
+#: .\templates\mentoring\registration_form.html:7
+#: .\templates\mentoring\registration_list.html:12
+msgid "Add a registration"
+msgstr "Eine Registrierung ergänzen"
+
+#: .\templates\mentoring\registration_list.html:7
+msgid "List of all registrations"
+msgstr "Liste aller Registrierungen"
+
+#: .\templates\mentoring\registration_list.html:17
+msgid ""
+"\n"
+"                You can delete a registration by selecting it.\n"
+"            "
+msgstr ""
+"\n"
+"Du kannst eine Registrierung löschen, in dem du sie auswählst."
+
+#: .\templates\mentoring\registration_list.html:30
+msgid "No registrations have been created yet."
+msgstr "Es wurden bisher noch keine Registrierungen erstellt."
+
+#: .\views.py:25 .\views.py:47
 #, python-format
 msgid "%(name)s was created successfully"
 msgstr "%(name)s wurde erfolgreich erstellt"
 
-#: .\views.py:47
+#: .\views.py:36
+msgid "Registration was deleted successfully"
+msgstr "Registrierung wurde erfolgreich gelöscht"
+
+#: .\views.py:53
 msgid "Program was deleted successfully"
 msgstr "Studiengang wurde erfolgreich gelöscht"
 
-#~ msgid "Add a program"
-#~ msgstr "Ein Studiengang ergänzen"
+#: .\views.py:97
+msgid "Registration is closed."
+msgstr "Die Registrierung ist geschlossen."
+
+#~ msgid "Comment"
+#~ msgstr "Kommentar"
+
+#~ msgid "Helper"
+#~ msgstr "Helfer"
+
+#~ msgid "Helpers"
+#~ msgstr "Helfer"
+
+#~ msgid ""
+#~ "\n"
+#~ "                We use your full name for identification purposes. We use "
+#~ "your email address to contact you and send you\n"
+#~ "                information. We need your mobile number to reach you at "
+#~ "short notice and to connect you with the other\n"
+#~ "                helpers in a group.\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "Deinen vollständigen Namen benutzen wir zur Identifikation. Wir verwenden "
+#~ "deine E-Mail-Adresse um dich zu kontaktieren und dir Informationen zu "
+#~ "schicken. Deine Mobilnummer brauchen wir um dich kurzfristig erreichen zu "
+#~ "können und dich mit den anderen Helfern in einer Gruppe zu vernetzen."
+
+#~ msgid "You have been successfully registered as a helper"
+#~ msgstr "Du wurdest erfolgreich als Helfer registriert."
+
+#~ msgid "List of all helpers"
+#~ msgstr "Liste aller Helfer"
+
+#~ msgid "Export helpers"
+#~ msgstr "Helfer exportieren"
+
+#~ msgid "No helpers have registered yet."
+#~ msgstr "Es hat sich bisher noch kein Helfer registriert."
 
 #~ msgid "Phone"
 #~ msgstr "Telefon"
