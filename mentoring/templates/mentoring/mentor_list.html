@@ -13,14 +13,17 @@
         <a href="{% url 'mentoring:mentor-list-export' %}" class="button is-rounded">{% trans "Export mentors" %}</a>
     </div>
 
-    <nav class="panel">
-        <p class="panel-heading">
-            {% trans "Mentors" %}
-        </p>
-        {% for mentor in object_list %}
-            <a href="{% url 'mentoring:mentor-detail' mentor.pk %}" class="panel-block">{{ mentor }}</a>
-        {% empty %}
-            <p class="panel-block">{% trans "No mentors have registered yet." %}</p>
-        {% endfor %}
-    </nav>
+    {% regroup object_list by registration as registration_list %}
+    {% for registration, connected_mentors in registration_list %}
+        <nav class="panel">
+            <p class="panel-heading">
+                {{ registration }}
+            </p>
+            {% for mentor in connected_mentors %}
+                <a href="{% url 'mentoring:mentor-detail' mentor.pk %}" class="panel-block">{{ mentor }}</a>
+            {% endfor %}
+        </nav>
+    {% empty %}
+        <div class="notification">{% trans "No mentors have registered yet." %}</div>
+    {% endfor %}
 {% endblock %}
