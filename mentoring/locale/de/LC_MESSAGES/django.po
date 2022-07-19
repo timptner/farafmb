@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 00:38+0200\n"
+"POT-Creation-Date: 2022-07-20 00:41+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Eine andere Registrierung befindet sich innerhalb der Zeitspanne dieser "
 "Registrierung."
 
-#: .\forms.py:71 .\templates\mentoring\mentor_form.html:26
+#: .\forms.py:71 .\templates\mentoring\mentor_form.html:22
 msgid "Privacy"
 msgstr "Datenschutz"
 
@@ -138,8 +138,8 @@ msgid "Registration as mentor"
 msgstr "Registrierung als Mentor"
 
 #: .\templates\mentoring\mentor_form.html:8
-msgid "Preview"
-msgstr "Vorschau"
+msgid "Public"
+msgstr "Öffentlich"
 
 #: .\templates\mentoring\mentor_form.html:13
 msgid ""
@@ -153,11 +153,7 @@ msgstr ""
 "Aktuell benötigen wir keine neuen Mentoren. Sobald eine Registrierung wieder "
 "möglich ist werden wir es über unsere Kanäle verbreiten."
 
-#: .\templates\mentoring\mentor_form.html:21
-msgid "This form is not yet publicly visible."
-msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
-
-#: .\templates\mentoring\mentor_form.html:29
+#: .\templates\mentoring\mentor_form.html:25
 msgid ""
 "\n"
 "                We use your full name for identification purposes. We use "
@@ -177,7 +173,7 @@ msgstr ""
 "Studiengang dient zur Einordnung, sodass wir dir passende Erstsemester "
 "zuordnen können."
 
-#: .\templates\mentoring\mentor_form.html:134
+#: .\templates\mentoring\mentor_form.html:130
 msgid ""
 "\n"
 "                            I have read the <a href=\"https://stura-md.de/"
@@ -190,7 +186,7 @@ msgstr ""
 "\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: .\templates\mentoring\mentor_form.html:144
+#: .\templates\mentoring\mentor_form.html:140
 msgid "Register"
 msgstr "Registrieren"
 
@@ -327,22 +323,28 @@ msgstr ""
 msgid "No registrations have been created yet."
 msgstr "Es wurden bisher noch keine Registrierungen erstellt."
 
-#: .\views.py:25 .\views.py:47
+#: .\views.py:26 .\views.py:48
 #, python-format
 msgid "%(name)s was created successfully"
 msgstr "%(name)s wurde erfolgreich erstellt"
 
-#: .\views.py:36
+#: .\views.py:37
 msgid "Registration was deleted successfully"
 msgstr "Registrierung wurde erfolgreich gelöscht"
 
-#: .\views.py:53
+#: .\views.py:54
 msgid "Program was deleted successfully"
 msgstr "Studiengang wurde erfolgreich gelöscht"
 
-#: .\views.py:97
+#: .\views.py:99
 msgid "Registration is closed."
 msgstr "Die Registrierung ist geschlossen."
+
+#~ msgid "Preview"
+#~ msgstr "Vorschau"
+
+#~ msgid "This form is not yet publicly visible."
+#~ msgstr "Das Formular ist aktuell noch nicht öffentlich sichtbar."
 
 #~ msgid "Comment"
 #~ msgstr "Kommentar"

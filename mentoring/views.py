@@ -2,6 +2,7 @@ import csv
 
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
@@ -58,6 +59,7 @@ class MentorListView(LoginRequiredMixin, ListView):
     model = Mentor
 
 
+@login_required
 def export_as_csv(request):
     meta = Mentor._meta
 
@@ -77,7 +79,7 @@ def export_as_csv(request):
     return response
 
 
-class MentorCreateView(LoginRequiredMixin, CreateView):
+class MentorCreateView(CreateView):
     model = Mentor
     form_class = MentorForm
     success_url = reverse_lazy('mentoring:mentor-create-done')
@@ -100,7 +102,7 @@ class MentorCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
+class MentorCreateDoneView(TemplateView):
     template_name = 'mentoring/mentor_form_done.html'
 
 
