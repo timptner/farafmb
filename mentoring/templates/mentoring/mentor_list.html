@@ -3,10 +3,8 @@
 {% load i18n %}
 
 {% block content %}
-    <h1 class="title">
-        {% trans "List of all mentors" %}
-        <span class="tag is-danger">{% trans "Private" %}</span>
-    </h1>
+    {% trans "List of all mentors" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='private' %}
 
     <div class="buttons">
         <a href="{% url 'mentoring:mentor-create' %}" class="button is-rounded">{% trans "Show form" %}</a>

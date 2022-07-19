@@ -1,0 +1,12 @@
+<h1 class="title">{% load i18n %}
+    {{ title }}
+    {% if user.is_authenticated %}
+        {% if status == 'private' %}
+            <span class="tag is-danger">{% trans "Private" %}</span>
+        {% elif status == 'preview' %}
+            <span class="tag is-warning">{% trans "Preview" %}</span>
+        {% elif status == 'public' %}
+            <span class="tag is-success">{% trans "Public" %}</span>
+        {% endif %}
+    {% endif %}
+</h1>

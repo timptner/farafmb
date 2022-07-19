@@ -3,10 +3,7 @@
 {% load i18n %}
 
 {% block content %}
-    <p class="title">
-        {{ mentor.full_name }}
-        <span class="tag is-danger">{% trans "Private" %}</span>
-    </p>
+    {% include 'components/page-title.html' with title=mentor.full_name status='private' %}
 
     <div class="field">
         <label class="label">{% trans "Email address" %}</label>

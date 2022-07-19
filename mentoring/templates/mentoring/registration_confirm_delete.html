@@ -3,10 +3,8 @@
 {% load i18n %}
 
 {% block content %}
-    <p class="title">
-        {% trans "Delete a registration" %}
-        <span class="tag is-danger">{% trans "Private" %}</span>
-    </p>
+    {% trans "Delete a registration" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='private' %}
 
     <article class="message is-danger">
         <div class="message-body">

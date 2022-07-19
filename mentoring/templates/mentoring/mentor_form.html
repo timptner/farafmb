@@ -3,10 +3,8 @@
 {% load i18n %}
 
 {% block content %}
-    <h1 class="title">
-        {% trans "Registration as mentor" %}
-        <span class="tag is-warning">{% trans "Preview" %}</span>
-    </h1>
+    {% trans "Registration as mentor" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='public' %}
 
     {% if not registration_is_open %}
         <div class="notification is-warning">

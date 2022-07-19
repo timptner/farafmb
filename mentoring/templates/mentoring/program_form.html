@@ -3,10 +3,8 @@
 {% load i18n %}
 
 {% block content %}
-    <p class="title">
-        {% trans "Add a study program" %}
-        <span class="tag is-danger">{% trans "Private" %}</span>
-    </p>
+    {% trans "Add a study program" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='private' %}
 
     <div class="box">
         <form method="post">

@@ -3,10 +3,8 @@
 {% load i18n %}
 
 {% block content-fullwidth %}
-    <p class="title">
-        {% trans "Add a registration" %}
-        <span class="tag is-danger">{% trans "Private" %}</span>
-    </p>
+    {% trans "Add a registration" as page_title %}
+    {% include 'components/page-title.html' with title=page_title status='private' %}
 
     <div class="columns">
 
