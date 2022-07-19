@@ -10,27 +10,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, DeleteView
 
-from .forms import RegistrationForm, ProgramForm, MentorForm, HelperForm
-from .models import Registration, Program, Mentor, Helper
-
-
-def export_as_csv(model):
-    meta = model._meta
-
-    response = HttpResponse(
-        content_type='text/csv',
-        headers={'Content-Disposition': f'attachment; filename="{meta.verbose_name_plural}.csv"'},
-    )
-
-    fields, names = zip(*[(field.name, field.verbose_name) for field in meta.get_fields()[1:]])
-
-    writer = csv.writer(response)
-    writer.writerow(names)
-
-    for obj in model.objects.all():
-        writer.writerow([getattr(obj, field) for field in fields])
-
-    return response
+from .forms import RegistrationForm, ProgramForm, MentorForm
+from .models import Registration, Program, Mentor
 
 
 class RegistrationListView(LoginRequiredMixin, ListView):
@@ -77,8 +58,23 @@ class MentorListView(LoginRequiredMixin, ListView):
     model = Mentor
 
 
-def export_mentors_as_csv(request):
-    return export_as_csv(Mentor)
+def export_as_csv(request):
+    meta = Mentor._meta
+
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': f'attachment; filename="{meta.verbose_name_plural}.csv"'},
+    )
+
+    fields, names = zip(*[(field.name, field.verbose_name) for field in meta.get_fields()[1:]])
+
+    writer = csv.writer(response)
+    writer.writerow(names)
+
+    for obj in Mentor.objects.all():
+        writer.writerow([getattr(obj, field) for field in fields])
+
+    return response
 
 
 class MentorCreateView(LoginRequiredMixin, CreateView):
@@ -110,25 +106,3 @@ class MentorCreateDoneView(LoginRequiredMixin, TemplateView):
 
 class MentorDetailView(LoginRequiredMixin, DetailView):
     model = Mentor
-
-
-class HelperListView(LoginRequiredMixin, ListView):
-    model = Helper
-
-
-def export_helpers_as_csv(request):
-    return export_as_csv(Helper)
-
-
-class HelperCreateView(LoginRequiredMixin, CreateView):
-    model = Helper
-    form_class = HelperForm
-    success_url = reverse_lazy('mentoring:helper-create-done')
-
-
-class HelperCreateDoneView(LoginRequiredMixin, TemplateView):
-    template_name = 'mentoring/helper_form_done.html'
-
-
-class HelperDetailView(LoginRequiredMixin, DetailView):
-    model = Helper

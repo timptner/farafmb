@@ -58,32 +58,6 @@
                         {% endfor %}
                     </div>
 
-                    <div class="field">
-                        <label class="label" for="{{ form.is_helper_form_active.id_for_label }}">
-                            {{ form.is_helper_form_active.label }}
-                        </label>
-                        <div class="control">
-                            <label class="checkbox">
-                                {{ form.is_helper_form_active }}
-                                {% trans "Activate the helper form" %}
-                            </label>
-                        </div>
-                        {% for error in form.is_helper_form_active.errors %}
-                            <p class="help is-danger">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-
-                    <div class="field">
-                        <label class="label"
-                               for="{{ form.helper_form_desc.id_for_label }}">{{ form.helper_form_desc.label }}</label>
-                        <div class="control">
-                            {{ form.helper_form_desc }}
-                        </div>
-                        {% for error in form.helper_form_desc.errors %}
-                            <p class="help is-danger">{{ error }}</p>
-                        {% endfor %}
-                    </div>
-
                     <div class="field is-grouped">
                         <div class="control">
                             <button class="button is-primary" type="submit">{% trans "Create" %}</button>
