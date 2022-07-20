@@ -83,13 +83,13 @@ english as the secondary but in the source code it is vice versa because of the 
 To generate the files containing all string to localize run:
 
 ```bash
-django-admin makemessages -l de --ignore venv/*
+django-admin makemessages --locale "de" --ignore "./venv/*"
 ```
 
 And to compile the localized strings into binary data, which is used by gnugettext run:
 
 ```bash
-django-admin compilemessages -l de --ignore venv/*
+django-admin compilemessages --locale "de" --ignore "./venv/*"
 ```
 
 ## License 📚
