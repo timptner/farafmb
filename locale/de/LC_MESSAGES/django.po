@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 01:58+0200\n"
+"POT-Creation-Date: 2022-07-20 02:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -164,7 +164,7 @@ msgstr ""
 "<a href=\"https://www.djangoproject.com/\" target=\"_blank\">Django</a> und\n"
 "<a href=\"https://bulma.io/\" target=\"_blank\">Bulma</a>.\n"
 "</span>\n"
-"</span>\n"
+"</span>"
 
 #: .\farafmb\templates\footer.html:88
 msgid "Otto von Guericke University"
