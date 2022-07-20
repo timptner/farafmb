@@ -10,6 +10,7 @@ class Registration(models.Model):
     class Meta:
         verbose_name = _("Registration")
         verbose_name_plural = _("Registrations")
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -21,6 +22,7 @@ class Program(models.Model):
     class Meta:
         verbose_name = _("Study program")
         verbose_name_plural = _("Study programs")
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -38,6 +40,7 @@ class Mentor(models.Model):
     class Meta:
         verbose_name = _("Mentor")
         verbose_name_plural = _("Mentors")
+        ordering = ['first_name', 'last_name']
 
     def __str__(self):
         return self.full_name
