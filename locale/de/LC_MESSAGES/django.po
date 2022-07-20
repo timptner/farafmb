@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-09 10:06+0200\n"
+"POT-Creation-Date: 2022-07-20 01:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,106 +15,294 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: accounts/forms.py:15
+#: .\accounts\forms.py:15
 msgid "Password"
 msgstr "Passwort"
 
-#: accounts/forms.py:23 accounts/forms.py:90
+#: .\accounts\forms.py:23 .\accounts\forms.py:90
 msgid "New password"
 msgstr "Neues Passwort"
 
-#: accounts/forms.py:29 accounts/forms.py:96
+#: .\accounts\forms.py:29 .\accounts\forms.py:96
 msgid "New password confirmation"
 msgstr "Neues Passwort bestätigen"
 
-#: accounts/forms.py:37
+#: .\accounts\forms.py:37
 msgid "Old password"
 msgstr "Altes Passwort"
 
-#: farafmb/settings/base.py:122
+#: .\farafmb\settings\base.py:123
 msgid "German"
 msgstr "Deutsch"
 
-#: farafmb/settings/base.py:123
+#: .\farafmb\settings\base.py:124
 msgid "English"
 msgstr "Englisch"
 
-#: farafmb/templates/django/forms/widgets/clearable_file_input.html:14
+#: .\farafmb\templates\400.html:6
+msgid "Bad Request"
+msgstr "Fehlerhafte Anfrage"
+
+#: .\farafmb\templates\400.html:7
+msgid ""
+"\n"
+"        Your request could not be processed because it is invalid.\n"
+"    "
+msgstr ""
+"\n"
+"Deine Anfrage konnte nicht verarbeitet werden, da sie ungültig ist."
+
+#: .\farafmb\templates\403.html:6
+msgid "Forbidden"
+msgstr "Verboten"
+
+#: .\farafmb\templates\403.html:7
+msgid ""
+"\n"
+"        You do not have the appropriate permissions to access the requested "
+"page. Please contact an administrator if you\n"
+"        have the necessary rights.\n"
+"    "
+msgstr ""
+"\n"
+"Du hast keine ausreichende Berechtigung um auf die angeforderte Seite "
+"zuzugreifen. Bitte wende dich an einen Administrator, falls du die nötigen "
+"Rechte besitzt."
+
+#: .\farafmb\templates\404.html:6
+msgid "Not Found"
+msgstr "Nichts vorhanden"
+
+#: .\farafmb\templates\404.html:7
+msgid ""
+"\n"
+"        There is no content on this page. If you followed a link, it appears "
+"to be outdated and no longer valid. If you\n"
+"        have entered the address directly, please check your input for "
+"typos.\n"
+"    "
+msgstr ""
+"\n"
+"Auf dieser Seite befindet sich kein Inhalt. Falls du durch einen Link auf "
+"diese Seite gelangt bist, so ist dieser Link veraltet oder nicht länger "
+"gültig. Solltest du die Adresse direkt in der URL-Zeile eingegeben haben, so "
+"überprüfe bitte ob du dich nicht vertippt hast."
+
+#: .\farafmb\templates\500.html:6
+msgid "Internal Server Error"
+msgstr "Interner Server Fehler"
+
+#: .\farafmb\templates\500.html:7
+msgid ""
+"\n"
+"        Unfortunately, there was a server error, so your request cannot be "
+"processed. Please try again later.\n"
+"    "
+msgstr ""
+"\n"
+"Leider kam es zu einem Fehler auf dem Server, wodurch deine Anfrage nicht "
+"weiter verarbeitet werden kann. Versuche es einfach etwas später noch einmal."
+
+#: .\farafmb\templates\components\page-title.html:5
+msgid "Private"
+msgstr "Versteckt"
+
+#: .\farafmb\templates\components\page-title.html:7
+msgid "Preview"
+msgstr "Vorschau"
+
+#: .\farafmb\templates\components\page-title.html:9
+msgid "Public"
+msgstr "Öffentlich"
+
+#: .\farafmb\templates\django\forms\widgets\clearable_file_input.html:14
 msgid "Choose a file"
 msgstr "Wähle eine Datei aus"
 
-#: farafmb/templates/django/forms/widgets/clearable_file_input.html:19
+#: .\farafmb\templates\django\forms\widgets\clearable_file_input.html:19
 msgid "No file selected"
 msgstr "Keine Datei ausgewählt"
 
-#: farafmb/templates/language.html:4
+#: .\farafmb\templates\footer.html:12
+msgid "Student Council of the Faculty of Mechanical Engineering"
+msgstr "Fachschaftsrat Maschinenbau"
+
+#: .\farafmb\templates\footer.html:14
+msgid ""
+"\n"
+"                    We are the student representation of all students at the "
+"Faculty of Mechanical Engineering.\n"
+"                "
+msgstr ""
+"\n"
+"Wir sind die studentische Vertretung aller Studentinnen und Studenten an der "
+"Fakultät für Maschinenbau."
+
+#: .\farafmb\templates\footer.html:18
+msgid ""
+"\n"
+"                    <span class=\"icon-text\">\n"
+"                        <span>Made with</span>\n"
+"                        <span class=\"icon\"><i class=\"fas fa-heart\"></i></"
+"span>\n"
+"                        <span>\n"
+"                            by <strong>Aiven</strong> using\n"
+"                            <a href=\"https://www.djangoproject.com/\" "
+"target=\"_blank\">Django</a> and\n"
+"                            <a href=\"https://bulma.io/\" target=\"_blank"
+"\">Bulma</a>.\n"
+"                        </span>\n"
+"                    </span>\n"
+"                "
+msgstr ""
+"\n"
+"<span class=\"icon-text\">\n"
+"<span>Erstellt mit</span>\n"
+"<span class=\"icon\"><i class=\"fas fa-heart\"></i></span>\n"
+"<span>\n"
+"von <strong>Aiven</strong> unter Verwendung von\n"
+"<a href=\"https://www.djangoproject.com/\" target=\"_blank\">Django</a> und\n"
+"<a href=\"https://bulma.io/\" target=\"_blank\">Bulma</a>.\n"
+"</span>\n"
+"</span>\n"
+
+#: .\farafmb\templates\footer.html:88
+msgid "Otto von Guericke University"
+msgstr "Otto-von-Guericke-Universität"
+
+#: .\farafmb\templates\footer.html:91
+msgid "Student Council of the University"
+msgstr "Studierendenrat"
+
+#: .\farafmb\templates\footer.html:94
+msgid "Faculty of Mechanical Engineering"
+msgstr "Fakultät für Maschinenbau"
+
+#: .\farafmb\templates\footer.html:103
+msgid "Impress"
+msgstr "Impressum"
+
+#: .\farafmb\templates\footer.html:104
+msgid "Privacy"
+msgstr "Datenschutz"
+
+#: .\farafmb\templates\footer.html:106
+msgid "FaRaFMB"
+msgstr "FaRaFMB"
+
+#: .\farafmb\templates\language.html:3
 msgid "Change language"
 msgstr "Sprache ändern"
 
-#: farafmb/templates/language.html:27
+#: .\farafmb\templates\language.html:27
 msgid "Switch language"
 msgstr "Sprache umstellen"
 
-#: farafmb/templates/navigation.html:26
-msgid "News"
-msgstr "Neuigkeiten"
+#: .\farafmb\templates\menu.html:9
+msgid "Show menu"
+msgstr "Menü anzeigen"
 
-#: farafmb/templates/navigation.html:30
-msgid "About us"
-msgstr "Über uns"
+#: .\farafmb\templates\menu.html:16
+msgid "Hide menu"
+msgstr "Menü ausblenden"
 
-#: farafmb/templates/navigation.html:34
-msgid "Student council"
-msgstr "Fachschaftsrat"
-
-#: farafmb/templates/navigation.html:35
-msgid "Members"
-msgstr "Mitglieder"
-
-#: farafmb/templates/navigation.html:41
-msgid "Service"
-msgstr "Leistungen"
-
-#: farafmb/templates/navigation.html:45
-msgid "Excursions"
-msgstr "Exkursionen"
-
-#: farafmb/templates/navigation.html:46
-msgid "Jobs"
-msgstr "Jobs"
-
-#: farafmb/templates/navigation.html:47
-msgid "Memory minutes"
-msgstr "Gedächtnisprotokolle"
-
-#: farafmb/templates/navigation.html:51
-msgid "Documents"
-msgstr "Dokumente"
-
-#: farafmb/templates/navigation.html:52
-msgid "Office Hours"
-msgstr "Sprechzeiten"
-
-#: farafmb/templates/navigation.html:53
-msgid "Contact"
-msgstr "Kontakt"
-
-#: farafmb/templates/navigation.html:58
-msgid "Login"
-msgstr "Anmelden"
-
-#: farafmb/templates/navigation.html:62
-msgid "User"
-msgstr "Benutzer"
-
-#: farafmb/templates/navigation.html:67
+#: .\farafmb\templates\menu.html:30
 msgid "Administration"
 msgstr "Administration"
 
-#: farafmb/templates/navigation.html:68
+#: .\farafmb\templates\menu.html:35
+msgid "Account"
+msgstr "Konto"
+
+#: .\farafmb\templates\menu.html:38
 msgid "Profile"
 msgstr "Profil"
 
-#: farafmb/templates/navigation.html:73
-msgid "Logout"
-msgstr "Abmelden"
+#: .\farafmb\templates\menu.html:42 .\farafmb\templates\navigation.html:33
+msgid "Members"
+msgstr "Mitglieder"
+
+#: .\farafmb\templates\menu.html:47
+msgid "Create new"
+msgstr "Neu erstellen"
+
+#: .\farafmb\templates\menu.html:58 .\farafmb\templates\navigation.html:61
+msgid "Mentoring"
+msgstr "Patenschaft"
+
+#: .\farafmb\templates\menu.html:58
+msgid "New"
+msgstr "Neu"
+
+#: .\farafmb\templates\menu.html:61
+msgid "Registrations"
+msgstr "Registrierungen"
+
+#: .\farafmb\templates\menu.html:62
+msgid "Study programs"
+msgstr "Studiengänge"
+
+#: .\farafmb\templates\menu.html:63
+msgid "Mentors"
+msgstr "Mentoren"
+
+#: .\farafmb\templates\menu.html:67
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: .\farafmb\templates\menu.html:70
+msgid "Overview"
+msgstr "Übersicht"
+
+#: .\farafmb\templates\navigation.html:24
+msgid "News"
+msgstr "Neuigkeiten"
+
+#: .\farafmb\templates\navigation.html:28
+msgid "About us"
+msgstr "Über uns"
+
+#: .\farafmb\templates\navigation.html:32
+msgid "Student council"
+msgstr "Fachschaftsrat"
+
+#: .\farafmb\templates\navigation.html:39
+msgid "Service"
+msgstr "Leistung"
+
+#: .\farafmb\templates\navigation.html:43
+msgid "Excursions"
+msgstr "Exkursionen"
+
+#: .\farafmb\templates\navigation.html:44
+msgid "Jobs"
+msgstr "Jobs"
+
+#: .\farafmb\templates\navigation.html:45
+msgid "Memory minutes"
+msgstr "Gedächtnisprotokolle"
+
+#: .\farafmb\templates\navigation.html:49
+msgid "Documents"
+msgstr "Dokumente"
+
+#: .\farafmb\templates\navigation.html:50
+msgid "Office Hours"
+msgstr "Sprechzeiten"
+
+#: .\farafmb\templates\navigation.html:51
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\farafmb\templates\navigation.html:57
+msgid "Participate"
+msgstr "Mitmachen"
+
+#~ msgid "Login"
+#~ msgstr "Anmelden"
+
+#~ msgid "User"
+#~ msgstr "Benutzer"
+
+#~ msgid "Logout"
+#~ msgstr "Abmelden"

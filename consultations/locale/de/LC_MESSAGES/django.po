@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-18 22:43+0200\n"
+"POT-Creation-Date: 2022-07-20 01:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,77 +15,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:14
+#: .\consultations\admin.py:14
 msgid "Mark selected consultations as visible"
 msgstr "Ausgewählte Sprechzeiten sichtbar schalten"
 
-#: admin.py:18
+#: .\consultations\admin.py:18
 #, python-format
 msgid "%d consultation was successfully marked as visible."
 msgid_plural "%d consultations were successfully marked as visible."
 msgstr[0] "%d Sprechstunde wurde erfolgreich als sichtbar markiert."
 msgstr[1] "%d Sprechzeiten wurden erfolgreich als sichtbar markiert."
 
-#: admin.py:23
+#: .\consultations\admin.py:23
 msgid "Mark selected consultations as invisible"
 msgstr "Ausgewählte Sprechzeiten unsichtbar schalten"
 
-#: admin.py:27
+#: .\consultations\admin.py:27
 #, python-format
 msgid "%d consultation was successfully marked as invisible."
 msgid_plural "%d consultations were successfully marked as invisible."
 msgstr[0] "%d Sprechstunde wurde erfolgreich als unsichtbar markiert."
 msgstr[1] "%d Sprechzeiten wurden erfolgreich als unsichtbar markiert."
 
-#: apps.py:8 models.py:32
+#: .\consultations\apps.py:8 .\consultations\models.py:32
 msgid "Consultations"
 msgstr "Sprechzeiten"
 
-#: models.py:9
+#: .\consultations\models.py:9
 msgid "Only times between 7 a.m. and 7 p.m. are allowed."
 msgstr "Es sind nur Zeiten zwischen 7 und 19 Uhr erlaubt."
 
-#: models.py:13
+#: .\consultations\models.py:13
 msgid "Visibility"
 msgstr "Sichtbarkeit"
 
-#: models.py:14
+#: .\consultations\models.py:14
 msgid "Member"
 msgstr "Mitglied"
 
-#: models.py:21
+#: .\consultations\models.py:21
 msgid "Monday"
 msgstr "Montag"
 
-#: models.py:22
+#: .\consultations\models.py:22
 msgid "Tuesday"
 msgstr "Dienstag"
 
-#: models.py:23
+#: .\consultations\models.py:23
 msgid "Wednesday"
 msgstr "Mittwoch"
 
-#: models.py:24
+#: .\consultations\models.py:24
 msgid "Thursday"
 msgstr "Donnerstag"
 
-#: models.py:25
+#: .\consultations\models.py:25
 msgid "Friday"
 msgstr "Freitag"
 
-#: models.py:27
+#: .\consultations\models.py:27
 msgid "Day"
 msgstr "Tag"
 
-#: models.py:28 templates/consultations/main.html:25
+#: .\consultations\models.py:28
+#: .\consultations\templates\consultations\main.html:25
 msgid "Time"
 msgstr "Zeit"
 
-#: models.py:31
+#: .\consultations\models.py:31
 msgid "Consultation"
 msgstr "Sprechstunde"
 
-#: templates/consultations/main.html:8
+#: .\consultations\templates\consultations\main.html:8
 msgid ""
 "\n"
 "            Due to the <a href=\"https://www.ovgu.de/unimagdeburg_media/"
@@ -116,11 +117,11 @@ msgstr ""
 "und Regelungen findest du im <a href=\"https://www.ovgu.de/stufenplan.html"
 "\">Stufenplan</a>, welcher regelmäßig aktualisiert wird."
 
-#: templates/consultations/main.html:50
+#: .\consultations\templates\consultations\main.html:50
 msgid "The table can be moved sideways."
 msgstr "Die Tabelle kann seitwärts verschoben werden."
 
-#: templates/consultations/main.html:55
+#: .\consultations\templates\consultations\main.html:55
 #, python-format
 msgid ""
 "\n"

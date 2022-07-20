@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-18 22:39+0200\n"
+"POT-Creation-Date: 2022-07-20 01:58+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,33 +14,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin.py:22
+#: .\events\admin.py:23
 msgid "Mark selected participants as approved"
 msgstr "Ausgewählte Teilnehmer akzeptieren"
 
-#: admin.py:26
+#: .\events\admin.py:27
 #, python-format
 msgid "%d participants was successfully marked as approved."
 msgid_plural "%d participants were successfully marked as approved."
 msgstr[0] "%d Teilnehmer wurde erfolgreich akzeptiert."
 msgstr[1] "%d Teilnehmer wurden erfolgreich akzeptiert."
 
-#: admin.py:31
+#: .\events\admin.py:32
 msgid "Mark selected participants as rejected"
 msgstr "Ausgewählte Teilnehmer ablehnen"
 
-#: admin.py:35
+#: .\events\admin.py:36
 #, python-format
 msgid "%d participants was successfully marked as rejected."
 msgid_plural "%d participants were successfully marked as rejected."
 msgstr[0] "%d Teilnehmer wurde erfolgreich abgelehnt."
 msgstr[1] "%d Teilnehmer wurden erfolgreich abgelehnt."
 
-#: apps.py:8 models.py:15
+#: .\events\apps.py:8 .\events\models.py:15
 msgid "Events"
 msgstr "Veranstaltungen"
 
-#: forms.py:17
+#: .\events\forms.py:17
 msgid ""
 "You can use <a href=\"https://www.markdownguide.org\">Markdown</a> to format "
 "your text."
@@ -48,11 +48,11 @@ msgstr ""
 "Du kannst <a href=\"https://www.markdownguide.org\">Markdown</a> verwenden, "
 "um den Text zu formatieren."
 
-#: forms.py:23 templates/events/registration_form.html:22
+#: .\events\forms.py:23 .\events\templates\events\registration_form.html:22
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: forms.py:25
+#: .\events\forms.py:25
 msgid ""
 "I accept the privacy statement and agree to the processing of my personal "
 "data."
@@ -60,12 +60,12 @@ msgstr ""
 "Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: forms.py:33
+#: .\events\forms.py:33
 msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
 msgstr ""
 "Es sind ausschließlich E-Mail-Adressen mit der Domain 'st.ovgu.de' erlaubt."
 
-#: forms.py:42
+#: .\events\forms.py:42
 msgid ""
 "Please use your university email address. (Did you even read the help text "
 "above? 🧐)"
@@ -73,31 +73,31 @@ msgstr ""
 "Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
 "nicht gelesen? 🧐)"
 
-#: forms.py:69
+#: .\events\forms.py:69
 msgid "All participants"
 msgstr "Alle Teilnehmer"
 
-#: forms.py:70
+#: .\events\forms.py:70
 msgid "Approved participants"
 msgstr "Akzeptierte Teilnehmer"
 
-#: forms.py:71
+#: .\events\forms.py:71
 msgid "Rejected participants"
 msgstr "Abgelehnte Teilnehmer"
 
-#: forms.py:73
+#: .\events\forms.py:73
 msgid "Recipients"
 msgstr "Empfänger"
 
-#: forms.py:74
+#: .\events\forms.py:74
 msgid "Subject"
 msgstr "Betreff"
 
-#: forms.py:75
+#: .\events\forms.py:75
 msgid "Message"
 msgstr "Nachricht"
 
-#: forms.py:76
+#: .\events\forms.py:76
 msgid ""
 "Use <code>{{ first_name }}</code> as a placeholder for the participants "
 "first name."
@@ -105,132 +105,134 @@ msgstr ""
 "Benutze <code>{{ first_name }}</code> als Platzhalter für den Vornamen des "
 "Teilnehmers."
 
-#: models.py:8
+#: .\events\models.py:8
 msgid "Title"
 msgstr "Titel"
 
-#: models.py:9
+#: .\events\models.py:9
 msgid "Description"
 msgstr "Beschreibung"
 
-#: models.py:10
+#: .\events\models.py:10
 msgid "Start of registration"
 msgstr "Beginn der Anmeldung"
 
-#: models.py:11
+#: .\events\models.py:11
 msgid "Registration deadline"
 msgstr "Anmeldeschluss"
 
-#: models.py:14
+#: .\events\models.py:14
 msgid "Event"
 msgstr "Veranstaltung"
 
-#: models.py:44 views.py:102
+#: .\events\models.py:44 .\events\views.py:102
 msgid "First name"
 msgstr "Vorname"
 
-#: models.py:45 views.py:103
+#: .\events\models.py:45 .\events\views.py:103
 msgid "Last name"
 msgstr "Nachname"
 
-#: models.py:46 views.py:104
+#: .\events\models.py:46 .\events\views.py:104
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: models.py:47 templates/events/participants.html:67 views.py:105
+#: .\events\models.py:47 .\events\templates\events\participants.html:67
+#: .\events\views.py:105
 msgid "Comment"
 msgstr "Bemerkung"
 
-#: models.py:48 views.py:106
+#: .\events\models.py:48 .\events\views.py:106
 msgid "Moment of registration"
 msgstr "Zeitpunkt der Anmeldung"
 
-#: models.py:49 views.py:107
+#: .\events\models.py:49 .\events\views.py:107
 msgid "Approval of registration"
 msgstr "Genehmigung der Anmeldung"
 
-#: models.py:52
+#: .\events\models.py:52
 msgid "Participant"
 msgstr "Teilnehmer"
 
-#: models.py:53
+#: .\events\models.py:53
 msgid "Participants"
 msgstr "Teilnehmer"
 
-#: models.py:62
+#: .\events\models.py:62
 msgid "Approved participant"
 msgstr "Akzeptierter Teilnehmer"
 
-#: models.py:62
+#: .\events\models.py:62
 msgid "Rejected participant"
 msgstr "Abgelehnter Teilnehmer"
 
-#: templates/events/events.html:21
+#: .\events\templates\events\events.html:21
 msgid "Registration is"
 msgstr "Anmeldung ist"
 
-#: templates/events/events.html:26
+#: .\events\templates\events\events.html:26
 msgid "Registration started at"
 msgstr "Anmeldung gestartet am"
 
-#: templates/events/events.html:32
+#: .\events\templates\events\events.html:32
 msgid "Registration stopped at"
 msgstr "Anmeldung gestoppt am"
 
-#: templates/events/events.html:40
+#: .\events\templates\events\events.html:40
 msgid "Show form"
 msgstr "Formular anzeigen"
 
-#: templates/events/events.html:42
+#: .\events\templates\events\events.html:42
 msgid "Show participants"
 msgstr "Teilnehmer anzeigen"
 
-#: templates/events/info.html:10 templates/events/registration_form.html:47
+#: .\events\templates\events\info.html:10
+#: .\events\templates\events\registration_form.html:47
 msgid "Register"
 msgstr "Anmelden"
 
-#: templates/events/participants.html:15
+#: .\events\templates\events\participants.html:15
 msgid "Back to events list"
 msgstr "Zurück zur Veranstaltungsliste"
 
-#: templates/events/participants.html:40
+#: .\events\templates\events\participants.html:40
 msgid "Contact participants"
 msgstr "Teilnehmer kontaktieren"
 
-#: templates/events/participants.html:52
+#: .\events\templates\events\participants.html:52
 msgid "Export participants"
 msgstr "Teilnehmer exportieren"
 
-#: templates/events/participants.html:64
+#: .\events\templates\events\participants.html:64
 msgid "Position"
 msgstr "Position"
 
-#: templates/events/participants.html:65
+#: .\events\templates\events\participants.html:65
 msgid "Name"
 msgstr "Name"
 
-#: templates/events/participants.html:66
+#: .\events\templates\events\participants.html:66
 msgid "Moment"
 msgstr "Zeitpunkt"
 
-#: templates/events/participants_contact.html:67
+#: .\events\templates\events\participants_contact.html:67
 msgid "Send email"
 msgstr "E-Mail verschicken"
 
-#: templates/events/participants_contact_done.html:8
-#: templates/events/registration_done.html:8
+#: .\events\templates\events\participants_contact_done.html:8
+#: .\events\templates\events\registration_done.html:8
 msgid "Success"
 msgstr "Erfolg"
 
-#: templates/events/participants_contact_done.html:10
+#: .\events\templates\events\participants_contact_done.html:10
 msgid "An email was sent to all selected participants."
 msgstr "Eine E-Mail wurde an alle ausgewählten Teilnehmer verschickt."
 
-#: templates/events/registration_done.html:9
+#: .\events\templates\events\registration_done.html:9
 msgid "You have been registered for our event."
 msgstr "Du wurdest für unsere Veranstaltung angemeldet."
 
-#: templates/events/registration_done.html:11
+#: .\events\templates\events\registration_done.html:11
 #, python-format
 msgid ""
 "We will contact you in the next few days if you have been selected as a "
@@ -239,17 +241,17 @@ msgstr ""
 "Wir werden dich in den nächsten Tagen kontaktieren, wenn du als Teilnehmer "
 "für die Veranstaltung <em>%(event)s</em> ausgewählt wurdest."
 
-#: templates/events/registration_form.html:10
+#: .\events\templates\events\registration_form.html:10
 #, python-format
 msgid "Registration is pending. It starts at %(moment)s."
 msgstr "Die Anmeldung beginnt am %(moment)s."
 
-#: templates/events/registration_form.html:14
+#: .\events\templates\events\registration_form.html:14
 #, python-format
 msgid "Registration is closed. It stopped at %(moment)s."
 msgstr "Die Anmeldung ist geschlossen seit %(moment)s."
 
-#: templates/events/registration_form.html:24
+#: .\events\templates\events\registration_form.html:24
 msgid ""
 "We need your first and last name to identify you at our venue. We need your "
 "email address to contact you before to the event. We will store your full "
@@ -266,14 +268,14 @@ msgstr ""
 "vertraulich behandelt! Nach Ablauf der Frist löschen wir deine "
 "personenbezogenen Daten unwiderruflich von unseren Servern."
 
-#: templates/events/registration_form.html:36
+#: .\events\templates\events\registration_form.html:36
 msgid "Registration for event:"
 msgstr "Anmeldung für Veranstaltung:"
 
-#: views.py:116
+#: .\events\views.py:116
 msgid "Yes"
 msgstr "Ja"
 
-#: views.py:116
+#: .\events\views.py:116
 msgid "No"
 msgstr "Nein"

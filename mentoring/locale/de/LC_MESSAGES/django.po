@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 00:41+0200\n"
+"POT-Creation-Date: 2022-07-20 01:58+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,134 +14,178 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\forms.py:37
+#: .\mentoring\forms.py:37
 msgid "Start date must be earlier than stop date"
 msgstr "Das Eröffnungsdatum muss vor dem Schließdatum liegen."
 
-#: .\forms.py:44 .\forms.py:50
+#: .\mentoring\forms.py:44 .\mentoring\forms.py:50
 msgid "The datetime is in the period of another registration."
 msgstr "Der Zeitpunkt liegt in der Zeitspanne einer anderen Registrierung."
 
-#: .\forms.py:57
+#: .\mentoring\forms.py:57
 msgid "Another registration is between the start and end of this registration."
 msgstr ""
 "Eine andere Registrierung befindet sich innerhalb der Zeitspanne dieser "
 "Registrierung."
 
-#: .\forms.py:71 .\templates\mentoring\mentor_form.html:22
+#: .\mentoring\forms.py:71 .\mentoring\templates\mentoring\mentor_form.html:20
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: .\forms.py:83
+#: .\mentoring\forms.py:83
 msgid ""
 "Only email addresses from Otto von Guericke University Magdeburg are allowed."
 msgstr ""
 "Es sind nur E-Mail-Adressen der Otto-von-Guericke-Universität Magdeburg "
 "erlaubt."
 
-#: .\forms.py:84
+#: .\mentoring\forms.py:84
 msgid "Write your mobile number, starting with the country code."
 msgstr "Schreibe deine Mobilnummer, beginnend mit der Ländervorwahl."
 
-#: .\forms.py:103
+#: .\mentoring\forms.py:103
 msgid ""
 "Your email address does not belong to Otto von Guericke University Magdeburg."
 msgstr ""
 "Deine E-Mail-Adresse gehört nicht zur Otto-von-Guericke-Universität "
 "Magdeburg."
 
-#: .\forms.py:117
+#: .\mentoring\forms.py:117
 msgid "Your mobile number does not start with a country code."
 msgstr "Deine Mobilnummer besitzt keine Ländervorwahl."
 
-#: .\forms.py:120
+#: .\mentoring\forms.py:120
 msgid "Your mobile number contains non-numeric values."
 msgstr "Deine Mobilnummer enthält nicht-numerische Zeichen."
 
-#: .\models.py:6
+#: .\mentoring\models.py:6
 msgid "Name"
 msgstr "Name"
 
-#: .\models.py:7
+#: .\mentoring\models.py:7
 msgid "Started at"
 msgstr "Gestartet am"
 
-#: .\models.py:8
+#: .\mentoring\models.py:8
 msgid "Stopped at"
 msgstr "Gestoppt am"
 
-#: .\models.py:11 .\models.py:30
+#: .\mentoring\models.py:11 .\mentoring\models.py:30
 msgid "Registration"
 msgstr "Registrierung"
 
-#: .\models.py:12 .\templates\mentoring\registration_list.html:25
+#: .\mentoring\models.py:12
+#: .\mentoring\templates\mentoring\registration_list.html:23
 msgid "Registrations"
 msgstr "Registrierungen"
 
-#: .\models.py:22 .\models.py:35 .\templates\mentoring\mentor_detail.html:26
+#: .\mentoring\models.py:22 .\mentoring\models.py:35
+#: .\mentoring\templates\mentoring\mentor_detail.html:23
 msgid "Study program"
 msgstr "Studiengang"
 
-#: .\models.py:23 .\templates\mentoring\program_list.html:25
+#: .\mentoring\models.py:23
+#: .\mentoring\templates\mentoring\program_list.html:23
 msgid "Study programs"
 msgstr "Studiengänge"
 
-#: .\models.py:31
+#: .\mentoring\models.py:31
 msgid "First name"
 msgstr "Vorname"
 
-#: .\models.py:32
+#: .\mentoring\models.py:32
 msgid "Last name"
 msgstr "Nachname"
 
-#: .\models.py:33 .\templates\mentoring\mentor_detail.html:12
+#: .\mentoring\models.py:33
+#: .\mentoring\templates\mentoring\mentor_detail.html:9
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\models.py:34 .\templates\mentoring\mentor_detail.html:19
+#: .\mentoring\models.py:34
+#: .\mentoring\templates\mentoring\mentor_detail.html:16
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
-#: .\models.py:36
+#: .\mentoring\models.py:36
 msgid "Created at"
 msgstr "Erstellt am"
 
-#: .\models.py:39
+#: .\mentoring\models.py:39
 msgid "Mentor"
 msgstr "Mentor"
 
-#: .\models.py:40
+#: .\mentoring\models.py:40
 msgid "Mentors"
 msgstr "Mentoren"
 
-#: .\templates\mentoring\mentor_detail.html:8
-#: .\templates\mentoring\mentor_list.html:8
-#: .\templates\mentoring\program_confirm_delete.html:8
-#: .\templates\mentoring\program_form.html:8
-#: .\templates\mentoring\program_list.html:8
-#: .\templates\mentoring\registration_confirm_delete.html:8
-#: .\templates\mentoring\registration_form.html:8
-#: .\templates\mentoring\registration_list.html:8
-msgid "Private"
-msgstr "Privat"
+#: .\mentoring\templates\mentoring\landing_page.html:6
+msgid "Mentoring"
+msgstr "Patenschaft"
 
-#: .\templates\mentoring\mentor_detail.html:32
+#: .\mentoring\templates\mentoring\landing_page.html:10
+msgid ""
+"\n"
+"            <p>\n"
+"                You enjoyed your orientation week and would like to give the "
+"new students at the Faculty of Mechanical\n"
+"                Engineering an equally great start to their studies?\n"
+"            </p>\n"
+"\n"
+"            <p>Then sign up as a mentor!</p>\n"
+"\n"
+"            <p>\n"
+"                The orientation week always takes place in the first week of "
+"October and your task is to accompany the\n"
+"                new students during this week. (In the summer semester there "
+"is always only an orientation day, which is\n"
+"                in the week before lectures start.) We are responsible for "
+"the organization of the program. As a\n"
+"                preparation you will also receive a crash course with the "
+"most important information as well as the\n"
+"                procedure of the orientation week. At the end we will "
+"certify your activities as a mentor, so that you\n"
+"                can write your honorary commitment on your resume.\n"
+"            </p>\n"
+"\n"
+"            <p>Do you have any questions? Then write us an email.</p>\n"
+"\n"
+"            <p>We are looking forward to your registration and a nice "
+"orientation week.</p>\n"
+"        "
+msgstr ""
+"\n"
+"<p>Dir hat deine Einführungswoche gefallen und du möchtest den neuen "
+"Studierenden an der Fakultät für Maschinenbau einen genauso tollen Einstieg "
+"in das Studium ermöglichen?</p><p>Dann melde dich als Mentor:in an!</"
+"p><p>Die Einführungswoche findet stets in der ersten Oktoberwoche statt und "
+"deine Aufgabe ist die Begleitung der neuen Studierenden in dieser Woche. (Im "
+"Sommersemester gibt es immer nur einen Einführungstag, welcher in der Woche "
+"vor dem Vorlesungsbeginn liegt.) Für die Organisation des Programms sind wir "
+"zuständig. Als Vorbereitung erhältst du außerdem einen Kompakt-Kurs mit den "
+"wichtigsten Informationen sowie dem Ablauf der Einführungswoche. Am Ende "
+"bescheinigen wir dir deine Tätigkeiten als Mentor:in, damit du dir dein "
+"ehrenamtliches Engagement in deinen Lebenslauf schreiben kannst.</p><p>Hast "
+"du noch Fragen? Dann schreib uns gerne eine Mail.</p><p>Wir freuen uns auf "
+"deine Anmeldung und eine schöne Einführungswoche.</p>"
+
+#: .\mentoring\templates\mentoring\landing_page.html:34
+msgid "Register now"
+msgstr "Jetzt registrieren"
+
+#: .\mentoring\templates\mentoring\mentor_detail.html:29
 msgid "Registered at"
 msgstr "Registriert am"
 
-#: .\templates\mentoring\mentor_detail.html:39
+#: .\mentoring\templates\mentoring\mentor_detail.html:36
 msgid "Back"
 msgstr "Zurück"
 
-#: .\templates\mentoring\mentor_form.html:7
+#: .\mentoring\templates\mentoring\mentor_form.html:6
 msgid "Registration as mentor"
 msgstr "Registrierung als Mentor"
 
-#: .\templates\mentoring\mentor_form.html:8
-msgid "Public"
-msgstr "Öffentlich"
-
-#: .\templates\mentoring\mentor_form.html:13
+#: .\mentoring\templates\mentoring\mentor_form.html:11
 msgid ""
 "\n"
 "                At the moment we are not looking for new mentors. As soon as "
@@ -153,7 +197,7 @@ msgstr ""
 "Aktuell benötigen wir keine neuen Mentoren. Sobald eine Registrierung wieder "
 "möglich ist werden wir es über unsere Kanäle verbreiten."
 
-#: .\templates\mentoring\mentor_form.html:25
+#: .\mentoring\templates\mentoring\mentor_form.html:23
 msgid ""
 "\n"
 "                We use your full name for identification purposes. We use "
@@ -173,7 +217,7 @@ msgstr ""
 "Studiengang dient zur Einordnung, sodass wir dir passende Erstsemester "
 "zuordnen können."
 
-#: .\templates\mentoring\mentor_form.html:130
+#: .\mentoring\templates\mentoring\mentor_form.html:128
 msgid ""
 "\n"
 "                            I have read the <a href=\"https://stura-md.de/"
@@ -186,15 +230,15 @@ msgstr ""
 "\">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: .\templates\mentoring\mentor_form.html:140
+#: .\mentoring\templates\mentoring\mentor_form.html:138
 msgid "Register"
 msgstr "Registrieren"
 
-#: .\templates\mentoring\mentor_form_done.html:9
+#: .\mentoring\templates\mentoring\mentor_form_done.html:9
 msgid "You have been successfully registered as a mentor"
 msgstr "Du wurdest erfolgreich als Mentor registriert."
 
-#: .\templates\mentoring\mentor_form_done.html:12
+#: .\mentoring\templates\mentoring\mentor_form_done.html:12
 msgid ""
 "\n"
 "                    We will contact you via email in the next weeks with "
@@ -205,27 +249,27 @@ msgstr ""
 "Wir werden dich in den nächsten Wochen per E-Mail mit weiteren Informationen "
 "kontaktieren."
 
-#: .\templates\mentoring\mentor_list.html:7
+#: .\mentoring\templates\mentoring\mentor_list.html:6
 msgid "List of all mentors"
 msgstr "Liste aller Mentoren"
 
-#: .\templates\mentoring\mentor_list.html:12
+#: .\mentoring\templates\mentoring\mentor_list.html:10
 msgid "Show form"
 msgstr "Formular anzeigen"
 
-#: .\templates\mentoring\mentor_list.html:13
+#: .\mentoring\templates\mentoring\mentor_list.html:11
 msgid "Export mentors"
 msgstr "Mentoren exportieren"
 
-#: .\templates\mentoring\mentor_list.html:27
+#: .\mentoring\templates\mentoring\mentor_list.html:25
 msgid "No mentors have registered yet."
 msgstr "Es hat sich bisher noch kein Mentor registriert."
 
-#: .\templates\mentoring\program_confirm_delete.html:7
+#: .\mentoring\templates\mentoring\program_confirm_delete.html:6
 msgid "Delete a study program"
 msgstr "Einen Studiengang löschen"
 
-#: .\templates\mentoring\program_confirm_delete.html:13
+#: .\mentoring\templates\mentoring\program_confirm_delete.html:11
 msgid ""
 "\n"
 "                Please note that deleting the program will also irrevocably "
@@ -237,8 +281,8 @@ msgstr ""
 "Bitte beachte, dass das Löschen eines Studienganges ebenfalls die Beziehung "
 "zu den damit verknüpften Mentoren unwiderruflich entfernt."
 
-#: .\templates\mentoring\program_confirm_delete.html:21
-#: .\templates\mentoring\registration_confirm_delete.html:21
+#: .\mentoring\templates\mentoring\program_confirm_delete.html:19
+#: .\mentoring\templates\mentoring\registration_confirm_delete.html:19
 #, python-format
 msgid ""
 "\n"
@@ -248,31 +292,31 @@ msgstr ""
 "\n"
 "Bist du dir sicher, dass <strong>%(object)s</strong> gelöscht werden soll?"
 
-#: .\templates\mentoring\program_confirm_delete.html:32
-#: .\templates\mentoring\registration_confirm_delete.html:32
+#: .\mentoring\templates\mentoring\program_confirm_delete.html:30
+#: .\mentoring\templates\mentoring\registration_confirm_delete.html:30
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: .\templates\mentoring\program_confirm_delete.html:33
-#: .\templates\mentoring\registration_confirm_delete.html:33
+#: .\mentoring\templates\mentoring\program_confirm_delete.html:31
+#: .\mentoring\templates\mentoring\registration_confirm_delete.html:31
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: .\templates\mentoring\program_form.html:7
-#: .\templates\mentoring\program_list.html:12
+#: .\mentoring\templates\mentoring\program_form.html:6
+#: .\mentoring\templates\mentoring\program_list.html:10
 msgid "Add a study program"
 msgstr "Einen Studiengang ergänzen"
 
-#: .\templates\mentoring\program_form.html:29
-#: .\templates\mentoring\registration_form.html:63
+#: .\mentoring\templates\mentoring\program_form.html:27
+#: .\mentoring\templates\mentoring\registration_form.html:61
 msgid "Create"
 msgstr "Erstellen"
 
-#: .\templates\mentoring\program_list.html:7
+#: .\mentoring\templates\mentoring\program_list.html:6
 msgid "List of all study programs"
 msgstr "Liste aller Studiengänge"
 
-#: .\templates\mentoring\program_list.html:17
+#: .\mentoring\templates\mentoring\program_list.html:15
 msgid ""
 "\n"
 "                You can delete a study program by selecting it.\n"
@@ -281,15 +325,15 @@ msgstr ""
 "\n"
 "Du kannst einen Studiengang löschen, in dem du ihn auswählst."
 
-#: .\templates\mentoring\program_list.html:30
+#: .\mentoring\templates\mentoring\program_list.html:28
 msgid "No study programs have been created yet."
 msgstr "Es wurde bisher noch kein Studiengang erstellt."
 
-#: .\templates\mentoring\registration_confirm_delete.html:7
+#: .\mentoring\templates\mentoring\registration_confirm_delete.html:6
 msgid "Delete a registration"
 msgstr "Eine Registrierung löschen"
 
-#: .\templates\mentoring\registration_confirm_delete.html:13
+#: .\mentoring\templates\mentoring\registration_confirm_delete.html:11
 msgid ""
 "\n"
 "                Please note that deleting the registration will also "
@@ -301,16 +345,16 @@ msgstr ""
 "Bitte beachte, dass das Löschen einer Registrierung ebenfalls alle damit "
 "verknüpften Mentoren unwiderruflich entfernt."
 
-#: .\templates\mentoring\registration_form.html:7
-#: .\templates\mentoring\registration_list.html:12
+#: .\mentoring\templates\mentoring\registration_form.html:6
+#: .\mentoring\templates\mentoring\registration_list.html:10
 msgid "Add a registration"
 msgstr "Eine Registrierung ergänzen"
 
-#: .\templates\mentoring\registration_list.html:7
+#: .\mentoring\templates\mentoring\registration_list.html:6
 msgid "List of all registrations"
 msgstr "Liste aller Registrierungen"
 
-#: .\templates\mentoring\registration_list.html:17
+#: .\mentoring\templates\mentoring\registration_list.html:15
 msgid ""
 "\n"
 "                You can delete a registration by selecting it.\n"
@@ -319,26 +363,32 @@ msgstr ""
 "\n"
 "Du kannst eine Registrierung löschen, in dem du sie auswählst."
 
-#: .\templates\mentoring\registration_list.html:30
+#: .\mentoring\templates\mentoring\registration_list.html:28
 msgid "No registrations have been created yet."
 msgstr "Es wurden bisher noch keine Registrierungen erstellt."
 
-#: .\views.py:26 .\views.py:48
+#: .\mentoring\views.py:26 .\mentoring\views.py:48
 #, python-format
 msgid "%(name)s was created successfully"
 msgstr "%(name)s wurde erfolgreich erstellt"
 
-#: .\views.py:37
+#: .\mentoring\views.py:37
 msgid "Registration was deleted successfully"
 msgstr "Registrierung wurde erfolgreich gelöscht"
 
-#: .\views.py:54
+#: .\mentoring\views.py:54
 msgid "Program was deleted successfully"
 msgstr "Studiengang wurde erfolgreich gelöscht"
 
-#: .\views.py:99
+#: .\mentoring\views.py:103
 msgid "Registration is closed."
 msgstr "Die Registrierung ist geschlossen."
+
+#~ msgid "Private"
+#~ msgstr "Privat"
+
+#~ msgid "Public"
+#~ msgstr "Öffentlich"
 
 #~ msgid "Preview"
 #~ msgstr "Vorschau"

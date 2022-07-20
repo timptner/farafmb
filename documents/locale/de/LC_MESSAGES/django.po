@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 13:54+0100\n"
+"POT-Creation-Date: 2022-07-20 01:58+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,19 +14,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:14
+#: .\documents\forms.py:14
 msgid "Title"
 msgstr "Titel"
 
-#: forms.py:15
+#: .\documents\forms.py:15
 msgid "File"
 msgstr "Datei"
 
-#: forms.py:16
+#: .\documents\forms.py:16
 msgid "Visible"
 msgstr "Sichtbar"
 
-#: forms.py:19
+#: .\documents\forms.py:19
 msgid ""
 "The file name will be changed to a URL-compliant version of the title after "
 "saving."
@@ -34,18 +34,19 @@ msgstr ""
 "Der Dateiname wird nach dem Speichern in eine URL-konforme Version des "
 "Titels geändert."
 
-#: forms.py:20
+#: .\documents\forms.py:20
 msgid ""
 "This checkbox will only control if the file is listed on the documents view. "
 "The real URL to the file itself will still be accessible."
 msgstr ""
 "Dieses Kontrollkästchen steuert nur, ob die Datei in der Dokumentenansicht "
-"aufgeführt ist. Die eigentliche URL zur Datei selbst ist weiterhin zugänglich."
+"aufgeführt ist. Die eigentliche URL zur Datei selbst ist weiterhin "
+"zugänglich."
 
-#: templates/documents/document_list.html:8
+#: .\documents\templates\documents\document_list.html:8
 msgid "Documents"
 msgstr "Dokumente"
 
-#: templates/documents/document_list.html:22
+#: .\documents\templates\documents\document_list.html:22
 msgid "No documents are available."
 msgstr "Es sind keine Dokumente verfügbar."
