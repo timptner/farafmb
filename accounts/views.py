@@ -9,7 +9,7 @@ class LoginView(auth_views.LoginView):
 
 
 class LogoutView(auth_views.LogoutView):
-    pass
+    template_name = 'accounts/logout.html'
 
 
 class PasswordChangeView(auth_views.PasswordChangeView):

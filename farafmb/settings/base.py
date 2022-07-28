@@ -81,10 +81,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Authentication
 
-LOGIN_REDIRECT_URL = 'members:profile_form'
-
-LOGOUT_REDIRECT_URL = '/'
-
 OAUTH2_PROVIDER = {
     'OIDC_ENABLED': True,
     'OIDC_RSA_PRIVATE_KEY': os.getenv('OIDC_RSA_PRIVATE_KEY'),
