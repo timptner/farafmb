@@ -35,38 +35,31 @@
     {% block body %}
         {% include 'layout/navigation.html' %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="notification is-radiusless {{ message.tags }} is-light mb-0">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+        {% block notifications %}{% include 'layout/notifications.html' %}{% endblock %}
 
-    {% block section %}
-        <section class="section">
-            <div class="container">
-                <div class="columns">
-                    {% if user.is_authenticated %}
-                        <div class="column is-narrow">
-                            {% include 'menu.html' %}
-                        </div>
-                    {% endif %}
-
-                    <div class="column">
-                        {% block content-fullwidth %}
-                            <div class="container is-max-desktop">
-                                {% block content %}{% endblock %}
+        {% block section %}
+            <section class="section">
+                <div class="container">
+                    <div class="columns">
+                        {% if user.is_authenticated %}
+                            <div class="column is-narrow">
+                                {% include 'layout/menu.html' %}
                             </div>
-                        {% endblock %}
+                        {% endif %}
+
+                        <div class="column">
+                            {% block content-fullwidth %}
+                                <div class="container is-max-desktop">
+                                    {% block content %}{% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    {% endblock %}
+            </section>
+        {% endblock %}
 
-    {% block footer %}
-        {% include 'footer.html' %}
+        {% block footer %}{% include 'layout/footer.html' %}{% endblock %}
     {% endblock %}
 {% endblock page %}
 
