@@ -4,6 +4,7 @@ from . import forms
 
 
 class LoginView(auth_views.LoginView):
+    template_name = 'accounts/login.html'
     form_class = forms.AuthenticationForm
 
 
