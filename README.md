@@ -19,37 +19,41 @@ The website is build with [Django](https://www.djangoproject.com/) and uses
 Setup a local development environment with virtualenv. Activate it and install
 all package dependencies.
 
-```bash
+```shell
 python3 -m venv ./venv
 source venv/bin/activate
-python -m pip install -r requirements.txt
+python -m pip install -r requirements/development.txt
 ```
 
 Create a copy of `.env.example` and call it `.env`. Generate a new random
-secret key and fill out all empty values for the specified keys. You can use a
-django utility function to generate the secret key.
+secret key and fill out all empty values for the specified keys. You can use 
+django's utility function to generate the secret key.
 
-```python
-#!/usr/bin/env python3
-from django.core.management import utils
-
-utils.get_random_secret_key()
+```shell
+python manage.py shell -c "from django.core.management import utils; print(utils.get_random_secret_key())"
 ```
 
 To start your development server:
 
-```bash
+```shell
 python manage.py runserver
 ```
 
 When developing on the oauth provider (especially OIDC) you need to generate a
 new RSA key and use it as an environment variable.
 
-```bash
+```shell
 # Generate new RSA key
 openssl genrsa --out oidc.key 4096
 # Set env var from file content
 export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
+```
+
+At last, you should migrate the database and create a user.
+
+```shell
+python manage.py migrate
+python manage.py createsuperuser
 ```
 
 ### Production 🌍
@@ -68,7 +72,7 @@ as web server / proxy.
 
 Run tests with:
 
-```bash
+```shell
 coverage run manage.py test
 coverage html  # Update report
 ```
@@ -82,14 +86,14 @@ english as the secondary but in the source code it is vice versa because of the 
 
 To generate the files containing all string to localize run:
 
-```bash
-django-admin makemessages --locale "de" --ignore "./venv/*"
+```shell
+django-admin makemessages --locale "de" --ignore "venv/*"
 ```
 
 And to compile the localized strings into binary data, which is used by gnugettext run:
 
-```bash
-django-admin compilemessages --locale "de" --ignore "./venv/*"
+```shell
+django-admin compilemessages --locale "de" --ignore "venv/*"
 ```
 
 ## License 📚
