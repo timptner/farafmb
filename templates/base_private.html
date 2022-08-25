@@ -7,6 +7,12 @@
 {% block page %}
     {% include 'layout/navigation.html' %}
 
+    <div class="internal-banner is-fullwidth">
+        <div>
+            {% trans "Non-public site" %}
+        </div>
+    </div>
+
     {% include 'layout/notifications.html' %}
 
     {% block section %}
