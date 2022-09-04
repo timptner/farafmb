@@ -1,8 +1,7 @@
 from datetime import time
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 
 from .utils import time_to_seconds, seconds_to_time, calc_max_step_size
-from .views import ConsultationsView
 
 
 class UtilityTestCase(TestCase):
@@ -19,12 +18,7 @@ class UtilityTestCase(TestCase):
         self.assertEqual(calc_max_step_size([time(12), time(13, 30), time(14)]), 1800)
 
 
-class ViewTestCase(TestCase):
-    def setUp(self):
-        self.factory = RequestFactory()
-
-    def test_views(self):
-        """Check for dead links"""
-        request = self.factory.get('/consultations/')
-        response = ConsultationsView.as_view()(request)
+class PublicViewsTest(TestCase):
+    def test_consultation_views(self):
+        response = self.client.get('/consultations/')
         self.assertEqual(response.status_code, 200)
