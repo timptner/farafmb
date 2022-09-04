@@ -1,0 +1,141 @@
+# German translation of https://www.farafmb.de/accounts/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-25 22:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: accounts/forms.py:15
+msgid "Password"
+msgstr "Password"
+
+#: accounts/forms.py:23 accounts/forms.py:90
+msgid "New password"
+msgstr "Neues Passwort"
+
+#: accounts/forms.py:29 accounts/forms.py:96
+msgid "New password confirmation"
+msgstr "Neues Passwort bestätigen"
+
+#: accounts/forms.py:37
+msgid "Old password"
+msgstr "Altes Passwort"
+
+#: accounts/templates/accounts/base_auth.html:5
+msgid "Authentication"
+msgstr "Authentifizierung"
+
+#: accounts/templates/accounts/login.html:8
+msgid "Your username or password is wrong."
+msgstr "Dein Benutzername oder dein Passwort ist falsch."
+
+#: accounts/templates/accounts/login.html:15
+msgid ""
+"\n"
+"                    You do not have permission to access this page. Please\n"
+"                    log in with another user who has the required "
+"permissions.\n"
+"                "
+msgstr ""
+"\n"
+"Du hast keine Berechtigung auf diese Seite zuzugreifen. Bitte melde dich mit "
+"einem anderen Benutzer an, welcher die benötigten Rechte besitzt."
+
+#: accounts/templates/accounts/login.html:20
+msgid ""
+"\n"
+"                    To access this page, you must first log in.\n"
+"                "
+msgstr ""
+"\n"
+"Um auf diese Seite zugreifen zu können musst du dich erst anmelden."
+
+#: accounts/templates/accounts/logout.html:6
+msgid "You have been logged out."
+msgstr "Du wurdest abgemeldet."
+
+#: accounts/templates/accounts/logout.html:8
+msgid "To landing page"
+msgstr "Zur Startseite"
+
+#: accounts/templates/accounts/password_change_form.html:5
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: accounts/templates/accounts/password_reset_complete.html:6
+msgid "Your password has been changed successfully. You can log in now."
+msgstr "Dein Password wurde erfolgreich geändert. Du kannst dich nun anmelden."
+
+#: accounts/templates/accounts/password_reset_complete.html:8
+msgid "To login"
+msgstr "Zur Anmeldung"
+
+#: accounts/templates/accounts/password_reset_confirm.html:8
+msgid ""
+"\n"
+"                Your password reset link is invalid, probably because you "
+"have\n"
+"                already used it once. Please reset your password again.\n"
+"            "
+msgstr ""
+"\n"
+"Dein Link zum Zurücksetzen des Passworts ist ungültig, da du ihn "
+"wahrscheinlich bereits einmal verwendet hast. Bitte setze dein Passwort noch "
+"einmal zurück."
+
+#: accounts/templates/accounts/password_reset_confirm.html:54
+msgid "To password reset"
+msgstr "Zur \"Passwort zurücksetzen\" Seite"
+
+#: accounts/templates/accounts/password_reset_done.html:7
+msgid "We have sent a password reset email."
+msgstr "Wir haben dir eine E-Mail zum Zurücksetzen deines Passworts geschickt."
+
+#: accounts/templates/accounts/password_reset_done.html:10
+msgid ""
+"\n"
+"            Please also check your spam folder if you can't find an email in "
+"your\n"
+"            inbox. If you did not receive an email, the username you entered "
+"was incorrect.\n"
+"        "
+msgstr ""
+"\n"
+"Bitte überprüfe auch deinen SPAM-Ordner, falls du keine neue E-Mail in "
+"deinem Posteingang findest. Solltest du keine E-Mail empfangen haben war der "
+"von dir eingegebene Benutzername falsch."
+
+#: accounts/templates/accounts/password_reset_form.html:16
+msgid "Reset password"
+msgstr "Passwort zurücksetzen"
+
+#: accounts/templates/accounts/password_reset_mail.html:2
+#, python-format
+msgid ""
+"This email was sent due to a request to reset the password on the "
+"%(site_name)s website."
+msgstr ""
+"Diese E-Mail wurde aufgrund einer Anfrage zum Zurücksetzen deines Passworts "
+"auf der Seite %(site_name)s verschickt."
+
+#: accounts/templates/accounts/password_reset_mail.html:4
+msgid "Please open the following page to set a new password"
+msgstr "Bitte öffne die folgende Seite um ein neues Passwort festzulegen."
+
+#: accounts/templates/accounts/password_reset_mail.html:8
+msgid "Your username, if you forgotten"
+msgstr "Dein Benutzername, falls du ihn vergessen hast"
+
+#: accounts/views.py:42
+msgid "Your password has been changed successfully."
+msgstr "Dein Passwort wurde erfolgreich geändert."

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{{ block.super }} | {% trans "Internal" %}{% endblock %}
+
+{% block page %}
+    {% include 'layout/navigation.html' %}
+
+    <div class="internal-banner is-fullwidth">
+        <div>
+            {% trans "Non-public site" %}
+        </div>
+    </div>
+
+    {% include 'layout/notifications.html' %}
+
+    {% block section %}
+        <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-narrow">
+                        {% include 'layout/menu.html' %}
+                    </div>
+
+                    <div class="column">
+                        {% block column %}
+                            <div class="container is-max-desktop">
+                                {% block container %}{% endblock %}
+                            </div>
+                        {% endblock column %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock section %}
+{% endblock page %}

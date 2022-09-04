@@ -3,9 +3,7 @@ import os
 from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
-
-BASE_DIR = PROJECT_DIR.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -13,19 +11,19 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # Application definition
 
 INSTALLED_APPS = [
-    'about.apps.AboutConfig',
-    'accounts.apps.AccountsConfig',
-    'blog.apps.BlogConfig',
-    'consultations.apps.ConsultationsConfig',
-    'documents.apps.DocumentsConfig',
-    'events.apps.EventsConfig',
-    'exams.apps.ExamsConfig',
-    'excursions.apps.ExcursionsConfig',
-    'jobs.apps.JobsConfig',
-    'links.apps.LinksConfig',
-    'meetings.apps.MeetingsConfig',
-    'members.apps.MembersConfig',
-    'mentoring.apps.MentoringConfig',
+    'about',
+    'accounts',
+    'blog',
+    'consultations',
+    'documents',
+    'events',
+    'exams',
+    'excursions',
+    'jobs',
+    'links',
+    'meetings',
+    'members',
+    'mentoring',
 
     'oauth2_provider',
 
@@ -54,7 +52,9 @@ ROOT_URLCONF = 'farafmb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [str(PROJECT_DIR / 'templates')],
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,10 +80,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Authentication
-
-LOGIN_REDIRECT_URL = 'members:profile_form'
-
-LOGOUT_REDIRECT_URL = '/'
 
 OAUTH2_PROVIDER = {
     'OIDC_ENABLED': True,
@@ -117,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'de-de'
+LANGUAGE_CODE = 'de'
 
 LANGUAGES = [
     ('de', _('German')),
@@ -125,7 +121,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    str(BASE_DIR / 'locale'),
+    BASE_DIR / 'locale',
 ]
 
 TIME_ZONE = 'Europe/Berlin'
@@ -138,16 +134,16 @@ USE_TZ = True
 # File Storage
 
 STATICFILES_DIRS = [
-    str(PROJECT_DIR / 'static'),
+    BASE_DIR / 'static',
 ]
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.getenv('STATIC_ROOT', str(BASE_DIR / 'files' / 'static'))
+STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'files' / 'static')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', str(BASE_DIR / 'files' / 'media'))
+MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'files' / 'media')
 
 
 # Email

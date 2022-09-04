@@ -15,7 +15,7 @@ EXTENSION_LIST = [
     'footnotes',
     'tables',
     'markdown_del_ins',
-    'markdown_checklist.extension',
+    # 'markdown_checklist.extension',
 ]
 
 ALLOWED_TAGS = [

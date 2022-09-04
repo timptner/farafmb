@@ -18,7 +18,7 @@ $link: $primary;
 // Footer
 $footer-background-color: $ocean-darker;
 
-@import "../bulma/bulma.sass";
+@import "../bulma/bulma";
 
 // Custom components
 .button.is-multiline {
@@ -145,5 +145,21 @@ $footer-background-color: $ocean-darker;
         }
       }
     }
+  }
+}
+
+.internal-banner {
+  display: flex;
+  justify-content: center;
+  // width: 100vw;
+  border-top: solid 3px $red;
+
+  div {
+    display: block;
+    padding: 0 1rem;
+    background: $red;
+    border: solid 3px $red;
+    border-radius: 0 0 5px 5px;
+    font-size: $size-7;
   }
 }

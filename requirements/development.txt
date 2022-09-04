@@ -1,0 +1,5 @@
+-r common.txt
+
+coverage==6.4.4
+# model-bakery==1.4.0
+# packaging==21.3

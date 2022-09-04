@@ -1,10 +1,10 @@
-<!DOCTYPE html>{% load static %}
-<html lang="de">
+{% load static i18n %}{% get_current_language as LANGUAGE_CODE %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>FaRaFMB</title>
+    <title>{% block title %}FaRaFMB{% endblock %}</title>
 
     <!-- Favicon -->
     <link href="{% static 'favicon/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon-precomposed" sizes="144x144">
@@ -16,8 +16,10 @@
     <meta content="{% static 'favicon/mstile-144x144.png' %}" name="msapplication-TileImage">
 
     <!-- CSS -->
-    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'css/bulma-list.css' %}" rel="stylesheet" type="text/css">
+    {% block style %}
+        <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'css/bulma-list.css' %}" rel="stylesheet" type="text/css">
+    {% endblock style %}
 
     <!-- Scripts -->
     {% block scripts %}
@@ -26,46 +28,40 @@
         <script src="{% static 'js/close-notification.js' %}" type="text/javascript"></script>
         <script src="{% static 'js/menu-burger.js' %}" type="text/javascript"></script>
         <script src="{% static 'js/active-menu.js' %}" type="text/javascript"></script>
-    {% endblock %}
+    {% endblock scripts %}
 </head>
 <body>
-{% block body %}
-    {% include 'navigation.html' %}
+{% block page %}
+    {% block body %}
+        {% include 'layout/navigation.html' %}
 
-    {% if messages %}
-        {% for message in messages %}
-            <div class="notification is-radiusless {{ message.tags }} is-light mb-0">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
+        {% block notifications %}{% include 'layout/notifications.html' %}{% endblock %}
 
-    {% block section %}
-        <section class="section">
-            <div class="container">
-                <div class="columns">
-                    {% if user.is_authenticated %}
-                        <div class="column is-narrow">
-                            {% include 'menu.html' %}
-                        </div>
-                    {% endif %}
-
-                    <div class="column">
-                        {% block content-fullwidth %}
-                            <div class="container is-max-desktop">
-                                {% block content %}{% endblock %}
+        {% block section %}
+            <section class="section">
+                <div class="container">
+                    <div class="columns">
+                        {% if user.is_authenticated %}
+                            <div class="column is-narrow">
+                                {% include 'layout/menu.html' %}
                             </div>
-                        {% endblock %}
+                        {% endif %}
+
+                        <div class="column">
+                            {% block content-fullwidth %}
+                                <div class="container is-max-desktop">
+                                    {% block content %}{% endblock %}
+                                </div>
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    {% endblock %}
+            </section>
+        {% endblock %}
 
-    {% block footer %}
-        {% include 'footer.html' %}
+        {% block footer %}{% include 'layout/footer.html' %}{% endblock %}
     {% endblock %}
-{% endblock %}
+{% endblock page %}
 
 <!-- Site Tracking -->
 <noscript>

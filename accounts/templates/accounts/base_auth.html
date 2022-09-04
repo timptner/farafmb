@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load i18n static %}
+
+{% block title %}{{ block.super }} | {% trans "Authentication" %}{% endblock %}
+
+{% block page %}
+    <section class="hero is-fullheight has-background-white-ter">
+        <div class="columns m-0 is-centered">
+            <div class="column is-full is-two-thirds-tablet is-two-fifths-desktop is-one-quarter-fullhd">
+                <figure class="image is-128x128 mx-auto my-6">
+                    <img src="{% static 'img/logo-512.png' %}" alt="logo">
+                </figure>
+
+                {% block notification %}{% endblock %}
+
+                <div class="box">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock page %}

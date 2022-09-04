@@ -3,7 +3,7 @@ import re
 
 import dj_database_url
 
-from .base import *
+from .common import *
 
 DEBUG = False
 
