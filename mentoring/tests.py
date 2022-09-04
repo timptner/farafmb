@@ -1,7 +1,9 @@
+from datetime import timedelta
 from django.test import TestCase
+from django.utils import timezone
 
 from .forms import MentorForm
-from .models import Program, Mentor
+from .models import Registration, Program, Mentor
 
 
 class ProgramTestCase(TestCase):
@@ -16,7 +18,11 @@ class ProgramTestCase(TestCase):
 
 class MentorTestCase(TestCase):
     def setUp(self) -> None:
-        Mentor.objects.create(first_name='John', last_name='Doe', email='john.doe@example.org', phone='+491234567890')
+        start = timezone.now()
+        stop = start + timedelta(days=30)
+        registration = Registration.objects.create(name='Test', started_at=start, stopped_at=stop)
+        Mentor.objects.create(registration=registration, first_name='John', last_name='Doe',
+                              email='john.doe@example.org', phone='+491234567890')
 
     def test_full_name(self):
         """Full name consists of first and last name"""
