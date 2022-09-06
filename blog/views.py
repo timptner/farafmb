@@ -1,18 +1,25 @@
 from datetime import date
-from django.views.generic import TemplateView, ListView
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 from meetings.models import Meeting
 
+from .forms import PostCreateForm
 from .models import Post
 
 
-class PostsView(ListView):
+class PostCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Post
+    form_class = PostCreateForm
+
+
+class PostsView(generic.ListView):
     template_name = 'blog/posts.html'
     model = Post
     ordering = ['-created']
     paginate_by = 10
 
 
-class LatestPostsView(ListView):
+class LatestPostsView(generic.ListView):
     template_name = 'blog/latest_posts.html'
     queryset = Post.objects.order_by('-created').all()[:5]
 
@@ -22,5 +29,5 @@ class LatestPostsView(ListView):
         return context
 
 
-class ContactView(TemplateView):
+class ContactView(generic.TemplateView):
     template_name = 'blog/contact.html'

@@ -159,6 +159,11 @@ EMAIL_HOST_USER = os.getenv('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 
 
+# Forms
+
+FORM_RENDERER = 'farafmb.forms.BulmaFormRenderer'
+
+
 # Logging
 
 LOGGING = {

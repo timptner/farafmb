@@ -1,0 +1,15 @@
+{% extends 'base_private.html' %}
+
+{% load i18n %}
+
+{% block container %}
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="buttons">
+            <button type="submit" class="button is-primary">{% trans "Create" %}</button>
+        </div>
+    </form>
+{% endblock %}
