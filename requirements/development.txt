@@ -1,5 +1,4 @@
 -r common.txt
 
-coverage==6.4.4
-# model-bakery==1.4.0
-# packaging==21.3
+coverage>=6.4,<6.5
+factory_boy>=3.2,<3.3
