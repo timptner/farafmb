@@ -1,9 +1,13 @@
 {% extends 'blog/base_blog.html' %}
 
+{% load i18n %}
+
 {% block content %}
     {% for obj in object_list %}
         {% include 'blog/components/post.html' %}
     {% endfor %}
 
-    {% include 'blog/components/paginator.html' %}
+    <div class="buttons is-centered">
+        <a class="button" href="{% url 'blog:posts' %}?page=1">{% trans "Show more" %}</a>
+    </div>
 {% endblock %}

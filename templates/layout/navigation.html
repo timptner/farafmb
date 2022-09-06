@@ -1,7 +1,7 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">{% load static i18n %}
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{% url 'blog:posts' %}">
+            <a class="navbar-item" href="/">
                 <img src="{% static 'img/logo.png' %}" width="156" height="28" alt="Logo">
             </a>
             <a target="_blank" class="navbar-item is-hidden-touch" href="https://www.ovgu.de">
@@ -21,7 +21,7 @@
 
         <div id="navbarNavigation" class="navbar-menu">
             <div class="navbar-end">
-                <a class="navbar-item" href="{% url 'blog:posts' %}">{% translate "News" %}</a>
+                <a class="navbar-item" href="{% url 'blog:latest_posts' %}">{% translate "News" %}</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
