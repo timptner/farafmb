@@ -1,14 +1,8 @@
 <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">{% load static i18n %}
     <div class="container">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{% url 'blog:posts' %}">
-                <img src="{% static 'img/logo.png' %}" width="156" height="28" alt="Logo">
-            </a>
-            <a target="_blank" class="navbar-item is-hidden-touch" href="https://www.ovgu.de">
-                <img src="{% static 'img/university.png' %}" width="79" height="28" alt="University">
-            </a>
-            <a target="_blank" class="navbar-item is-hidden-touch" href="https://www.fmb.ovgu.de">
-                <img src="{% static 'img/faculty.png' %}" width="37" height="28" alt="Faculty">
+            <a class="navbar-item" href="/">
+                <img src="{% static 'img/logo-64.png' %}" width="28" height="28" alt="Logo">
             </a>
 
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -20,7 +14,7 @@
         </div>
 
         <div id="navbarNavigation" class="navbar-menu">
-            <div class="navbar-end">
+            <div class="navbar-start">
                 <a class="navbar-item" href="{% url 'blog:posts' %}">{% trans "News" %}</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -61,7 +55,9 @@
                         <a class="navbar-item" href="{% url 'mentoring:landing_page' %}">{% trans "Mentoring" %}</a>
                     </div>
                 </div>
+            </div>
 
+            <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
                         {% if user.is_authenticated %}
@@ -69,6 +65,7 @@
                                 <span class="icon">
                                     <i class="fas fa-sign-out-alt"></i>
                                 </span>
+
                                 <span>{% trans "Logout" %}</span>
                             </a>
                         {% else %}
@@ -76,6 +73,7 @@
                                 <span class="icon">
                                     <i class="fas fa-sign-in-alt"></i>
                                 </span>
+
                                 <span>{% trans "Login" %}</span>
                             </a>
                         {% endif %}
@@ -83,6 +81,7 @@
                         {% get_current_language as LANGUAGE_CODE %}
                         <form action="{% url 'set_language' %}" method="post">
                             {% csrf_token %}
+
                             <input name="next" type="hidden" value="{{ redirect_to }}">
 
                             {% if LANGUAGE_CODE == 'en' %}
@@ -91,6 +90,7 @@
                                     <span class="icon">
                                         <i class="fas fa-language"></i>
                                     </span>
+
                                     <span>{% trans "German" %}</span>
                                 </button>
                             {% else %}
@@ -99,6 +99,7 @@
                                     <span class="icon">
                                         <i class="fas fa-language"></i>
                                     </span>
+
                                     <span>{% trans "English" %}</span>
                                 </button>
                             {% endif %}
