@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 02:13+0200\n"
+"POT-Creation-Date: 2022-09-11 20:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,35 +15,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\accounts\forms.py:15
-msgid "Password"
-msgstr "Passwort"
-
-#: .\accounts\forms.py:23 .\accounts\forms.py:90
-msgid "New password"
-msgstr "Neues Passwort"
-
-#: .\accounts\forms.py:29 .\accounts\forms.py:96
-msgid "New password confirmation"
-msgstr "Neues Passwort bestätigen"
-
-#: .\accounts\forms.py:37
-msgid "Old password"
-msgstr "Altes Passwort"
-
-#: .\farafmb\settings\base.py:123
+#: .\farafmb\settings\common.py:119 .\templates\layout\navigation.html:94
 msgid "German"
 msgstr "Deutsch"
 
-#: .\farafmb\settings\base.py:124
+#: .\farafmb\settings\common.py:120 .\templates\layout\navigation.html:102
 msgid "English"
 msgstr "Englisch"
 
-#: .\farafmb\templates\400.html:6
+#: .\templates\400.html:6
 msgid "Bad Request"
 msgstr "Fehlerhafte Anfrage"
 
-#: .\farafmb\templates\400.html:7
+#: .\templates\400.html:7
 msgid ""
 "\n"
 "        Your request could not be processed because it is invalid.\n"
@@ -52,11 +36,11 @@ msgstr ""
 "\n"
 "Deine Anfrage konnte nicht verarbeitet werden, da sie ungültig ist."
 
-#: .\farafmb\templates\403.html:6
+#: .\templates\403.html:6
 msgid "Forbidden"
 msgstr "Verboten"
 
-#: .\farafmb\templates\403.html:7
+#: .\templates\403.html:7
 msgid ""
 "\n"
 "        You do not have the appropriate permissions to access the requested "
@@ -69,11 +53,11 @@ msgstr ""
 "zuzugreifen. Bitte wende dich an einen Administrator, falls du die nötigen "
 "Rechte besitzt."
 
-#: .\farafmb\templates\404.html:6
+#: .\templates\404.html:6
 msgid "Not Found"
 msgstr "Nichts vorhanden"
 
-#: .\farafmb\templates\404.html:7
+#: .\templates\404.html:7
 msgid ""
 "\n"
 "        There is no content on this page. If you followed a link, it appears "
@@ -88,11 +72,11 @@ msgstr ""
 "gültig. Solltest du die Adresse direkt in der URL-Zeile eingegeben haben, so "
 "überprüfe bitte ob du dich nicht vertippt hast."
 
-#: .\farafmb\templates\500.html:6
+#: .\templates\500.html:6
 msgid "Internal Server Error"
 msgstr "Interner Server Fehler"
 
-#: .\farafmb\templates\500.html:7
+#: .\templates\500.html:7
 msgid ""
 "\n"
 "        Unfortunately, there was a server error, so your request cannot be "
@@ -103,31 +87,39 @@ msgstr ""
 "Leider kam es zu einem Fehler auf dem Server, wodurch deine Anfrage nicht "
 "weiter verarbeitet werden kann. Versuche es einfach etwas später noch einmal."
 
-#: .\farafmb\templates\components\page-title.html:5
+#: .\templates\base_private.html:5
+msgid "Internal"
+msgstr "Intern"
+
+#: .\templates\base_private.html:12
+msgid "Non-public site"
+msgstr "Nicht-öffentliche Seite"
+
+#: .\templates\components\page-title.html:5
 msgid "Private"
 msgstr "Versteckt"
 
-#: .\farafmb\templates\components\page-title.html:7
+#: .\templates\components\page-title.html:7
 msgid "Preview"
 msgstr "Vorschau"
 
-#: .\farafmb\templates\components\page-title.html:9
+#: .\templates\components\page-title.html:9
 msgid "Public"
 msgstr "Öffentlich"
 
-#: .\farafmb\templates\django\forms\widgets\clearable_file_input.html:14
+#: .\templates\django\forms\widgets\clearable_file_input.html:14
 msgid "Choose a file"
 msgstr "Wähle eine Datei aus"
 
-#: .\farafmb\templates\django\forms\widgets\clearable_file_input.html:19
+#: .\templates\django\forms\widgets\clearable_file_input.html:19
 msgid "No file selected"
 msgstr "Keine Datei ausgewählt"
 
-#: .\farafmb\templates\footer.html:12
+#: .\templates\layout\footer.html:12
 msgid "Student Council of the Faculty of Mechanical Engineering"
 msgstr "Fachschaftsrat Maschinenbau"
 
-#: .\farafmb\templates\footer.html:14
+#: .\templates\layout\footer.html:14
 msgid ""
 "\n"
 "                    We are the student representation of all students at the "
@@ -138,7 +130,7 @@ msgstr ""
 "Wir sind die studentische Vertretung aller Studentinnen und Studenten an der "
 "Fakultät für Maschinenbau."
 
-#: .\farafmb\templates\footer.html:18
+#: .\templates\layout\footer.html:18
 msgid ""
 "\n"
 "                    <span class=\"icon-text\">\n"
@@ -166,143 +158,157 @@ msgstr ""
 "</span>\n"
 "</span>"
 
-#: .\farafmb\templates\footer.html:88
+#: .\templates\layout\footer.html:88
 msgid "Otto von Guericke University"
 msgstr "Otto-von-Guericke-Universität"
 
-#: .\farafmb\templates\footer.html:91
+#: .\templates\layout\footer.html:91
 msgid "Student Council of the University"
 msgstr "Studierendenrat"
 
-#: .\farafmb\templates\footer.html:94
+#: .\templates\layout\footer.html:94
 msgid "Faculty of Mechanical Engineering"
 msgstr "Fakultät für Maschinenbau"
 
-#: .\farafmb\templates\footer.html:103
+#: .\templates\layout\footer.html:103
 msgid "Impress"
 msgstr "Impressum"
 
-#: .\farafmb\templates\footer.html:104
+#: .\templates\layout\footer.html:104
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: .\farafmb\templates\footer.html:106
+#: .\templates\layout\footer.html:106
 msgid "FaRaFMB"
 msgstr "FaRaFMB"
 
-#: .\farafmb\templates\language.html:3
-msgid "Change language"
-msgstr "Sprache ändern"
-
-#: .\farafmb\templates\language.html:27
-msgid "Switch language"
-msgstr "Sprache umstellen"
-
-#: .\farafmb\templates\menu.html:9
+#: .\templates\layout\menu.html:9
 msgid "Show menu"
 msgstr "Menü anzeigen"
 
-#: .\farafmb\templates\menu.html:16
+#: .\templates\layout\menu.html:16
 msgid "Hide menu"
 msgstr "Menü ausblenden"
 
-#: .\farafmb\templates\menu.html:30
+#: .\templates\layout\menu.html:30
 msgid "Administration"
 msgstr "Administration"
 
-#: .\farafmb\templates\menu.html:35
+#: .\templates\layout\menu.html:35
 msgid "Account"
 msgstr "Konto"
 
-#: .\farafmb\templates\menu.html:38
+#: .\templates\layout\menu.html:38
 msgid "Profile"
 msgstr "Profil"
 
-#: .\farafmb\templates\menu.html:42 .\farafmb\templates\navigation.html:33
+#: .\templates\layout\menu.html:39
+#| msgid "New password"
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: .\templates\layout\menu.html:43 .\templates\layout\navigation.html:33
 msgid "Members"
 msgstr "Mitglieder"
 
-#: .\farafmb\templates\menu.html:47
+#: .\templates\layout\menu.html:48
 msgid "Create new"
 msgstr "Neu erstellen"
 
-#: .\farafmb\templates\menu.html:58 .\farafmb\templates\navigation.html:61
+#: .\templates\layout\menu.html:59 .\templates\layout\navigation.html:61
 msgid "Mentoring"
 msgstr "Patenschaft"
 
-#: .\farafmb\templates\menu.html:58
+#: .\templates\layout\menu.html:59
 msgid "New"
 msgstr "Neu"
 
-#: .\farafmb\templates\menu.html:61
+#: .\templates\layout\menu.html:62
 msgid "Registrations"
 msgstr "Registrierungen"
 
-#: .\farafmb\templates\menu.html:62
+#: .\templates\layout\menu.html:63
 msgid "Study programs"
 msgstr "Studiengänge"
 
-#: .\farafmb\templates\menu.html:63
+#: .\templates\layout\menu.html:64
 msgid "Mentors"
 msgstr "Mentoren"
 
-#: .\farafmb\templates\menu.html:67
+#: .\templates\layout\menu.html:68
 msgid "Events"
 msgstr "Veranstaltungen"
 
-#: .\farafmb\templates\menu.html:70
+#: .\templates\layout\menu.html:71
 msgid "Overview"
 msgstr "Übersicht"
 
-#: .\farafmb\templates\navigation.html:24
+#: .\templates\layout\navigation.html:24
 msgid "News"
 msgstr "Neuigkeiten"
 
-#: .\farafmb\templates\navigation.html:28
+#: .\templates\layout\navigation.html:28
 msgid "About us"
 msgstr "Über uns"
 
-#: .\farafmb\templates\navigation.html:32
+#: .\templates\layout\navigation.html:32
 msgid "Student council"
 msgstr "Fachschaftsrat"
 
-#: .\farafmb\templates\navigation.html:39
+#: .\templates\layout\navigation.html:39
 msgid "Service"
 msgstr "Leistung"
 
-#: .\farafmb\templates\navigation.html:43
+#: .\templates\layout\navigation.html:43
 msgid "Excursions"
 msgstr "Exkursionen"
 
-#: .\farafmb\templates\navigation.html:44
+#: .\templates\layout\navigation.html:44
 msgid "Jobs"
 msgstr "Jobs"
 
-#: .\farafmb\templates\navigation.html:45
+#: .\templates\layout\navigation.html:45
 msgid "Memory minutes"
 msgstr "Gedächtnisprotokolle"
 
-#: .\farafmb\templates\navigation.html:49
+#: .\templates\layout\navigation.html:49
 msgid "Documents"
 msgstr "Dokumente"
 
-#: .\farafmb\templates\navigation.html:50
+#: .\templates\layout\navigation.html:50
 msgid "Office Hours"
 msgstr "Sprechzeiten"
 
-#: .\farafmb\templates\navigation.html:51
+#: .\templates\layout\navigation.html:51
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\farafmb\templates\navigation.html:57
+#: .\templates\layout\navigation.html:57
 msgid "Participate"
 msgstr "Mitmachen"
 
-#~ msgid "Login"
-#~ msgstr "Anmelden"
+#: .\templates\layout\navigation.html:72
+msgid "Logout"
+msgstr "Abmelden"
+
+#: .\templates\layout\navigation.html:79
+msgid "Login"
+msgstr "Anmelden"
+
+#~ msgid "Password"
+#~ msgstr "Passwort"
+
+#~ msgid "New password confirmation"
+#~ msgstr "Neues Passwort bestätigen"
+
+#~ msgid "Old password"
+#~ msgstr "Altes Passwort"
+
+#~ msgid "Change language"
+#~ msgstr "Sprache ändern"
+
+#~ msgid "Switch language"
+#~ msgstr "Sprache umstellen"
 
 #~ msgid "User"
 #~ msgstr "Benutzer"
-
-#~ msgid "Logout"
-#~ msgstr "Abmelden"

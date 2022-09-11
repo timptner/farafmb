@@ -43,7 +43,7 @@ urlpatterns += i18n_patterns(
     path('members/', include('members.urls')),
     path('mentoring/', include('mentoring.urls')),
 
-    prefix_default_language=False
+    prefix_default_language=True
 )
 
 if settings.DEBUG is True:
