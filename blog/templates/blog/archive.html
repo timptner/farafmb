@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for obj in object_list %}
+        {% include 'blog/components/post.html' %}
+    {% endfor %}
+
+    {% include 'blog/components/paginator.html' %}
+{% endblock %}

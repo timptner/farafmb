@@ -1,0 +1,15 @@
+{% extends 'blog/base_admin.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="buttons">
+            <button type="submit" class="button is-primary">{% trans "Create" %}</button>
+        </div>
+    </form>
+{% endblock %}

@@ -5435,7 +5435,7 @@ body.has-spaced-navbar-fixed-bottom {
   }
   a.navbar-item.is-active,
 .navbar-link.is-active {
-    color: hsl(0deg, 0%, 4%);
+    color: #009ee3;
   }
   a.navbar-item.is-active:not(:focus):not(:hover),
 .navbar-link.is-active:not(:focus):not(:hover) {

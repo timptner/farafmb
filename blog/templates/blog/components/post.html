@@ -1,0 +1,27 @@
+<div class="box">
+    <p class="title is-4">{{ obj.title }}</p>
+    <p class="subtitle"><small>{{ obj.updated }}</small></p>
+
+    <div class="columns is-centered is-vcentered">
+        {% if obj.image %}
+            <div class="column">
+                <figure class="image">
+                    <img src="{{ obj.image.file.url }}" alt="{{ obj.image.title }}">
+                </figure>
+            </div>
+        {% endif %}
+
+        {% if obj.video %}
+            <div class="column">
+                <video controls>
+                    <source src="{{ obj.video.file.url }}" type="video/mp4">
+                    Dein Browser unterstützt leider nicht das Abspielen von Videos.
+                </video>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {{ obj.render|safe }}
+    </div>
+</div>

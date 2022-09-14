@@ -1,0 +1,14 @@
+{% extends 'base_private.html' %}
+
+{% load i18n %}
+
+{% block container %}
+    <div class="tabs">
+        <ul>
+            <li><a href="{% url 'blog:posts' %}">{% trans "All" %}</a></li>
+            <li><a href="{% url 'blog:create-post' %}">{% trans "Create new" %}</a></li>
+        </ul>
+    </div>
+
+    {% block content %}{% endblock %}
+{% endblock %}

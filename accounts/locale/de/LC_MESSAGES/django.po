@@ -17,7 +17,7 @@ msgstr ""
 
 #: accounts/forms.py:15
 msgid "Password"
-msgstr "Password"
+msgstr "Passwort"
 
 #: accounts/forms.py:23 accounts/forms.py:90
 msgid "New password"

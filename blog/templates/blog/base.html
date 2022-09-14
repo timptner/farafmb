@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block title %}{{ block.super }} | {% trans "Blog" %}{% endblock %}
+
+{% block section %}
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column">{# Content #}
+                    {% block content %}{% endblock %}
+                </div>
+
+                <div class="column is-one-quarter">{# Sidebar #}
+                    <div class="box">
+                        <h4 class="title is-4 mb-2">Sitzungstermine</h4>
+                        <ul>
+                            {% for meeting in meetings %}
+                                <li>{{ meeting.date|date:'d. F Y' }}</li>
+                            {% empty %}
+                                <li>Aktuell sind keine Sitzungen geplant.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
