@@ -7,6 +7,10 @@ from .forms import PostCreateForm
 from .models import Post
 
 
+class PostListView(LoginRequiredMixin, generic.ListView):
+    model = Post
+
+
 class PostCreateView(LoginRequiredMixin, generic.CreateView):
     model = Post
     form_class = PostCreateForm
