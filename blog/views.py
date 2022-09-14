@@ -27,14 +27,14 @@ class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView
         return super().form_valid(form)
 
 
-class PostsView(generic.ListView):
-    template_name = 'blog/posts.html'
+class ArchiveView(generic.ListView):
+    template_name = 'blog/archive.html'
     model = Post
     ordering = ['-created']
     paginate_by = 10
 
 
-class LatestPostsView(generic.ListView):
+class NewsView(generic.ListView):
     template_name = 'blog/news.html'
     queryset = Post.objects.order_by('-created').all()[:5]
 
