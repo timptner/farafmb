@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'meetings',
     'members',
     'mentoring',
+    'merchandise',
 
     'oauth2_provider',
 
