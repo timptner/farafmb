@@ -44,6 +44,7 @@ class Participant(models.Model):
     first_name = models.CharField(_("First name"), max_length=200)
     last_name = models.CharField(_("Last name"), max_length=200)
     email = models.CharField(_("Email"), max_length=200)
+    mobile = models.CharField(_("Mobile number"), max_length=20, null=True)
     comment = models.TextField(_("Comment"), blank=True)
     registered_at = models.DateTimeField(_("Moment of registration"), auto_now_add=True)
     is_approved = models.BooleanField(_("Approval of registration"), default=False)

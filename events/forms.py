@@ -28,7 +28,7 @@ class ParticipantForm(forms.ModelForm):
 
     class Meta:
         model = Participant
-        fields = ('event', 'first_name', 'last_name', 'email', 'comment')
+        fields = ('event', 'first_name', 'last_name', 'email', 'mobile', 'comment')
         help_texts = {
             'email': _("Only email addresses with the domain 'st.ovgu.de' are allowed."),
         }

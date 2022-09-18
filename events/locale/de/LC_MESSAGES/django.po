@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 01:58+0200\n"
+"POT-Creation-Date: 2022-09-18 23:47+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -137,32 +137,36 @@ msgstr "Nachname"
 msgid "Email"
 msgstr "E-Mail-Adresse"
 
-#: .\events\models.py:47 .\events\templates\events\participants.html:67
-#: .\events\views.py:105
+#: .\events\models.py:47 .\events\views.py:105
+msgid "Mobile number"
+msgstr "Mobilnummer"
+
+#: .\events\models.py:48 .\events\templates\events\participants.html:67
+#: .\events\views.py:106
 msgid "Comment"
 msgstr "Bemerkung"
 
-#: .\events\models.py:48 .\events\views.py:106
+#: .\events\models.py:49 .\events\views.py:107
 msgid "Moment of registration"
 msgstr "Zeitpunkt der Anmeldung"
 
-#: .\events\models.py:49 .\events\views.py:107
+#: .\events\models.py:50 .\events\views.py:108
 msgid "Approval of registration"
 msgstr "Genehmigung der Anmeldung"
 
-#: .\events\models.py:52
+#: .\events\models.py:53
 msgid "Participant"
 msgstr "Teilnehmer"
 
-#: .\events\models.py:53
+#: .\events\models.py:54
 msgid "Participants"
 msgstr "Teilnehmer"
 
-#: .\events\models.py:62
+#: .\events\models.py:63
 msgid "Approved participant"
 msgstr "Akzeptierter Teilnehmer"
 
-#: .\events\models.py:62
+#: .\events\models.py:63
 msgid "Rejected participant"
 msgstr "Abgelehnter Teilnehmer"
 
@@ -272,10 +276,10 @@ msgstr ""
 msgid "Registration for event:"
 msgstr "Anmeldung für Veranstaltung:"
 
-#: .\events\views.py:116
+#: .\events\views.py:118
 msgid "Yes"
 msgstr "Ja"
 
-#: .\events\views.py:116
+#: .\events\views.py:118
 msgid "No"
 msgstr "Nein"
