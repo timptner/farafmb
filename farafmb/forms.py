@@ -19,6 +19,10 @@ class TextInput(fields.TextInput):
     template_name = 'forms/widgets/input.html'
 
 
+class NumberInput(fields.NumberInput):
+    template_name = 'forms/widgets/input.html'
+
+
 class Textarea(fields.Textarea):
     template_name = 'forms/widgets/textarea.html'
 
