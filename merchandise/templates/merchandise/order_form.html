@@ -35,10 +35,8 @@
             </div>
         </div>
     </form>
-{% endblock %}
 
-{% block scripts %}
-    <script>
+    <script type="application/javascript">
         (document.querySelectorAll('label.checkbox') || []).forEach((node) => {
             let element = document.createElement('span');
             node.appendChild(element).textContent = node.querySelector('input').dataset.text;
