@@ -14,7 +14,7 @@ from .forms import OrderForm
 from .models import Order, Token
 
 
-class OrderCreate(generic.CreateView):
+class OrderCreateView(generic.CreateView):
     model = Order
     form_class = OrderForm
     template_name = 'merchandise/order_form.html'
@@ -50,7 +50,7 @@ class OrderCreate(generic.CreateView):
         return redirect(self.success_url)
 
 
-class OrderSuccess(generic.TemplateView):
+class OrderSuccessView(generic.TemplateView):
     template_name = 'merchandise/order_success.html'
 
 
