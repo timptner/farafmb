@@ -108,7 +108,7 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"<strong>Verwaltung:<strong> Um Details zu jeder Bestellung anzuzeigen <a "
+"<strong>Verwaltung:</strong> Um Details zu jeder Bestellung anzuzeigen <a "
 "href=\"%(url)s\">klick hier</a>"
 
 #: templates/merchandise/order_form.html:39
