@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 14:15+0200\n"
+"POT-Creation-Date: 2022-09-23 14:31+0200\n"
 "Last-Translator:Aiven Timptner\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: German\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: merchandise/forms.py:12
+#: forms.py:12
 msgid "Shoe sizes"
 msgstr "Schuhgröße"
 
-#: merchandise/forms.py:13
+#: forms.py:13
 msgid ""
 "You can order multiple sizes by separating them with commas. If you specify "
 "a size multiple times, it will be ordered accordingly often."
@@ -28,67 +28,64 @@ msgstr ""
 "Kommata angibst. Wenn du eine Größe mehrfach angibst wird sie entsprechend "
 "oft bestellt."
 
-#: merchandise/forms.py:18
+#: forms.py:18
 msgid "I hereby confirm that my order is binding."
 msgstr "Ich bestätigte hiermit, dass meine Bestellung verbindlich ist."
 
-#: merchandise/forms.py:19
+#: forms.py:19
 msgid "Consent"
 msgstr "Einwilligung"
 
-#: merchandise/forms.py:33
+#: forms.py:33
 msgid "Only numbers are allowed."
 msgstr "Es sind nur Zahlen erlaubt."
 
-#: merchandise/forms.py:36
+#: forms.py:36
 msgid "Minimum shoe size is 30."
 msgstr "Die minimale Schuhgröße ist 30."
 
-#: merchandise/forms.py:39
+#: forms.py:39
 msgid "Maximum shoe size is 49."
 msgstr "Die maximale Schuhgröße ist 49."
 
-#: merchandise/models.py:6
+#: models.py:6
 msgid "First name"
 msgstr "Vorname"
 
-#: merchandise/models.py:7
+#: models.py:7
 msgid "Last name"
 msgstr "Nachname"
 
-#: merchandise/models.py:8
+#: models.py:8
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: merchandise/models.py:9
+#: models.py:9
 msgid "Items"
 msgstr "Artikel"
 
-#: merchandise/models.py:10
-#: merchandise/templates/merchandise/order_list.html:36
+#: models.py:10 templates/merchandise/order_list.html:36
 msgid "Is verified"
 msgstr "Ist bestätigt"
 
-#: merchandise/models.py:11
+#: models.py:11
 msgid "Created at"
 msgstr "Erstellt am"
 
-#: merchandise/models.py:12
+#: models.py:12
 msgid "Updated at"
 msgstr "Aktualisiert am"
 
-#: merchandise/models.py:15
-#: merchandise/templates/merchandise/order_form.html:61
+#: models.py:15 templates/merchandise/order_form.html:61
 msgid "Order"
 msgstr "Bestellung"
 
-#: merchandise/models.py:16
-#: merchandise/templates/merchandise/order_form.html:34
-#: merchandise/templates/merchandise/order_list.html:6
+#: models.py:16 templates/merchandise/order_form.html:34
+#: templates/merchandise/order_list.html:6
 msgid "Orders"
 msgstr "Bestellungen"
 
-#: merchandise/templates/merchandise/order_confirm_delete.html:8
+#: templates/merchandise/order_confirm_delete.html:8
 #, python-format
 msgid ""
 "\n"
@@ -98,11 +95,11 @@ msgstr ""
 "\n"
 "Bist du dir sicher, dass \"%(object)s\" gelöscht werden soll?"
 
-#: merchandise/templates/merchandise/order_confirm_delete.html:21
+#: templates/merchandise/order_confirm_delete.html:21
 msgid "Confirm"
 msgstr "Bestätigen"
 
-#: merchandise/templates/merchandise/order_form.html:9
+#: templates/merchandise/order_form.html:9
 #, python-format
 msgid ""
 "\n"
@@ -111,17 +108,18 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"<strong>Verwaltung:<strong> Um Details zu jeder Bestellung anzuzeigen <a href=\"%(url)s\">klick hier</a>"
+"<strong>Verwaltung:<strong> Um Details zu jeder Bestellung anzuzeigen <a "
+"href=\"%(url)s\">klick hier</a>"
 
-#: merchandise/templates/merchandise/order_form.html:39
+#: templates/merchandise/order_form.html:39
 msgid "Registration"
 msgstr "Registrierung"
 
-#: merchandise/templates/merchandise/order_form.html:42
+#: templates/merchandise/order_form.html:42
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: merchandise/templates/merchandise/order_form.html:44
+#: templates/merchandise/order_form.html:44
 msgid ""
 "\n"
 "                We use your name to identify you. Your email address is used "
@@ -136,42 +134,48 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"Wir verwenden deinen Namen um dich zu identifizieren. Deine E-Mail-Adresse wird zur Verifizierung deiner Bestellung und zum Versenden von Informationen zu deiner Bestellung verwendet. Deine Daten werden vertraulich behandelt und nicht an Dritte weiter gegeben. Nachdem du deine Artikel erhalten hast werden wir deine Daten unwiderruflich von unseren Servern löschen. Durch das Abschicken des Formulars stimmst du unserer Datenschutzbestimmung zu und bist mit der Verarbeitung deiner personenbezogenen Daten einverstanden."
+"Wir verwenden deinen Namen um dich zu identifizieren. Deine E-Mail-Adresse "
+"wird zur Verifizierung deiner Bestellung und zum Versenden von Informationen "
+"zu deiner Bestellung verwendet. Deine Daten werden vertraulich behandelt und "
+"nicht an Dritte weiter gegeben. Nachdem du deine Artikel erhalten hast "
+"werden wir deine Daten unwiderruflich von unseren Servern löschen. Durch das "
+"Abschicken des Formulars stimmst du unserer Datenschutzbestimmung zu und "
+"bist mit der Verarbeitung deiner personenbezogenen Daten einverstanden."
 
-#: merchandise/templates/merchandise/order_list.html:12
+#: templates/merchandise/order_list.html:12
 msgid "Size"
 msgstr "Größe"
 
-#: merchandise/templates/merchandise/order_list.html:13
+#: templates/merchandise/order_list.html:13
 msgid "Amount (total)"
 msgstr "Menge (Gesamt)"
 
-#: merchandise/templates/merchandise/order_list.html:14
+#: templates/merchandise/order_list.html:14
 msgid "Amount (verified)"
 msgstr "Menge (Verifiziert)"
 
-#: merchandise/templates/merchandise/order_list.html:33
+#: templates/merchandise/order_list.html:33
 msgid "Full name"
 msgstr "Vollständiger Name"
 
-#: merchandise/templates/merchandise/order_list.html:34
-#: merchandise/templates/merchandise/order_verification_mail.txt:5
+#: templates/merchandise/order_list.html:34
+#: templates/merchandise/order_verification_mail.txt:5
 msgid "Amount"
 msgstr "Menge"
 
-#: merchandise/templates/merchandise/order_list.html:35
+#: templates/merchandise/order_list.html:35
 msgid "Ordered at"
 msgstr "Bestellt am"
 
-#: merchandise/templates/merchandise/order_list.html:47
+#: templates/merchandise/order_list.html:47
 msgid "Delete"
 msgstr "Löschen"
 
-#: merchandise/templates/merchandise/order_success.html:8
+#: templates/merchandise/order_success.html:8
 msgid "Your order was successful"
 msgstr "Deine Bestellung war erfolgreich"
 
-#: merchandise/templates/merchandise/order_success.html:11
+#: templates/merchandise/order_success.html:11
 msgid ""
 "\n"
 "                We have sent you an email to verify your order. Please "
@@ -180,9 +184,10 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"Wir haben dir eine E-Mail zur Verifizierung deiner Bestellung geschickt. Bitte klicke den Link in der E-Mail an um deine Bestellung abzuschließen."
+"Wir haben dir eine E-Mail zur Verifizierung deiner Bestellung geschickt. "
+"Bitte klicke den Link in der E-Mail an um deine Bestellung abzuschließen."
 
-#: merchandise/templates/merchandise/order_verification_mail.txt:1
+#: templates/merchandise/order_verification_mail.txt:1
 #, python-format
 msgid ""
 "Hello %(name)s,\n"
@@ -193,11 +198,11 @@ msgstr ""
 "\n"
 "du hast die folgenden Produkte bestellt:"
 
-#: merchandise/templates/merchandise/order_verification_mail.txt:5
+#: templates/merchandise/order_verification_mail.txt:5
 msgid "Show size"
 msgstr "Schuhgröße"
 
-#: merchandise/templates/merchandise/order_verification_mail.txt:7
+#: templates/merchandise/order_verification_mail.txt:7
 #, python-format
 msgid ""
 "To complete your order, please click the following link.\n"
@@ -209,41 +214,48 @@ msgid ""
 "Best regards,\n"
 "FaRaFMB"
 msgstr ""
-"Um deine Bestellung abzuschließen klicke bitte den folgenden Link an."
+"Um deine Bestellung abzuschließen klicke bitte den folgenden Link an.\n"
 "\n"
 "%(magic_link)s\n"
 "\n"
+"Der Link ist bis %(expired_at)s gültig.\n"
 "Beste Grüße,\n"
 "FaRaFMB"
 
-#: merchandise/templates/merchandise/verification_feedback.html:9
+#: templates/merchandise/verification_feedback.html:9
 msgid "Verification was successful"
 msgstr "Verifizierung war erfolgreich"
 
-#: merchandise/templates/merchandise/verification_feedback.html:11
+#: templates/merchandise/verification_feedback.html:11
 msgid "Verification failed"
 msgstr "Verifizierung ist fehlgeschlagen"
 
-#: merchandise/views.py:52
+#: views.py:52
 msgid "Verify your order"
 msgstr "Verifiziere deine Bestellung"
 
-#: merchandise/views.py:76
+#: views.py:76
 msgid ""
 "The link was malformed. Please make sure that you do not alter the link."
 msgstr ""
-"Der Link wurde deformiert. Bitte stelle sicher, dass du den Link nicht veränderst."
+"Der Link wurde deformiert. Bitte stelle sicher, dass du den Link nicht "
+"veränderst."
 
-#: merchandise/views.py:84
+#: views.py:84
 msgid ""
 "The token was malformed. Please make sure that you do not alter the token."
 msgstr ""
-"Der Schlüssel wurde deformiert. Bitte stelle sicher, dass du den Token nicht veränderst."
+"Der Schlüssel wurde deformiert. Bitte stelle sicher, dass du den Token nicht "
+"veränderst."
 
-#: merchandise/views.py:91
+#: views.py:91
 msgid "The token is expired. Please request a new one by contacting us."
-msgstr "Der Token ist abgelaufen. Bitte beantrage einen Neuen indem du uns kontaktierst."
+msgstr ""
+"Der Token ist abgelaufen. Bitte beantrage einen Neuen indem du uns "
+"kontaktierst."
 
-#: merchandise/views.py:102
+#: views.py:102
 msgid "Your order is completed. We will contact you when we ship your items."
-msgstr "Deine Bestellung ist abgeschlossen. Wir werden dich kontaktieren sobald wir deine Artikel verschicken."
+msgstr ""
+"Deine Bestellung ist abgeschlossen. Wir werden dich kontaktieren sobald wir "
+"deine Artikel verschicken."
