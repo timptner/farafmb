@@ -23,3 +23,8 @@ class Order(models.Model):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
+
+class Token(models.Model):
+    key = models.SlugField(max_length=50, unique=True)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    expired_at = models.DateTimeField()
