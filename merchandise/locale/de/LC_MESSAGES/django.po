@@ -219,6 +219,7 @@ msgstr ""
 "%(magic_link)s\n"
 "\n"
 "Der Link ist bis %(expired_at)s gültig.\n"
+"\n"
 "Beste Grüße,\n"
 "FaRaFMB"
 
