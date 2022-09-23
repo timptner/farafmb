@@ -23,6 +23,9 @@ class Order(models.Model):
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
+    def items_total(self):
+        return sum([amount for item, amount in self.items.items()])
+
 
 class Token(models.Model):
     key = models.SlugField(max_length=50, unique=True)

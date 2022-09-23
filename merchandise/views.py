@@ -1,6 +1,7 @@
 import secrets
 
 from datetime import timedelta
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.template.loader import get_template
@@ -88,3 +89,23 @@ def verify_order(request):
         'is_valid': True,
         'message': _("Your order is completed. We will contact you when we ship your items."),
     })
+
+
+class OrderListView(LoginRequiredMixin, generic.ListView):
+    model = Order
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        orders = Order.objects.values_list('items', 'is_verified')
+        total = {}
+        for items, is_verified in orders:
+            for item, amount in items.items():
+                if item not in total.keys():
+                    total[item] = [0, 0]
+
+                total[item][0] += amount
+                if is_verified:
+                    total[item][1] += amount
+
+        context['items_total'] = dict(sorted(total.items()))
+        return context

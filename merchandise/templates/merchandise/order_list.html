@@ -1,0 +1,51 @@
+{% extends 'merchandise/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1 class="title is-1">{% trans "Orders" %}</h1>
+
+    <div class="table-container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{% trans "Size" %}</th>
+                <th>{% trans "Amount (total)" %}</th>
+                <th>{% trans "Amount (verified)" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item, amounts in items_total.items %}
+                <tr>
+                    <td>{{ item }}</td>
+                    <td>{{ amounts.0 }}</td>
+                    <td>{{ amounts.1 }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-container">
+        <table class="table is-fullwidth">
+            <thead>
+            <tr>
+                <th>{% trans "Full name" %}</th>
+                <th>{% trans "Amount" %}</th>
+                <th>{% trans "Ordered at" %}</th>
+                <th>{% trans "Is verified" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in object_list %}
+                <tr>
+                    <td>{{ order.full_name }}</td>
+                    <td>{{ order.items_total }}</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>{{ order.is_verified|yesno }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
