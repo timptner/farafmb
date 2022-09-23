@@ -22,6 +22,10 @@
         <p>Wir freuen uns auf viele Rhinoletten, die sich bald in Eurem Besitz befinden! </p>
     </div>
 
+    <h5 class="title is-5">{% trans "Orders" %} ({{ stats.percentage }} %)</h5>
+
+    <progress class="progress is-large" value="{{ stats.value }}" max="{{ stats.max }}">{{ stats.percentage }} %</progress>
+
     <h5 class="title is-5">{% trans "Registration" %}</h5>
 
     <article class="message is-info">

@@ -20,6 +20,18 @@ class OrderCreateView(generic.CreateView):
     template_name = 'merchandise/order_form.html'
     success_url = reverse_lazy('merchandise:order-done')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        orders = Order.objects.filter(is_verified=True).values_list('items', flat=True)
+        total = sum([sum(order.values()) for order in orders])
+        goal = 30
+        context['stats'] = {
+            'value': total if total <= goal else goal,
+            'max': goal,
+            'percentage': round(total / goal * 100),
+        }
+        return context
+
     def form_valid(self, form):
         # save object with json type
         sizes = form.cleaned_data['sizes']
