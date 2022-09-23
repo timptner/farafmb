@@ -1,0 +1,14 @@
+{% load i18n %}{% blocktrans %}Hello {{ name }},
+
+you have ordered the following products:{% endblocktrans %}
+
+{% for item, amount in items %}    - {% trans "Show size" %} {{ item }} ({% trans "Amount" %}: {{ amount }})
+{% endfor %}
+{% blocktrans %}To complete your order, please click the following link.
+
+{{ magic_link }}
+
+The link is valid until {{ expired_at }}.
+
+Best regards,
+FaRaFMB{% endblocktrans %}

@@ -1,0 +1,17 @@
+{% extends 'merchandise/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <article class="message is-success">
+        <div class="message-header">
+            {% trans "Your order was successful" %}
+        </div>
+        <div class="message-body">
+            {% blocktrans %}
+                We have sent you an email to verify your order. Please click
+                the link in this email to complete your order.
+            {% endblocktrans %}
+        </div>
+    </article>
+{% endblock %}

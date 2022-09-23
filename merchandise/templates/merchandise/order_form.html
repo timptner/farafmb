@@ -1,0 +1,72 @@
+{% extends 'merchandise/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="notification is-danger is-light">
+            {% url 'merchandise:order-list' as admin_url %}
+            {% blocktrans with url=admin_url %}
+                <strong>Administration:</strong> To show details about each order <a href="{{ url }}">click here</a>
+            {% endblocktrans %}
+        </div>
+    {% endif %}
+
+    <div class="content">
+        <h3>✨ Rhinoletten ✨</h3>
+        <p>
+            Die Badelatschen mit dem FaRa FMB Logo eignen sich perfekt für den täglichen Gebrauch in der Wohnung,
+            unterwegs auf Reisen oder auch einfach auf dem Weg zur Uni - das schlichte Design macht es möglich.
+        </p>
+
+        <p>
+            Für eine Bestellung tragt Ihr Eure Daten direkt hier in das Formular ein.
+            Der Preis pro Paar wird maximal 30 € betragen, reduziert sich jedoch, je mehr Bestellungen eingehen. Es wird
+            frühestens eine Sammelbestellung aufgegeben, wenn wir eine Mindestanzahl von 30 Bestellungen erreicht
+            haben.
+        </p>
+
+        <p>Wenn Ihr Fragen habt, schreibt uns über Social Media, per E-Mail oder kommt im Büro vorbei.</p>
+
+        <p>Wir freuen uns auf viele Rhinoletten, die sich bald in Eurem Besitz befinden! </p>
+    </div>
+
+    <h5 class="title is-5">{% trans "Orders" %} ({{ stats.percentage }} %)</h5>
+
+    <progress class="progress is-large" value="{{ stats.value }}" max="{{ stats.max }}">{{ stats.percentage }} %
+    </progress>
+
+    <h5 class="title is-5">{% trans "Registration" %}</h5>
+
+    <article class="message is-info">
+        <div class="message-header">{% trans "Privacy" %}</div>
+        <div class="message-body">
+            {% blocktrans %}
+                We use your name to identify you. Your email address is used to verify your order and send you
+                information about shipping. Your data will be treated confidentially and not be passed on to third
+                parties! After you received your items we will delete your personal data irrevocably from our servers.
+                By submitting this form you accept our privacy statement and agree to the processing of your personal
+                data.
+            {% endblocktrans %}
+        </div>
+    </article>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">{% trans "Order" %}</button>
+            </div>
+        </div>
+    </form>
+
+    <script type="application/javascript">
+        (document.querySelectorAll('label.checkbox') || []).forEach((node) => {
+            let element = document.createElement('span');
+            node.appendChild(element).textContent = node.querySelector('input').dataset.text;
+        });
+    </script>
+{% endblock %}
