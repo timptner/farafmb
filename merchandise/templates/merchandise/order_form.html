@@ -5,7 +5,7 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div class="notification is-danger is-light">
-            {% url 'merchandise:orders' as admin_url %}
+            {% url 'merchandise:order-list' as admin_url %}
             {% blocktrans with url=admin_url %}
                 <strong>Administration:</strong> To show details about each order <a href="{{ url }}">click here</a>
             {% endblocktrans %}

@@ -47,7 +47,7 @@ class OrderCreateView(generic.CreateView):
 
         # send email
         template = get_template('merchandise/order_verification_mail.txt')
-        magic_link = self.request.build_absolute_uri(reverse('merchandise:verify-order') + f'?token={token.key}')
+        magic_link = self.request.build_absolute_uri(reverse('merchandise:order-verify') + f'?token={token.key}')
         send_mail(
             subject=_("Verify your order"),
             message=template.render({
