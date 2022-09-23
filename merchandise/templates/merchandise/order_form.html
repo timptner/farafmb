@@ -12,6 +12,14 @@
         </div>
     {% endif %}
 
+    {% if form.errors %}
+        <div class="notification is-danger is-light">
+            {% blocktrans %}
+                Your submitted data contains some validation errors. Please correct them.
+            {% endblocktrans %}
+        </div>
+    {% endif %}
+
     <div class="content">
         <h3>✨ Rhinoletten ✨</h3>
         <p>

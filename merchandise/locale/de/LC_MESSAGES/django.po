@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 14:31+0200\n"
+"POT-Creation-Date: 2022-09-23 15:00+0200\n"
 "Last-Translator:Aiven Timptner\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: German\n"
@@ -76,11 +76,11 @@ msgstr "Erstellt am"
 msgid "Updated at"
 msgstr "Aktualisiert am"
 
-#: models.py:15 templates/merchandise/order_form.html:61
+#: models.py:15 templates/merchandise/order_form.html:69
 msgid "Order"
 msgstr "Bestellung"
 
-#: models.py:16 templates/merchandise/order_form.html:34
+#: models.py:16 templates/merchandise/order_form.html:42
 #: templates/merchandise/order_list.html:6
 msgid "Orders"
 msgstr "Bestellungen"
@@ -111,15 +111,25 @@ msgstr ""
 "<strong>Verwaltung:</strong> Um Details zu jeder Bestellung anzuzeigen <a "
 "href=\"%(url)s\">klick hier</a>"
 
-#: templates/merchandise/order_form.html:39
+#: templates/merchandise/order_form.html:17
+msgid ""
+"\n"
+"                Your submitted data contains some validation errors. Please "
+"correct them.\n"
+"            "
+msgstr ""
+"\n"
+"Deine abgeschickten Daten enthalten einige Validierungsfehler. Bitte korrigiere sie."
+
+#: templates/merchandise/order_form.html:47
 msgid "Registration"
 msgstr "Registrierung"
 
-#: templates/merchandise/order_form.html:42
+#: templates/merchandise/order_form.html:50
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: templates/merchandise/order_form.html:44
+#: templates/merchandise/order_form.html:52
 msgid ""
 "\n"
 "                We use your name to identify you. Your email address is used "

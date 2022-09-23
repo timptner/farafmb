@@ -19,10 +19,16 @@
         </div>
 
         {% if field.help_text %}
-            {{ field.help_text|safe }}
+            <div class="help">
+                {{ field.help_text|safe }}
+            </div>
         {% endif %}
 
-        {{ errors }}
+        {% for error in field.errors %}
+            <div class="help is-danger">
+                {{ error|escape }}
+            </div>
+        {% endfor %}
     </div>
 {% endfor %}
 
