@@ -121,3 +121,8 @@ class OrderListView(LoginRequiredMixin, generic.ListView):
 
         context['items_total'] = dict(sorted(total.items()))
         return context
+
+
+class OrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Order
+    success_url = reverse_lazy('merchandise:order-list')

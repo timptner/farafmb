@@ -34,6 +34,7 @@
                 <th>{% trans "Amount" %}</th>
                 <th>{% trans "Ordered at" %}</th>
                 <th>{% trans "Is verified" %}</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                     <td>{{ order.items_total }}</td>
                     <td>{{ order.created_at }}</td>
                     <td>{{ order.is_verified|yesno }}</td>
+                <td><a href="{% url 'merchandise:order-delete' order.pk %}">{% trans "Delete" %}</a></td>
                 </tr>
             {% endfor %}
             </tbody>

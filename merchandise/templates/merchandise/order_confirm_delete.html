@@ -1,0 +1,25 @@
+{% extends 'merchandise/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <div class="content">
+        <p>
+            {% blocktrans %}
+                Are you sure you want to delete "{{ object }}"?
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-danger">{% trans "Confirm" %}</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
