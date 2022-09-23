@@ -33,7 +33,7 @@ class OrderForm(forms.ModelForm):
             raise ValidationError(_("Only numbers are allowed."), code='invalid')
 
         if min(data) < 30:
-            raise ValidationError(_("Minimum show size is 30."))
+            raise ValidationError(_("Minimum shoe size is 30."))
 
         if max(data) >= 50:
             raise ValidationError(_("Maximum shoe size is 49."))
