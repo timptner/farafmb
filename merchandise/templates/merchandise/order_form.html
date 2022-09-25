@@ -1,6 +1,6 @@
 {% extends 'merchandise/base.html' %}
 
-{% load i18n %}
+{% load i18n static %}
 
 {% block content %}
     {% if user.is_authenticated %}
@@ -43,6 +43,18 @@
                 We look forward to having many Rhinoletten in your possession soon!
             </p>
         {% endblocktrans %}
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            {% static 'img/rhinoletten.png' as shoe_img_url %}
+            {% include 'components/image_viewer.html' with id='image-shoes' url=shoe_img_url alt='Rhinoletten' ratio='is-square' %}
+        </div>
+
+        <div class="column">
+            {% static 'img/rhinoletten_sizes.png' as sizes_img_url %}
+            {% include 'components/image_viewer.html' with id='image-sizes' url=sizes_img_url alt='Sizes' ratio='is-square' %}
+        </div>
     </div>
 
     <h5 class="title is-5">{% trans "Orders" %} ({{ stats.percentage }} %)</h5>
