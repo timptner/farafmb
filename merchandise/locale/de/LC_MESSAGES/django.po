@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 15:00+0200\n"
+"POT-Creation-Date: 2022-09-25 20:08+0200\n"
 "Last-Translator:Aiven Timptner\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: German\n"
@@ -76,11 +76,11 @@ msgstr "Erstellt am"
 msgid "Updated at"
 msgstr "Aktualisiert am"
 
-#: models.py:15 templates/merchandise/order_form.html:69
+#: models.py:15 templates/merchandise/order_form.html:75
 msgid "Order"
 msgstr "Bestellung"
 
-#: models.py:16 templates/merchandise/order_form.html:42
+#: models.py:16 templates/merchandise/order_form.html:48
 #: templates/merchandise/order_list.html:6
 msgid "Orders"
 msgstr "Bestellungen"
@@ -119,17 +119,60 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"Deine abgeschickten Daten enthalten einige Validierungsfehler. Bitte korrigiere sie."
+"Deine abgeschickten Daten enthalten einige Validierungsfehler. Bitte "
+"korrigiere sie."
 
-#: templates/merchandise/order_form.html:47
+#: templates/merchandise/order_form.html:24
+msgid ""
+"\n"
+"            <h3>✨ Rhinoletten ✨</h3>\n"
+"\n"
+"            <p>\n"
+"                The bath slippers with the FaRaFMB logo are perfect for "
+"daily use in the apartment, on the road when\n"
+"                traveling or simply on the way to university - the simple "
+"design makes it possible.\n"
+"            </p>\n"
+"\n"
+"            <p>\n"
+"                To place an order, enter your details directly into the form "
+"here. The price per pair will be a maximum\n"
+"                of 30 €, but will be reduced the more orders we receive. A "
+"collective order will be placed at the\n"
+"                earliest when we have reached a minimum of 30 orders.\n"
+"            </p>\n"
+"\n"
+"            <p>\n"
+"                If you have any questions, write us on social media, by "
+"email or stop by the office.\n"
+"            </p>\n"
+"\n"
+"            <p>\n"
+"                We look forward to having many Rhinoletten in your "
+"possession soon!\n"
+"            </p>\n"
+"        "
+msgstr ""
+"\n"
+"<h3>✨ Rhinoletten ✨</h3>\n"
+"\n"
+"<p>Die Badelatschen mit dem FaRa FMB Logo eignen sich perfekt für den täglichen Gebrauch in der Wohnung, unterwegs auf Reisen oder auch einfach auf dem Weg zur Uni - das schlichte Design macht es möglich.</p>"
+"\n"
+"<p>Für eine Bestellung tragt Ihr Eure Daten direkt hier in das Formular ein. Der Preis pro Paar wird maximal 30 € betragen, reduziert sich jedoch, je mehr Bestellungen eingehen. Es wird frühestens eine Sammelbestellung aufgegeben, wenn wir eine Mindestanzahl von 30 Bestellungen erreicht haben.</p>"
+"\n"
+"<p>Wenn Ihr Fragen habt, schreibt uns über Social Media, per E-Mail oder kommt im Büro vorbei.</p>"
+"\n"
+"<p>Wir freuen uns auf viele Rhinoletten, die sich bald in Eurem Besitz befinden!</p>"
+
+#: templates/merchandise/order_form.html:53
 msgid "Registration"
 msgstr "Registrierung"
 
-#: templates/merchandise/order_form.html:50
+#: templates/merchandise/order_form.html:56
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: templates/merchandise/order_form.html:52
+#: templates/merchandise/order_form.html:58
 msgid ""
 "\n"
 "                We use your name to identify you. Your email address is used "
