@@ -44,7 +44,13 @@
                     <td>{{ order.items_total }}</td>
                     <td>{{ order.created_at }}</td>
                     <td>{{ order.is_verified|yesno }}</td>
-                <td><a href="{% url 'merchandise:order-delete' order.pk %}">{% trans "Delete" %}</a></td>
+                    <td>
+                        <a href="{% url 'merchandise:order-delete' order.pk %}">
+                            <span class="icon has-text-danger">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
