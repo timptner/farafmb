@@ -1,7 +1,7 @@
 import secrets
 
 from datetime import timedelta
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.template.loader import get_template
@@ -103,8 +103,9 @@ def verify_order(request):
     })
 
 
-class OrderListView(LoginRequiredMixin, generic.ListView):
+class OrderListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListView):
     model = Order
+    permission_required = 'merchandise.view_order'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
@@ -123,6 +124,7 @@ class OrderListView(LoginRequiredMixin, generic.ListView):
         return context
 
 
-class OrderDeleteView(LoginRequiredMixin, generic.DeleteView):
+class OrderDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
     model = Order
+    permission_required = 'merchandise.delete_order'
     success_url = reverse_lazy('merchandise:order-list')
