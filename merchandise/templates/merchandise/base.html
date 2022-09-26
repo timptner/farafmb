@@ -1,1 +1,31 @@
 {% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block section %}
+    <section class="section">
+        <div class="container is-max-desktop">
+            {% if user.is_authenticated %}
+                <div class="tabs">
+                    <ul>
+                        <li><a href="{% url 'merchandise:order-create' %}">{% trans "Form" %}</a></li>
+
+                        <li>
+                            <a href="{% url 'merchandise:order-list' %}">
+                                <span class="icon-text">
+                                    <span class="icon has-text-grey-light">
+                                        <i class="fas fa-lock fa-sm"></i>
+                                    </span>
+
+                                    <span>{% trans "Orders" %}</span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+{% endblock %}

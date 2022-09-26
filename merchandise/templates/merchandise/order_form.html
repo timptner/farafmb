@@ -3,15 +3,6 @@
 {% load i18n static %}
 
 {% block content %}
-    {% if user.is_authenticated %}
-        <div class="notification is-danger is-light">
-            {% url 'merchandise:order-list' as admin_url %}
-            {% blocktrans with url=admin_url %}
-                <strong>Administration:</strong> To show details about each order <a href="{{ url }}">click here</a>
-            {% endblocktrans %}
-        </div>
-    {% endif %}
-
     {% if form.errors %}
         <div class="notification is-danger is-light">
             {% blocktrans %}
@@ -22,7 +13,7 @@
 
     <div class="content">
         {% blocktrans %}
-            <h3>✨ Rhinoletten ✨</h3>
+            <h1>✨ Rhinoletten ✨</h1>
 
             <p>
                 The bath slippers with the FaRaFMB logo are perfect for daily use in the apartment, on the road when
