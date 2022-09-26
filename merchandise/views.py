@@ -42,7 +42,7 @@ class OrderCreateView(generic.CreateView):
         token = Token.objects.create(
             key=secrets.token_urlsafe(16),
             order=order,
-            expired_at=timezone.now() + timedelta(seconds=10 * 60),
+            expired_at=timezone.now() + timedelta(seconds=60 * 60),
         )
 
         # send email
