@@ -32,6 +32,16 @@
     </div>
 
     <div class="buttons">
+        <a class="button is-primary" href="{% url 'merchandise:order-update' order.pk %}">
+            <span class="icon-text">
+                <span class="icon">
+                    <i class="fas fa-wrench"></i>
+                </span>
+
+                <span>{% trans "Update" %}</span>
+            </span>
+        </a>
+
         <a class="button is-danger" href="{% url 'merchandise:order-delete' order.pk %}">
             <span class="icon-text">
                 <span class="icon">

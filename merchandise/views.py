@@ -2,6 +2,7 @@ import secrets
 
 from datetime import timedelta
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.template.loader import get_template
@@ -127,6 +128,17 @@ class OrderListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListVie
 class OrderDetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.DetailView):
     permission_required = 'merchandise.view_order'
     model = Order
+
+
+class OrderUpdateView(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, generic.UpdateView):
+    permission_required = 'merchandise.change_order'
+    template_name = 'merchandise/order_edit.html'
+    model = Order
+    fields = ['first_name', 'last_name', 'email', 'is_verified']
+    success_message = _("Order was updated successfully")
+
+    def get_success_url(self):
+        return reverse_lazy('merchandise:order-view', kwargs=self.kwargs)
 
 
 class OrderDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
