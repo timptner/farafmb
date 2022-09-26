@@ -125,11 +125,11 @@ class OrderListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListVie
 
 
 class OrderDetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.DetailView):
-    model = Order
     permission_required = 'merchandise.view_order'
+    model = Order
 
 
 class OrderDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
-    model = Order
     permission_required = 'merchandise.delete_order'
+    model = Order
     success_url = reverse_lazy('merchandise:order-list')
