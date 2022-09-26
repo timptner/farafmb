@@ -124,6 +124,11 @@ class OrderListView(LoginRequiredMixin, PermissionRequiredMixin, generic.ListVie
         return context
 
 
+class OrderDetailView(LoginRequiredMixin, PermissionRequiredMixin, generic.DetailView):
+    model = Order
+    permission_required = 'merchandise.view_order'
+
+
 class OrderDeleteView(LoginRequiredMixin, PermissionRequiredMixin, generic.DeleteView):
     model = Order
     permission_required = 'merchandise.delete_order'
