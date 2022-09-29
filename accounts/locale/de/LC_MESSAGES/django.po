@@ -136,6 +136,11 @@ msgstr "Bitte öffne die folgende Seite um ein neues Passwort festzulegen."
 msgid "Your username, if you forgotten"
 msgstr "Dein Benutzername, falls du ihn vergessen hast"
 
-#: accounts/views.py:42
+#: .\accounts\templates\accounts\password_reset_mail_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr "Passwort zurücksetzen auf %(site_name)s"
+
+#: .\accounts\views.py:43
 msgid "Your password has been changed successfully."
 msgstr "Dein Passwort wurde erfolgreich geändert."
