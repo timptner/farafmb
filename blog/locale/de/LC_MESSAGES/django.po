@@ -1,0 +1,63 @@
+# German translation of https://www.farafmb.de/blog/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-29 22:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Aiven Timptner\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\blog\forms.py:17
+msgid "You can use Markdown to format the text."
+msgstr "Du kannst Markdown zum Formatieren des Textes verwenden."
+
+#: .\blog\templates\blog\base.html:5
+msgid "Blog"
+msgstr "Blog"
+
+#: .\blog\templates\blog\base_admin.html:8
+msgid "All"
+msgstr "Alle"
+
+#: .\blog\templates\blog\base_admin.html:9
+msgid "Create new"
+msgstr "Neu erstellen"
+
+#: .\blog\templates\blog\components\paginator.html:4
+#: .\blog\templates\blog\components\paginator.html:8
+msgid "Previous"
+msgstr "Vorherige"
+
+#: .\blog\templates\blog\components\paginator.html:14
+#: .\blog\templates\blog\components\paginator.html:18
+msgid "Next"
+msgstr "Nächste"
+
+#: .\blog\templates\blog\news.html:11
+msgid "Show more"
+msgstr "Mehr anzeigen"
+
+#: .\blog\templates\blog\post_form.html:12
+msgid "Create"
+msgstr "Erstellen"
+
+#: .\blog\templates\blog\post_list.html:11
+msgid "Title"
+msgstr "Titel"
+
+#: .\blog\templates\blog\post_list.html:12
+msgid "Created"
+msgstr "Erstellt"
+
+#: .\blog\views.py:20
+#, python-format
+msgid "%(title)s was created successfully"
+msgstr "%(title)s wurde erfolgreich erstellt"
