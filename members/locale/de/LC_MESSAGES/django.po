@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 22:08+0200\n"
+"POT-Creation-Date: 2022-09-29 22:45+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -16,10 +16,11 @@ msgstr ""
 
 #: .\members\forms.py:27
 msgid ""
-"Preferably, use the first name as the user name. If this is already taken, "
-"add a few letters from the beginning of the last name to the end."
+"Preferably use the same username that the person has received at Otto von "
+"Guericke University."
 msgstr ""
-"Verwende vorzugsweise den Vornamen als Benutzernamen. Wenn dieser bereits vergeben ist, füge ein paar Buchstaben vom Anfang des Nachnamens zum Ende hinzu."
+"Verwende vorzugsweise den selben Benutzernamen, welcher die Person auch "
+"an der Otto-von-Guericke-Universität erhalten hat."
 
 #: .\members\forms.py:41
 msgid "Only domains of Otto von Guericke University are allowed."
@@ -139,7 +140,8 @@ msgid ""
 "                    "
 msgstr ""
 "\n"
-"Nach Absenden des Formulars wird der neue Benutzer eine E-Mail erhalten mit einem Link. Der Benutzer kann mittels diesem Link sein Passwort festlegen."
+"Nach Absenden des Formulars wird der neue Benutzer eine E-Mail erhalten mit "
+"einem Link. Der Benutzer kann mittels diesem Link sein Passwort festlegen."
 
 #: .\members\templates\members\user_form.html:37
 msgid "Username"
@@ -156,7 +158,8 @@ msgstr "Erstellt am"
 #: .\members\views.py:25
 #, python-format
 msgid "New user \"%(first_name)s %(last_name)s\" was created successfully"
-msgstr "Neuer Benutzer \"%(first_name)s %(last_name)s\" wurde erfolgreich erstellt"
+msgstr ""
+"Neuer Benutzer \"%(first_name)s %(last_name)s\" wurde erfolgreich erstellt"
 
 #: .\members\views.py:48
 msgid "You successfully created your profile"

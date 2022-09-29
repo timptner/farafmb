@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-29 22:08+0200\n"
+"POT-Creation-Date: 2022-09-29 22:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -107,9 +107,14 @@ msgstr "Vorschau"
 msgid "Public"
 msgstr "Öffentlich"
 
+#: .\templates\django\forms\widgets\clearable_file_input.html:14
 #: .\templates\forms\widgets\file.html:9
 msgid "Choose a file"
 msgstr "Wähle eine Datei aus"
+
+#: .\templates\django\forms\widgets\clearable_file_input.html:19
+msgid "No file selected"
+msgstr "Keine Datei ausgewählt"
 
 #: .\templates\layout\footer.html:12
 msgid "Student Council of the Faculty of Mechanical Engineering"

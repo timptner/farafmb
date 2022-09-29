@@ -24,8 +24,8 @@ class UserForm(forms.ModelForm):
             'username': forms.TextInput(),
         }
         help_texts = {
-            'username': _("Preferably, use the first name as the user name. If this is already taken, add a few "
-                          "letters from the beginning of the last name to the end."),
+            'username': _("Preferably use the same username that the person has "
+                          "received at Otto von Guericke University."),
         }
 
     def __init__(self, *args, **kwargs):
