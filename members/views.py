@@ -66,6 +66,8 @@ class MemberUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
     success_message = _("You successfully updated your profile")
 
     def test_func(self):
+        if self.request.user.is_superuser:
+            return True
         return self.request.user.member
 
     def get_success_url(self):
