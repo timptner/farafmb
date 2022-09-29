@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.urls import reverse_lazy
+from django.shortcuts import redirect
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from .forms import UserProfileForm, UserForm
@@ -91,3 +92,7 @@ class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.Create
         messages.success(self.request, "Es wurde eine E-Mail mit Zugangsdaten an '%s' geschickt." % user.email)
 
         return super().form_valid(form)
+
+
+def get_profile(request):
+    return redirect(reverse('members:member-update', args=[request.user.pk]))

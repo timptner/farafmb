@@ -1,6 +1,7 @@
 import os
 
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -92,6 +93,8 @@ OAUTH2_PROVIDER = {
     },
     'OAUTH2_VALIDATOR_CLASS': 'farafmb.oauth.CustomOAuth2Validator',
 }
+
+LOGIN_REDIRECT_URL = reverse_lazy('members:profile')
 
 
 # Password validation

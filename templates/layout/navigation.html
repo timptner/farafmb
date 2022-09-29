@@ -61,7 +61,7 @@
                 </div>
 
                 {% if user.is_authenticated %}
-                    <a class="navbar-item" href="{% url 'accounts:profile' %}">{% trans "Administration" %}</a>
+                    <a class="navbar-item" href="{% url 'members:member-update' request.user.pk %}">{% trans "Administration" %}</a>
                 {% endif %}
             </div>
 
