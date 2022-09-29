@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 02:13+0200\n"
+"POT-Creation-Date: 2022-09-29 22:07+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "Gestartet am"
 msgid "Stopped at"
 msgstr "Gestoppt am"
 
-#: .\mentoring\models.py:11 .\mentoring\models.py:30
+#: .\mentoring\models.py:11 .\mentoring\models.py:32
 msgid "Registration"
 msgstr "Registrierung"
 
@@ -79,43 +79,43 @@ msgstr "Registrierung"
 msgid "Registrations"
 msgstr "Registrierungen"
 
-#: .\mentoring\models.py:22 .\mentoring\models.py:35
+#: .\mentoring\models.py:23 .\mentoring\models.py:37
 #: .\mentoring\templates\mentoring\mentor_detail.html:23
 msgid "Study program"
 msgstr "Studiengang"
 
-#: .\mentoring\models.py:23
+#: .\mentoring\models.py:24
 #: .\mentoring\templates\mentoring\program_list.html:23
 msgid "Study programs"
 msgstr "Studiengänge"
 
-#: .\mentoring\models.py:31
+#: .\mentoring\models.py:33
 msgid "First name"
 msgstr "Vorname"
 
-#: .\mentoring\models.py:32
+#: .\mentoring\models.py:34
 msgid "Last name"
 msgstr "Nachname"
 
-#: .\mentoring\models.py:33
+#: .\mentoring\models.py:35
 #: .\mentoring\templates\mentoring\mentor_detail.html:9
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: .\mentoring\models.py:34
+#: .\mentoring\models.py:36
 #: .\mentoring\templates\mentoring\mentor_detail.html:16
 msgid "Mobile number"
 msgstr "Mobilnummer"
 
-#: .\mentoring\models.py:36
+#: .\mentoring\models.py:38
 msgid "Created at"
 msgstr "Erstellt am"
 
-#: .\mentoring\models.py:39
+#: .\mentoring\models.py:41
 msgid "Mentor"
 msgstr "Mentor"
 
-#: .\mentoring\models.py:40
+#: .\mentoring\models.py:42
 msgid "Mentors"
 msgstr "Mentoren"
 

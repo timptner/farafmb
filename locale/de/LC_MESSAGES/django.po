@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-11 20:38+0200\n"
+"POT-Creation-Date: 2022-09-29 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,11 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\farafmb\settings\common.py:119 .\templates\layout\navigation.html:94
+#: .\farafmb\settings\common.py:123 .\templates\layout\navigation.html:148
 msgid "German"
 msgstr "Deutsch"
 
-#: .\farafmb\settings\common.py:120 .\templates\layout\navigation.html:102
+#: .\farafmb\settings\common.py:124 .\templates\layout\navigation.html:157
 msgid "English"
 msgstr "Englisch"
 
@@ -107,13 +107,9 @@ msgstr "Vorschau"
 msgid "Public"
 msgstr "Öffentlich"
 
-#: .\templates\django\forms\widgets\clearable_file_input.html:14
+#: .\templates\forms\widgets\file.html:9
 msgid "Choose a file"
 msgstr "Wähle eine Datei aus"
-
-#: .\templates\django\forms\widgets\clearable_file_input.html:19
-msgid "No file selected"
-msgstr "Keine Datei ausgewählt"
 
 #: .\templates\layout\footer.html:12
 msgid "Student Council of the Faculty of Mechanical Engineering"
@@ -182,133 +178,94 @@ msgstr "Datenschutz"
 msgid "FaRaFMB"
 msgstr "FaRaFMB"
 
-#: .\templates\layout\menu.html:9
-msgid "Show menu"
-msgstr "Menü anzeigen"
-
-#: .\templates\layout\menu.html:16
-msgid "Hide menu"
-msgstr "Menü ausblenden"
-
-#: .\templates\layout\menu.html:30
-msgid "Administration"
-msgstr "Administration"
-
-#: .\templates\layout\menu.html:35
-msgid "Account"
-msgstr "Konto"
-
-#: .\templates\layout\menu.html:38
-msgid "Profile"
-msgstr "Profil"
-
-#: .\templates\layout\menu.html:39
-#| msgid "New password"
-msgid "Change password"
-msgstr "Passwort ändern"
-
-#: .\templates\layout\menu.html:43 .\templates\layout\navigation.html:33
-msgid "Members"
-msgstr "Mitglieder"
-
-#: .\templates\layout\menu.html:48
-msgid "Create new"
-msgstr "Neu erstellen"
-
-#: .\templates\layout\menu.html:59 .\templates\layout\navigation.html:61
-msgid "Mentoring"
-msgstr "Patenschaft"
-
-#: .\templates\layout\menu.html:59
-msgid "New"
-msgstr "Neu"
-
-#: .\templates\layout\menu.html:62
-msgid "Registrations"
-msgstr "Registrierungen"
-
-#: .\templates\layout\menu.html:63
-msgid "Study programs"
-msgstr "Studiengänge"
-
-#: .\templates\layout\menu.html:64
-msgid "Mentors"
-msgstr "Mentoren"
-
-#: .\templates\layout\menu.html:68
-msgid "Events"
-msgstr "Veranstaltungen"
-
-#: .\templates\layout\menu.html:71
-msgid "Overview"
-msgstr "Übersicht"
-
-#: .\templates\layout\navigation.html:24
+#: .\templates\layout\navigation.html:18
 msgid "News"
 msgstr "Neuigkeiten"
 
-#: .\templates\layout\navigation.html:28
+#: .\templates\layout\navigation.html:22
 msgid "About us"
 msgstr "Über uns"
 
-#: .\templates\layout\navigation.html:32
+#: .\templates\layout\navigation.html:26
 msgid "Student council"
 msgstr "Fachschaftsrat"
 
-#: .\templates\layout\navigation.html:39
+#: .\templates\layout\navigation.html:27
+msgid "Members"
+msgstr "Mitglieder"
+
+#: .\templates\layout\navigation.html:33
 msgid "Service"
 msgstr "Leistung"
 
-#: .\templates\layout\navigation.html:43
+#: .\templates\layout\navigation.html:37
 msgid "Excursions"
 msgstr "Exkursionen"
 
-#: .\templates\layout\navigation.html:44
+#: .\templates\layout\navigation.html:38
 msgid "Jobs"
 msgstr "Jobs"
 
-#: .\templates\layout\navigation.html:45
+#: .\templates\layout\navigation.html:39
 msgid "Memory minutes"
 msgstr "Gedächtnisprotokolle"
 
-#: .\templates\layout\navigation.html:49
+#: .\templates\layout\navigation.html:43
+msgid "Merchandise"
+msgstr "Merchandise"
+
+#: .\templates\layout\navigation.html:47
 msgid "Documents"
 msgstr "Dokumente"
 
-#: .\templates\layout\navigation.html:50
+#: .\templates\layout\navigation.html:48
 msgid "Office Hours"
 msgstr "Sprechzeiten"
 
-#: .\templates\layout\navigation.html:51
+#: .\templates\layout\navigation.html:49
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\templates\layout\navigation.html:57
+#: .\templates\layout\navigation.html:55
 msgid "Participate"
 msgstr "Mitmachen"
 
-#: .\templates\layout\navigation.html:72
+#: .\templates\layout\navigation.html:60
+msgid "Mentoring"
+msgstr "Patenschaft"
+
+#: .\templates\layout\navigation.html:68
+msgid "Administration"
+msgstr "Verwaltung"
+
+#: .\templates\layout\navigation.html:83
+msgid "Change password"
+msgstr "Passwort ändern"
+
+#: .\templates\layout\navigation.html:88
+msgid "Posts"
+msgstr "Beiträge"
+
+#: .\templates\layout\navigation.html:93
+msgid "Registrations"
+msgstr "Registrierungen"
+
+#: .\templates\layout\navigation.html:96
+msgid "Study programs"
+msgstr "Studiengänge"
+
+#: .\templates\layout\navigation.html:99
+msgid "Mentors"
+msgstr "Mentoren"
+
+#: .\templates\layout\navigation.html:104
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: .\templates\layout\navigation.html:123
 msgid "Logout"
 msgstr "Abmelden"
 
-#: .\templates\layout\navigation.html:79
+#: .\templates\layout\navigation.html:131
 msgid "Login"
 msgstr "Anmelden"
-
-#~ msgid "Password"
-#~ msgstr "Passwort"
-
-#~ msgid "New password confirmation"
-#~ msgstr "Neues Passwort bestätigen"
-
-#~ msgid "Old password"
-#~ msgstr "Altes Passwort"
-
-#~ msgid "Change language"
-#~ msgstr "Sprache ändern"
-
-#~ msgid "Switch language"
-#~ msgstr "Sprache umstellen"
-
-#~ msgid "User"
-#~ msgstr "Benutzer"

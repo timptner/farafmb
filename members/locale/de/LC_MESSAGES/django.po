@@ -1,0 +1,168 @@
+# German translation of https://farafmb.de/members/
+# Copyright (C) 2022 Fachschaftsrat Maschinenbau, Otto von Guericke University Magdeburg
+# This file is distributed under the same license as the farafmb package.
+# Aiven Timptner, 2022.
+#
+msgid ""
+msgstr ""
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-29 22:08+0200\n"
+"Last-Translator: Aiven Timptner\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\members\forms.py:27
+msgid ""
+"Preferably, use the first name as the user name. If this is already taken, "
+"add a few letters from the beginning of the last name to the end."
+msgstr ""
+"Verwende vorzugsweise den Vornamen als Benutzernamen. Wenn dieser bereits vergeben ist, füge ein paar Buchstaben vom Anfang des Nachnamens zum Ende hinzu."
+
+#: .\members\forms.py:41
+msgid "Only domains of Otto von Guericke University are allowed."
+msgstr "Es sind nur Domains der Otto-von-Guericke-Universität zugelassen."
+
+#: .\members\forms.py:59
+msgid "Set your password"
+msgstr "Passwort festlegen"
+
+#: .\members\forms.py:71
+msgid "Birthday (Optional)"
+msgstr "Geburtstag (Optional)"
+
+#: .\members\forms.py:83
+msgid "Leave this field blank if you do not want to change your image."
+msgstr "Lasse dieses Feld leer falls du dein Profilbild nicht ändern willst."
+
+#: .\members\forms.py:84
+msgid "A maximum length of 250 characters are allowed."
+msgstr "Es sind maximal 250 Zeichen erlaubt."
+
+#: .\members\forms.py:85
+msgid "You can separate multiple jobs with a comma."
+msgstr "Du kannst mehrere Jobs getrennt mittels Kommata angeben."
+
+#: .\members\forms.py:98 .\members\forms.py:105
+msgid "You can only choose a date in the past."
+msgstr "Du kannst nur ein Datum in der Vergangenheit wählen."
+
+#: .\members\models.py:21
+msgid "E-Mobility"
+msgstr "Elektromobilität"
+
+#: .\members\models.py:22
+msgid "Integrated Design Engineering"
+msgstr "Integrated Design Engineering"
+
+#: .\members\models.py:23
+msgid "Mechanical Engineering"
+msgstr "Maschinenbau"
+
+#: .\members\models.py:24
+msgid "Mechatronics"
+msgstr "Mechatronik"
+
+#: .\members\models.py:25
+msgid "Systems Engineering for Manufacturing"
+msgstr "Systems Engineering for Manufacturing"
+
+#: .\members\models.py:26
+msgid "Industrial Engineering / Logistics"
+msgstr "Wirtschaftsingenieur Logistik"
+
+#: .\members\models.py:27
+msgid "Industrial Engineering / Mechanical Engineering"
+msgstr "Wirtschaftsingenieur Maschinenbau"
+
+#: .\members\models.py:32
+msgid "Bachelor of Science"
+msgstr "Bachelor of Science"
+
+#: .\members\models.py:33
+msgid "Master of Science"
+msgstr "Master of Science"
+
+#: .\members\templates\members\base.html:17
+msgid "Overview"
+msgstr "Übersicht"
+
+#: .\members\templates\members\base.html:27
+#: .\members\templates\members\base.html:34
+msgid "Profile"
+msgstr "Profil"
+
+#: .\members\templates\members\base.html:44
+#: .\members\templates\members\user_form.html:26
+msgid "Create"
+msgstr "Erstellen"
+
+#: .\members\templates\members\member_card.html:31
+msgid "Member since"
+msgstr "Mitglied seit"
+
+#: .\members\templates\members\member_form.html:25
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: .\members\templates\members\password_mail.txt:1
+#, python-format
+msgid ""
+"Hello %(first_name)s,\n"
+"\n"
+"a new account was created for you.\n"
+"\n"
+"Your username: %(username)s\n"
+"\n"
+"You can set your password via the following link."
+msgstr ""
+"Hallo %(first_name)s,\n"
+"\n"
+"ein neuer Benutzer wurde für dich erstellt.\n"
+"\n"
+"Dein Benutzername: %(username)s\n"
+"\n"
+"Du kannst dein Passwort mit dem folgenden Link festlegen."
+
+#: .\members\templates\members\user_form.html:8
+msgid "Create new user"
+msgstr "Neuen Benutzer erstellen"
+
+#: .\members\templates\members\user_form.html:12
+msgid ""
+"\n"
+"                        After submitting the form, the new user will receive "
+"an email with a link. Via this link the\n"
+"                        user can set a password.\n"
+"                    "
+msgstr ""
+"\n"
+"Nach Absenden des Formulars wird der neue Benutzer eine E-Mail erhalten mit einem Link. Der Benutzer kann mittels diesem Link sein Passwort festlegen."
+
+#: .\members\templates\members\user_form.html:37
+msgid "Username"
+msgstr "Benutzername"
+
+#: .\members\templates\members\user_form.html:38
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: .\members\templates\members\user_form.html:39
+msgid "Created at"
+msgstr "Erstellt am"
+
+#: .\members\views.py:25
+#, python-format
+msgid "New user \"%(first_name)s %(last_name)s\" was created successfully"
+msgstr "Neuer Benutzer \"%(first_name)s %(last_name)s\" wurde erfolgreich erstellt"
+
+#: .\members\views.py:48
+msgid "You successfully created your profile"
+msgstr "Du hast dein Profil erfolgreich erstellt"
+
+#: .\members\views.py:66
+msgid "You successfully updated your profile"
+msgstr "Du hast dein Profil erfolgreich aktualisiert"
