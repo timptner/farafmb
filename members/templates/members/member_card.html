@@ -12,11 +12,11 @@
             {{ member.get_course_display }} ({{ member.get_degree_display_short }})
         </p>
 
-        {% if member.profile.biography %}
+        {% if member.biography %}
             <p class="is-italic has-text-centered">{{ member.biography }}</p>
         {% endif %}
 
-        {% if member.profile.jobs %}
+        {% if member.jobs %}
             <ul class="mt-5">
                 {% for job in member.get_job_list %}
                     <li>{{ job }}</li>
