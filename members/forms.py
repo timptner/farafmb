@@ -87,11 +87,9 @@ class MemberForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.initial = {
-        #     'birthday': 'self.instance.birthday.isoformat()
-        # }
-        # self.initial['birthday'] = self.instance.birthday.isoformat() if self.initial['birthday'] else ''
-        # self.initial['joined_at'] = self.instance.joined_at.isoformat() if self.initial['joined_at'] else ''
+        if self.initial:
+            self.initial['birthday'] = self.instance.birthday.isoformat() if self.initial['birthday'] else ''
+            self.initial['joined_at'] = self.instance.joined_at.isoformat() if self.initial['joined_at'] else ''
 
     def clean_birthday(self):
         data = self.cleaned_data['birthday']

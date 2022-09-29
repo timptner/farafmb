@@ -57,5 +57,16 @@ class MemberCreateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMi
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('members:member-list')  # TODO route to update view
+        return reverse_lazy('members:member-update', kwargs={'pk': self.object.pk})
 
+
+class MemberUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.UpdateView):
+    model = Member
+    form_class = MemberForm
+    success_message = _("You successfully updated your profile")
+
+    def test_func(self):
+        return self.request.user.member
+
+    def get_success_url(self):
+        return reverse_lazy('members:member-update', kwargs={'pk': self.object.pk})

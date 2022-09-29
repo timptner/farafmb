@@ -11,21 +11,36 @@
                         {% block tabs %}
                             <li>
                                 <a href="{% url 'members:member-list' %}">
-                                    <span class="icon is-small"><i class="fas fa-list" aria-hidden="true"></i></span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-list" aria-hidden="true"></i>
+                                    </span>
                                     <span>{% trans "Overview" %}</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{% url 'members:member-create' %}">
-                                    <span class="icon is-small"><i class="fas fa-pen" aria-hidden="true"></i></span>
-                                    <span>{% trans "Profile" %}</span>
-                                </a>
+                                {% if user.member %}
+                                    <a href="{% url 'members:member-update' user.member.pk %}">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-pen" aria-hidden="true"></i>
+                                        </span>
+                                        <span>{% trans "Profile" %}</span>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'members:member-create' %}">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-pen" aria-hidden="true"></i>
+                                        </span>
+                                        <span>{% trans "Profile" %}</span>
+                                    </a>
+                                {% endif %}
                             </li>
 
                             <li>
                                 <a href="{% url 'members:user-create' %}">
-                                    <span class="icon is-small"><i class="fas fa-plus" aria-hidden="true"></i></span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-plus" aria-hidden="true"></i>
+                                    </span>
                                     <span>{% trans "Create" %}</span>
                                 </a>
                             </li>
