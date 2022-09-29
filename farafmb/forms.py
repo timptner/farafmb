@@ -23,6 +23,10 @@ class NumberInput(fields.NumberInput):
     template_name = 'forms/widgets/input.html'
 
 
+class EmailInput(fields.EmailInput):
+    template_name = 'forms/widgets/input.html'
+
+
 class Textarea(fields.Textarea):
     template_name = 'forms/widgets/textarea.html'
 

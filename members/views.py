@@ -1,11 +1,10 @@
-import secrets
-
 from django.contrib import messages
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
+from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
 from .forms import UserProfileForm, UserForm
@@ -18,7 +17,30 @@ class MemberListView(generic.ListView):
     ordering = ['joined_at']
 
 
+class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessageMixin, generic.CreateView):
+    permission_required = 'auth.add_user'
+    template_name = 'members/user_form.html'
+    model = User
+    form_class = UserForm
+    success_url = reverse_lazy('members:user-create')
+    success_message = _("New user \"%(first_name)s %(last_name)s\" was created successfully")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users'] = User.objects.all()
+        return context
+
+    def form_valid(self, form):
+        default_group, created = Group.objects.get_or_create(name='default')
+
+        user = form.save(commit=False)
+        user.is_staff = True
+        user.save()
+        user.groups.add(default_group)
+
+        form.send_email(user, self.request)
+
+        return super().form_valid(form)
 
 
 class UserProfileFormView(LoginRequiredMixin, generic.FormView):
@@ -66,30 +88,6 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         profile.save()
 
         messages.success(self.request, "Dein Profil wurde erfolgreich aktualisiert.")
-
-        return super().form_valid(form)
-
-
-class MemberCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.CreateView):
-    permission_required = 'auth.add_user'
-    template_name = 'members/member_create.html'
-    model = User
-    form_class = UserForm
-    success_url = reverse_lazy('members:member-create')
-
-    def form_valid(self, form):
-        default_group, created = Group.objects.get_or_create(name='default')
-        password = secrets.token_urlsafe(16)
-
-        user = form.save(commit=False)
-        user.password = make_password(password)
-        user.is_staff = True
-        user.save()
-        user.groups.add(default_group)
-
-        form.send_email(self.request, user, password)
-
-        messages.success(self.request, "Es wurde eine E-Mail mit Zugangsdaten an '%s' geschickt." % user.email)
 
         return super().form_valid(form)
 

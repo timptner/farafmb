@@ -1,10 +1,16 @@
 from datetime import date
-from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.http import HttpRequest
+from django.template import loader
 from django.urls import reverse_lazy
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
+from django.utils.translation import gettext_lazy as _
+from farafmb import forms
 
 from .models import Profile
 
@@ -52,27 +58,49 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ('first_name', 'last_name', 'email', 'username')
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': "input"}),
-            'last_name': forms.TextInput(attrs={'class': "input"}),
-            'email': forms.EmailInput(attrs={'class': "input"}),
-            'username': forms.TextInput(attrs={'class': "input"}),
+            'first_name': forms.TextInput(),
+            'last_name': forms.TextInput(),
+            'email': forms.EmailInput(),
+            'username': forms.TextInput(),
+        }
+        help_texts = {
+            'username': _("Preferably, use the first name as the user name. If this is already taken, add a few "
+                          "letters from the beginning of the last name to the end."),
         }
 
-    def send_email(self, request: HttpRequest, user: User, password: str):
-        send_mail(
-            "Deine Zugangsdaten für farafmb.de",
             f"""Hallo {user.first_name},
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-anbei findest du deine Zugangsdaten für {request.scheme}://{request.get_host()}
+        for key in self.fields:
+            self.fields[key].required = True
 
-Benutzername:   {user.username}
-Passwort:       {password}
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        username, domain = data.split('@')
+        if domain not in ['ovgu.de', 'st.ovgu.de']:
+            raise ValidationError(_("Only domains of Otto von Guericke University are allowed."))
 
-Bitte ändere dein Passwort zeitnah unter: {request.scheme}://{request.get_host()}{reverse_lazy('admin:password_change')}
+        return data
 
-Viele Grüße
-FaRaFMB
-""",
-            None,
-            [user.email],
+    def send_email(self, user, request):
+        token_generator = PasswordResetTokenGenerator()
+
+        context = {
+            'first_name': self.cleaned_data['first_name'],
+            'username': self.cleaned_data['username'],
+            'protocol': 'https' if request.is_secure() else 'http',
+            'domain': get_current_site(request).domain,
+            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            'token': token_generator.make_token(user),
+        }
+        body = loader.render_to_string('members/password_mail.txt', context)
+
+        send_mail(
+            subject=_("Set your password"),
+            message=body,
+            from_email=None,
+            recipient_list=[self.cleaned_data['email']],
         )
+
+
