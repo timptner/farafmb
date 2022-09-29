@@ -1,43 +1,39 @@
-import secrets
-
-from datetime import date
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 
-def get_random_filename(instance, filename: str) -> str:
-    extension = filename.split('.')[-1].lower()
-    token = secrets.token_urlsafe(10)
-    iso_datetime = timezone.now().strftime("%Y%m%d")
-    return f"members/{iso_datetime}_{token}.{extension}"
+def user_directory_path(instance, filename):
+    suffix = filename.split('.')[-1].lower()
+    return f'members/user_{instance.user.id}.{suffix}'
 
 
-class Profile(models.Model):
+class Member(models.Model):
     EMO = 'EMO'
     IDE = 'IDE'
-    MB = 'MB'
-    MTK = 'MTK'
+    ME = 'ME'
+    MTC = 'MTC'
     SEM = 'SEM'
-    WLO = 'WLO'
-    WMB = 'WMB'
+    IEL = 'IEL'
+    IEM = 'IEM'
     COURSES = [
-        (EMO, 'Elektromobilität'),
-        (IDE, 'Integrated Design Engineering'),
-        (MB, 'Maschinenbau'),
-        (MTK, 'Mechatronik'),
-        (SEM, 'Systems Engineering for Manufacturing'),
-        (WLO, 'Wirtschaftsingenieur Logistik'),
-        (WMB, 'Wirtschaftsingenieur Maschinenbau'),
+        (EMO, _('E-Mobility')),
+        (IDE, _('Integrated Design Engineering')),
+        (ME, _('Mechanical Engineering')),
+        (MTC, _('Mechatronics')),
+        (SEM, _('Systems Engineering for Manufacturing')),
+        (IEL, _('Industrial Engineering / Logistics')),
+        (IEM, _('Industrial Engineering / Mechanical Engineering')),
     ]
     BSC = 'BSC'
     MSC = 'MSC'
     DEGREES = [
-        (BSC, 'Bachelor of Science'),
-        (MSC, 'Master of Science'),
+        (BSC, _('Bachelor of Science')),
+        (MSC, _('Master of Science')),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to=get_random_filename)
+    picture = models.ImageField(upload_to=user_directory_path)
     biography = models.CharField(max_length=250, blank=True)
     jobs = models.CharField(max_length=100, blank=True)
     course = models.CharField(max_length=3, choices=COURSES)
@@ -55,8 +51,8 @@ class Profile(models.Model):
     def get_job_list(self):
         return [job.strip() for job in self.jobs.split(',')]
 
-    def is_cakeday(self):
-        today = date.today()
+    def is_day_of_birth(self):
         if not self.birthday:
             return False
-        return self.birthday.month == today.month and self.birthday.day == today.day
+        today = timezone.now().date()
+        return self.birthday.day == today.day and self.birthday.month == today.month
