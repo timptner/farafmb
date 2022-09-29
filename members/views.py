@@ -70,12 +70,12 @@ class UserProfileFormView(LoginRequiredMixin, generic.FormView):
         return super().form_valid(form)
 
 
-class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.CreateView):
+class MemberCreateView(LoginRequiredMixin, PermissionRequiredMixin, generic.CreateView):
     permission_required = 'auth.add_user'
-    template_name = 'members/create_user.html'
+    template_name = 'members/member_create.html'
     model = User
     form_class = UserForm
-    success_url = reverse_lazy('members:create_user')
+    success_url = reverse_lazy('members:member-create')
 
     def form_valid(self, form):
         default_group, created = Group.objects.get_or_create(name='default')
