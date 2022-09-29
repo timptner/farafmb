@@ -9,16 +9,16 @@ from django.urls import reverse_lazy, reverse
 from django.views import generic
 
 from .forms import UserProfileForm, UserForm
-from .models import Profile
+from .models import Member
 
 
 class MemberListView(generic.ListView):
-    model = User
+    model = Member
     template_name = 'members/member_list.html'
+    ordering = ['joined_at']
 
-    def get_queryset(self):
-        user_list = Profile.objects.values_list('user', flat=True).all()
-        return User.objects.filter(pk__in=user_list).order_by('profile__joined_at')
+
+
 
 
 class UserProfileFormView(LoginRequiredMixin, generic.FormView):
