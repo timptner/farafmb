@@ -1,0 +1,32 @@
+{% extends 'members/base.html' %}
+
+{% load static i18n %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/file-input.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="columns">
+
+        <div class="column is-one-quarter">
+            {{ object }}
+            {% include 'members/member_card.html' with member=object %}
+        </div>
+
+        <div class="column">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form }}
+
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-success">{% trans "Update" %}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

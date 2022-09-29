@@ -94,7 +94,7 @@ OAUTH2_PROVIDER = {
     'OAUTH2_VALIDATOR_CLASS': 'farafmb.oauth.CustomOAuth2Validator',
 }
 
-LOGIN_REDIRECT_URL = reverse_lazy('members:profile')
+LOGIN_REDIRECT_URL = reverse_lazy('members:member-list')
 
 
 # Password validation

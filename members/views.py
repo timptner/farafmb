@@ -1,13 +1,12 @@
-from django.contrib import messages
 from django.contrib.auth.models import User, Group
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 
-from .forms import UserProfileForm, UserForm
+from .forms import UserForm, MemberForm
 from .models import Member
 
 
@@ -43,54 +42,20 @@ class UserCreateView(LoginRequiredMixin, PermissionRequiredMixin, SuccessMessage
         return super().form_valid(form)
 
 
-class UserProfileFormView(LoginRequiredMixin, generic.FormView):
-    template_name = 'members/profile_form.html'
-    success_url = reverse_lazy('members:profile_form')
-    form_class = UserProfileForm
+class MemberCreateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, generic.CreateView):
+    model = Member
+    form_class = MemberForm
+    success_message = _("You successfully created your profile")
 
-    def get_initial(self):
-        user = self.request.user
-        initial = super().get_initial()
-        initial.update({
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-        })
-        if hasattr(user, 'profile'):
-            initial.update({
-                'picture': user.profile.picture,
-                'biography': user.profile.biography,
-                'jobs': user.profile.jobs,
-                'course': user.profile.course,
-                'degree': user.profile.degree,
-                'birthday': user.profile.birthday,
-                'joined_at': user.profile.joined_at,
-            })
-        return initial
+    def test_func(self):
+        return not Member.objects.filter(user=self.request.user).exists()
 
     def form_valid(self, form):
-        user = self.request.user
-
-        user.first_name = form.cleaned_data['first_name']
-        user.last_name = form.cleaned_data['last_name']
-        user.save()
-
-        if hasattr(user, 'profile'):
-            profile = user.profile
-        else:
-            profile = Profile(user=user)
-        profile.picture = form.cleaned_data['picture']
-        profile.biography = form.cleaned_data['biography']
-        profile.jobs = form.cleaned_data['jobs']
-        profile.course = form.cleaned_data['course']
-        profile.degree = form.cleaned_data['degree']
-        profile.birthday = form.cleaned_data['birthday']
-        profile.joined_at = form.cleaned_data['joined_at']
-        profile.save()
-
-        messages.success(self.request, "Dein Profil wurde erfolgreich aktualisiert.")
-
+        member = form.save(commit=False)
+        member.user = self.request.user
+        member.save()
         return super().form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('members:member-list')  # TODO route to update view
 
-def get_profile(request):
-    return redirect(reverse('members:member-update', args=[request.user.pk]))

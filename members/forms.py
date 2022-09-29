@@ -1,56 +1,16 @@
-from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
-from django.http import HttpRequest
 from django.template import loader
-from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from farafmb import forms
 
-from .models import Profile
-
-
-class UserProfileForm(forms.Form):
-    first_name = forms.CharField(max_length=150, label="Vorname", widget=forms.TextInput(attrs={'class': "input"}))
-    last_name = forms.CharField(max_length=150, label="Nachname", widget=forms.TextInput(attrs={'class': "input"}))
-    picture = forms.ImageField(label="Profilbild", widget=forms.FileInput(attrs={'class': "file-input"}),
-                               help_text="Dein Bild sollte bereits quadratisch zugeschnitten "
-                                         "sein, da es sonst gestaucht dargestellt wird.")
-    biography = forms.CharField(max_length=250, label="Biography", required=False,
-                                widget=forms.Textarea(attrs={'class': "textarea", 'rows': "3"}))
-    jobs = forms.CharField(max_length=100, label="Tätigkeiten", required=False,
-                           widget=forms.TextInput(attrs={'class': "input"}),
-                           help_text="Die Tätigkeiten müssen mittels Kommata getrennt angegeben werden.")
-    course = forms.ChoiceField(choices=Profile.COURSES, label="Studiengang")
-    degree = forms.ChoiceField(choices=Profile.DEGREES, label="Angestrebter Abschluss")
-    birthday = forms.DateField(label="Geburtsdatum", required=False,
-                               widget=forms.DateInput(attrs={'class': "input"}),
-                               help_text="Das Datum ist nicht öffentlich einsehbar. An dein Geburtstag wird "
-                                         "lediglich ein Kuchen in deinem öffentlichen Profil erscheinen.")
-    joined_at = forms.DateField(label="Mitglied seit", widget=forms.DateInput(attrs={'class': "input"}))
-
-    def clean_birthday(self):
-        data = self.cleaned_data['birthday']
-        if data:
-            if data >= date.today():
-                raise ValidationError("Das Datum liegt in der Zukunft. Bitte wähle ein "
-                                      "Datum, welches in der Vergangenheit liegt.")
-
-        return data
-
-    def clean_joined_at(self):
-        data = self.cleaned_data['joined_at']
-        if data:
-            if data >= date.today():
-                raise ValidationError("Das Datum liegt in der Zukunft. Bitte wähle ein "
-                                      "Datum, welches in der Vergangenheit liegt.")
-
-        return data
+from .models import Member
 
 
 class UserForm(forms.ModelForm):
@@ -68,7 +28,6 @@ class UserForm(forms.ModelForm):
                           "letters from the beginning of the last name to the end."),
         }
 
-            f"""Hallo {user.first_name},
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -104,3 +63,47 @@ class UserForm(forms.ModelForm):
         )
 
 
+class MemberForm(forms.ModelForm):
+    class Meta:
+        model = Member
+        fields = ['picture', 'biography', 'jobs', 'course', 'degree', 'birthday', 'joined_at']
+        labels = {
+            'birthday': _("Birthday (Optional)"),
+        }
+        widgets = {
+            'picture': forms.FileInput(),
+            'biography': forms.Textarea(attrs={'rows': 3}),
+            'jobs': forms.TextInput(),
+            'course': forms.Select(),
+            'degree': forms.Select(),
+            'birthday': forms.DateInput(),
+            'joined_at': forms.DateInput(),
+        }
+        help_texts = {
+            'picture': _("Leave this field blank if you do not want to change your image."),
+            'biography': _("A maximum length of 250 characters are allowed."),
+            'jobs': _("You can separate multiple jobs with a comma."),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # self.initial = {
+        #     'birthday': 'self.instance.birthday.isoformat()
+        # }
+        # self.initial['birthday'] = self.instance.birthday.isoformat() if self.initial['birthday'] else ''
+        # self.initial['joined_at'] = self.instance.joined_at.isoformat() if self.initial['joined_at'] else ''
+
+    def clean_birthday(self):
+        data = self.cleaned_data['birthday']
+        if data:
+            if data >= timezone.now().date():
+                raise ValidationError(_("You can only choose a date in the past."))
+
+        return data
+
+    def clean_joined_at(self):
+        data = self.cleaned_data['joined_at']
+        if data >= timezone.now().date():
+            raise ValidationError(_("You can only choose a date in the past."))
+
+        return data

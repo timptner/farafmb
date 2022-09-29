@@ -27,9 +27,22 @@ class EmailInput(fields.EmailInput):
     template_name = 'forms/widgets/input.html'
 
 
+class DateInput(fields.DateInput):
+    template_name = 'forms/widgets/input.html'
+    input_type = 'date'
+
+
+class FileInput(fields.FileInput):
+    template_name = 'forms/widgets/file.html'
+
+
 class Textarea(fields.Textarea):
     template_name = 'forms/widgets/textarea.html'
 
 
 class CheckboxInput(fields.CheckboxInput):
     template_name = 'forms/widgets/checkbox.html'
+
+
+class Select(fields.Select):
+    template_name = 'forms/widgets/select.html'
