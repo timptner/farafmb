@@ -25,11 +25,14 @@ class OrderCreateView(generic.CreateView):
         context = super().get_context_data(**kwargs)
         orders = Order.objects.filter(is_verified=True).values_list('items', flat=True)
         total = sum([sum(order.values()) for order in orders])
-        goal = 30
+        goals = [(30, 28), (50, 24), (100, 21)]
+        context['goals'] = goals
+        next_goals = [goal[0] for goal in goals if goal[0] > total]
+        next_goal = next_goals[0] if next_goals else goals[-1][0]
         context['stats'] = {
-            'value': total if total <= goal else goal,
-            'max': goal,
-            'percentage': round(total / goal * 100),
+            'value': total if total < next_goal else next_goal,
+            'max': next_goal,
+            'percentage': round(total / next_goal * 100),
         }
         return context
 

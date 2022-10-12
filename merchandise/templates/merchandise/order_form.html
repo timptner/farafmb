@@ -48,10 +48,49 @@
         </div>
     </div>
 
-    <h5 class="title is-5">{% trans "Orders" %} ({{ stats.percentage }} %)</h5>
+    <h5 class="title is-5">
+        {% trans "Price levels" %}
+        <span class="tag is-warning">Update!</span>
+    </h5>
 
-    <progress class="progress is-large" value="{{ stats.value }}" max="{{ stats.max }}">{{ stats.percentage }} %
+    <p class="is-fullwidth has-text-right">{{ stats.value }} / {{ stats.max }}</p>
+    <progress class="progress" value="{{ stats.value }}" max="{{ stats.max }}">
+        {{ stats.percentage }} %
     </progress>
+
+    <div class="columns">
+        <div class="column">
+            <p>
+                {% blocktrans %}
+                    There are different price levels, which can be reached depending on the number of orders placed. You
+                    can find a list of achievable goals and associated prices in the table. We will place an order no
+                    later than 31.10.2022. So it's best to let your friends know to make it cheaper for all of us.
+                {% endblocktrans %}
+            </p>
+        </div>
+
+        <div class="column is-narrow">
+            <table class="table mx-auto">
+                <thead>
+                <tr>
+                    <th colspan="2">{% trans "Orders" %}</th>
+                    <th>{% trans "Price" %}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for goal in goals %}
+                    <tr{% if goal.0 == stats.max %} class="is-selected"{% endif %}>
+                        <td>{% if goal.0 == stats.max %}
+                            <span class="icon"><i class="fas fa-flag-checkered"></i></span>{% endif %}</td>
+                        <td>{{ goal.0 }}</td>
+                        <td>{{ goal.1 }} €</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <h5 class="title is-5">{% trans "Registration" %}</h5>
 
