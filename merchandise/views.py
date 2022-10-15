@@ -25,10 +25,20 @@ class OrderCreateView(generic.CreateView):
         context = super().get_context_data(**kwargs)
         orders = Order.objects.filter(is_verified=True).values_list('items', flat=True)
         total = sum([sum(order.values()) for order in orders])
-        goals = [(30, 28), (50, 24), (100, 21)]
+        goals = [
+            {'orders': 30, 'price': 28, 'is_active': False, 'is_current': False},
+            {'orders': 50, 'price': 24, 'is_active': False, 'is_current': False},
+            {'orders': 100, 'price': 21, 'is_active': False, 'is_current': False},
+        ]
+        next_goals = [index for index, goal in enumerate(goals) if goal['orders'] > total]
+        if next_goals:
+            goals[next_goals[0]]['is_active'] = True
+        passed_levels = [index for index, goal in enumerate(goals) if goal['orders'] < total]
+        if passed_levels:
+            goals[passed_levels[-1]]['is_current'] = True
         context['goals'] = goals
-        next_goals = [goal[0] for goal in goals if goal[0] > total]
-        next_goal = next_goals[0] if next_goals else goals[-1][0]
+        active_goals = [index for index, goal in enumerate(goals) if goal['is_active']]
+        next_goal = goals[active_goals[0]]['orders'] if active_goals else goals[-1]['orders']
         context['stats'] = {
             'value': total if total < next_goal else next_goal,
             'max': next_goal,

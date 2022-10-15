@@ -80,11 +80,14 @@
 
                 <tbody>
                 {% for goal in goals %}
-                    <tr{% if goal.0 == stats.max %} class="is-selected"{% endif %}>
-                        <td>{% if goal.0 == stats.max %}
-                            <span class="icon"><i class="fas fa-flag-checkered"></i></span>{% endif %}</td>
-                        <td>{{ goal.0 }}</td>
-                        <td>{{ goal.1 }} €</td>
+                    <tr{% if goal.is_current %} class="is-selected"{% endif %}>
+                        <td>
+                            {% if goal.is_active %}
+                                <span class="icon"><i class="fas fa-flag-checkered"></i></span>
+                            {% endif %}
+                        </td>
+                        <td>{{ goal.orders }}</td>
+                        <td>{{ goal.price }} €</td>
                     </tr>
                 {% endfor %}
                 </tbody>
