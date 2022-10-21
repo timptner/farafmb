@@ -1,7 +1,16 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views import generic
 
+from .forms import ConsultationForm
 from .models import Consultation
 from .utils import calc_max_step_size, time_to_seconds, seconds_to_time
+
+
+class ConsultationCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Consultation
+    form_class = ConsultationForm
+    success_url = reverse_lazy('consultations:main')
 
 
 class ConsultationsView(generic.TemplateView):

@@ -1,0 +1,18 @@
+{% extends 'consultations/base.html' %}
+
+{% load i18n %}
+{% block content %}
+    <h3 class="title is-3">{% trans "Create consultation" %}</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">{% trans "Create" %}</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

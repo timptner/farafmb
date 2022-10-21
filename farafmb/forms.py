@@ -32,6 +32,11 @@ class DateInput(fields.DateInput):
     input_type = 'date'
 
 
+class TimeInput(fields.TimeInput):
+    template_name = 'forms/widgets/input.html'
+    input_type = 'time'
+
+
 class FileInput(fields.FileInput):
     template_name = 'forms/widgets/file.html'
 
