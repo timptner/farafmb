@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('is_visible', models.BooleanField(default=True)),
                 ('member', models.CharField(max_length=50)),
                 ('day', models.IntegerField(choices=[(1, 'Montag'), (2, 'Dienstag'), (3, 'Mittwoch'), (4, 'Donnerstag'), (5, 'Freitag')])),
-                ('time', models.TimeField(validators=[consultations.models.validate_time])),
+                ('time', models.TimeField()),
             ],
         ),
     ]

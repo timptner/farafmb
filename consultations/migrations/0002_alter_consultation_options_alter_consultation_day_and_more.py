@@ -33,6 +33,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='consultation',
             name='time',
-            field=models.TimeField(validators=[consultations.models.validate_time], verbose_name='Time'),
+            field=models.TimeField(verbose_name='Time'),
         ),
     ]
