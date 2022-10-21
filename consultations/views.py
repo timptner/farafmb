@@ -12,11 +12,27 @@ class ConsultationCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = ConsultationForm
     success_url = reverse_lazy('consultations:consultation-list')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_update'] = False
+        return context
+
 
 class ConsultationListView(LoginRequiredMixin, generic.ListView):
     model = Consultation
     queryset = Consultation.objects.all()
     ordering = ['day', 'start']
+
+
+class ConsultationUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Consultation
+    form_class = ConsultationForm
+    success_url = reverse_lazy('consultations:consultation-list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_update'] = True
+        return context
 
 
 class ConsultationsView(generic.TemplateView):

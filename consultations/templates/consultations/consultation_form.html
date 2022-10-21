@@ -1,18 +1,44 @@
 {% extends 'consultations/base.html' %}
 
 {% load i18n %}
+
+{% block tabs %}
+    {{ block.super }}
+
+    {% if is_update %}
+        <li>
+            <a href="{% url 'consultations:consultation-update' consultation.pk %}">
+                <span class="icon is-small"><i class="fas fa-pen" aria-hidden="true"></i></span>
+                <span>{% trans "Update" %}</span>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-    <h3 class="title is-3">{% trans "Create consultation" %}</h3>
+    <h3 class="title is-3">
+        {% if is_update %}
+            {% trans "Update consultation" %}
+        {% else %}
+            {% trans "Create consultation" %}
+        {% endif %}
+    </h3>
 
     <form method="POST">
         {% csrf_token %}
 
         {{ form }}
 
-        <div class="field">
-            <div class="control">
-                <button type="submit" class="button is-primary">{% trans "Create" %}</button>
-            </div>
+        <div class="field is-grouped">
+            {% if is_update %}
+                <div class="control">
+                    <button type="submit" class="button is-primary">{% trans "Update" %}</button>
+                </div>
+            {% else %}
+                <div class="control">
+                    <button type="submit" class="button is-primary">{% trans "Create" %}</button>
+                </div>
+            {% endif %}
         </div>
     </form>
 {% endblock %}
