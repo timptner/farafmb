@@ -10,7 +10,13 @@ from .utils import calc_max_step_size, time_to_seconds, seconds_to_time
 class ConsultationCreateView(LoginRequiredMixin, generic.CreateView):
     model = Consultation
     form_class = ConsultationForm
-    success_url = reverse_lazy('consultations:main')
+    success_url = reverse_lazy('consultations:consultation-list')
+
+
+class ConsultationListView(LoginRequiredMixin, generic.ListView):
+    model = Consultation
+    queryset = Consultation.objects.all()
+    ordering = ['day', 'start']
 
 
 class ConsultationsView(generic.TemplateView):

@@ -1,0 +1,30 @@
+{% extends 'consultations/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h3 class="title is-3">{% trans "List of all consultations" %}</h3>
+
+    <div class="table-container">
+        <table class="table is-fullwidth">
+            <thead>
+            <tr>
+                <th>{% trans "Day" %}</th>
+                <th>{% trans "Start" %}</th>
+                <th>{% trans "End" %}</th>
+                <th>{% trans "Text" %}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for consultation in object_list %}
+                <tr>
+                    <td>{{ consultation.get_day_display }}</td>
+                    <td>{{ consultation.start }}</td>
+                    <td>{{ consultation.end }}</td>
+                    <td>{{ consultation.text }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
