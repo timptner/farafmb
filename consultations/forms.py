@@ -30,11 +30,27 @@ class ConsultationForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        day = cleaned_data.get('day')
         start = cleaned_data.get('start')
         end = cleaned_data.get('end')
 
         if start and end:
             if start >= end:
                 msg = _("Start of consultation must be earlier then its end.")
+                self.add_error('start', msg)
+                self.add_error('end', msg)
+
+        if day and start and end:
+            # Validate start is not between another consultation
+            if Consultation.objects.filter(day=day, start__lte=start, end__gte=start).exists():
+                self.add_error('start', _("Value is between another consultation."))
+
+            # Validate end is not between another consultation
+            if Consultation.objects.filter(day=day, start__lte=end, end__gte=end).exists():
+                self.add_error('end', _("Value is between another consultation."))
+
+            # Validate no other consultation is between start and end
+            if Consultation.objects.filter(day=day, start__gte=start, end__lte=end).exists():
+                msg = _("Another consultation is between this consultation.")
                 self.add_error('start', msg)
                 self.add_error('end', msg)
