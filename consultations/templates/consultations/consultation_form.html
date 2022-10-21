@@ -16,13 +16,15 @@
 {% endblock %}
 
 {% block content %}
-    <h3 class="title is-3">
-        {% if is_update %}
-            {% trans "Update consultation" %}
-        {% else %}
-            {% trans "Create consultation" %}
-        {% endif %}
-    </h3>
+    <div class="content">
+        <h1>
+            {% if is_update %}
+                {% trans "Update consultation" %}
+            {% else %}
+                {% trans "Create consultation" %}
+            {% endif %}
+        </h1>
+    </div>
 
     <form method="POST">
         {% csrf_token %}
@@ -33,6 +35,12 @@
             {% if is_update %}
                 <div class="control">
                     <button type="submit" class="button is-primary">{% trans "Update" %}</button>
+                </div>
+
+                <div class="control">
+                    <a class="button is-danger" href="{% url 'consultations:consultation-delete' consultation.pk %}">
+                        {% trans "Delete" %}
+                    </a>
                 </div>
             {% else %}
                 <div class="control">

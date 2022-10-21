@@ -35,6 +35,11 @@ class ConsultationUpdateView(LoginRequiredMixin, generic.UpdateView):
         return context
 
 
+class ConsultationDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Consultation
+    success_url = reverse_lazy('consultations:consultation-list')
+
+
 class ConsultationsView(generic.TemplateView):
     template_name = 'consultations/main.html'
 

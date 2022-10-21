@@ -1,0 +1,44 @@
+{% extends 'consultations/base.html' %}
+
+{% load i18n %}
+
+{% block tabs %}
+    {{ block.super }}
+
+    <li>
+        <a href="{% url 'consultations:consultation-delete' consultation.pk %}">
+            <span class="icon is-small"><i class="fas fa-bomb" aria-hidden="true"></i></span>
+            <span>{% trans "Delete" %}</span>
+        </a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>{% trans "Confirm delete consultation" %}</h1>
+
+        <p>
+            {% blocktrans %}
+                Are you sure you want to delete "{{ object }}"?
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form }}
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-danger">{% trans "Confirm" %}</button>
+            </div>
+
+            <div class="control">
+                <a class="button" href="{% url 'consultations:consultation-update' consultation.pk %}">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
