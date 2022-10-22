@@ -23,6 +23,7 @@ class Consultation(models.Model):
     class Meta:
         verbose_name = _("Consultation")
         verbose_name_plural = _("Consultations")
+        ordering = ['day', 'start']
 
     def __str__(self):
         return self.text

@@ -33,10 +33,14 @@
                                 <li><strong>{{ day }}</strong></li>
 
                                 <ul>
-                                {% for consultation in consultation_this_day %}
-                                    <li>{{ consultation.start }} - {{ consultation.end }} | {{ consultation.text }}</li>
+                                    {% for consultation in consultation_this_day %}
+                                        <li>
+                                            {{ consultation.start }} - {{ consultation.end }} | {{ consultation.text }}
+                                        </li>
                                     {% endfor %}
                                 </ul>
+                            {% empty %}
+                                <li>{% trans "We do not currently offer office hours." %}</li>
                             {% endfor %}
                         </ul>
                     </div>

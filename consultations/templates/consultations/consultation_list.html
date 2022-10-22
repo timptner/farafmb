@@ -12,7 +12,9 @@
                 <th>{% trans "Day" %}</th>
                 <th>{% trans "Start" %}</th>
                 <th>{% trans "End" %}</th>
-                <th colspan="2">{% trans "Text" %}</th>
+                <th{% if user.is_authenticated %} colspan="2"{% endif %}>
+                    {% trans "Text" %}
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -22,12 +24,23 @@
                     <td>{{ consultation.start }}</td>
                     <td>{{ consultation.end }}</td>
                     <td>{{ consultation.text }}</td>
-                    <td>
-                        <a href="{% url 'consultations:consultation-update' consultation.pk %}">
-                            <span class="icon is-small">
-                                <i class="fas fa-pen"></i>
-                            </span>
-                        </a>
+                    {% if user.is_authenticated %}
+                        <td>
+                            <a href="{% url 'consultations:consultation-update' consultation.pk %}">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="fas fa-pen"></i>
+                                    </span>
+                                    <span>{% trans "Edit" %}</span>
+                                </span>
+                            </a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <tr>
+                    <td{% if user.is_authenticated %} colspan="5"{% else %} colspan="4"{% endif %}>
+                        {% trans "We do not currently offer office hours." %}
                     </td>
                 </tr>
             {% endfor %}
