@@ -23,6 +23,23 @@
                             {% endfor %}
                         </ul>
                     </div>
+
+                    <div class="box">
+                        <h4 class="title is-4 mb-2">{% trans "Office hours" %}</h4>
+
+                        {% regroup consultations by get_day_display as day_list %}
+                        <ul>
+                            {% for day, consultation_this_day in day_list %}
+                                <li><strong>{{ day }}</strong></li>
+
+                                <ul>
+                                {% for consultation in consultation_this_day %}
+                                    <li>{{ consultation.start }} - {{ consultation.end }} | {{ consultation.text }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

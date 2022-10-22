@@ -1,3 +1,4 @@
+from consultations.models import Consultation
 from datetime import date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -41,6 +42,7 @@ class NewsView(generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data()
         context['meetings'] = Meeting.objects.filter(date__gte=date.today())
+        context['consultations'] = Consultation.objects.order_by('day', 'start').all()
         return context
 
 
