@@ -42,15 +42,15 @@ class ConsultationForm(forms.ModelForm):
 
         if day and start and end:
             # Validate start is not between another consultation
-            if Consultation.objects.filter(day=day, start__lt=start, end__gt=start).exists():
+            if Consultation.objects.exclude(pk=self.instance.pk).filter(day=day, start__lt=start, end__gt=start).exists():
                 self.add_error('start', _("Value is between another consultation."))
 
             # Validate end is not between another consultation
-            if Consultation.objects.filter(day=day, start__lt=end, end__gt=end).exists():
+            if Consultation.objects.exclude(pk=self.instance.pk).filter(day=day, start__lt=end, end__gt=end).exists():
                 self.add_error('end', _("Value is between another consultation."))
 
             # Validate no other consultation is between start and end
-            if Consultation.objects.filter(day=day, start__gte=start, end__lte=end).exists():
+            if Consultation.objects.exclude(pk=self.instance.pk).filter(day=day, start__gte=start, end__lte=end).exists():
                 msg = _("Another consultation is between this consultation.")
                 self.add_error('start', msg)
                 self.add_error('end', msg)
