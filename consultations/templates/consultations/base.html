@@ -10,6 +10,13 @@
                     <ul>
                         {% block tabs %}
                             <li>
+                                <a href="{% url 'consultations:office-hours' %}">
+                                    <span class="icon is-small"><i class="fas fa-table" aria-hidden="true"></i></span>
+                                    <span>{% trans "Office hours" %}</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="{% url 'consultations:consultation-list' %}">
                                     <span class="icon is-small"><i class="fas fa-list" aria-hidden="true"></i></span>
                                     <span>{% trans "List" %}</span>
