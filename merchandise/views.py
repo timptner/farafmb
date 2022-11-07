@@ -3,6 +3,7 @@ import secrets
 from datetime import timedelta
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.template.loader import get_template
@@ -47,6 +48,7 @@ class OrderCreateView(generic.CreateView):
         return context
 
     def form_valid(self, form):
+        raise PermissionDenied()  # Form closed
         # save object with json type
         sizes = form.cleaned_data['sizes']
         form.instance.items = dict(sorted([(size, sizes.count(size)) for size in sizes]))

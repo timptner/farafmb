@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-12 23:06+0200\n"
+"POT-Creation-Date: 2022-11-07 22:15+0100\n"
 "Last-Translator:Aiven Timptner\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: German\n"
@@ -79,7 +79,6 @@ msgid "Updated at"
 msgstr "Aktualisiert am"
 
 #: merchandise/models.py:15
-#: merchandise/templates/merchandise/order_form.html:117
 msgid "Order"
 msgstr "Bestellung"
 
@@ -223,36 +222,27 @@ msgstr ""
 msgid "Price"
 msgstr "Preis"
 
-#: merchandise/templates/merchandise/order_form.html:95
+#: merchandise/templates/merchandise/order_form.html:98
 msgid "Registration"
 msgstr "Registrierung"
 
-#: merchandise/templates/merchandise/order_form.html:98
-msgid "Privacy"
-msgstr "Datenschutz"
-
-#: merchandise/templates/merchandise/order_form.html:100
+#: merchandise/templates/merchandise/order_form.html:102
 msgid ""
 "\n"
-"                We use your name to identify you. Your email address is used "
-"to verify your order and send you\n"
-"                information about shipping. Your data will be treated "
-"confidentially and not be passed on to third\n"
-"                parties! After you received your items we will delete your "
-"personal data irrevocably from our servers.\n"
-"                By submitting this form you accept our privacy statement and "
-"agree to the processing of your personal\n"
-"                data.\n"
+"                Registration for our Rhinoletten is closed, as we will place "
+"an order soon. Exact information about the\n"
+"                delivery date and payment will be sent to all people with an "
+"order in the next few days. If and when we\n"
+"                place a collective order again is still uncertain at the "
+"current time.\n"
 "            "
 msgstr ""
 "\n"
-"Wir verwenden deinen Namen um dich zu identifizieren. Deine E-Mail-Adresse "
-"wird zur Verifizierung deiner Bestellung und zum Versenden von Informationen "
-"zu deiner Bestellung verwendet. Deine Daten werden vertraulich behandelt und "
-"nicht an Dritte weiter gegeben. Nachdem du deine Artikel erhalten hast "
-"werden wir deine Daten unwiderruflich von unseren Servern löschen. Durch das "
-"Abschicken des Formulars stimmst du unserer Datenschutzbestimmung zu und "
-"bist mit der Verarbeitung deiner personenbezogenen Daten einverstanden."
+"Die Registrierung für unsere Rhinoletten ist beendet, da wir zeitnah eine "
+"Bestellung aufgeben werden. Genaue Informationen zum Lieferdatum und der "
+"Bezahlung erhalten alle Menschen mit einer Bestellung in den nächsten Tagen. "
+"Ob und wenn wir erneut eine Sammelbestellung aufgeben werden ist zum "
+"aktuellen Zeitpunkt noch ungewiss."
 
 #: merchandise/templates/merchandise/order_list.html:12
 msgid "Size"
@@ -335,36 +325,62 @@ msgstr "Verifizierung war erfolgreich"
 msgid "Verification failed"
 msgstr "Verifizierung ist fehlgeschlagen"
 
-#: merchandise/views.py:57
+#: merchandise/views.py:66
 msgid "Verify your order"
 msgstr "Verifiziere deine Bestellung"
 
-#: merchandise/views.py:81
+#: merchandise/views.py:90
 msgid ""
 "The link was malformed. Please make sure that you do not alter the link."
 msgstr ""
 "Der Link wurde deformiert. Bitte stelle sicher, dass du den Link nicht "
 "veränderst."
 
-#: merchandise/views.py:89
+#: merchandise/views.py:98
 msgid ""
 "The token was malformed. Please make sure that you do not alter the token."
 msgstr ""
 "Der Schlüssel wurde deformiert. Bitte stelle sicher, dass du den Token nicht "
 "veränderst."
 
-#: merchandise/views.py:96
+#: merchandise/views.py:105
 msgid "The token is expired. Please request a new one by contacting us."
 msgstr ""
 "Der Token ist abgelaufen. Bitte beantrage einen Neuen indem du uns "
 "kontaktierst."
 
-#: merchandise/views.py:107
+#: merchandise/views.py:116
 msgid "Your order is completed. We will contact you when we ship your items."
 msgstr ""
 "Deine Bestellung ist abgeschlossen. Wir werden dich kontaktieren sobald wir "
 "deine Artikel verschicken."
 
-#: merchandise/views.py:142
+#: merchandise/views.py:151
 msgid "Order was updated successfully"
 msgstr "Bestellung wurde erfolgreich aktualisiert"
+
+#~ msgid "Privacy"
+#~ msgstr "Datenschutz"
+
+#~ msgid ""
+#~ "\n"
+#~ "                We use your name to identify you. Your email address is "
+#~ "used to verify your order and send you\n"
+#~ "                information about shipping. Your data will be treated "
+#~ "confidentially and not be passed on to third\n"
+#~ "                parties! After you received your items we will delete "
+#~ "your personal data irrevocably from our servers.\n"
+#~ "                By submitting this form you accept our privacy statement "
+#~ "and agree to the processing of your personal\n"
+#~ "                data.\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "Wir verwenden deinen Namen um dich zu identifizieren. Deine E-Mail-"
+#~ "Adresse wird zur Verifizierung deiner Bestellung und zum Versenden von "
+#~ "Informationen zu deiner Bestellung verwendet. Deine Daten werden "
+#~ "vertraulich behandelt und nicht an Dritte weiter gegeben. Nachdem du "
+#~ "deine Artikel erhalten hast werden wir deine Daten unwiderruflich von "
+#~ "unseren Servern löschen. Durch das Abschicken des Formulars stimmst du "
+#~ "unserer Datenschutzbestimmung zu und bist mit der Verarbeitung deiner "
+#~ "personenbezogenen Daten einverstanden."

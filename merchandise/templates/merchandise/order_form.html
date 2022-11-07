@@ -98,6 +98,15 @@
     <h5 class="title is-5">{% trans "Registration" %}</h5>
 
     <article class="message is-info">
+        <div class="message-body">
+            {% blocktrans %}
+                Registration for our Rhinoletten is closed, as we will place an order soon. Exact information about the
+                delivery date and payment will be sent to all people with an order in the next few days. If and when we
+                place a collective order again is still uncertain at the current time.
+            {% endblocktrans %}
+        </div>
+    </article>
+    {% comment %}<article class="message is-info">
         <div class="message-header">{% trans "Privacy" %}</div>
         <div class="message-body">
             {% blocktrans %}
@@ -127,5 +136,5 @@
             let element = document.createElement('span');
             node.appendChild(element).textContent = node.querySelector('input').dataset.text;
         });
-    </script>
+    </script>{% endcomment %}
 {% endblock %}
