@@ -1,0 +1,8 @@
+Django~=4.1.6
+Pillow~=9.4.0
+python-decouple==3.7
+dj_database_url~=1.2.0
+bleach~=5.0.0
+Markdown~=3.4.1
+markdown-checklist~=0.4.4
+markdown-del-ins~=1.0.0

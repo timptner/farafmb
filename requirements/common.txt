@@ -1,8 +1,0 @@
-bleach>=5.0,<5.1
-Django>=4.1,<4.2
-django-oauth-toolkit>=2.1,<2.2
-Markdown>=3.4,<3.5
-markdown-checklist>=0.4,<0.5
-markdown-del-ins>=1.0,<1.1
-Pillow>=9.2,<9.3
-python-dotenv>=0.21,<0.22
