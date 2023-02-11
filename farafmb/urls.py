@@ -2,8 +2,7 @@ from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path, re_path
-from oauth2_provider.views import ConnectDiscoveryInfoView
+from django.urls import include, path
 
 
 urlpatterns = [
@@ -11,11 +10,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('i18n/', include('django.conf.urls.i18n')),
-
-    re_path(r'^oauth/\.well-known/openid-configuration/?$',
-            ConnectDiscoveryInfoView.as_view(),
-            name='oidc-connect-discovery-info'),  # Serve discovery view on both routes
-    path('oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
 
 urlpatterns += i18n_patterns(

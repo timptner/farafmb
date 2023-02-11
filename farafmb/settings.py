@@ -1,12 +1,16 @@
-import os
-
+from decouple import config
+from dj_database_url import parse as db_url
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = config('SECRET_KEY')
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=list)
 
 
 # Application definition
@@ -26,8 +30,6 @@ INSTALLED_APPS = [
     'members',
     'mentoring',
     'merchandise',
-
-    'oauth2_provider',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,22 +79,20 @@ WSGI_APPLICATION = 'farafmb.wsgi.application'
 
 # Database
 
+DATABASES = {
+    'default': config(
+        'DATABASE_URL',
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+        cast=db_url,
+    )
+}
+
+
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Authentication
-
-OAUTH2_PROVIDER = {
-    'OIDC_ENABLED': True,
-    'OIDC_RSA_PRIVATE_KEY': os.getenv('OIDC_RSA_PRIVATE_KEY'),
-    'SCOPES': {
-        'openid': 'OpenID Connect scope',
-        'profile': 'User profile scope',
-        'email': 'User email scope',
-    },
-    'OAUTH2_VALIDATOR_CLASS': 'farafmb.oauth.CustomOAuth2Validator',
-}
 
 LOGIN_REDIRECT_URL = reverse_lazy('members:member-list')
 
@@ -143,29 +143,52 @@ STATICFILES_DIRS = [
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.getenv('STATIC_ROOT', BASE_DIR / 'files' / 'static')
+STATIC_ROOT = config('STATIC_ROOT', default=str(BASE_DIR / 'files' / 'static'))
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', BASE_DIR / 'files' / 'media')
+MEDIA_ROOT = config('MEDIA_ROOT', default=str(BASE_DIR / 'files' / 'media'))
 
 
 # Email
 
-EMAIL_USE_TLS = True
+EMAIL_HOST = config('EMAIL_HOST', default='localhost')
 
-EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
 
-EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_USER', default='')
 
-EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD', default='')
 
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_SECURE', default=False, cast=bool)
+
+DEFAULT_FROM_EMAIL = config('DEFAULT_EMAIL', 'hello@farafmb.de')
+
+SERVER_EMAIL = config('SERVER_EMAIL', 'hello@farafmb.de')
 
 
 # Forms
 
 FORM_RENDERER = 'farafmb.forms.BulmaFormRenderer'
+
+
+# Security
+
+# SECURE_SSL_REDIRECT = True
+#
+# SECURE_HSTS_SECONDS = 365*24*60*60
+#
+# SECURE_HSTS_PRELOAD = True
+#
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#
+# SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
+#
+# SESSION_COOKIE_SECURE = True
+#
+# CSRF_COOKIE_SECURE = True
 
 
 # Logging
@@ -207,7 +230,7 @@ LOGGING = {
             'level': 'INFO',
             'filters': ['require_debug_false'],
             'class': 'logging.FileHandler',
-            'filename': os.getenv('LOG_FILE', './server.log'),
+            'filename': config('LOG_FILE', default='./server.log'),
             'formatter': 'simple',
         },
         'mail_admins': {
