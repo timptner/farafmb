@@ -14,9 +14,6 @@ class ModelForm(_ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.label_suffix = ''
-        for key, value in self.initial.items():
-            if type(self.fields[key].widget) is DateInputWidget:
-                self.initial[key] = str(value)
 
 
 class TextInput(fields.TextInput):
