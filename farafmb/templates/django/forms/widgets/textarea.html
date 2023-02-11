@@ -1,8 +1,4 @@
 <textarea class="textarea"
           name="{{ widget.name }}"
           rows="5"
-          {% include "django/forms/widgets/attrs.html" %}>
-    {% if widget.value %}
-        {{ widget.value }}
-    {% endif %}
-</textarea>
+          {% include "django/forms/widgets/attrs.html" %}>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
