@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates',
+            BASE_DIR / 'farafmb' / 'templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -125,7 +125,7 @@ LANGUAGES = [
 ]
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale',
+    BASE_DIR / 'farafmb' / 'locale',
 ]
 
 TIME_ZONE = 'Europe/Berlin'
@@ -138,16 +138,22 @@ USE_TZ = True
 # File Storage
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'farafmb' / 'static',
 ]
 
-STATIC_URL = '/static/'
+DEFAULT_FILE_STORAGE = config('MEDIA_FILE_STORAGE', default='django.core.files.storage.FileSystemStorage')
 
-STATIC_ROOT = config('STATIC_ROOT', default=str(BASE_DIR / 'files' / 'static'))
+STATICFILES_STORAGE = config('STATIC_FILE_STORAGE', default='django.contrib.staticfiles.storage.StaticFilesStorage')
 
-MEDIA_URL = '/media/'
+STATIC_URL = 'static/'
 
-MEDIA_ROOT = config('MEDIA_ROOT', default=str(BASE_DIR / 'files' / 'media'))
+STATIC_ROOT = BASE_DIR / 'static'
+
+MEDIA_URL = 'media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
 
 
 # Email
