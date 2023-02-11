@@ -6,3 +6,5 @@ bleach~=5.0.0
 Markdown~=3.4.1
 markdown-checklist~=0.4.4
 markdown-del-ins~=1.0.0
+gunicorn~=20.1.0
+psycopg2-binary~=2.9.5
