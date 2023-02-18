@@ -14,7 +14,7 @@
 
                 <div class="column is-one-quarter">{# Sidebar #}
                     <div class="box">
-                        <h4 class="title is-4 mb-2">Sitzungstermine</h4>
+                        <h4 class="title is-4">Sitzungstermine</h4>
                         <ul>
                             {% for meeting in meetings %}
                                 <li>{{ meeting.date|date:'d. F Y' }}</li>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="box">
-                        <h4 class="title is-4 mb-2">{% trans "Office hours" %}</h4>
+                        <h4 class="title is-4">{% trans "Office hours" %}</h4>
 
                         {% regroup consultations by get_day_display as day_list %}
                         <ul>
@@ -43,6 +43,29 @@
                                 <li>{% trans "We do not currently offer office hours." %}</li>
                             {% endfor %}
                         </ul>
+                    </div>
+
+                    <div class="box">
+                        <h4 class="title is-4">{% trans "Events" %}</h4>
+
+                        {% for event in events %}
+                            <div class="block">
+                                {% if event.link %}
+                                    <a href="{{ event.link }}">
+                                        <span class="icon is-pulled-right">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </span>
+                                        <p class="title is-5">{{ event.title }}</p>
+                                        <p class="subtitle is-6">{{ event.date }}</p>
+                                    </a>
+                                {% else %}
+                                    <p class="title is-5">{{ event.title }}</p>
+                                    <p class="subtitle is-6">{{ event.date }}</p>
+                                {% endif %}
+                            </div>
+                        {% empty %}
+                            <p>{% trans "No events are planned at the moment." %}</p>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

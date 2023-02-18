@@ -74,3 +74,15 @@ class Video(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Event(models.Model):
+    title = models.CharField(max_length=100)
+    date = models.DateField()
+    link = models.URLField(blank=True)
+
+    class Meta:
+        ordering = ['date']
+
+    def __str__(self):
+        return self.title

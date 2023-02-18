@@ -8,7 +8,7 @@ from django.views import generic
 from meetings.models import Meeting
 
 from .forms import PostCreateForm
-from .models import Post
+from .models import Post, Event
 
 
 class PostListView(LoginRequiredMixin, generic.ListView):
@@ -43,6 +43,7 @@ class NewsView(generic.ListView):
         context = super().get_context_data()
         context['meetings'] = Meeting.objects.filter(date__gte=date.today())
         context['consultations'] = Consultation.objects.order_by('day', 'start').all()
+        context['events'] = Event.objects.all()
         return context
 
 

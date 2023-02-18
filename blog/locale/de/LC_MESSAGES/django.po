@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-22 10:28+0200\n"
+"POT-Creation-Date: 2023-02-18 23:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -26,6 +26,18 @@ msgstr "Blog"
 #: blog/templates/blog/base.html:28
 msgid "Office hours"
 msgstr "Sprechzeiten"
+
+#: blog/templates/blog/base.html:43
+msgid "We do not currently offer office hours."
+msgstr "Derzeit bieten wir keine Sprechzeiten an."
+
+#: blog/templates/blog/base.html:49
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: blog/templates/blog/base.html:67
+msgid "No events are planned at the moment."
+msgstr "Zurzeit sind keine Veranstaltungen geplant."
 
 #: blog/templates/blog/base_admin.html:8
 msgid "All"
