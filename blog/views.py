@@ -3,6 +3,7 @@ from datetime import date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import reverse
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views import generic
 from meetings.models import Meeting
@@ -43,7 +44,7 @@ class NewsView(generic.ListView):
         context = super().get_context_data()
         context['meetings'] = Meeting.objects.filter(date__gte=date.today())
         context['consultations'] = Consultation.objects.order_by('day', 'start').all()
-        context['events'] = Event.objects.all()
+        context['events'] = Event.objects.filter(date__gte=timezone.now())
         return context
 
 
