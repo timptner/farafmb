@@ -1,4 +1,8 @@
 <div class="box">
+    {% if obj.instagram %}
+        <span class="tag is-light is-pulled-right">Instagram</span>
+    {% endif %}
+
     <p class="title is-4">{{ obj.title }}</p>
     <p class="subtitle"><small>{{ obj.updated }}</small></p>
 

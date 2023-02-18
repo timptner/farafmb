@@ -40,6 +40,7 @@ class Post(models.Model):
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    instagram = models.CharField(max_length=200, unique=True, blank=True, null=True)
 
     def __str__(self):
         return self.title
