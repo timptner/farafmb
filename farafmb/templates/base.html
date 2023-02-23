@@ -56,11 +56,13 @@
     {% endblock %}
 {% endblock page %}
 
+{% if not debug %}
 <!-- Site Tracking -->
 <noscript>
     <img src="https://shynet.farafmb.de/ingress/df10831c-1d36-446a-8521-76a0875ed5bf/pixel.gif">
 </noscript>
 <script defer src="https://shynet.farafmb.de/ingress/df10831c-1d36-446a-8521-76a0875ed5bf/script.js"></script>
+{% endif %}
 
 </body>
 </html>
