@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load markdown %}
+{% load markdown static %}
 
 {% block content %}
     <div class="container is-max-desktop">
@@ -8,6 +8,12 @@
 
         <div class="content">
             {{ text|render_html }}
+        </div>
+
+        <div class="is-pulled-right" style="margin-top: -64px;">
+            <figure class="image is-64x64">
+                <img src="{% static 'img/osterei.svg' %}">
+            </figure>
         </div>
 
         {% if image %}
