@@ -3,25 +3,28 @@
 {% load i18n %}
 
 {% block content %}
-<div class="container is-max-desktop">
-    <nav class="panel has-background-white">
-        <p class="panel-heading">{% translate "Documents" %}</p>
+    <div class="container is-max-desktop">
+        {% regroup document_list by group as group_list %}
+        {% for group in group_list %}
+            <nav class="panel has-background-white">
+                <p class="panel-heading">{{ group.grouper|default_if_none:"Sonstiges" }}</p>
 
-        {% for obj in object_list %}
-        <a class="panel-block" href="{{ obj.file.url }}">
-            <span class="panel-icon">
-                <i class="{{ obj.icon }}" aria-hidden="true"></i>
-            </span>
-            {{ obj.title }}
-        </a>
-        {% empty %}
-        <p class="panel-block">
-            <span class="panel-icon">
-                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-            </span>
-            {% translate "No documents are available." %}
-        </p>
+                {% for document in group.list %}
+                    <a class="panel-block" href="{{ document.file.url }}">
+                        <span class="panel-icon">
+                            <i class="{{ document.icon }}" aria-hidden="true"></i>
+                        </span>
+                        {{ document.title }}
+                    </a>
+                {% empty %}
+                    <p class="panel-block">
+                        <span class="panel-icon">
+                            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                        </span>
+                        {% translate "No documents are available." %}
+                    </p>
+                {% endfor %}
+            </nav>
         {% endfor %}
-    </nav>
-</div>
+    </div>
 {% endblock %}

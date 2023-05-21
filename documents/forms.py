@@ -9,7 +9,7 @@ from .models import Document
 class DocumentAdminForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('title', 'file', 'visible')
+        fields = ('group', 'title', 'file', 'visible')
         labels = {
             'title': _('Title'),
             'file': _('File'),
