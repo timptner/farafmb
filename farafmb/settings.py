@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'links',
     'meetings',
     'members',
-    'mentoring',
 
     'django.contrib.admin',
     'django.contrib.auth',

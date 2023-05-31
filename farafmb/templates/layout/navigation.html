@@ -52,18 +52,6 @@
                     </div>
                 </div>
 
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans "Participate" %}
-                    </a>
-
-                    <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="{% url 'mentoring:landing_page' %}">
-                            {% trans "Mentoring" %}
-                        </a>
-                    </div>
-                </div>
-
                 {% if user.is_authenticated %}
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
@@ -88,18 +76,6 @@
                             <hr class="navbar-divider">
 
                             <a class="navbar-item" href="{% url 'blog:posts' %}">{% trans "Posts" %}</a>
-
-                            <hr class="navbar-divider">
-
-                            <a class="navbar-item" href="{% url 'mentoring:registration-list' %}">
-                                {% trans "Registrations" %}
-                            </a>
-                            <a class="navbar-item" href="{% url 'mentoring:program-list' %}">
-                                {% trans "Study programs" %}
-                            </a>
-                            <a class="navbar-item" href="{% url 'mentoring:mentor-list' %}">
-                                {% trans "Mentors" %}
-                            </a>
 
                             <hr class="navbar-divider">
 
