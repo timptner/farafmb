@@ -19,7 +19,6 @@ urlpatterns += i18n_patterns(
     path('documents/', include('documents.urls')),
     path('events/', include('events.urls')),
     path('exams/', include('exams.urls')),
-    path('excursions/', include('excursions.urls')),
     path('jobs/', include('jobs.urls')),
     path('links/', include('links.urls')),
     path('meetings/', include('meetings.urls')),

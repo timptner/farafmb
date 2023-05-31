@@ -12,4 +12,5 @@ urlpatterns = [
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('protocols/', lambda request: redirect(reverse('exams:submit'), permanent=True)),
     path('merchandise/', views.MerchandiseView.as_view(), name='merchandise'),
+    path('excursions/', views.ExcursionView.as_view(), name='excursions'),
 ]

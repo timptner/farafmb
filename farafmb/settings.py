@@ -25,7 +25,6 @@ INSTALLED_APPS = [
     'documents',
     'events',
     'exams',
-    'excursions',
     'jobs',
     'links',
     'meetings',

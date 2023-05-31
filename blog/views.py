@@ -54,3 +54,7 @@ class ContactView(generic.TemplateView):
 
 class MerchandiseView(generic.TemplateView):
     template_name = 'blog/merchandise.html'
+
+
+class ExcursionView(generic.TemplateView):
+    template_name = 'blog/excursions.html'
