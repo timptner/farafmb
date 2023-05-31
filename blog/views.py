@@ -50,3 +50,7 @@ class NewsView(generic.ListView):
 
 class ContactView(generic.TemplateView):
     template_name = 'blog/contact.html'
+
+
+class MerchandiseView(generic.TemplateView):
+    template_name = 'blog/merchandise.html'
