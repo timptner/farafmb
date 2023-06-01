@@ -22,6 +22,7 @@ urlpatterns += i18n_patterns(
     path('links/', include('links.urls')),
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
+    path('excursions/', include('excursions.urls')),
 
     prefix_default_language=True
 )
