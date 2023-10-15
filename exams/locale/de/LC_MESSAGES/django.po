@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-20 01:58+0200\n"
+"POT-Creation-Date: 2023-10-15 21:55+0200\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,37 +14,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\exams\admin.py:18
+#: exams/admin.py:18
 #, python-format
 msgid "%d author was removed successfully."
 msgid_plural "%d authors were removed successfully."
 msgstr[0] "%d Autor wurde erfolgreich entfernt."
 msgstr[1] "%d Autoren wurden erfolgreich entfernt."
 
-#: .\exams\admin.py:22
+#: exams/admin.py:22
 msgid "Make selected exams anonymous"
 msgstr "Ausgewählte Prüfungen anonymisieren"
 
-#: .\exams\admin.py:27
+#: exams/admin.py:27
 #, python-format
 msgid "%d exam was marked as archived."
 msgid_plural "%d exams were marked as archived."
 msgstr[0] "%d Prüfung wurde als archiviert markiert."
 msgstr[1] "%d Prüfungen wurden als archiviert markiert."
 
-#: .\exams\admin.py:31
+#: exams/admin.py:31
 msgid "Archive selected exams"
 msgstr "Ausgewählte Prüfungen archivieren"
 
-#: .\exams\apps.py:8 .\exams\models.py:19
+#: exams/apps.py:8 exams/models.py:19
 msgid "Exams"
 msgstr "Prüfungen"
 
-#: .\exams\forms.py:17 .\exams\templates\exams\submit_form.html:13
+#: exams/forms.py:17 exams/templates/exams/submit_form.html:13
 msgid "Privacy"
 msgstr "Datenschutz"
 
-#: .\exams\forms.py:19
+#: exams/forms.py:19
 msgid ""
 "I accept the privacy statement and agree to the processing of my personal "
 "data."
@@ -52,45 +52,45 @@ msgstr ""
 "Ich akzeptiere die Datenschutzerklärung und bin mit der Verarbeitung meiner "
 "personenbezogenen Daten einverstanden."
 
-#: .\exams\forms.py:27 .\exams\models.py:7
+#: exams/forms.py:27 exams/models.py:7
 msgid "Course"
 msgstr "Lehrveranstaltung"
 
-#: .\exams\forms.py:28 .\exams\models.py:8
+#: exams/forms.py:28 exams/models.py:8
 msgid "Lecturer"
 msgstr "Dozent"
 
-#: .\exams\forms.py:29 .\exams\models.py:9
+#: exams/forms.py:29 exams/models.py:9
 msgid "Date of the exam"
 msgstr "Datum der Prüfung"
 
-#: .\exams\forms.py:30 .\exams\models.py:10
+#: exams/forms.py:30 exams/models.py:10
 msgid "Author of the minute"
 msgstr "Verfasser des Protokolls"
 
-#: .\exams\forms.py:31 .\exams\models.py:11
+#: exams/forms.py:31 exams/models.py:11
 msgid "Minute file"
 msgstr "Protokolldatei"
 
-#: .\exams\forms.py:34
+#: exams/forms.py:34
 msgid "Only email addresses with the domain 'st.ovgu.de' are allowed."
 msgstr ""
 "Es sind ausschließlich E-Mail-Adressen mit der Domain 'st.ovgu.de' erlaubt."
 
-#: .\exams\forms.py:35
+#: exams/forms.py:35
 #, python-format
 msgid "Only PDF files with a maximum size of %s can be submitted."
 msgstr ""
 "Es können nur PDF-Dateien mit einer maximalen Dateigröße von %s eingereicht "
 "werden."
 
-#: .\exams\forms.py:42
+#: exams/forms.py:42
 msgid "The date can't be in the future. (Are you a time traveler? 🧙)"
 msgstr ""
 "Das Datum kann nicht in der Zukunft liegen. (Bist du etwa ein Zeitreisender? "
 "🧙)"
 
-#: .\exams\forms.py:49
+#: exams/forms.py:49
 msgid ""
 "Please use your university email address. (Did you even read the help text "
 "above? 🧐)"
@@ -98,38 +98,38 @@ msgstr ""
 "Benutze bitte deine universitäre E-Mail-Adresse. (Hast du den Hinweis etwa "
 "nicht gelesen? 🧐)"
 
-#: .\exams\forms.py:57
+#: exams/forms.py:57
 #, python-format
 msgid "Your file size (%(size)s) is above the allowed maximum of %(max_size)s."
 msgstr ""
 "Deine Dateigröße (%(size)s) ist über dem erlaubten Maximum von %(max_size)s."
 
-#: .\exams\models.py:14
+#: exams/models.py:14
 msgid "Submitted on"
 msgstr "Eingereicht am"
 
-#: .\exams\models.py:15
+#: exams/models.py:15
 msgid "Archived"
 msgstr "Archiviert"
 
-#: .\exams\models.py:18
+#: exams/models.py:18
 msgid "Exam"
 msgstr "Prüfung"
 
-#: .\exams\templates\exams\info.html:8
+#: exams/templates/exams/info.html:8
 msgid "Memory minutes"
 msgstr "Gedächtnisprotokoll"
 
-#: .\exams\templates\exams\info.html:10
+#: exams/templates/exams/info.html:10
 msgid "What are memory minutes? 📝"
 msgstr "Was ist ein Gedächtnisprotokoll? 📝"
 
-#: .\exams\templates\exams\info.html:12
+#: exams/templates/exams/info.html:12
 msgid ""
 "\n"
 "            Memory minutes are records of an exam that has already been "
 "completed. These records are not made secretly\n"
-"            during the exam, but are written from memory. Hence the name "
+"            during the exam, but are written from memory. Hence, the name "
 "<strong>memory</strong> minutes. The memory\n"
 "            minutes of an exam helps future students to better prepare for "
 "their exam in the corresponding course,\n"
@@ -139,18 +139,18 @@ msgstr ""
 "\n"
 "Gedächtnisprotokolle sind Aufzeichnungen einer bereits beendeten Prüfung. "
 "Hierbei sind diese Aufzeichnungen nicht während der Prüfung heimlich "
-"angefertigt worden sondern werden aus der Erinnerung heraus geschrieben. "
+"angefertigt worden, sondern werden aus der Erinnerung heraus geschrieben. "
 "Daher auch der Name <strong>Gedächtnis</strong>protokoll. Die aus der "
 "Erinnerung geschriebenen Aufzeichnungen einer Klausur oder Prüfung hilft "
 "zukünftigen Studierenden sich besser auf ihre Prüfung in dem entsprechendem "
 "Kurs vorzubereiten, da sie so besser abschätzen können, was sie erwarten "
 "wird."
 
-#: .\exams\templates\exams\info.html:20
+#: exams/templates/exams/info.html:20
 msgid "And what do I get out of it? 🤔"
 msgstr "Und was habe ich davon? 🤔"
 
-#: .\exams\templates\exams\info.html:22
+#: exams/templates/exams/info.html:22
 msgid ""
 "\n"
 "            Unfortunately, the memory minutes are of no use for yourself. "
@@ -164,44 +164,45 @@ msgid ""
 msgstr ""
 "\n"
 "Dir selbst nützen die Gedächtnisprotokolle leider nichts. (Außer du hast vor "
-"die Prüfung noch einmal zu schreiben. 😉) Jedoch hast du selbst dich bestimmt "
-"auch schon auf die eine oder andere Prüfung anhand der Notizen von "
+"die Prüfung noch einmal zu schreiben. 😉) Jedoch hast du selbst dich "
+"bestimmt auch schon auf die eine oder andere Prüfung anhand der Notizen von "
 "Kommilitonen in höheren Semestern vorbereitet oder die eine oder andere "
 "Übungsaufgabe dadurch erfolgreich bearbeitet.<br/><strong>Tu es also nicht "
 "für dich sondern für die zukünftigen Studierenden! 👩‍🎓📈</strong>"
 
-#: .\exams\templates\exams\info.html:30
+#: exams/templates/exams/info.html:30
 msgid "Where can I find existing memory minutes? 🗄️"
 msgstr "Wo finde ich bereits existierende Gedächtnisprotokolle? 🗄️"
 
-#: .\exams\templates\exams\info.html:32
+#: exams/templates/exams/info.html:32
 msgid ""
 "\n"
-"            We maintain a collection at <a href=\"https://cloud.faking.cool"
-"\">https://cloud.faking.cool</a>. This\n"
-"            collection contains memory minutes for most modules at the "
-"<em>Faculty of Mechanical Engineering</em>, the\n"
-"            <em>Faculty of Electrical Engineering and Information "
-"Technology</em>, and the <em>Faculty of Process and\n"
-"            Systems Engineering</em>. However, since the exams are "
-"constantly changing, we are constantly in need of\n"
-"            new memory minutes, which we then add to our collection.\n"
+"            We maintain a collection, which we call <a href=\"https://www."
+"ingenieurscampus.de\">Student Exam Archive</a>\n"
+"            or <em>SEArch</em> in short. This collection contains memory "
+"minutes for most modules at the\n"
+"            <em>Faculty of Mechanical Engineering</em>, the <em>Faculty of "
+"Electrical Engineering and Information\n"
+"            Technology</em>, and the <em>Faculty of Process and Systems "
+"Engineering</em>. However, since the exams are\n"
+"            constantly changing, we are constantly in need of new memory "
+"minutes, which we then add to our collection.\n"
 "            "
 msgstr ""
 "\n"
-"Wir verwaltet eine Sammlung unter <a href=\"https://cloud.faking.cool"
-"\">https://cloud.faking.cool</a>. Diese Sammlung enthält "
+"Wir verwaltet eine Sammlung, welche wir <a href=\"https://www.ingenieurscampus.de\">"
+"Student Exam Archive</a> (SEArch) nennen. Diese Sammlung enthält "
 "Gedächtnisprotokolle zu den meisten Modulen an der <em>Fakultät "
 "Maschinenbau</em>, der <em>Fakultät Elektro- und Informationstechnik</em> "
 "sowie der <em>Fakultät Verfahrens- und Systemtechnik</em>. Da die Klausuren "
 "sich jedoch stetig ändern sind wir fortwährend auf neue Gedächtnisprotokolle "
 "angewiesen, welche wir dann in unserer Sammlung einpflegen."
 
-#: .\exams\templates\exams\info.html:41
+#: exams/templates/exams/info.html:41
 msgid "Convinced?! What do I have to keep in mind? 🚨"
 msgstr "Überzeugt?! Was muss ich dabei beachten? 🚨"
 
-#: .\exams\templates\exams\info.html:43
+#: exams/templates/exams/info.html:43
 msgid ""
 "\n"
 "            Legally, the exact wording of each exam is the spiritual "
@@ -229,29 +230,29 @@ msgstr ""
 "Die Gedächtnisprotokolle, welcher aus der Erinnerung heraus geschrieben "
 "werden, sind jedoch nur grob zum Inhalt der Prüfung gleich und können daher "
 "nicht als geistliches Eigentum vom Prüfenden eingeklagt werden.<br/>Solltest "
-"du ein Experte der <a href=\"https://de.wikipedia.org/wiki/Mnemotechnik"
-"\">Mnemotechnik 🌐</a> sein bitten wir dich beim Anfertigen des "
+"du ein Experte der <a href=\"https://de.wikipedia.org/wiki/"
+"Mnemotechnik\">Mnemotechnik 🌐</a> sein bitten wir dich beim Anfertigen des "
 "Gedächtnisprotokolls nicht die exakte Klausur niederzuschreiben sondern "
 "stattdessen dein Protokoll so umzuschreiben, dass keine zu starke "
 "Ähnlichkeit zum Wortlaut der echten Klausur besteht.<br/> Noch ein letzter "
-"Hinweis:<strong>Bitte reiche ausschließlich Gedächtnisprotokolle zu "
+"Hinweis: <strong>Bitte reiche ausschließlich Gedächtnisprotokolle zu "
 "Prüfungen bzw. Klausur oder Testaten ein.</strong> Mitschriften zu "
 "Übungsaufgaben, Anfertigungen von Belegarbeiten oder sonstige gleichwertige "
 "Aufzeichnungen werden nicht in unsere Sammlung aufgenommen."
 
-#: .\exams\templates\exams\info.html:59
+#: exams/templates/exams/info.html:59
 msgid "Submit memory minutes now!"
 msgstr "Jetzt ein Gedächtnisprotokoll einreichen!"
 
-#: .\exams\templates\exams\submit_done.html:8
+#: exams/templates/exams/submit_done.html:8
 msgid "Success"
 msgstr "Erfolg"
 
-#: .\exams\templates\exams\submit_done.html:9
+#: exams/templates/exams/submit_done.html:9
 msgid "You have submitted your memory minutes."
 msgstr "Du hast dein Gedächtnisprotokoll eingereicht."
 
-#: .\exams\templates\exams\submit_form.html:15
+#: exams/templates/exams/submit_form.html:15
 msgid ""
 "\n"
 "                    We will store your email address for a maximum of 6 "
@@ -271,10 +272,10 @@ msgstr ""
 "Ablauf der Frist löschen wir deine personenbezogenen Daten unwiderruflich "
 "von unseren Servern."
 
-#: .\exams\templates\exams\submit_form.html:25
+#: exams/templates/exams/submit_form.html:25
 msgid "Submit your memory minutes"
 msgstr "Ein Gedächtnisprotokoll einreichen"
 
-#: .\exams\templates\exams\submit_form.html:29
+#: exams/templates/exams/submit_form.html:29
 msgid "Submit"
 msgstr "Einreichen"
