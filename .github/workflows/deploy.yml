@@ -1,0 +1,27 @@
+name: Deploy django app to remote host
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    environment:
+      name: 'production'
+
+    steps:
+      - name: Create private ssh key
+        run: echo ${{ secrets.PRIVATE_SSH_KEY }} > .ssh/id_rsa
+      
+      - name: Log into remote host
+        run: ssh -o StrictHostKeyChecking=accept-new ${{ vars.SSH_USER }}@${{ vars.HOST_DOMAIN }}
+
+      - name: Change directory
+        run: cd ${{ vars.REPO_PATH }}
