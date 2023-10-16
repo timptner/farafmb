@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Create private ssh key
-        run: echo ${{ secrets.PRIVATE_SSH_KEY }} > .ssh/id_rsa
+        run: echo ${{ secrets.SSH_PRIVATE_KEY }} > .ssh/id_rsa
       
       - name: Log into remote host
         run: ssh -o StrictHostKeyChecking=accept-new ${{ vars.SSH_USER }}@${{ vars.HOST_DOMAIN }}
