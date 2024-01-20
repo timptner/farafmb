@@ -11,3 +11,4 @@ markdown-del-ins~=1.0.0
 psycopg2~=2.9.6
 django-storages~=1.13.2
 boto3~=1.26.69
+fontawesomefree~=6.5.1
