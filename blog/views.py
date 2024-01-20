@@ -12,8 +12,9 @@ from .forms import PostCreateForm
 from .models import Post, Event
 
 
-class PostListView(LoginRequiredMixin, generic.ListView):
+class PostListView(generic.ListView):
     model = Post
+    paginate_by = 6
 
 
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
@@ -34,18 +35,6 @@ class ArchiveView(generic.ListView):
     model = Post
     ordering = ['-created']
     paginate_by = 10
-
-
-class NewsView(generic.ListView):
-    template_name = 'blog/news.html'
-    queryset = Post.objects.order_by('-created').all()[:5]
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
-        context['meetings'] = Meeting.objects.filter(date__gte=date.today())
-        context['consultations'] = Consultation.objects.order_by('day', 'start').all()
-        context['events'] = Event.objects.filter(date__gte=timezone.now())
-        return context
 
 
 class ContactView(generic.TemplateView):

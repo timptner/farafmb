@@ -42,6 +42,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     instagram = models.CharField(max_length=200, unique=True, blank=True, null=True)
 
+    class Meta:
+        ordering = ['-created']
+
     def __str__(self):
         return self.title
 

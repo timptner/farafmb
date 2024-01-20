@@ -1,26 +1,82 @@
-{% extends 'blog/base_admin.html' %}
+{% extends 'base.html' %}
 
 {% load i18n %}
 
-{% block content %}
-    <div class="table-container">
-        <table class="table is-fullwidth">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>{% trans "Title" %}</th>
-                <th>{% trans "Created" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for post in object_list %}
-                <tr>
-                    <td>{{ post.id }}</td>
-                    <td>{{ post.title }}</td>
-                    <td>{{ post.created }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+{% block content-fullwidth %}
+    <div class="columns is-multiline is-centered">
+        {% for post in post_list %}
+            <div class="column is-one-third">
+                <div class="card">
+                    {% if post.image or post.video %}
+                        <div class="card-image">
+                            {% if post.image %}
+                                <figure class="image is-4by3">
+                                    <img src="{{ post.image.file.url }}" alt="{{ post.image.title }}">
+                                </figure>
+                            {% else %}
+                                <video controls>
+                                    <source src="{{ post.video.file.url }}" type="video/mp4">
+                                    Dein Browser unterstützt leider nicht das Abspielen von Videos.
+                                </video>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    <div class="card-content">
+                        <div class="content">
+                            <p class="title">{{ post.title }}</p>
+                            <p class="subtitle">{{ post.updated }}</p>
+
+                            {{ post.render|safe|truncatechars_html:250 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
+
+    <nav class="pagination is-right" role="navigation" aria-label="pagination">
+        {% if page_obj.has_previous %}
+            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">
+                <span class="icon">
+                    <i class="fa-solid fa-angle-left"></i>
+                </span>
+                <span>Zurück</span>
+            </a>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">
+                <span>Weiter</span>
+                <span class="icon">
+                    <i class="fa-solid fa-angle-right"></i>
+                </span>
+            </a>
+        {% endif %}
+
+        <ul class="pagination-list">
+            {% if page_obj.has_previous %}
+                <li>
+                    <a class="pagination-link" aria-label="Page 1" href="?page=1">
+                        <span class="icon">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </span>
+                        <span>Zur ersten Seite</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <li>
+                    <a class="pagination-link" aria-label="Page {{ page_obj.paginator.num_pages }}"
+                       href="?page={{ page_obj.paginator.num_pages }}">
+                        <span>Zur letzten Seite</span>
+                        <span class="icon">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}
