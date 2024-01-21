@@ -24,7 +24,9 @@
 
                     <div class="card-content">
                         <div class="content">
-                            <p class="title">{{ post.title }}</p>
+                            <p class="title">
+                                <a href="{% url 'blog:post-detail' post.pk %}">{{ post.title }}</a>
+                            </p>
                             <p class="subtitle">{{ post.updated }}</p>
 
                             {{ post.render|safe|truncatechars_html:250 }}

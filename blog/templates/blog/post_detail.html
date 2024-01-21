@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    <h1 class="title">{{ post.title }}</h1>
+    <h3 class="subtitle">{{ post.updated }}</h3>
+
+    <div class="tags has-addons">
+        <span class="tag">Author</span>
+        <span class="tag is-primary">{{ post.author.first_name }}</span>
+    </div>
+
+    {% if post.instagram %}
+        <article class="message is-info">
+            <div class="message-body">
+                Dieser Beitrag wurde ursprünglich auf
+                <span>
+                    <span class="icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </span>
+                    <span>
+                        <a class="icon-text" href="{{ post.instagram }}" target="_blank">Instagram</a>
+                    </span>
+                </span>
+                veröffentlicht.
+            </div>
+        </article>
+    {% endif %}
+
+    <div class="columns is-centered">
+        {% if post.image %}
+            <div class="column is-half">
+                <figure class="image">
+                    <img src="{{ post.image.file.url }}" alt="{{ post.image.title }}">
+                </figure>
+            </div>
+        {% endif %}
+
+        {% if post.video %}
+            <div class="column">
+                <video controls>
+                    <source src="{{ post.video.file.url }}" type="video/mp4">
+                    Dein Browser unterstützt leider nicht das Abspielen von Videos.
+                </video>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {{ post.render|safe }}
+    </div>
+{% endblock %}

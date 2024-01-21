@@ -15,7 +15,7 @@
 
         <div id="navbarNavigation" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'blog:posts' %}">Blog</a>
+                <a class="navbar-item" href="{% url 'blog:post-list' %}">Blog</a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
@@ -72,10 +72,6 @@
                             <a class="navbar-item" href="{% url 'accounts:password_change' %}">
                                 {% trans "Change password" %}
                             </a>
-
-                            <hr class="navbar-divider">
-
-                            <a class="navbar-item" href="{% url 'blog:posts' %}">{% trans "Posts" %}</a>
                         </div>
                     </div>
                 {% endif %}

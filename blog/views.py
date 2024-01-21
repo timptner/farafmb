@@ -17,6 +17,10 @@ class PostListView(generic.ListView):
     paginate_by = 6
 
 
+class PostDetailView(generic.DetailView):
+    model = Post
+
+
 class PostCreateView(LoginRequiredMixin, SuccessMessageMixin, generic.CreateView):
     model = Post
     form_class = PostCreateForm
