@@ -15,18 +15,13 @@
 
         <div id="navbarNavigation" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{% url 'blog:post-list' %}">Blog</a>
+                <a class="navbar-item" href="{% url 'blog:post-list' %}">
+                    Blog
+                </a>
 
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans "About us" %}
-                    </a>
-
-                    <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="{% url 'about:index' %}">{% trans "Student council" %}</a>
-                        <a class="navbar-item" href="{% url 'members:member-list' %}">{% trans "Members" %}</a>
-                    </div>
-                </div>
+                <a class="navbar-item" href="{% url 'members:member-list' %}">
+                    {% trans "Members" %}
+                </a>
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">

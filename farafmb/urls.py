@@ -13,8 +13,8 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('', include('about.urls')),
     path('blog/', include('blog.urls')),
-    path('about/', include('about.urls')),
     path('consultations/', include('consultations.urls')),
     path('documents/', include('documents.urls')),
     path('exams/', include('exams.urls')),

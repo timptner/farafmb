@@ -1,13 +1,43 @@
 {% extends 'base.html' %}
 
-{% load markdown static %}
+{% load markdown static i18n %}
 
 {% block content %}
     <div class="container is-max-desktop">
-        <p class="title">Who we are</p>
+        <p class="title">
+            {% translate "Student council for mechanical engineering" %}
+        </p>
 
         <div class="content">
-            {{ text|render_html }}
+            {% blocktranslate trimmed %}
+            <p>
+                When we are not fighting with the professors for better grades
+                for ourselves, we as the student council fight tooth and nail
+                every day to make <a href="https://www.ovgu.de/en/">
+                Otto von Guericke University Magdeburg</a> and our
+                <a href="https://www.fmb.ovgu.de/en/">Faculty of Mechanical
+                Engineering</a> a little bit better.
+            </p>
+            <p>
+                We are the official representative body of the students at the
+                Faculty of Mechanical Engineering. This means that we make sure
+                that your suggestions and also your criticism are brought to
+                the attention of the faculty. The other tasks we deal with can
+                be read online in our constitution.
+            </p>
+            <p>
+                We try to improve ourselves continuously and to make
+                information about innovations at the university more accessible
+                to you. We are also committed to making it easier for you to
+                communicate with your professors and to offer you better and
+                more varied events.
+            </p>
+            <p>
+                In order to be able to implement this continuously, we always
+                need new input and are therefore happy to welcome new members
+                who bring new views and dynamics to the student council.
+            </p>
+            {% endblocktranslate %}
         </div>
 
         {% if image %}
