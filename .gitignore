@@ -18,3 +18,6 @@ venv/
 
 # PyCharm
 .idea/
+
+# Zed
+.zed/
