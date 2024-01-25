@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-25 23:54+0100\n"
+"POT-Creation-Date: 2024-01-26 00:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
@@ -15,11 +15,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: about/templates/about/index.html:8
+#: models.py:10
+msgid "Image"
+msgstr "Bild"
+
+#: models.py:11
+msgid "Images"
+msgstr "Bilder"
+
+#: templates/about/index.html:8
 msgid "Student council for mechanical engineering"
 msgstr "Fachschaftsrat Maschinenbau"
 
-#: about/templates/about/index.html:12
+#: templates/about/index.html:12
 msgid ""
 "<p> When we are not fighting with the professors for better grades for "
 "ourselves, we as the student council fight tooth and nail every day to make "

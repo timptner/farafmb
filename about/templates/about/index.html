@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load markdown static i18n %}
+{% load static i18n %}
 
 {% block content %}
     <div class="container is-max-desktop">
@@ -42,7 +42,7 @@
 
         {% if image %}
             <figure class="image">
-                <img src="{{ image }}" alt="Image with all team members">
+                <img src="{{ image.file.url }}" alt="{{ image.title }}" />
             </figure>
         {% endif %}
     </div>
