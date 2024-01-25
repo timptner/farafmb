@@ -11,12 +11,13 @@
                         <div class="card-image">
                             {% if post.image %}
                                 <figure class="image is-4by3">
-                                    <img src="{{ post.image.file.url }}" alt="{{ post.image.title }}">
+                                    <img src="{{ post.image.file.url }}" alt="{{ post.image.title }}" />
                                 </figure>
                             {% else %}
                                 <video controls>
-                                    <source src="{{ post.video.file.url }}" type="video/mp4">
-                                    Dein Browser unterstützt leider nicht das Abspielen von Videos.
+                                    <source src="{{ post.video.file.url }}" type="video/mp4" />
+                                    Dein Browser unterstützt leider nicht das Abspielen von
+                                    Videos.
                                 </video>
                             {% endif %}
                         </div>
@@ -25,10 +26,13 @@
                     <div class="card-content">
                         <div class="content">
                             <p class="title">
-                                <a href="{% url 'blog:post-detail' post.pk %}">{{ post.title }}</a>
+                                <a href="{% url 'blog:post-detail' post.pk %}">
+                                    {{ post.title }}
+                                </a>
                             </p>
-                            <p class="subtitle">{{ post.updated }}</p>
-
+                            <p class="subtitle">
+                                {{ post.updated }}
+                            </p>
                             {{ post.render|safe|truncatechars_html:250 }}
                         </div>
                     </div>
@@ -37,45 +41,87 @@
         {% endfor %}
     </div>
 
-    <nav class="pagination is-right" role="navigation" aria-label="pagination">
-        {% if page_obj.has_previous %}
-            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">
-                <span class="icon">
-                    <i class="fa-solid fa-angle-left"></i>
-                </span>
-                <span>Zurück</span>
-            </a>
-        {% endif %}
-
-        {% if page_obj.has_next %}
-            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">
-                <span>Weiter</span>
-                <span class="icon">
-                    <i class="fa-solid fa-angle-right"></i>
-                </span>
-            </a>
-        {% endif %}
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <a
+            class="pagination-previous{% if not page_obj.has_previous %} is-disabled{% endif %}"
+            href="?page={% if page_obj.has_previous %}{{ page_obj.previous_page_number }}{% else %}1{% endif %}"
+        >
+            <span class="icon">
+                <i class="fa-solid fa-angle-left"></i>
+            </span>
+            <span>Zurück</span>
+        </a>
+        <a
+            class="pagination-next{% if not page_obj.has_next %} is-disabled{% endif %}"
+            href="?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{% else %}{{ page_obj.paginator.num_pages }}{% endif %}"
+        >
+            <span>Weiter</span>
+            <span class="icon">
+                <i class="fa-solid fa-angle-right"></i>
+            </span>
+        </a>
 
         <ul class="pagination-list">
-            {% if page_obj.has_previous %}
+            {% if page_obj.number > 2 %}
                 <li>
-                    <a class="pagination-link" aria-label="Page 1" href="?page=1">
-                        <span class="icon">
-                            <i class="fa-solid fa-angles-left"></i>
-                        </span>
-                        <span>Zur ersten Seite</span>
+                    <a class="pagination-link" aria-label="Page 1" href="?page=1">1</a>
+                </li>
+            {% endif %}
+
+            {% if page_obj.number > 3 %}
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+            {% endif %}
+
+            {% if page_obj.number > 1 %}
+                <li>
+                    <a
+                        class="pagination-link"
+                        aria-label="Page {{ page_obj.previous_page_number }}"
+                        href="?page={{ page_obj.previous_page_number }}"
+                    >
+                        {{ page_obj.previous_page_number }}
                     </a>
                 </li>
             {% endif %}
 
-            {% if page_obj.has_next %}
+            <li>
+                <a
+                    class="pagination-link is-current"
+                    aria-label="Page {{ page_obj.number }}"
+                    href="?page={{ page_obj.number }}"
+                >
+                    {{ page_obj.number }}
+                </a>
+            </li>
+
+            {% if page_obj.number < page_obj.paginator.num_pages %}
                 <li>
-                    <a class="pagination-link" aria-label="Page {{ page_obj.paginator.num_pages }}"
-                       href="?page={{ page_obj.paginator.num_pages }}">
-                        <span>Zur letzten Seite</span>
-                        <span class="icon">
-                            <i class="fa-solid fa-angles-right"></i>
-                        </span>
+                    <a
+                        class="pagination-link"
+                        aria-label="Page {{ page_obj.next_page_number }}"
+                        href="?page={{ page_obj.next_page_number }}"
+                    >
+                        {{ page_obj.next_page_number }}
+                    </a>
+                </li>
+            {% endif %}
+
+            {% if page_obj.number|add:"2" < page_obj.paginator.num_pages %}
+                <li>
+                    <span class="pagination-ellipsis">&hellip;</span>
+                </li>
+            {% endif %}
+
+            {% if page_obj.number|add:"1" < page_obj.paginator.num_pages %}
+                <li>
+                    <a
+                        class="pagination-link"
+                        aria-label="Page {{ page_obj.paginator.num_pages }}"
+                        href="?page={{ page_obj.paginator.num_pages }}"
+                    >
+                        {{ page_obj.paginator.num_pages }}
                     </a>
                 </li>
             {% endif %}
