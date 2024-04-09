@@ -1,20 +1,22 @@
-/files/
-/media/
-/static/
+# Directories
+files/
+media/
+static/
 
+# Python
 __pycache__/
 
 # Translations
 *.mo
 *.pot
 
-# Django stuff:
+# Django
 *.log
 db.sqlite3
 
 # Environments
 .env
-venv/
+.venv/
 
 # PyCharm
 .idea/
