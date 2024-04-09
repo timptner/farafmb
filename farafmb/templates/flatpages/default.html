@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load markdown %}
+
+{% block title %}
+    {{ flatpage.title }} &#45; {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h3 class="title">{{ flatpage.title }}</h3>
+
+    <div class="content">
+        {{ flatpage.content|render_html }}
+    </div>
+{% endblock content %}

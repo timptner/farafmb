@@ -23,6 +23,7 @@ urlpatterns += i18n_patterns(
     path('meetings/', include('meetings.urls')),
     path('members/', include('members.urls')),
     path('excursions/', include('excursions.urls')),
+    path('pages/', include("django.contrib.flatpages.urls")),
 
     prefix_default_language=True
 )
