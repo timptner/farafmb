@@ -5,32 +5,34 @@ from django.utils.translation import gettext_lazy as _
 
 
 def user_directory_path(instance, filename):
-    suffix = filename.split('.')[-1].lower()
-    return f'members/user_{instance.user.id}.{suffix}'
+    suffix = filename.split(".")[-1].lower()
+    return f"members/user_{instance.user.id}.{suffix}"
 
 
 class Member(models.Model):
-    EMO = 'EMO'
-    IDE = 'IDE'
-    ME = 'ME'
-    MTC = 'MTC'
-    SEM = 'SEM'
-    IEL = 'IEL'
-    IEM = 'IEM'
+    EMO = "EMO"
+    IDE = "IDE"
+    ME = "ME"
+    MTC = "MTC"
+    SEM = "SEM"
+    IEL = "IEL"
+    IEM = "IEM"
     COURSES = [
-        (EMO, _('E-Mobility')),
-        (IDE, _('Integrated Design Engineering')),
-        (ME, _('Mechanical Engineering')),
-        (MTC, _('Mechatronics')),
-        (SEM, _('Systems Engineering for Manufacturing')),
-        (IEL, _('Industrial Engineering / Logistics')),
-        (IEM, _('Industrial Engineering / Mechanical Engineering')),
+        (EMO, _("E-Mobility")),
+        (IDE, _("Integrated Design Engineering")),
+        (ME, _("Mechanical Engineering")),
+        (MTC, _("Mechatronics")),
+        (SEM, _("Systems Engineering for Manufacturing")),
+        (IEL, _("Industrial Engineering / Logistics")),
+        (IEM, _("Industrial Engineering / Mechanical Engineering")),
     ]
-    BSC = 'BSC'
-    MSC = 'MSC'
+    BSC = "BSC"
+    MSC = "MSC"
+    ABS = "ABS"
     DEGREES = [
-        (BSC, _('Bachelor of Science')),
-        (MSC, _('Master of Science')),
+        (BSC, _("Bachelor of Science")),
+        (MSC, _("Master of Science")),
+        (ABS, _("Alumnus")),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to=user_directory_path)
@@ -45,11 +47,11 @@ class Member(models.Model):
         return self.user.get_full_name() or self.user.username
 
     def get_degree_display_short(self):
-        words = self.get_degree_display().split(' ')
+        words = self.get_degree_display().split(" ")
         return words[0]
 
     def get_job_list(self):
-        return [job.strip() for job in self.jobs.split(',')]
+        return [job.strip() for job in self.jobs.split(",")]
 
     def is_day_of_birth(self):
         if not self.birthday:
