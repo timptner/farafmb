@@ -12,72 +12,70 @@ student representative for the faculty of mechanical engineering at the
 The website is build with [Django](https://www.djangoproject.com/) and uses
 [Bulma](https://bulma.io/) for styling.
 
-## Installation 🛠️
+## Develop
 
-### Development 🔧
+Setup a local environment with virtualenv. Activate it and install all
+dependencies.
 
-Setup a local development environment with virtualenv. Activate it and install
-all package dependencies.
-
-```shell
-python3 -m venv ./venv
-source venv/bin/activate
-python -m pip install -r requirements/development.txt
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pip install coverage
 ```
 
-Create a copy of `.env.example` and call it `.env`. Generate a new random
-secret key and fill out all empty values for the specified keys. You can use 
-django's utility function to generate the secret key.
+Create a new config file for env vars. Update values as required. Generate a
+new secret key and place it in your config.
 
-```shell
-python manage.py shell -c "from django.core.management import utils; print(utils.get_random_secret_key())"
+```bash
+cp .env.example .env
+python3 -c "from django.core.management import utils; print(utils.get_random_secret_key())"
 ```
 
-To start your development server:
+Migrate the database, create an admin account and finally start your
+development server.
 
-```shell
+```bash
+python manage.py migrate
+python manage.py createsuperuser
 python manage.py runserver
 ```
 
-When developing on the oauth provider (especially OIDC) you need to generate a
-new RSA key and use it as an environment variable.
+Do not forget to write A LOT of tests. Always increase test coverage.
 
-```shell
-# Generate new RSA key
-openssl genrsa --out oidc.key 4096
-# Set env var from file content
-export OIDC_RSA_PRIVATE_KEY=$(cat oidc.key)
-```
-
-At last, you should migrate the database and create a user.
-
-```shell
-python manage.py migrate
-python manage.py createsuperuser
-```
-
-### Production 🌍
-
-⚠️ **Follow all steps mentioned in
-[Development](https://github.com/timptner/farafmb#Development)!** ⚠️️
-
-Set `DJANGO_SETTINGS_MODULE` to `farafmb.settings.production` and change the
-other variables as needed. Create a new RSA-Key and add it to your `.env`.
-
-Configure [Gunicorn](https://docs.gunicorn.org/en/latest/deploy.html) as your
-application server and [Nginx](https://nginx.org/en/docs/http/load_balancing.html)
-as web server / proxy.
-
-## Testing 🧪
-
-Run tests with:
-
-```shell
+```bash
 coverage run manage.py test
-coverage html  # Update report
+coverage report --skip-covered
 ```
 
-Afterwards open your browser and go to `file://<absolute_path_to_project_root>/htmlcov/index.html`
+## Build
+
+Images are build using
+[buildah](https://github.com/containers/buildah/blob/main/install.md). The
+build skript needs to be run as root.
+
+```bash
+sudo -s
+./build.sh
+```
+
+Afterwards you can run your image with podman (still as root). Provide env vars
+with `--env "KEY=VALUE"` or `--env-file /path/to/.env`.
+
+```bash
+podman run --rm --detach --publish 127.0.0.1:8000:8000 --name farafmb localhost/timptner/farafmb
+```
+
+## Deploy
+
+// TODO
+
+- Use [nginx](https://nginx.org/en/docs/http/load_balancing.html) as proxy
+- Use _postgres_ as database
+- Share volumes for persistent storage and serve static files via _nginx_
+- Add https with _certbot_
+- Add backups with _borg_ (include pg_dump and volumes)
+- Add logs and setup logrotation
 
 ## Localization
 
@@ -86,16 +84,16 @@ english as the secondary but in the source code it is vice versa because of the 
 
 To generate the files containing all string to localize run:
 
-```shell
+```bash
 django-admin makemessages --locale "de" --ignore "venv/*"
 ```
 
 And to compile the localized strings into binary data, which is used by gnugettext run:
 
-```shell
+```bash
 django-admin compilemessages --locale "de" --ignore "venv/*"
 ```
 
-## License 📚
+## License
 
 [MIT](https://github.com/timptner/farafmb/blob/main/LICENSE)
