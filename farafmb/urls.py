@@ -1,20 +1,13 @@
 from django.conf import settings
-from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-
 urlpatterns = [
-    path('accounts/', include('accounts.urls')),
-    path('admin/', admin.site.urls),
-
-    path('i18n/', include('django.conf.urls.i18n')),
-]
-
-urlpatterns += i18n_patterns(
     path('', include('blog.urls')),
     path('about/', include('about.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('admin/', admin.site.urls),
     path('consultations/', include('consultations.urls')),
     path('documents/', include('documents.urls')),
     path('exams/', include('exams.urls')),
@@ -24,9 +17,8 @@ urlpatterns += i18n_patterns(
     path('members/', include('members.urls')),
     path('excursions/', include('excursions.urls')),
     path('pages/', include("django.contrib.flatpages.urls")),
+    path("i18n/", include("django.conf.urls.i18n")),  # required
+]
 
-    prefix_default_language=True
-)
-
-if settings.DEBUG is True:
+if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
