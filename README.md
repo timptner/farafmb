@@ -68,6 +68,8 @@ podman run --rm --detach --publish 127.0.0.1:8000:8000 --name farafmb localhost/
 
 ## Deploy
 
+Django connects to postgres via unix domain socket. Therefor it can be required to update `pg_hba.conf` and allow password authentication, espiacially when connecting from inside containers because the user namespace does not match and peer will therefor not work!
+
 // TODO
 
 - Use [nginx](https://nginx.org/en/docs/http/load_balancing.html) as proxy
