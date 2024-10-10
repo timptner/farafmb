@@ -21,11 +21,9 @@ buildah config --user $name --workingdir $app_dir $container
 buildah copy --user $name $container . $app_dir
 
 # install python depdencies
-buildah run --user $name $container -- python3 -m venv .venv
-buildah run --user $name $container -- .venv/bin/python3 -m \
-    pip install -r ./requirements.txt
-buildah run --user $name $container -- .venv/bin/python3 -m \
-    pip install gunicorn
+buildah run --user $name $container -- python -m venv .venv
+buildah run --user $name $container -- .venv/bin/pip install -r ./requirements.txt
+buildah run --user $name $container -- .venv/bin/pip install gunicorn
 
 # create public dir
 public_dir=/srv/$name
@@ -38,7 +36,7 @@ buildah config                              \
     --env STATIC_ROOT=$public_dir/static    \
     --env MEDIA_ROOT=$public_dir/media      \
     $container
-buildah run --user $name $container -- .venv/bin/python3 manage.py collectstatic --no-input
+buildah run --user $name $container -- .venv/bin/python manage.py collectstatic --no-input
 
 # configure container
 port=8000
