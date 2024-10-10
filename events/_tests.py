@@ -1,10 +1,11 @@
 from datetime import timedelta
+
 from django.test import TestCase, override_settings
 from django.urls import reverse
 from django.utils import timezone
 
-from .forms import ParticipantForm
-from .models import Event, Participant
+from events.forms import ParticipantForm
+from events.models import Event, Participant
 
 
 class EventTests(TestCase):
