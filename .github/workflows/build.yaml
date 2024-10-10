@@ -1,78 +1,58 @@
-name: Build
+name: test & build
 
 on:
   push:
-    branches-ignore:
-      - deployed
+    branches:
+      - main
+
+# env:
+#   REGISTRY: ghcr.io
+#   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   test:
-    name: Testing
     runs-on: ubuntu-latest
-    environment: production
-
-    env:
-      DB_NAME: farafmb
-      DB_USER: farafmb
-      DB_PASSWORD: secret
 
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_DB: ${{ env.DB_NAME }}
-          POSTGRES_USER: ${{ env.DB_USER }}
-          POSTGRES_PASSWORD: ${{ env.DB_PASSWORD }}
+          POSTGRES_DB: farafmb
+          POSTGRES_USER: farafmb
+          POSTGRES_PASSWORD: secret
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 5432:5432
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Set up Python
-        uses: actions/setup-python@master
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip wheel setuptools
-          python -m pip install -r requirements.txt
-
-      - name: Run tests
+          python-version: "3.11"
+      - name: install dependencies
+        run: python3 -m pip install -r requirements.txt
+      - name: run tests
+        run: python manage.py test --no-input --failfast
         env:
-          SECRET_KEY: secret
-          DATABASE_URL: postgresql://${{ env.DB_USER }}:${{ env.DB_PASSWORD }}@localhost:5432/${{ env.DB_NAME }}
-          STORAGE_ACCESS_KEY: ${{ secrets.STORAGE_ACCESS_KEY }}
-          STORAGE_SECRET_KEY: ${{ secrets.STORAGE_SECRET_KEY }}
-          STORAGE_STATIC_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
-          STORAGE_MEDIA_BUCKET: ${{ secrets.STORAGE_TEST_BUCKET }}
-        run: |
-          python manage.py migrate --no-input
-          python manage.py collectstatic --no-input
-          python manage.py test --no-input
+          DATABASE_HOST: postgres
+          DATABASE_PORT: 5432
+          DATABASE_PASSWORD: secret
 
-  merge:
-    name: Merging
-    needs: test
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment: production
+  # build:
+  #   needs: test
 
-    steps:
-      -  name: Checkout
-         uses: actions/checkout@master
+  #   runs-on: ubuntu-latest
 
-      - name: Merge main -> deployed
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          from_branch: main
-          target_branch: deployed
-          github_token: ${{ github.token }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: read buildah version
+  #       run: buildah --version
+  #     - name: build container
+  #       run: ./build.sh
+  #     -
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         name: farafmb
+  #         path:

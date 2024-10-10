@@ -86,9 +86,11 @@ WSGI_APPLICATION = "farafmb.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "farafmb",
-        "USER": os.getenv("DB_USER", "farafmb"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DATABASE_HOST", ""),
+        "PORT": os.getenv("DATABASE_PORT", ""),
+        "NAME": os.getenv("DATABASE_NAME", "farafmb"),
+        "USER": os.getenv("DATABASE_USER", "farafmb"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD", ""),
     }
 }
 
@@ -159,7 +161,7 @@ MEDIA_ROOT = os.getenv("MEDIA_ROOT", BASE_DIR / "media")
 
 EMAIL_HOST = os.getenv("EMAIL_HOST", "localhost")
 
-EMAIL_PORT = int(os.getenv("EMAIL_PORT", "25"))
+EMAIL_PORT = os.getenv("EMAIL_PORT", 25)
 
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 
