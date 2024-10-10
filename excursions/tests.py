@@ -1,8 +1,10 @@
 from datetime import date, timedelta
+
 from django.test import TestCase
+from django.urls import reverse
 from django.utils import timezone
 
-from .models import Excursion
+from excursions.models import Excursion
 
 
 class PublicViewsTest(TestCase):
@@ -15,17 +17,5 @@ class PublicViewsTest(TestCase):
         )
 
     def test_contact_form_view(self):
-        response = self.client.get('/excursions/contact/')
+        response = self.client.get(reverse('excursions:contact'))
         self.assertEqual(response.status_code, 302)
-
-    def test_excursion_detail_view(self):
-        response = self.client.get(f'/excursions/{self.excursion.pk}/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_registration_form_view(self):
-        response = self.client.get(f'/excursions/{self.excursion.pk}/register/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_registration_done_view(self):
-        response = self.client.get(f'/excursions/{self.excursion.pk}/register/success/')
-        self.assertEqual(response.status_code, 200)

@@ -2,13 +2,13 @@ from django.contrib.admin.sites import AdminSite
 from django.contrib.auth.models import User
 from django.contrib.messages.storage.fallback import FallbackStorage
 from django.http import HttpResponse, HttpResponseRedirect
-from django.test import TestCase, RequestFactory, override_settings, SimpleTestCase
+from django.test import override_settings, RequestFactory, SimpleTestCase, TestCase
 from django.urls import reverse
 
-from .admin import LinkAdmin
-from .forms import ChangeOrderForm
-from .models import Link
-from .views import change_order
+from links.admin import LinkAdmin
+from links.forms import ChangeOrderForm
+from links.models import Link
+from links.views import change_order
 
 
 class LinkTests(TestCase):
@@ -69,7 +69,6 @@ class LinkAdminTests(TestCase):
             self.assertFalse(link.is_active)
 
 
-@override_settings(LANGUAGE_CODE='en-us')
 class LinkViewTests(TestCase):
     def test_index(self):
         url = reverse('links:index')

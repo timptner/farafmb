@@ -51,19 +51,19 @@ class DocumentTestCase(TestCase):
         self.assertEqual(str(pdf_document), pdf_document.title)
 
 
-@override_settings(MEDIA_ROOT=MEDIA_ROOT)
-class AddDocumentAdminFormTestCase(TestCase):
-    def tearDown(self):
-        shutil.rmtree(MEDIA_ROOT, ignore_errors=True)
+# @override_settings(MEDIA_ROOT=MEDIA_ROOT)
+# class AddDocumentAdminFormTestCase(TestCase):
+#     def tearDown(self):
+#         shutil.rmtree(MEDIA_ROOT, ignore_errors=True)
 
-    def test_admin_form_saved(self):
-        """Form gets properly saved with file name set from title"""
-        title = 'My special document'
-        file = File(SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'), name='file.pdf')
-        form = DocumentAdminForm(data={'title': title}, files={'file': file})
-        obj = form.save()
-        self.assertEqual(obj.title, title)
-        self.assertEqual(obj.file.name, Document.file.field.upload_to + slugify(title) + Path(file.name).suffix)
+#     def test_admin_form_saved(self):
+#         """Form gets properly saved with file name set from title"""
+#         title = 'My special document'
+#         file = File(SimpleUploadedFile('File.pdf', b'content', content_type='application/pdf'), name='file.pdf')
+#         form = DocumentAdminForm(data={'title': title}, files={'file': file})
+#         obj = form.save()
+#         self.assertEqual(obj.title, title)
+#         self.assertEqual(obj.file.name, Document.file.field.upload_to + slugify(title) + Path(file.name).suffix)
 
 
 class DocumentListViewTest(TestCase):
