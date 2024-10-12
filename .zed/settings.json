@@ -1,0 +1,20 @@
+{
+  "languages": {
+    "HTML": {
+      "formatter": {
+        "external": {
+          "command": ".venv/bin/djlint",
+          "arguments": [
+            "-",
+            "--reformat",
+            "--format-css",
+            "--format-js",
+            "--profile",
+            "django"
+          ]
+        }
+      },
+      "format_on_save": "on"
+    }
+  }
+}

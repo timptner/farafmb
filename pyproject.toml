@@ -11,3 +11,6 @@ dependencies = [
     "psycopg",
     "python-dotenv",
 ]
+
+[project.optional-dependencies]
+"development" = ["djlint", "coverage"]
