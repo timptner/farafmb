@@ -1,9 +1,5 @@
 # Django
-files/
-media/
-static/
-db.sqlite3
-*.log
+.data/
 
 # PyCharm
 .idea/

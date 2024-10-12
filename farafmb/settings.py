@@ -7,11 +7,13 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATA_DIR = BASE_DIR / ".data"
+
 SECRET_KEY = os.getenv("SECRET_KEY", utils.get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "no").lower() in ["yes", "true"]
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(',')
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 INTERNAL_IPS = ["127.0.0.1"]
 
@@ -32,7 +34,6 @@ INSTALLED_APPS = [
     "links",
     "meetings",
     "members",
-
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -150,11 +151,11 @@ STATICFILES_DIRS = [
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = os.getenv("STATIC_ROOT", BASE_DIR / "static")
+STATIC_ROOT = os.getenv("STATIC_ROOT", DATA_DIR / "static")
 
 MEDIA_URL = "media/"
 
-MEDIA_ROOT = os.getenv("MEDIA_ROOT", BASE_DIR / "media")
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", DATA_DIR / "media")
 
 
 # Email
@@ -177,25 +178,6 @@ SERVER_EMAIL = os.getenv("SERVER_EMAIL", "server@farafmb.de")
 # Forms
 
 FORM_RENDERER = "farafmb.forms.BulmaFormRenderer"
-
-
-# Security
-
-# SECURE_SSL_REDIRECT = True
-#
-# SECURE_HSTS_SECONDS = 365*24*60*60
-#
-# SECURE_HSTS_PRELOAD = True
-#
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#
-# SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-#
-# SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
-#
-# SESSION_COOKIE_SECURE = True
-#
-# CSRF_COOKIE_SECURE = True
 
 
 # Logging
@@ -237,7 +219,7 @@ LOGGING = {
             "level": "INFO",
             "filters": ["require_debug_false"],
             "class": "logging.FileHandler",
-            "filename": os.getenv("LOG_FILE", str(BASE_DIR / "server.log")),
+            "filename": os.getenv("LOG_FILE", str(DATA_DIR / "logs" / "server.log")),
             "formatter": "simple",
         },
         "mail_admins": {
@@ -256,5 +238,5 @@ LOGGING = {
             "level": "INFO",
             "propagate": False,
         },
-    }
+    },
 }
