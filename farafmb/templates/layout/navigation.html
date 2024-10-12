@@ -1,116 +1,76 @@
-<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">{% load static i18n %}
+<nav class="navbar is-transparent"
+     role="navigation"
+     aria-label="main navigation">
+    {% load static i18n %}
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <img src="{% static 'img/logo-64.png' %}" width="28" height="28" alt="Logo">
+                <img src="{% static 'img/logo-64.png' %}"
+                     width="28"
+                     height="28"
+                     alt="Logo" />
             </a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+            <a role="button"
+               class="navbar-burger"
+               aria-label="menu"
+               aria-expanded="false"
                data-target="navbarNavigation">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
         </div>
-
         <div id="navbarNavigation" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="{% url 'about:index' %}">{% trans "Student council" %}</a>
-
                 <a class="navbar-item" href="{% url 'members:member-list' %}">{% trans "Members" %}</a>
-
                 <a class="navbar-item" href="{% url 'blog:news' %}">{% trans "News" %}</a>
-
                 <a class="navbar-item" href="{% url 'exams:info' %}">{% trans "Memory minutes" %}</a>
-
                 <a class="navbar-item" href="{% url 'jobs:job_list' %}">{% trans "Jobs" %}</a>
-
-                <a class="navbar-item" href="{% url 'consultations:consultation-list' %}">
-                    {% trans "Office Hours" %}
-                </a>
-
+                <a class="navbar-item"
+                   href="{% url 'consultations:consultation-list' %}">{% trans "Office Hours" %}</a>
                 <a class="navbar-item" href="{% url 'blog:contact' %}">{% trans "Contact" %}</a>
-
                 <a class="navbar-item" href="{% url 'documents:list' %}">{% trans "Documents" %}</a>
-
                 {% if user.is_authenticated %}
-                <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        {% trans "Administration" %}
-                    </a>
-
-                    <div class="navbar-dropdown is-boxed is-right">
-                        <a class="navbar-item" href="https://wiki.farafmb.de">BookStack</a>
-                        <a class="navbar-item" href="https://farafmb.slack.com">Slack</a>
-                        <a class="navbar-item" href="https://discord.gg/m9SutXWdnc">Discord</a>
-
-                        <hr class="navbar-divider">
-
-                        <a class="navbar-item" href="{% url 'admin:index' %}">Verwaltung</a>
-
-                        <hr class="navbar-divider">
-
-                        <a class="navbar-item" href="{% url 'accounts:password_change' %}">
-                            {% trans "Change password" %}
-                        </a>
-
-                        <hr class="navbar-divider">
-
-                        <a class="navbar-item" href="{% url 'blog:posts' %}">{% trans "Posts" %}</a>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">{% trans "Administration" %}</a>
+                        <div class="navbar-dropdown is-boxed is-right">
+                            <a class="navbar-item" href="https://wiki.farafmb.de">BookStack</a>
+                            <a class="navbar-item" href="https://farafmb.slack.com">Slack</a>
+                            <a class="navbar-item" href="https://discord.gg/m9SutXWdnc">Discord</a>
+                            <hr class="navbar-divider" />
+                            <a class="navbar-item" href="{% url 'admin:index' %}">Verwaltung</a>
+                            <hr class="navbar-divider" />
+                            <a class="navbar-item" href="{% url 'accounts:password_change' %}">{% trans "Change password" %}</a>
+                            <hr class="navbar-divider" />
+                            <a class="navbar-item" href="{% url 'blog:posts' %}">{% trans "Posts" %}</a>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
             </div>
-
             <div class="navbar-end">
-                {% if user.is_authenticated %}
-                <p class="navbar-item">{{ user }}</p>
-                {% endif %}
-
                 <div class="navbar-item">
                     <div class="buttons">
-                        {% if user.is_authenticated %}
-                        <a class="button" href="{% url 'accounts:logout' %}">
-                                <span class="icon">
-                                    <i class="fas fa-sign-out-alt"></i>
-                                </span>
-
-                            <span>{% trans "Logout" %}</span>
-                        </a>
-                        {% else %}
-                        <a class="button" href="{% url 'accounts:login' %}">
-                                <span class="icon">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                </span>
-
-                            <span>{% trans "Login" %}</span>
-                        </a>
-                        {% endif %}
-
                         {% get_current_language as LANGUAGE_CODE %}
                         <form action="{% url 'set_language' %}" method="post">
                             {% csrf_token %}
-
-                            <input name="next" type="hidden" value="{{ redirect_to }}">
-
+                            <input name="next" type="hidden" value="{{ redirect_to }}" />
                             {% if LANGUAGE_CODE == 'en' %}
-                            <input name="language" type="hidden" value="de">
-                            <button class="button" type="submit">
+                                <input name="language" type="hidden" value="de" />
+                                <button class="button" type="submit">
                                     <span class="icon">
                                         <i class="fas fa-language"></i>
                                     </span>
-
-                                <span>{% trans "German" %}</span>
-                            </button>
+                                    <span>{% trans "German" %}</span>
+                                </button>
                             {% else %}
-                            <input name="language" type="hidden" value="en">
-                            <button class="button" type="submit">
+                                <input name="language" type="hidden" value="en" />
+                                <button class="button" type="submit">
                                     <span class="icon">
                                         <i class="fas fa-language"></i>
                                     </span>
-
-                                <span>{% trans "English" %}</span>
-                            </button>
+                                    <span>{% trans "English" %}</span>
+                                </button>
                             {% endif %}
                         </form>
                     </div>

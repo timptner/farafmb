@@ -11,10 +11,6 @@ class LoginView(auth_views.LoginView):
     form_class = forms.AuthenticationForm
 
 
-class LogoutView(auth_views.LogoutView):
-    template_name = 'accounts/logout.html'
-
-
 class PasswordResetView(auth_views.PasswordResetView):
     template_name = 'accounts/password_reset_form.html'
     form_class = forms.PasswordResetForm
