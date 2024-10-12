@@ -3,7 +3,7 @@
     "HTML": {
       "formatter": {
         "external": {
-          "command": ".venv/bin/djlint",
+          "command": "djlint",
           "arguments": [
             "-",
             "--reformat",
