@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "dependencies": {
+    "bulma": "^1.0.2",
+    "bulma-list": "^2.1.0"
+  },
+  "scripts": {
+    "watch": "sass --watch ./farafmb/static/css/bulma.scss ./farafmb/static/css/bulma.css",
+    "build": "sass --style compressed ./farafmb/static/css/bulma.scss ./farafmb/static/css/bulma.min.css"
+  }
+}

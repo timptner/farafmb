@@ -32,12 +32,23 @@ cp .env.example .env
 python3 -c "from django.core.management import utils; print(utils.get_random_secret_key())"
 ```
 
-Migrate the database, create an admin account and finally start your
-development server.
+Migrate the database and create an admin account.
 
 ```bash
 python manage.py migrate
 python manage.py createsuperuser
+```
+
+Install node dependencies and build stylesheets.
+
+```bash
+npm install
+npm run build
+```
+
+Finally start your development server.
+
+```bash
 python manage.py runserver
 ```
 

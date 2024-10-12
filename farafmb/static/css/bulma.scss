@@ -1,0 +1,167 @@
+// Custom colors
+$cyan: #009ee3;
+$cyan-light: #7fcef1;
+$cyan-lighter: #ebf7fd;
+$ocean-darker: #0e4377;
+
+// Main navigation
+$navbar-item-active-color: $cyan;
+
+// Footer
+$footer-background-color: $ocean-darker;
+
+@use "../../../node_modules/bulma/sass" with (
+    $family-primary: '"Nunito", sans-serif',
+    $primary: $cyan,
+    $info: $cyan-light,
+    $link: $cyan
+);
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+
+/*
+// Custom components
+.button.is-multiline {
+    min-height: 2.25em;
+    white-space: unset;
+    height: auto;
+    flex-direction: column;
+}
+
+.button.is-multiline span {
+    margin: 0 !important;
+}
+
+.checklist {
+    list-style-type: none !important;
+}
+
+.error-message {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include touch {
+        width: 100%;
+    }
+}
+
+.navigation {
+    @include touch {
+        padding: 0.75rem;
+        border-radius: 5px;
+        border: 0.5px solid $grey-light;
+    }
+
+    a.menu-burger {
+        display: none;
+
+        @include touch {
+            display: block;
+            text-align: center;
+            padding: 5px;
+        }
+    }
+
+    #adminNavigation {
+        display: block;
+
+        @include touch {
+            display: none;
+        }
+    }
+
+    #adminNavigation.is-active {
+        display: block;
+    }
+}
+
+.footer {
+    a {
+        color: $white;
+    }
+
+    a:hover {
+        color: $link;
+    }
+
+    h4 {
+        font-size: $size-5;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 0.75rem;
+    }
+
+    strong {
+        color: $white;
+    }
+
+    .info {
+        color: $white;
+        padding-right: 10rem;
+
+        @include touch {
+            padding-right: 0.75rem;
+        }
+
+        figure {
+            margin-bottom: 0.75rem;
+        }
+
+        @include touch {
+            p {
+                text-align: start;
+            }
+        }
+    }
+
+    .legal {
+        color: $grey-light;
+        text-align: end;
+
+        p {
+            font-size: 0.75rem;
+            display: inline;
+
+            @include touch {
+                display: block;
+                text-align: center;
+            }
+        }
+
+        div {
+            display: flex;
+            justify-content: space-around;
+
+            @include desktop {
+                display: inline;
+            }
+
+            @include desktop {
+                p {
+                    padding-right: 1.5rem;
+                }
+            }
+        }
+    }
+}
+
+.internal-banner {
+    display: flex;
+    justify-content: center;
+    // width: 100vw;
+    border-top: solid 3px $red;
+
+    div {
+        display: block;
+        padding: 0 1rem;
+        background: $red;
+        border: solid 3px $red;
+        border-radius: 0 0 5px 5px;
+        font-size: $size-7;
+    }
+}
+*/
