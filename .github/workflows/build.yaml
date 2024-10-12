@@ -5,9 +5,10 @@ on:
     tags:
       - v20*
 
-# env:
-#   REGISTRY: ghcr.io
-#   IMAGE_NAME: ${{ github.repository }}
+env:
+  STATIC_ROOT: /srv/farafmb/static
+  MEDIA_ROOT: /srv/farafmb/media
+  LOG_FILE: /var/log/farafmb.log
 
 jobs:
   test:
