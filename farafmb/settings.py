@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "documents",
     "excursions",
     "exams",
+    "home",
     "jobs",
     "links",
     "meetings",

@@ -1,5 +1,12 @@
+# Coverage
+.coverage
+htmlcov
+
 # Django
 .data/
+
+# NPM
+node_modules/
 
 # PyCharm
 .idea/
@@ -7,13 +14,9 @@
 # Python
 __pycache__/
 .venv/
-.coverage
 .env
 *.pyc
 
 # Translations
 *.mo
 *.pot
-
-# NPM
-node_modules/

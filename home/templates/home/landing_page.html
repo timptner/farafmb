@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h3 class="title">Fachschaftsrat Maschinenbau</h3>
+    <p class="block">
+        Wenn wir uns gerade mal nicht mit den Professorinnen und Professoren um bessere Noten für uns selbst streiten, kämpfen wir als Fachschaftsrat mit Händen und Füßen jeden Tag dafür die <a href="https://www.ovgu.de">Otto-von-Guericke-Universität Magdeburg</a> und unsere <a href="https://www.fmb.ovgu.de">Fakultät für Maschinenbau</a> ein kleines Stück besser zu machen.
+    </p>
+    <p class="block">
+        Wir sind das offizielle Vertretungsgremium der Studierenden an der Fakultät für Maschinenbau. Das heißt wir setzen uns dafür ein, dass eure Vorschläge und auch eure Kritik an die Fakultät herangetragen wird. Die weiteren Aufgaben, die wir bewältigen, sind in unserer Satzung für euch alle online nachzulesen.
+    </p>
+    <p class="block">
+        Wie versuchen uns kontinuierlich zu verbessern und euch Informationen über Neuerungen an der Universität leichter zugänglich zu machen. Außerdem setzen wir uns dafür ein euch eine einfachere Kommunikation mit den Professoren zu ermöglichen und euch bessere und wechselnde Veranstaltungen zu bieten.
+    </p>
+    <p class="block">
+        Um dies kontinuierlich durchsetzen zu können brauchen wir auch immer neuen Input und freuen uns somit über neue Mitglieder, die neue Ansichten und Dynamiken bei uns in den Fachschaftsrat bringen.
+    </p>
+    <p class="block">
+        <em>#JoinTheCrew</em>
+    </p>
+    <hr />
+    <p class="block">
+        When we are not fighting with the professors for better grades for ourselves, we as the student council fight tooth and nail every day to make <a href="https://www.ovgu.de/en/">Otto von Guericke University Magdeburg</a> and our <a href="https://www.fmb.ovgu.de/en/">Faculty of Mechanical Engineering</a> a little bit better.
+    </p>
+    <p class="block">
+        We are the official representative body of the students at the Faculty of Mechanical Engineering. This means that we make sure that your suggestions and also your criticism are brought to the attention of the faculty. The other tasks we deal with can be read online in our constitution.
+    </p>
+    <p class="block">
+        We try to improve ourselves continuously and to make information about innovations at the university more accessible to you. We are also committed to making it easier for you to communicate with your professors and to offer you better and more varied events.
+    </p>
+    <p class="block">
+        In order to be able to implement this continuously, we always need new input and are therefore happy to welcome new members who bring new views and dynamics to the student council.
+    </p>
+    <p class="block">
+        <em>#JoinTheCrew</em>
+    </p>
+    {% if team %}
+        <div class="p-5">
+            <div class="image">
+                <img src="{{ team.image.url }}" alt="{{ team.label }}" />
+            </div>
+            <div class="is-size-7 has-text-right">Bild wurde am {{ team.release_date }} veröffentlicht.</div>
+        </div>
+    {% endif %}
+{% endblock content %}
