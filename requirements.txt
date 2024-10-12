@@ -1,10 +1,10 @@
 asgiref==3.8.1
-bleach==5.0.1
-Django==4.2.16
-Markdown==3.4.4
+bleach==6.1.0
+Django==5.1.2
+Markdown==3.7
 markdown-checklist==0.4.4
 markdown-del-ins==1.0.0
-Pillow==9.4.0
+pillow==10.4.0
 psycopg==3.2.3
 python-dotenv==1.0.1
 six==1.16.0
