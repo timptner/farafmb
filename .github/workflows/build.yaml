@@ -2,8 +2,8 @@ name: test & build
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - v20*
 
 # env:
 #   REGISTRY: ghcr.io
