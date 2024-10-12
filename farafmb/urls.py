@@ -17,7 +17,6 @@ urlpatterns = [
     path("meetings/", include("meetings.urls")),
     path("members/", include("members.urls")),
     path("excursions/", include("excursions.urls")),
-    path("pages/", include("django.contrib.flatpages.urls")),
     path("i18n/", include("django.conf.urls.i18n")),  # required
 ]
 
