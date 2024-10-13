@@ -7,17 +7,11 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATA_DIR = BASE_DIR / ".data"
-
 SECRET_KEY = os.getenv("SECRET_KEY", utils.get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "no").lower() in ["yes", "true"]
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
-
-INTERNAL_IPS = ["127.0.0.1"]
-
-SITE_ID = 1
 
 
 # Application definition
@@ -149,11 +143,11 @@ STATICFILES_DIRS = [
 
 STATIC_URL = "static/"
 
-STATIC_ROOT = os.getenv("STATIC_ROOT", DATA_DIR / "static")
+STATIC_ROOT = os.getenv("STATIC_ROOT", "/srv/farafmb/static")
 
 MEDIA_URL = "media/"
 
-MEDIA_ROOT = os.getenv("MEDIA_ROOT", DATA_DIR / "media")
+MEDIA_ROOT = os.getenv("MEDIA_ROOT", "/srv/farafmb/media")
 
 
 # Email
@@ -217,7 +211,7 @@ LOGGING = {
             "level": "INFO",
             "filters": ["require_debug_false"],
             "class": "logging.FileHandler",
-            "filename": os.getenv("LOG_FILE", str(DATA_DIR / "logs" / "server.log")),
+            "filename": os.getenv("LOG_FILE", "/srv/farafmb/farafmb.log"),
             "formatter": "simple",
         },
         "mail_admins": {

@@ -40,9 +40,9 @@ jobs:
           DATABASE_HOST: localhost
           DATABASE_PORT: 5432
           DATABASE_PASSWORD: secret
-          STATIC_ROOT: /srv/farafmb/static
-          MEDIA_ROOT: /srv/farafmb/media
-          LOG_FILE: /var/log/farafmb.log
+          STATIC_ROOT: ./static
+          MEDIA_ROOT: ./media
+          LOG_FILE: ./farafmb.log
 
   build:
     name: Build

@@ -49,6 +49,7 @@ log_step () {
     buildah config                              \
         --env STATIC_ROOT=$public_dir/static    \
         --env MEDIA_ROOT=$public_dir/media      \
+        --env LOG_FILE=$public_dir/farafmb.log  \
         $container
     buildah run $container -- .venv/bin/python manage.py collectstatic --no-input
 
@@ -58,7 +59,6 @@ log_step () {
     buildah config                              \
         --cmd "$run_cmd"                        \
         --port $port                            \
-        --env LOG_FILE=$app_dir/farafmb.log     \
         $container
 
     log_step "commit container as new image"
