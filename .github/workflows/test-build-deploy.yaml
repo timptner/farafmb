@@ -54,7 +54,7 @@ jobs:
       - name: Login to registry
         run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ghcr.io
       - name: Publish image
-        run: buildah push $IMAGE_ID oci://ghcr.io/${{ github.repository_owner }}/farafmb:${{ github.ref_name }}
+        run: buildah push $IMAGE_ID ghcr.io/${{ github.repository_owner }}/farafmb:${{ github.ref_name }}
 
   # deploy:
   #   name: Deploy
