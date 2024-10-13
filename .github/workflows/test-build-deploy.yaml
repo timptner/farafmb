@@ -1,0 +1,72 @@
+name: Test, build and deploy
+
+on:
+  push:
+    branches: # TODO remove after development
+      - main
+    tags:
+      - v*
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: farafmb
+          POSTGRES_USER: farafmb
+          POSTGRES_PASSWORD: secret
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run tests
+        run: python manage.py test --no-input --failfast
+        env:
+          DATABASE_HOST: localhost
+          DATABASE_PORT: 5432
+          DATABASE_PASSWORD: secret
+          STATIC_ROOT: /srv/farafmb/static
+          MEDIA_ROOT: /srv/farafmb/media
+          LOG_FILE: /var/log/farafmb.log
+
+  build:
+    name: Build
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: echo "IMAGE_ID=$(./build.sh 2>/var/log/build.log)" >> $GITHUB_ENV
+      - name: Login to registry
+        run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ghcr.io
+      - name: Publish image
+        run: buildah push $IMAGE_ID ghcr.io/${{ github.repository_owner }}/farafmb
+
+  # deploy:
+  #   name: Deploy
+  #   needs: build
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Login to server
+  #       run: ssh
+  #     - name: Pull image
+  #       run: podman pull ghcr.io/farafmb/latest
+  #     - name: Stop old container and start new one
+  #       run: podman stop X && podman start Y
