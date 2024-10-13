@@ -50,11 +50,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build image
-        run: echo "IMAGE_ID=$(./build.sh 2>./build.log)" >> $GITHUB_ENV
-      - name: Login to registry
-        run: buildah login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ghcr.io
-      - name: Publish image
-        run: buildah push $IMAGE_ID ghcr.io/${{ github.repository_owner }}/farafmb:${{ github.ref_name }}
+        run: ./build.sh
+        env:
+          GITHUB_USER: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          VERSION_TAG: ${{ github.ref_name }}
 
   # deploy:
   #   name: Deploy
