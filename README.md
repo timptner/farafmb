@@ -62,24 +62,40 @@ coverage report --skip-covered
 ## Build
 
 Images are build using
-[buildah](https://github.com/containers/buildah/blob/main/install.md). The
-build skript needs to be run as root.
+[buildah](https://github.com/containers/buildah/blob/main/install.md).
 
 ```bash
-sudo -s
 ./build.sh
 ```
 
-Afterwards you can run your image with podman (still as root). Provide env vars
-with `--env "KEY=VALUE"` or `--env-file /path/to/.env`.
-
-```bash
-podman run --rm --detach --publish 127.0.0.1:8000:8000 --name farafmb localhost/timptner/farafmb
-```
+The script builds the container and publishes it to GitHub container registry.
+Check the script for required env vars.
 
 ## Deploy
 
-Django connects to postgres via unix domain socket. Therefor it can be required to update `pg_hba.conf` and allow password authentication, espiacially when connecting from inside containers because the user namespace does not match and peer will therefor not work!
+Images can be run as containers with [podman](https://docs.podman.io/en/latest/).
+After starting a container one needs to collect all statics and migrate the
+database.
+
+```bash
+podman run                          \
+    --name farafmb                  \
+    --restart always                \
+    --detach                        \
+    --userns keep-id                \
+    --volume ./farafmb:/srv/farafmb \
+    --publish 127.0.0.1:8000:8000   \
+    --env-file ./.env               \
+    ghcr.io/timptner/farafmb:latest
+
+podman exec farafmb .venv/bin/python3 manage.py collectstatic --no-input
+podman exec farafmb .venv/bin/python3 manage.py migrate --no-input --check
+```
+
+Django connects to postgres via unix domain socket. Therefor it can be required
+to update `pg_hba.conf` and allow password authentication, espiacially when
+connecting from inside containers because the user namespace does not match and
+peer will therefor not work!
 
 // TODO
 

@@ -10,52 +10,43 @@ buildah run $container -- apt-get --yes install \
     libpq-dev build-essential
 
 # create application user
-name=farafmb
-app_dir=/opt/$name
 buildah run $container -- useradd   \
     --shell /bin/bash               \
     --create-home                   \
-    --home-dir $app_dir             \
-    $name
+    farafmb
 
 # copy project files
-buildah copy $container . $app_dir
-buildah run $container -- chown -R $name:$name $app_dir
+buildah copy $container . /opt/farafmb
+buildah run $container -- chown -R farafmb:farafmb /opt/farafmb
 
-# create service directories
-public_dir=/srv/$name
-buildah run $container -- mkdir $public_dir
-buildah run $container -- chown -R $name:$name $public_dir
-buildah config --volume $public_dir $container
+# create volume
+buildah run $container -- mkdir /srv/farafmb
+buildah run $container -- chown -R farafmb:farafmb /srv/farafmb
+buildah config --volume /srv/farafmb $container
 
 # set default user and working directory
-buildah config              \
-    --user $name            \
-    --workingdir $app_dir   \
+buildah config                  \
+    --user farafmb              \
+    --workingdir /opt/farafmb   \
     $container
 
 # install python packages
 buildah run $container -- python3 -m venv .venv
-buildah run $container -- .venv/bin/pip install -r ./requirements.txt
+buildah run $container -- .venv/bin/pip install -r requirements.txt
 buildah run $container -- .venv/bin/pip install gunicorn
 
-# collect static files
+# configure container
+run_cmd="/opt/farafmb/.venv/bin/gunicorn --workers 2 --bind 0.0.0.0:8000 farafmb.wsgi"
 buildah config                              \
-    --env STATIC_ROOT=$public_dir/static    \
-    --env MEDIA_ROOT=$public_dir/media      \
-    --env LOG_FILE=$public_dir/farafmb.log  \
-    $container
-buildah run $container -- .venv/bin/python manage.py collectstatic --no-input
-
-# configure server
-port=8000
-run_cmd="$app_dir/.venv/bin/gunicorn --workers 2 --bind 0.0.0.0:$port farafmb.wsgi"
-buildah config                              \
+    --env STATIC_ROOT=/srv/farafmb/static   \
+    --env MEDIA_ROOT=/srv/farafmb/media     \
+    --env LOG_FILE=/srv/farafmb/farafmb.log \
+    --port 8000                             \
     --cmd "$run_cmd"                        \
-    --port $port                            \
     $container
 
 # publish image
-image=$(buildah commit --rm $container "farafmb")
+image=$(buildah commit $container "farafmb")
 buildah login --username $GITHUB_USER --password $GITHUB_TOKEN ghcr.io
-buildah push $image ghcr.io/$REPO_OWNER/farafmb:$VERSION_TAG
+buildah tag $image $VERSION_TAG
+buildah push $image ghcr.io/$REPO_OWNER/farafmb:latest
