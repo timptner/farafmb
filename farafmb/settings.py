@@ -7,9 +7,9 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv("SECRET_KEY", utils.get_random_secret_key())
+SECRET_KEY = os.environ["SECRET_KEY"]
 
-DEBUG = os.getenv("DEBUG", "no").lower() in ["yes", "true"]
+DEBUG = os.getenv("DEBUG", "no").lower() in ("yes", "true")
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
@@ -79,8 +79,8 @@ WSGI_APPLICATION = "farafmb.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": os.getenv("DATABASE_HOST", ""),
-        "PORT": os.getenv("DATABASE_PORT", ""),
+        "HOST": os.getenv("DATABASE_HOST", "127.0.0.1"),
+        "PORT": os.getenv("DATABASE_PORT", "5432"),
         "NAME": os.getenv("DATABASE_NAME", "farafmb"),
         "USER": os.getenv("DATABASE_USER", "farafmb"),
         "PASSWORD": os.getenv("DATABASE_PASSWORD", ""),

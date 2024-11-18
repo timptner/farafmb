@@ -4,6 +4,7 @@ htmlcov
 
 # Django
 .data/
+*.log
 
 # NPM
 node_modules/
