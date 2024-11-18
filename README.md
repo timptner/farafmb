@@ -39,6 +39,15 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
+Install [volta](https://volta.sh) as node tool manager.
+Afterwards install node to manage packages.
+
+```bash
+curl https://get.volta.sh | bash
+volta install node
+volta install sass
+```
+
 Install node dependencies and build stylesheets.
 
 ```bash
