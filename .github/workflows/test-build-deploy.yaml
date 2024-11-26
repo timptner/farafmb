@@ -41,6 +41,7 @@ jobs:
           STATIC_ROOT: ./static
           MEDIA_ROOT: ./media
           LOG_FILE: ./app.log
+          SECRET_KEY: secret
 
   build:
     name: Build
