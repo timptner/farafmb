@@ -31,16 +31,16 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: python -m pip install -r requirements.txt
+        run: python3 -m pip install -r requirements.txt
       - name: Run tests
-        run: python manage.py test --no-input --failfast
+        run: python3 manage.py test --no-input --failfast
         env:
           DATABASE_HOST: localhost
           DATABASE_PORT: 5432
           DATABASE_PASSWORD: secret
           STATIC_ROOT: ./static
           MEDIA_ROOT: ./media
-          LOG_FILE: ./farafmb.log
+          LOG_FILE: ./app.log
 
   build:
     name: Build
