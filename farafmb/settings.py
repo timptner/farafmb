@@ -2,7 +2,6 @@ import os
 import tomllib
 from pathlib import Path
 
-from django.core.management import utils
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 
@@ -178,5 +177,10 @@ FORM_RENDERER = "farafmb.forms.BulmaFormRenderer"
 
 # Logging
 
-with Path(os.getenv("LOG_CONFIG_FILE", "/etc/farafmb/logging.toml")).open("rb") as file:
+try:
+    log_config_file = Path(os.environ["LOG_CONFIG_FILE"])
+except KeyError:
+    log_config_file = BASE_DIR / "logging.toml"
+
+with log_config_file.open("rb") as file:
     LOGGING = tomllib.load(file)
