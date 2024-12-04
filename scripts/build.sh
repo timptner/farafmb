@@ -56,5 +56,5 @@ buildah config --port 8000 --cmd "$cmd"     \
 # publish image
 image=$(buildah commit $container "farafmb")
 buildah login --username $GITHUB_USER --password $GITHUB_TOKEN ghcr.io
-buildah tag $image $VERSION_TAG
+buildah push $image ghcr.io/$REPO_OWNER/farafmb:$VERSION_TAG
 buildah push $image ghcr.io/$REPO_OWNER/farafmb:latest
