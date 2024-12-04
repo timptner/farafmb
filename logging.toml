@@ -9,7 +9,7 @@ require_debug_true = { "()" = "django.utils.log.RequireDebugTrue" }
 format = "[{asctime}] {levelname} {message}"
 style = "{"
 
-[formatters."django.server"]
+[formatters.django_server]
 "()" = "django.utils.log.ServerFormatter"
 format = "[{server_time}] {message}"
 style = "{"
@@ -19,27 +19,27 @@ level = "INFO"
 filters = ["require_debug_true"]
 class = "logging.StreamHandler"
 
-[handlers."django.server"]
+[handlers.django_server]
 level = "INFO"
 class = "logging.StreamHandler"
-formatter = "django.server"
+formatter = "django_server"
 
 [handlers.file]
 level = "INFO"
 filters = ["require_debug_false"]
 class = "logging.FileHandler"
-filename = "/srv/farafmb/farafmb.log"
+filename = "farafmb.log"
 formatter = "simple"
 
 [handlers.requests]
 level = "INFO"
 class = "logging.FileHandler"
-filename = "/srv/farafmb/requests.log"
+filename = "requests.log"
 formatter = "simple"
 
 [handlers.mail_admins]
 level = "ERROR"
-filters = "require_debug_false"
+filters = ["require_debug_false"]
 class = "django.utils.log.AdminEmailHandler"
 
 [loggers.django]
@@ -47,7 +47,7 @@ handlers = ["console", "file", "mail_admins"]
 level = "INFO"
 
 [loggers."django.server"]
-handlers = ["django.server", "file"]
+handlers = ["django_server", "file"]
 level = "INFO"
 propagate = false
 
