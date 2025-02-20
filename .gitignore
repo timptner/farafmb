@@ -6,6 +6,7 @@ htmlcov
 .data/
 *.log
 logging-*.toml
+db.sqlite3
 
 # NPM
 node_modules/

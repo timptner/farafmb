@@ -81,11 +81,11 @@ WSGI_APPLICATION = "farafmb.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "HOST": os.getenv("DATABASE_HOST", "127.0.0.1"),
-        "PORT": os.getenv("DATABASE_PORT", "5432"),
-        "NAME": os.getenv("DATABASE_NAME", "farafmb"),
-        "USER": os.getenv("DATABASE_USER", "farafmb"),
+        "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.sqlite3"),
+        "HOST": os.getenv("DATABASE_HOST", ""),
+        "PORT": os.getenv("DATABASE_PORT", ""),
+        "NAME": os.getenv("DATABASE_NAME", "db.sqlite3"),
+        "USER": os.getenv("DATABASE_USER", ""),
         "PASSWORD": os.getenv("DATABASE_PASSWORD", ""),
     }
 }
