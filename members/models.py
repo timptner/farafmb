@@ -1,60 +1,63 @@
-from django.contrib.auth.models import User
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-
-def user_directory_path(instance, filename):
-    suffix = filename.split(".")[-1].lower()
-    return f"members/user_{instance.user.id}.{suffix}"
+def user_directory_path():
+    pass
 
 
 class Member(models.Model):
-    EMO = "EMO"
-    IDE = "IDE"
-    ME = "ME"
-    MTC = "MTC"
-    SEM = "SEM"
-    IEL = "IEL"
-    IEM = "IEM"
-    COURSES = [
-        (EMO, _("E-Mobility")),
-        (IDE, _("Integrated Design Engineering")),
-        (ME, _("Mechanical Engineering")),
-        (MTC, _("Mechatronics")),
-        (SEM, _("Systems Engineering for Manufacturing")),
-        (IEL, _("Industrial Engineering / Logistics")),
-        (IEM, _("Industrial Engineering / Mechanical Engineering")),
+    # Add a data migration before changing these numbers
+    ADMINISTRATION = 1
+    FINANCES = 2
+    PUBLIC_RELATIONS = 3
+    STUDIES_AND_SCIENCE = 4
+    FIELD_TRIPS = 5
+    COMMITTEE_WORK = 6
+    MENTORING = 7
+    MAINTENANCE = 8
+    EVENTS = 9
+
+    DEPARTMENT_CHOICES = [
+        (ADMINISTRATION, _("Administration")),          # Verwaltung
+        (FINANCES, _("Finances")),                      # Finanzen
+        (PUBLIC_RELATIONS, _("Public Relations")),      # Öffentlichkeitsarbeit
+        (STUDIES_AND_SCIENCE, _("Studies & Science")),  # Studium & Lehre
+        (FIELD_TRIPS, _("Field Trips")),                # Exkursionen
+        (COMMITTEE_WORK, _("Committee Work")),          # Hochschulpolitik
+        (MENTORING, _("Mentoring")),                    # Mentoring
+        (MAINTENANCE, _("Maintenance")),                # Technik
+        (EVENTS, _("Events")),                          # Veranstaltungen
     ]
-    BSC = "BSC"
-    MSC = "MSC"
-    ABS = "ABS"
-    DEGREES = [
-        (BSC, _("Bachelor of Science")),
-        (MSC, _("Master of Science")),
-        (ABS, _("Alumnus")),
-    ]
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    picture = models.ImageField(upload_to=user_directory_path)
-    biography = models.CharField(max_length=250, blank=True)
-    jobs = models.CharField(max_length=100, blank=True)
-    course = models.CharField(max_length=3, choices=COURSES)
-    degree = models.CharField(max_length=3, choices=DEGREES)
-    birthday = models.DateField(blank=True, null=True)
-    joined_at = models.DateField()
+
+    COURSE_CHOICES = {
+        _("Bachelor"): {
+            "AI": _("AI Engineering"),
+            "EMO": _("E-Mobility"),
+            "ESC": _("Engineering Science"),
+            "MB-B": _("Mechanical Engineering"),
+            "MECH-B": _("Mechatronics"),
+            "WLO": _("Industrial Engineering for Logistics"),
+            "WMB": _("Industrial Engineering for Mechanical Engineering"),
+        },
+        _("Master"): {
+            "BE": _("Biomechanical Engineering"),
+            "CME": _("Computational Methods in Engineering"),
+            "IDE": _("Integrated Design Engineering"),
+            "MB-M": _("Mechanical Engineering"),
+            "MECH-M": _("Mechatronics"),
+            "SEM": _("Systems Engineering for Manufacturing"),
+            "WING": _("Industrial Engineering"),
+        },
+    }
+
+    name = models.CharField(_("Name"), max_length=100, help_text="First name should be enough")
+    email = models.EmailField(_("Email address"), help_text="Internal use only")
+    picture = models.ImageField(_("Picture"), upload_to="members/")
+    statement = models.CharField(_("Statement"), max_length=500, blank=True)
+    department = models.PositiveSmallIntegerField(_("Department"), choices=DEPARTMENT_CHOICES)
+    course = models.CharField(_("Course"), max_length=6, choices=COURSE_CHOICES)
+    birthday = models.DateField(_("Date of birth"), help_text=_("Internal use only"), blank=True, null=True)
+    joined_at = models.DateField(_("Date of accession"), help_text=_("Internal use only"))
 
     def __str__(self):
-        return self.user.get_full_name() or self.user.username
-
-    def get_degree_display_short(self):
-        words = self.get_degree_display().split(" ")
-        return words[0]
-
-    def get_job_list(self):
-        return [job.strip() for job in self.jobs.split(",")]
-
-    def is_day_of_birth(self):
-        if not self.birthday:
-            return False
-        today = timezone.now().date()
-        return self.birthday.day == today.day and self.birthday.month == today.month
+        return str(self.name)
