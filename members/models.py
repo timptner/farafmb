@@ -59,5 +59,9 @@ class Member(models.Model):
     birthday = models.DateField(_("Date of birth"), help_text=_("Internal use only"), blank=True, null=True)
     joined_at = models.DateField(_("Date of accession"), help_text=_("Internal use only"))
 
+    class Meta:
+        verbose_name = _("Member")
+        verbose_name_plural = _("Members")
+
     def __str__(self):
         return str(self.name)
