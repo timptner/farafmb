@@ -29,35 +29,35 @@ class Member(models.Model):
         (EVENTS, _("Events")),                          # Veranstaltungen
     ]
 
-    COURSE_CHOICES = {
+    PROGRAM_CHOICES = {
         _("Bachelor"): {
             "AI": _("AI Engineering"),
             "EMO": _("E-Mobility"),
             "ESC": _("Engineering Science"),
-            "MB-B": _("Mechanical Engineering"),
-            "MECH-B": _("Mechatronics"),
-            "WLO": _("Industrial Engineering for Logistics"),
-            "WMB": _("Industrial Engineering for Mechanical Engineering"),
+            "MB-B": _("Mechanical Engineering (Bachelor)"),
+            "MECH-B": _("Mechatronics (Bachelor)"),
+            "WLO": _("Industrial Engineering for Logistics (Bachelor)"),
+            "WMB": _("Industrial Engineering for Mechanical Engineering (Bachelor)"),
         },
         _("Master"): {
             "BE": _("Biomechanical Engineering"),
             "CME": _("Computational Methods in Engineering"),
             "IDE": _("Integrated Design Engineering"),
-            "MB-M": _("Mechanical Engineering"),
-            "MECH-M": _("Mechatronics"),
+            "MB-M": _("Mechanical Engineering (Master)"),
+            "MECH-M": _("Mechatronics (Master)"),
             "SEM": _("Systems Engineering for Manufacturing"),
-            "WING": _("Industrial Engineering"),
+            "WING": _("Industrial Engineering (Master)"),
         },
     }
 
     name = models.CharField(_("Name"), max_length=100, help_text="First name should be enough")
-    email = models.EmailField(_("Email address"), help_text="Internal use only")
+    email = models.EmailField(_("Email address"), help_text=_("Internal use only"))
     picture = models.ImageField(_("Picture"), upload_to="members/")
     statement = models.CharField(_("Statement"), max_length=500, blank=True)
     department = models.PositiveSmallIntegerField(_("Department"), choices=DEPARTMENT_CHOICES)
-    course = models.CharField(_("Course"), max_length=6, choices=COURSE_CHOICES)
+    program = models.CharField(_("Program"), max_length=6, choices=PROGRAM_CHOICES)
     birthday = models.DateField(_("Date of birth"), help_text=_("Internal use only"), blank=True, null=True)
-    joined_at = models.DateField(_("Date of accession"), help_text=_("Internal use only"))
+    joined_at = models.DateField(_("Date of accession"))
 
     class Meta:
         verbose_name = _("Member")
