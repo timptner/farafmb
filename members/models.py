@@ -50,12 +50,14 @@ class Member(models.Model):
         },
     }
 
+    is_visible = models.BooleanField(_("Visibility"), default=False)
     name = models.CharField(_("Name"), max_length=100, help_text="First name should be enough")
     email = models.EmailField(_("Email address"), help_text=_("Internal use only"))
     picture = models.ImageField(_("Picture"), upload_to="members/")
     statement = models.CharField(_("Statement"), max_length=500, blank=True)
     department = models.PositiveSmallIntegerField(_("Department"), choices=DEPARTMENT_CHOICES)
     program = models.CharField(_("Program"), max_length=6, choices=PROGRAM_CHOICES)
+    is_alumnus = models.BooleanField(_("Alumnus"), help_text=_("Successfully completed his degree"), default=False)
     birthday = models.DateField(_("Date of birth"), help_text=_("Internal use only"), blank=True, null=True)
     joined_at = models.DateField(_("Date of accession"))
 

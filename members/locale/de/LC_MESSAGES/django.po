@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-23 11:18+0100\n"
+"POT-Creation-Date: 2025-02-23 12:43+0100\n"
 "Last-Translator: Aiven Timptner\n"
 "Language: German\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: members/apps.py:8 members/models.py:64
+#: members/apps.py:8 members/models.py:66
 msgid "Members"
 msgstr "Mitglieder"
 
@@ -119,42 +119,54 @@ msgid "Industrial Engineering (Master)"
 msgstr "Wirtschaftsingenieur (Master)"
 
 #: members/models.py:53
+msgid "Visibility"
+msgstr "Sichtbarkeit"
+
+#: members/models.py:54
 msgid "Name"
 msgstr "Name"
 
-#: members/models.py:54
+#: members/models.py:55
 msgid "Email address"
 msgstr "E-Mail-Adresse"
 
-#: members/models.py:54 members/models.py:59
+#: members/models.py:55 members/models.py:61
 msgid "Internal use only"
 msgstr "Ausschließlich zur internen Verwendung"
 
-#: members/models.py:55
+#: members/models.py:56
 msgid "Picture"
 msgstr "Bild"
 
-#: members/models.py:56
+#: members/models.py:57
 msgid "Statement"
 msgstr "Stellungnahme"
 
-#: members/models.py:57
+#: members/models.py:58
 msgid "Department"
 msgstr "Sachgebiet"
 
-#: members/models.py:58
+#: members/models.py:59
 msgid "Program"
 msgstr "Studiengang"
 
-#: members/models.py:59
+#: members/models.py:60
+msgid "Alumnus"
+msgstr "Absolvent"
+
+#: members/models.py:60
+msgid "Successfully completed his degree"
+msgstr "Hat sein Studium erfolgreich abgeschlossen"
+
+#: members/models.py:61
 msgid "Date of birth"
 msgstr "Geburtsdatum"
 
-#: members/models.py:60
+#: members/models.py:62
 msgid "Date of accession"
 msgstr "Beitrittsdatum"
 
-#: members/models.py:63
+#: members/models.py:65
 msgid "Member"
 msgstr "Mitglied seit"
 
@@ -166,6 +178,10 @@ msgstr "Bild von"
 msgid "Member since"
 msgstr "Mitglied seit"
 
-#: members/templates/members/member_list.html:36
+#: members/templates/members/member_list.html:33
+msgid "Has graduated"
+msgstr "Studium abgeschlossen"
+
+#: members/templates/members/member_list.html:47
 msgid "There are currently no members active in this department."
 msgstr "Derzeit sind keine Mitglieder in diesem Sachgebiet aktiv."

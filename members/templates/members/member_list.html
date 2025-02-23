@@ -24,6 +24,17 @@
                         <div class="content">
                             <p>{% trans 'Member since' %}: {{ member.joined_at|timesince }}</p>
 
+                            {% if member.is_alumnus %}
+                            <p>
+                                <span>
+                                    <i class="fas fa-graduation-cap"></i>
+                                </span>
+                                <span class="icon-text">
+                                    {% trans 'Has graduated' %}
+                                </span>
+                            </p>
+                            {% endif %}
+
                             {% if member.statement %}
                             <p>{{ member.statement }}</p>
                             {% endif %}

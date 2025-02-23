@@ -10,7 +10,7 @@ class MemberListView(generic.ListView):
 
     def get_queryset(self, **kwargs) -> list:
         departments = {pk: [] for pk, label in Member.DEPARTMENT_CHOICES}
-        for member in super().get_queryset(**kwargs):
+        for member in super().get_queryset(**kwargs).filter(is_visible=True):
             departments[member.department].append(member)
 
         return [(label, departments[pk]) for pk, label in Member.DEPARTMENT_CHOICES]
