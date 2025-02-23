@@ -1,11 +1,43 @@
-{% extends 'members/base.html' %}
+{% extends 'base.html' %}
 
-{% block content %}
-    <div class="columns is-multiline">
-        {% for member in object_list %}
+{% load i18n %}
+
+{% block section %}
+<section class="section">
+    <div class="container">
+        {% for department, members in object_list %}
+        <h3 class="title">{{ department }}</h3>
+        <div class="columns is-multiline">
+            {% for member in members %}
             <div class="column is-one-quarter">
-                {% include 'members/member_card.html' with member=member %}
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-square">
+                            <img src="{{ member.picture.url }}" alt="{% trans 'Picture of' %} {{ member.name }}">
+                        </figure>
+                    </div>
+
+                    <div class="card-content">
+                        <h4 class="title">{{ member.name }}</h4>
+                        <h6 class="subtitle">{{ member.get_course_display }}</h6>
+
+                        <div class="content">
+                            <p>{% trans 'Member since' %}: {{ member.joined_at|timesince }}</p>
+
+                            {% if member.statement %}
+                            <p>{{ member.statement }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
+            {% empty %}
+            <div class="column is-fullwidth">
+                <p>{% trans 'There are currently no members active in this department.' %}</p>
+            </div>
+            {% endfor %}
+        </div>
         {% endfor %}
     </div>
+</section>
 {% endblock %}
