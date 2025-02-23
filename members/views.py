@@ -8,7 +8,7 @@ class MemberListView(generic.ListView):
     template_name = 'members/member_list.html'
     ordering = ["name"]
 
-    def get_queryset(self, **kwargs):
+    def get_queryset(self, **kwargs) -> list:
         departments = {pk: [] for pk, label in Member.DEPARTMENT_CHOICES}
         for member in super().get_queryset(**kwargs):
             departments[member.department].append(member)

@@ -63,5 +63,5 @@ class Member(models.Model):
         verbose_name = _("Member")
         verbose_name_plural = _("Members")
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.name)
