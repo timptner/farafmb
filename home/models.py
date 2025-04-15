@@ -4,6 +4,7 @@ from django.db import models
 class Team(models.Model):
     label = models.CharField(
         verbose_name="Bezeichnung",
+        max_length=100,
         help_text="Die Verwendung der Jahreszahl und/oder Semester bietet sich an.",
     )
     image = models.ImageField(
