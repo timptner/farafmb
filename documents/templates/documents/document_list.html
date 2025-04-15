@@ -1,14 +1,11 @@
 {% extends 'base.html' %}
-
 {% load i18n %}
-
 {% block content %}
     <div class="container is-max-desktop">
         {% regroup document_list by group as group_list %}
         {% for group in group_list %}
-            <nav class="panel has-background-white">
+            <nav class="panel">
                 <p class="panel-heading">{{ group.grouper|default_if_none:"Sonstiges" }}</p>
-
                 {% for document in group.list %}
                     <a class="panel-block" href="{{ document.file.url }}">
                         <span class="panel-icon">
